@@ -1,0 +1,80 @@
+{
+  "as_of": "2026-04-27",
+  "source_notes": "Discount availability and stacking rules vary by carrier and state. Each item lists the carriers that explicitly advertise it as of the as_of date — the agent should treat this list as a checklist to ASK each carrier about, not a guarantee.",
+  "categories": [
+    {
+      "category": "Multi-policy / household",
+      "discounts": [
+        {"name": "Multi-policy (auto + home/condo/renters)", "typical_savings": "5-25%", "qualifies_if": "Same household has another policy with the same carrier or affiliated group.", "carriers": ["state-farm", "progressive", "geico", "allstate", "usaa", "liberty-mutual", "farmers", "nationwide", "american-family", "travelers", "erie", "auto-owners", "amica", "the-hartford-aarp", "safeco", "mercury", "aaa"]},
+        {"name": "Multi-vehicle", "typical_savings": "5-25%", "qualifies_if": "Two or more vehicles on the same policy.", "carriers": "most"},
+        {"name": "Multi-driver / household", "typical_savings": "varies", "qualifies_if": "Spouse or family member added.", "carriers": "most"}
+      ]
+    },
+    {
+      "category": "Driving record / behavior",
+      "discounts": [
+        {"name": "Safe-driver / good-driver", "typical_savings": "10-25%", "qualifies_if": "Typically 3-5 years with no at-fault accidents or major violations.", "carriers": ["state-farm", "progressive", "geico", "allstate", "usaa", "liberty-mutual", "farmers", "nationwide", "amica", "mercury"]},
+        {"name": "Telematics / usage-based", "typical_savings": "5-40% (rare downside risk at renewal)", "qualifies_if": "Opt into the carrier's app/device for 30-180 days.", "carriers": ["state-farm:Drive Safe & Save", "progressive:Snapshot", "geico:DriveEasy", "allstate:Drivewise", "usaa:SafePilot", "liberty-mutual:RightTrack", "farmers:Signal", "nationwide:SmartRide", "american-family:KnowYourDrive", "travelers:IntelliDrive", "amica:StreetSmart", "the-hartford-aarp:TrueLane", "lemonade-car:app", "root:Test Drive"], "warnings": ["Snapshot, Drivewise, and DriveEasy can RAISE your rate at renewal if your driving scores poorly. SafePilot, SmartRide, and Drive Safe & Save are discount-only (no penalty) at most carriers — confirm in writing."]},
+        {"name": "Pay-per-mile", "typical_savings": "30-60% for low-mileage drivers", "qualifies_if": "Annual mileage below ~8,000.", "carriers": ["nationwide:SmartMiles", "allstate:Milewise", "metromile", "mile-auto"]},
+        {"name": "Defensive-driving course completion", "typical_savings": "5-10%", "qualifies_if": "Approved state-recognized course; some states limit to drivers 50/55+.", "carriers": "most"},
+        {"name": "Accident-free renewal", "typical_savings": "5-15%", "qualifies_if": "Sustained over 3+ policy renewals.", "carriers": "most"}
+      ]
+    },
+    {
+      "category": "Vehicle features",
+      "discounts": [
+        {"name": "Anti-theft device", "typical_savings": "1-25% on comprehensive", "qualifies_if": "Factory or aftermarket immobilizer, alarm, GPS tracker.", "carriers": "most"},
+        {"name": "Anti-lock brakes", "typical_savings": "1-5%", "qualifies_if": "Factory ABS.", "carriers": "most"},
+        {"name": "Airbags / passive restraint", "typical_savings": "1-30% on medical/PIP", "qualifies_if": "Factory airbags.", "carriers": "most"},
+        {"name": "ADAS / collision avoidance", "typical_savings": "varies", "qualifies_if": "Factory AEB, lane keep, blind-spot.", "carriers": ["state-farm", "liberty-mutual", "travelers", "amica"]},
+        {"name": "New-vehicle discount", "typical_savings": "10-15%", "qualifies_if": "Vehicle is current-model-year or 1-2 years old.", "carriers": ["state-farm", "liberty-mutual", "travelers", "the-hartford-aarp"]},
+        {"name": "Electric / hybrid vehicle", "typical_savings": "5-10%", "qualifies_if": "EV or hybrid drivetrain.", "carriers": ["travelers", "farmers", "lemonade-car", "liberty-mutual"]},
+        {"name": "VIN etching / glass etching", "typical_savings": "1-5% on comprehensive", "qualifies_if": "VIN etched on windows.", "carriers": "varies"}
+      ]
+    },
+    {
+      "category": "Driver demographics & life stage",
+      "discounts": [
+        {"name": "Good student", "typical_savings": "5-25%", "qualifies_if": "Full-time student under 25 with B average / 3.0 GPA / dean's list.", "carriers": ["state-farm", "progressive", "geico", "allstate", "usaa", "liberty-mutual", "farmers", "nationwide", "amica", "mercury"]},
+        {"name": "Student-away-at-school", "typical_savings": "varies", "qualifies_if": "Student listed on policy but lives 100+ miles from the garaging address without a car.", "carriers": ["state-farm", "geico", "allstate", "liberty-mutual", "farmers"]},
+        {"name": "Driver-training course", "typical_savings": "5-10%", "qualifies_if": "Newly licensed driver completed an approved course.", "carriers": "most"},
+        {"name": "Senior 50+ / mature-driver", "typical_savings": "varies", "qualifies_if": "Driver 50/55+, often paired with defensive-driving course.", "carriers": ["the-hartford-aarp", "geico", "allstate", "amica"]},
+        {"name": "Married", "typical_savings": "5-15%", "qualifies_if": "Married driver listed.", "carriers": "most"},
+        {"name": "Homeowner (without bundling)", "typical_savings": "1-7%", "qualifies_if": "Own a home, even if home policy is elsewhere.", "carriers": ["progressive", "liberty-mutual", "the-hartford-aarp", "amica"]}
+      ]
+    },
+    {
+      "category": "Affinity / employment",
+      "discounts": [
+        {"name": "Military / veteran / active-duty", "typical_savings": "5-15%", "qualifies_if": "Verifiable military service.", "carriers": ["geico", "usaa", "liberty-mutual", "farmers"]},
+        {"name": "Federal employee", "typical_savings": "8% (GEICO 'Eagle')", "qualifies_if": "Current US federal employee.", "carriers": ["geico"]},
+        {"name": "Alumni / professional association", "typical_savings": "varies", "qualifies_if": "Member of a participating university alumni group or professional association (engineers, teachers, nurses, etc.).", "carriers": ["geico", "liberty-mutual", "farmers", "nationwide"]},
+        {"name": "Employer / group rate", "typical_savings": "varies", "qualifies_if": "Employer offers an affinity program with the carrier.", "carriers": ["liberty-mutual", "farmers", "nationwide", "travelers"]},
+        {"name": "Teacher / first responder", "typical_savings": "5-10%", "qualifies_if": "Currently employed as teacher, police, fire, EMT, nurse.", "carriers": ["liberty-mutual", "farmers", "the-hartford-aarp"]}
+      ]
+    },
+    {
+      "category": "Policy & payment",
+      "discounts": [
+        {"name": "Paid-in-full", "typical_savings": "5-12%", "qualifies_if": "Pay 6- or 12-month premium upfront.", "carriers": "most"},
+        {"name": "Paperless / e-documents", "typical_savings": "1-5%", "qualifies_if": "Opt into electronic delivery.", "carriers": "most"},
+        {"name": "Auto-pay / EFT", "typical_savings": "1-5%", "qualifies_if": "Bank-draft or recurring card.", "carriers": "most"},
+        {"name": "Online quote / online buy", "typical_savings": "3-8%", "qualifies_if": "Started or bought policy online.", "carriers": ["progressive", "allstate", "liberty-mutual", "farmers"]},
+        {"name": "Early-shopper / advance-quote", "typical_savings": "5-15%", "qualifies_if": "Quote 7+ days before current policy expires (proves continuous coverage and shopping behavior).", "carriers": ["allstate", "liberty-mutual", "farmers", "nationwide", "travelers"]},
+        {"name": "Continuous coverage / prior-insurance", "typical_savings": "5-20%", "qualifies_if": "No lapse in coverage for 6/12+ months.", "carriers": "most"},
+        {"name": "Loyalty / longevity", "typical_savings": "5-15%", "qualifies_if": "3+ years with carrier or as a household.", "carriers": ["state-farm", "allstate", "amica", "auto-owners", "erie", "the-hartford-aarp"]}
+      ]
+    }
+  ],
+  "always_ask_questions": [
+    "List every discount currently applied to my quote, by name, with the percent.",
+    "List every discount I might qualify for that is NOT currently applied.",
+    "Is the telematics discount one-time, recurring at renewal, or at-risk of becoming a surcharge?",
+    "Is accident forgiveness included on this quote, earned over time, or paid as a rider?",
+    "Will the renewal premium assume the same discounts? Which discounts drop off?",
+    "What is the new-customer / new-business discount on this quote, and when does it expire?",
+    "Are you using a credit-based insurance score for my rate? Which tier am I in?",
+    "Is rental-reimbursement and roadside included or a rider?",
+    "Will adding gap coverage / OEM-parts / new-car-replacement change my rate?"
+  ]
+}

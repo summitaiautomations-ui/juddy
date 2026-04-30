@@ -1,0 +1,320 @@
+{
+  "tracks": {
+    "hot": {
+      "name": "🔥 Hot (0-60 Days)",
+      "description": "Actively looking, responding, sending listings, asking for payments",
+      "steps": [
+        {
+          "id": "welcome",
+          "delay_seconds": 60,
+          "channel": "sms",
+          "message": "Hey {name}! It's Justin — saw you were looking at homes in {city} online. Still exploring or getting serious? 😊"
+        },
+        {
+          "id": "nudge_justin",
+          "delay_seconds": 300,
+          "channel": "nudge",
+          "message": "🔥 HOT LEAD: {name} - {phone} - {email}\nLooking in {city}, {state} - ${property_value}\nCredit: {credit} | Income: ${income}+ | Down: ${down_payment}\nFirst-time buyer: {first_time} | Has agent: {has_agent}\n\nCall them NOW!"
+        },
+        {
+          "id": "day1_linktree",
+          "delay_seconds": 3600,
+          "channel": "sms",
+          "message": "Hey {name} — here's a little about me and what I do: https://linktr.ee/welcometosummit. I'd love to be your friend in the mortgage business 👍"
+        },
+        {
+          "id": "day2_vm_drop",
+          "delay_seconds": 79200,
+          "channel": "vm_drop",
+          "message": "Day 2 ringless voicemail drop"
+        },
+        {
+          "id": "day2_payments",
+          "delay_seconds": 86400,
+          "channel": "sms",
+          "message": "Hey {name} — any other houses you'd like payments run on? Just send me a listing or address and I'll put together a breakdown 💰"
+        },
+        {
+          "id": "day4_rates",
+          "delay_seconds": 345600,
+          "channel": "sms",
+          "message": "Hey {name} — rates have been moving this week. Happy to run quick numbers if you're curious what you'd qualify for 😊"
+        },
+        {
+          "id": "day7_checkin",
+          "delay_seconds": 604800,
+          "channel": "sms",
+          "message": "Hey {name} — just checking in! How's the search going? I'm here if you need anything on the financing side 🏡"
+        },
+        {
+          "id": "day14_preapproval",
+          "delay_seconds": 1209600,
+          "channel": "sms",
+          "message": "Hey {name} — pro tip: I can get you a pre-approval letter same day so you can move fast on offers. Just text me the address & price 💪"
+        },
+        {
+          "id": "day21_market",
+          "delay_seconds": 1814400,
+          "channel": "sms",
+          "message": "Hey {name} — seeing some nice stuff come on the market in {city}. Want me to keep an eye out in your price range?"
+        },
+        {
+          "id": "day30_checkin",
+          "delay_seconds": 2592000,
+          "channel": "sms",
+          "message": "Hey {name} — been a few weeks! Still house hunting? Happy to run updated numbers anytime 👍"
+        },
+        {
+          "id": "day45_nudge",
+          "delay_seconds": 3888000,
+          "channel": "sms",
+          "message": "Hey {name} — the {city} market is competitive right now. Having your financing locked in gives you an edge. Want to get your pre-approval set?"
+        },
+        {
+          "id": "day60_closeout",
+          "delay_seconds": 5184000,
+          "channel": "sms",
+          "message": "Hey {name} — circling back! If you're still looking I'd love to help. If timing has shifted no worries — I'm always here when you're ready 🏡"
+        }
+      ]
+    },
+    "warm": {
+      "name": "🟡 Warm (2-6 Months)",
+      "description": "Interested but not urgent — lease ending, saving up, timeline stated",
+      "steps": [
+        {
+          "id": "welcome",
+          "delay_seconds": 60,
+          "channel": "sms",
+          "message": "Hey {name}! It's Justin — saw you were looking at homes in {city} online. Still exploring or getting serious? 😊"
+        },
+        {
+          "id": "nudge_justin",
+          "delay_seconds": 300,
+          "channel": "nudge",
+          "message": "🟡 WARM LEAD: {name} - {phone} - {email}\nLooking in {city}, {state} - ${property_value}\nCredit: {credit} | Income: ${income}+ | Down: ${down_payment}\nFirst-time buyer: {first_time} | Has agent: {has_agent}\n\nCall them soon!"
+        },
+        {
+          "id": "day2_linktree",
+          "delay_seconds": 86400,
+          "channel": "sms",
+          "message": "Hey {name} — here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all — just want you to have a friend in the mortgage business when you're ready 👍"
+        },
+        {
+          "id": "day2_vm_drop",
+          "delay_seconds": 79200,
+          "channel": "vm_drop",
+          "message": "Day 2 ringless voicemail drop"
+        },
+        {
+          "id": "day5_rates",
+          "delay_seconds": 432000,
+          "channel": "sms",
+          "message": "Hey {name} — rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment 😊"
+        },
+        {
+          "id": "day10_checkin",
+          "delay_seconds": 864000,
+          "channel": "sms",
+          "message": "Hey {name} — just wanted to check in. No pressure at all, just making sure you have a friend in the mortgage business in your corner 🏡"
+        },
+        {
+          "id": "day21_market",
+          "delay_seconds": 1814400,
+          "channel": "sms",
+          "message": "Hey {name} — been keeping an eye on the {city} market. Some interesting stuff coming up. Want me to send you a quick snapshot?"
+        },
+        {
+          "id": "day30_preapproval",
+          "delay_seconds": 2592000,
+          "channel": "sms",
+          "message": "Hey {name} — pro tip: getting pre-approved early gives you a head start when you're ready to make a move. Happy to get that going whenever you want 💪"
+        },
+        {
+          "id": "day45_linktree",
+          "delay_seconds": 3888000,
+          "channel": "sms",
+          "message": "Hey {name} — put together some great info for buyers: https://linktr.ee/welcometosummit. Let me know if you have any questions!"
+        },
+        {
+          "id": "day60_rates",
+          "delay_seconds": 5184000,
+          "channel": "sms",
+          "message": "Hey {name} — quick rate check-in. Things have been moving and it might be worth chatting about timing. No rush though!"
+        },
+        {
+          "id": "day90_checkin",
+          "delay_seconds": 7776000,
+          "channel": "sms",
+          "message": "Hey {name} — been a little while! Still thinking about buying in {city}? Happy to run fresh numbers anytime 👍"
+        },
+        {
+          "id": "day120_reengage",
+          "delay_seconds": 10368000,
+          "channel": "sms",
+          "message": "Hey {name} — market update: {city} has been active. Curious if buying is still on your radar? Either way I'm here when you need me 🏠"
+        },
+        {
+          "id": "day180_final",
+          "delay_seconds": 15552000,
+          "channel": "sms",
+          "message": "Hey {name} — just circling back one more time. If homeownership is still a goal I'd love to help. If not, feel free to pass my info to friends or family who might need a friend in the mortgage business 😊"
+        }
+      ]
+    },
+    "cold": {
+      "name": "🧊 Cold (6+ Months / Browsing)",
+      "description": "No response, long timeline, just looking, declined engagement",
+      "steps": [
+        {
+          "id": "welcome",
+          "delay_seconds": 60,
+          "channel": "sms",
+          "message": "Hey {name}! It's Justin — saw you were looking at homes in {city} online. Still exploring or getting serious? 😊"
+        },
+        {
+          "id": "nudge_justin",
+          "delay_seconds": 300,
+          "channel": "nudge",
+          "message": "🧊 COLD LEAD: {name} - {phone} - {email}\nLooking in {city}, {state} - ${property_value}\nCredit: {credit}\nFirst-time buyer: {first_time} | Has agent: {has_agent}"
+        },
+        {
+          "id": "day2_linktree",
+          "delay_seconds": 86400,
+          "channel": "sms",
+          "message": "Hey {name} — here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all — just want you to have a friend in the mortgage business when you're ready 👍"
+        },
+        {
+          "id": "day2_vm_drop",
+          "delay_seconds": 79200,
+          "channel": "vm_drop",
+          "message": "Day 2 ringless voicemail drop"
+        },
+        {
+          "id": "day7_checkin",
+          "delay_seconds": 604800,
+          "channel": "sms",
+          "message": "Hey {name} — just checking in. No pressure at all, just making sure you got my info 🏡"
+        },
+        {
+          "id": "day30_market",
+          "delay_seconds": 2592000,
+          "channel": "sms",
+          "message": "Hey {name} — quick market update: some good stuff in {city} right now. Let me know if you're ever curious what you could qualify for 👍"
+        },
+        {
+          "id": "day60_reengage",
+          "delay_seconds": 5184000,
+          "channel": "sms",
+          "message": "Hey {name} — still thinking about buying? Happy to run numbers anytime, no commitment. I'm always here 😊"
+        },
+        {
+          "id": "day90_final",
+          "delay_seconds": 7776000,
+          "channel": "sms",
+          "message": "Hey {name} — last check-in from me! If buying is still on your radar I'm here. If not, no worries — feel free to pass my info to anyone who needs a friend in the mortgage business 🏠"
+        }
+      ]
+    },
+    "active_preapproval": {
+      "name": "Active Pre-Approval",
+      "description": "Connected, pre-approved, house hunting",
+      "steps": [
+        {
+          "id": "week1_checkin",
+          "delay_seconds": 604800,
+          "channel": "sms",
+          "message": "Hey {name}! How's the house hunt going? Seeing anything you like out there? I'm here if you need updated numbers on anything 🏡"
+        },
+        {
+          "id": "week2_market",
+          "delay_seconds": 1209600,
+          "channel": "sms",
+          "message": "Hey {name} — just checking in. The {city} market has been moving, wanted to make sure your pre-approval is still dialed in. Let me know if anything's changed on your end 👍"
+        },
+        {
+          "id": "week4_ratewatch",
+          "delay_seconds": 2592000,
+          "channel": "sms",
+          "message": "Hey {name} — quick rate update for you. Things have been shifting a bit, might be worth a quick chat to talk timing if you're getting close to making an offer. No rush though!"
+        },
+        {
+          "id": "week6_tips",
+          "delay_seconds": 3888000,
+          "channel": "sms",
+          "message": "Hey {name} — pro tip: when you find the one, I can usually get you a pre-approval letter same day so you can move fast on offers. Just text me the address and price and I'll have it ready 💪"
+        },
+        {
+          "id": "week8_checkin",
+          "delay_seconds": 5184000,
+          "channel": "sms",
+          "message": "Hey {name}! Still out there looking? The market can be a grind but the right place will come along. Let me know if you need anything on the financing side 🏠"
+        },
+        {
+          "id": "month3_renewal",
+          "delay_seconds": 7776000,
+          "channel": "sms",
+          "message": "Hey {name} — heads up, pre-approvals typically expire around 90 days. Want me to refresh yours so you're ready to go when you find the right place? Quick and easy on my end 👍"
+        }
+      ]
+    },
+    "past_client": {
+      "name": "Past Client",
+      "description": "Already closed — referral & retention nurture",
+      "steps": [
+        {
+          "id": "month1_thankyou",
+          "delay_seconds": 2592000,
+          "channel": "sms",
+          "message": "Hey {name}! Just wanted to check in — how's the new place? Hope you're settled in. Don't hesitate to reach out if any mortgage questions come up down the road 🏡"
+        },
+        {
+          "id": "month3_referral",
+          "delay_seconds": 7776000,
+          "channel": "sms",
+          "message": "Hey {name} — hope everything is going great! Quick question: know anyone looking to buy or refinance? I'd love to help them out the same way. No pressure, just thought I'd ask 😊"
+        },
+        {
+          "id": "month6_homevalue",
+          "delay_seconds": 15552000,
+          "channel": "sms",
+          "message": "Hey {name}! Fun fact — home values in {city} have been moving. Curious what yours might be worth now? I can pull a quick estimate if you're interested 📈"
+        },
+        {
+          "id": "month9_ratecheck",
+          "delay_seconds": 23328000,
+          "channel": "sms",
+          "message": "Hey {name} — rates have shifted since you closed. Might be worth a quick look to see if a refi makes sense down the line. No cost to check, just let me know 👍"
+        },
+        {
+          "id": "anniversary",
+          "delay_seconds": 31536000,
+          "channel": "sms",
+          "message": "Hey {name} — happy homeowner anniversary! 🎉 Hard to believe it's been a year. Hope you're loving the place. I'm always here if you need anything mortgage-related. And if any friends or family are looking to buy, send them my way — I'd love to be their friend in the mortgage business too!"
+        }
+      ]
+    }
+  },
+  "promotion_rules": {
+    "cold_to_warm": {
+      "trigger": "inbound_reply",
+      "description": "Lead replies to any text → promote to Warm"
+    },
+    "warm_to_hot": {
+      "trigger": "sends_listing_or_asks_payments_or_timeline_under_60_days",
+      "description": "Lead sends listings, asks for payments, or states timeline under 60 days → promote to Hot"
+    },
+    "hot_to_warm": {
+      "trigger": "no_response_14_days",
+      "description": "No response for 14+ days → demote to Warm"
+    },
+    "warm_to_cold": {
+      "trigger": "no_response_30_days",
+      "description": "No response for 30+ days → demote to Cold"
+    },
+    "cold_to_dead": {
+      "trigger": "track_complete_no_response",
+      "description": "Completes 90-day Cold track with zero response → Dead"
+    }
+  }
+}

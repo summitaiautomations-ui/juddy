@@ -94,33 +94,6 @@ def format_message(template, contact):
     )
 
 
-def send_vm_drop(config, to_phone):
-    """Ringless voicemail via Drop.co API."""
-    drop_cfg = config.get("drop_co", {})
-    api_key = drop_cfg.get("api_key", "")
-    campaign_token = drop_cfg.get("campaign_token", "")
-    if not api_key or not campaign_token:
-        return 0, "drop_co not configured"
-
-    phone_digits = "".join(c for c in to_phone if c.isdigit())
-    if len(phone_digits) == 11 and phone_digits.startswith("1"):
-        phone_digits = phone_digits[1:]
-
-    url = "https://customerapi.drop.co/delivery/"
-    params = {
-        "ApiKey": api_key,
-        "CampaignToken": campaign_token,
-        "PhoneTo": phone_digits,
-        "AllowDuplicates": "true",
-        "Source": "nurture_engine",
-    }
-    try:
-        resp = requests.get(url, params=params, timeout=30)
-        return resp.status_code, resp.text
-    except Exception as e:
-        return 0, str(e)
-
-
 def send_nudge(config, message):
     return send_sms(config, config["justin"]["personal_cell"], message)
 
@@ -138,8 +111,6 @@ def process_contacts(config, tracks, contacts_data):
 
     for contact in contacts_data.get("contacts", []):
         if not contact.get("active", True):
-            continue
-        if contact.get("dnc_flag"):
             continue
 
         track_id = contact.get("track", "")
@@ -170,16 +141,6 @@ def process_contacts(config, tracks, contacts_data):
             elif step["channel"] == "nudge":
                 status, resp = send_nudge(config, msg)
                 log_nurture(contact, step["id"], status, resp)
-            elif step["channel"] == "vm_drop":
-                if contact.get("dnc_flag"):
-                    log_nurture(contact, step["id"], 0, "skipped: dnc_flag")
-                    completed_steps.append(step["id"])
-                    contact["completed_steps"] = completed_steps
-                    updated = True
-                    break
-                status, resp = send_vm_drop(config, contact["phone"])
-                log_nurture(contact, step["id"], status, resp)
-                send_nudge(config, f"📞 VM drop sent to {contact['name']} ({contact['phone']})")
 
             completed_steps.append(step["id"])
             contact["completed_steps"] = completed_steps

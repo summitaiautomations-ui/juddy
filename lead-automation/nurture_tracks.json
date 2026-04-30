@@ -23,12 +23,6 @@
           "message": "Hey {name} — here's a little about me and what I do: https://linktr.ee/welcometosummit. I'd love to be your friend in the mortgage business 👍"
         },
         {
-          "id": "day2_vm_drop",
-          "delay_seconds": 79200,
-          "channel": "vm_drop",
-          "message": "Day 2 ringless voicemail drop"
-        },
-        {
           "id": "day2_payments",
           "delay_seconds": 86400,
           "channel": "sms",
@@ -99,12 +93,6 @@
           "delay_seconds": 86400,
           "channel": "sms",
           "message": "Hey {name} — here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all — just want you to have a friend in the mortgage business when you're ready 👍"
-        },
-        {
-          "id": "day2_vm_drop",
-          "delay_seconds": 79200,
-          "channel": "vm_drop",
-          "message": "Day 2 ringless voicemail drop"
         },
         {
           "id": "day5_rates",
@@ -183,12 +171,6 @@
           "delay_seconds": 86400,
           "channel": "sms",
           "message": "Hey {name} — here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all — just want you to have a friend in the mortgage business when you're ready 👍"
-        },
-        {
-          "id": "day2_vm_drop",
-          "delay_seconds": 79200,
-          "channel": "vm_drop",
-          "message": "Day 2 ringless voicemail drop"
         },
         {
           "id": "day7_checkin",

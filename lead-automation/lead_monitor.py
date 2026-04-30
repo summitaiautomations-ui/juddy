@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Lead Monitor — Scans Gmail for new Realtor.com leads, sends welcome text via
-SimpleTexting, alerts Justin (SMS + Telegram), enrolls into nurture engine.
+SimpleTexting, nudges Justin via SMS, enrolls into nurture engine.
 """
 
 import email
@@ -23,21 +23,6 @@ from nurture_engine import add_contact
 SCRIPT_DIR = Path(__file__).resolve().parent
 STATE_PATH = SCRIPT_DIR / "state.json"
 LOG_PATH = SCRIPT_DIR / "lead_log.json"
-
-
-def send_telegram_alert(config, message):
-    token = config.get("telegram", {}).get("bot_token")
-    chat_id = config.get("telegram", {}).get("chat_id")
-    if not token or not chat_id:
-        return
-    try:
-        requests.post(
-            f"https://api.telegram.org/bot{token}/sendMessage",
-            json={"chat_id": chat_id, "text": message},
-            timeout=15,
-        )
-    except Exception as e:
-        print(f"  Telegram alert error: {e}", flush=True)
 
 
 def load_state():
@@ -200,32 +185,6 @@ def process_lead(config, lead):
     actions.append({"type": "nudge_text", "to": config["justin"]["personal_cell"], "status": status_code, "response": resp})
     print(f"  Nudge sent: HTTP {status_code}")
 
-    first_name = (lead.get("name") or "Unknown").split()[0]
-    city = lead.get("city", "")
-    price = lead.get("property_value", "")
-    phone = lead.get("phone", "")
-    credit = lead.get("credit", "")
-    loan = lead.get("loan_product", lead.get("loan_type", ""))
-    first_time = "Yes" if lead.get("first_time") == "Y" else "No"
-    has_agent = "Yes" if lead.get("has_agent") == "Y" else "No"
-
-    tg_msg = "🚨 NEW LEAD!\n\n"
-    tg_msg += f"📱 {first_name} — {phone}\n"
-    if city:
-        tg_msg += f"📍 {city}, {lead.get('state', 'MN')}\n"
-    if price:
-        try:
-            tg_msg += f"💰 ${int(price):,}\n"
-        except ValueError:
-            tg_msg += f"💰 ${price}\n"
-    if credit:
-        tg_msg += f"⭐ Credit: {credit}\n"
-    if loan:
-        tg_msg += f"🏦 {loan}\n"
-    tg_msg += f"🏠 First-time: {first_time} | Agent: {has_agent}\n"
-    tg_msg += f"\n📞 CALL NOW: {phone}"
-
-    send_telegram_alert(config, tg_msg)
     log_lead(lead, actions)
 
     try:

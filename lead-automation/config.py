@@ -39,16 +39,8 @@ def load_config():
             "api_key": os.environ.get("SIMPLETEXTING_API_KEY", ""),
             "account_phone": os.environ.get("SIMPLETEXTING_ACCOUNT_PHONE", ""),
         },
-        "drop_co": {
-            "api_key": os.environ.get("DROPCO_API_KEY", ""),
-            "campaign_token": os.environ.get("DROPCO_CAMPAIGN_TOKEN", ""),
-        },
         "justin": {
             "personal_cell": os.environ.get("JUSTIN_PERSONAL_CELL", ""),
-        },
-        "telegram": {
-            "bot_token": os.environ.get("TELEGRAM_BOT_TOKEN", ""),
-            "chat_id": os.environ.get("TELEGRAM_CHAT_ID", ""),
         },
         "dashboard": {
             "user": os.environ.get("DASHBOARD_USER", "leadnurture"),

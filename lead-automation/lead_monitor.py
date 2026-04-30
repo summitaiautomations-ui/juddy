@@ -344,10 +344,28 @@ def run_once(config=None):
         config = load_config()
     state = load_state()
 
+    # First-run guard: if processed_lead_ids is empty, this is initial
+    # startup against an existing inbox. Record every lead ID we find as
+    # already-processed instead of texting all of them.
+    is_first_run = not state.get("processed_lead_ids")
+
     check_pending_followups(config, state)
     check_inbound_replies(config, state)
 
     new_leads = check_for_new_leads(config, state)
+
+    if is_first_run and new_leads:
+        for lead in new_leads:
+            state["processed_lead_ids"].append(lead["lead_id"])
+        print(
+            f"[{datetime.now(timezone.utc).isoformat()}] First run: seeded "
+            f"{len(new_leads)} existing lead IDs as already-processed. "
+            f"No texts sent.",
+            flush=True,
+        )
+        state["last_check"] = datetime.now(timezone.utc).isoformat()
+        save_state(state)
+        return 0
 
     if not new_leads:
         print(f"[{datetime.now(timezone.utc).isoformat()}] No new leads found.", flush=True)

@@ -14,6 +14,7 @@ from pathlib import Path
 import requests
 
 from config import load_config
+from sms import send_sms_once
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 TRACKS_PATH = SCRIPT_DIR / "nurture_tracks.json"
@@ -60,20 +61,8 @@ def log_nurture(contact, step_id, status_code, response):
     save_json(NURTURE_LOG_PATH, logs)
 
 
-def send_sms(config, to_phone, message):
-    url = "https://api-app2.simpletexting.com/v2/api/messages"
-    headers = {
-        "Authorization": f"Bearer {config['simpletexting']['api_key']}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "contactPhone": to_phone,
-        "accountPhone": config["simpletexting"]["account_phone"],
-        "type": "SINGLE_SMS",
-        "text": message,
-    }
-    resp = requests.post(url, json=payload, headers=headers, timeout=30)
-    return resp.status_code, resp.text
+def send_sms(config, to_phone, message, *, source="nurture_engine"):
+    return send_sms_once(config, to_phone, message, source=source)
 
 
 def format_message(template, contact):
@@ -94,8 +83,8 @@ def format_message(template, contact):
     )
 
 
-def send_nudge(config, message):
-    return send_sms(config, config["justin"]["personal_cell"], message)
+def send_nudge(config, message, *, source="nurture_engine:nudge"):
+    return send_sms(config, config["justin"]["personal_cell"], message, source=source)
 
 
 def _digits(value):
@@ -134,16 +123,22 @@ def process_contacts(config, tracks, contacts_data):
 
             msg = format_message(step["message"], contact)
 
+            source = f"nurture_engine:{track_id}/{step['id']}"
             if step["channel"] == "sms":
                 print(f"[{now.isoformat()}] Sending {track_id}/{step['id']} to {contact['name']}", flush=True)
-                status, resp = send_sms(config, contact["phone"], msg)
+                status, resp = send_sms(config, contact["phone"], msg, source=source)
                 log_nurture(contact, step["id"], status, resp)
             elif step["channel"] == "nudge":
-                status, resp = send_nudge(config, msg)
+                status, resp = send_nudge(config, msg, source=source)
                 log_nurture(contact, step["id"], status, resp)
 
             completed_steps.append(step["id"])
             contact["completed_steps"] = completed_steps
+            # Persist immediately so a crash between sends cannot re-fire a
+            # step that already went out. send_sms_once gives us hard dedupe
+            # at the API boundary, but saving per-send keeps the in-memory
+            # contact state honest if the loop dies mid-tick.
+            save_contacts(contacts_data)
             updated = True
 
             if len(completed_steps) >= len(track["steps"]):
@@ -278,7 +273,7 @@ def check_inbound_deactivation(config, contacts_data):
                         f"⬆️ Lead PROMOTED to Warm!\nFrom: {contact['name']} ({phone})\n"
                         f"Message: {text}\n\nMoved Cold → Warm."
                     )
-                    send_sms(config, config["justin"]["personal_cell"], alert)
+                    send_sms(config, config["justin"]["personal_cell"], alert, source="nurture_engine:inbound_alert")
                 elif contact.get("active", False):
                     contact["active"] = False
                     contact["deactivated_reason"] = "inbound_reply"
@@ -287,7 +282,7 @@ def check_inbound_deactivation(config, contacts_data):
                         f"💬 Lead replied!\nFrom: {contact['name']} ({phone})\n"
                         f"Message: {text}\n\n✅ Auto-stopped nurture."
                     )
-                    send_sms(config, config["justin"]["personal_cell"], alert)
+                    send_sms(config, config["justin"]["personal_cell"], alert, source="nurture_engine:inbound_alert")
 
         save_contacts(contacts_data)
     except Exception as e:

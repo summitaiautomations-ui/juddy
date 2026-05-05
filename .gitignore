@@ -7,6 +7,8 @@ lead-automation/config.json
 lead-automation/state.json
 lead-automation/lead_log.json
 lead-automation/nurture_log.json
+lead-automation/sms_ledger.json
+lead-automation/sms_ledger.json.tmp
 lead-automation/nurture_contacts.json
 lead-automation/realtor_partners.json
 lead-automation/monitor.pid

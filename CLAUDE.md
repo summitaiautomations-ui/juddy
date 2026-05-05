@@ -6,10 +6,18 @@ branch yet — work is split across feature branches that have not been merged.
 ## Where things live (by branch)
 
 - **`claude/lead-nurture-workflow-LIHB9`** — Python lead-nurture / SMS engine.
+  - `lead-automation/sms.py` — **the only place that should call the
+    SimpleTexting send endpoint.** Exports `send_sms_once(config, to_phone,
+    message, *, source, dedupe_namespace="")` which writes to
+    `sms_ledger.json` before returning, so the same `(phone, text)` pair can
+    never be sent twice — even across crashes, double daemons, or
+    state-file resets. Pass `dedupe_namespace="year:2026"` etc. when a
+    template is intentionally recurring (birthdays).
   - `lead-automation/nurture_engine.py` — daemon. Loops every 60s, calls
     `check_inbound_deactivation`, `process_contacts`, periodic
-    `check_demotions`. Sends SMS via SimpleTexting
-    (`https://api-app2.simpletexting.com/v2/api/messages`).
+    `check_demotions`. Sends via `sms.send_sms_once`. `process_contacts`
+    persists `completed_steps` immediately after each send (not at end of
+    tick) so a mid-tick crash can't re-enqueue an already-sent step.
   - `lead-automation/nurture_tracks.json` — track definitions: `hot`, `warm`,
     `cold`, `active_preapproval`, `past_client`. Each step has
     `id` / `delay_seconds` / `channel` (`sms` or `nudge`) / `message`.
@@ -43,18 +51,16 @@ branch yet — work is split across feature branches that have not been merged.
 - `completed_steps` is the dedupe key for "have we already sent step X to this
   contact?" If `enrolled_at` resets but `completed_steps` doesn't (or vice
   versa), steps re-fire.
-- `process_contacts` only saves contacts at the END of the per-tick loop
-  (after iterating every contact), but it sends SMS immediately. Any
-  exception between the send and the final `save_contacts` causes the same
-  step to re-fire on the next tick — a known foot-gun for duplicate sends.
+- `process_contacts` saves contacts immediately after each send, AND
+  `sms.send_sms_once` writes the ledger before returning. Both are
+  belt-and-suspenders against the duplicate-send foot-gun.
 - The repo's GitHub remote is `summitaiautomations-ui/juddy`.
 
 ## Common asks
 
-- **"X got the same text twice"** → check `nurture_log.json` on the mini for
-  duplicate `(contact_phone, step)` rows. Then check whether two daemon
-  instances are running (`ps aux | grep nurture_engine`) — that's the most
-  common root cause, followed by the save-after-send race in
-  `process_contacts`.
+- **"X got the same text twice"** → if it's after the dedupe rollout, that
+  shouldn't happen. Check `sms_ledger.json` for the `(phone, text)` key.
+  If the key is missing, something is bypassing `send_sms_once` — grep for
+  `simpletexting.com` to find the rogue caller.
 - **"Add a lead"** → `python3 nurture_engine.py add "Name" +15551234567 hot city=Denver ...`
 - **"Pause/resume a contact"** → `deactivate <phone>` / `reactivate <phone> [track]`.

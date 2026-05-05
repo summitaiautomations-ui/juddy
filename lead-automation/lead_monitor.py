@@ -19,6 +19,7 @@ import requests
 
 from config import load_config
 from nurture_engine import add_contact
+from sms import send_sms_once
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 STATE_PATH = SCRIPT_DIR / "state.json"
@@ -105,20 +106,8 @@ def parse_lead_email(msg):
     return lead if lead["lead_id"] and lead["phone"] else None
 
 
-def send_sms(config, to_phone, message):
-    url = "https://api-app2.simpletexting.com/v2/api/messages"
-    headers = {
-        "Authorization": f"Bearer {config['simpletexting']['api_key']}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "contactPhone": to_phone,
-        "accountPhone": config["simpletexting"]["account_phone"],
-        "type": "SINGLE_SMS",
-        "text": message,
-    }
-    resp = requests.post(url, json=payload, headers=headers, timeout=30)
-    return resp.status_code, resp.text
+def send_sms(config, to_phone, message, *, source="lead_monitor"):
+    return send_sms_once(config, to_phone, message, source=source)
 
 
 def format_message(template, lead):
@@ -170,7 +159,7 @@ def process_lead(config, lead):
 
     welcome_msg = format_message(config["welcome_text"], lead)
     print(f"[{datetime.now(timezone.utc).isoformat()}] Sending welcome text to {lead['name']} ({lead['phone']})")
-    status_code, resp = send_sms(config, lead["phone"], welcome_msg)
+    status_code, resp = send_sms(config, lead["phone"], welcome_msg, source="lead_monitor:welcome")
     actions.append({"type": "welcome_text", "to": lead["phone"], "status": status_code, "response": resp})
     print(f"  Welcome text sent: HTTP {status_code}")
 
@@ -181,7 +170,7 @@ def process_lead(config, lead):
 
     nudge_msg = format_message(config["nudge_text"], lead)
     print(f"  Sending call nudge to Justin ({config['justin']['personal_cell']})")
-    status_code, resp = send_sms(config, config["justin"]["personal_cell"], nudge_msg)
+    status_code, resp = send_sms(config, config["justin"]["personal_cell"], nudge_msg, source="lead_monitor:nudge")
     actions.append({"type": "nudge_text", "to": config["justin"]["personal_cell"], "status": status_code, "response": resp})
     print(f"  Nudge sent: HTTP {status_code}")
 
@@ -301,7 +290,7 @@ def check_inbound_replies(config, state):
             if removed > 0:
                 alert += f"\n\n✅ Auto-stopped {removed} scheduled follow-up(s)."
 
-            send_sms(config, config["justin"]["personal_cell"], alert)
+            send_sms(config, config["justin"]["personal_cell"], alert, source="lead_monitor:reply_alert")
     except Exception as e:
         print(f"Inbound check error: {e}", flush=True)
 
@@ -330,7 +319,7 @@ def check_pending_followups(config, state):
             if not template:
                 continue
             followup_msg = format_message(template, lead)
-            status_code, resp = send_sms(config, lead["phone"], followup_msg)
+            status_code, resp = send_sms(config, lead["phone"], followup_msg, source=f"lead_monitor:{fu_type}")
             print(f"  {fu_type} sent to {lead['name']}: HTTP {status_code}", flush=True)
             log_lead(lead, [{"type": fu_type, "to": lead["phone"], "status": status_code, "response": resp}])
         else:

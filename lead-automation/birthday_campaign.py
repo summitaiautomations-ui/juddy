@@ -11,6 +11,7 @@ from pathlib import Path
 import requests
 
 from config import load_config
+from sms import send_sms_once
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 CONTACTS_PATH = SCRIPT_DIR / "nurture_contacts.json"
@@ -30,20 +31,8 @@ def save_json(path, data):
         json.dump(data, f, indent=2)
 
 
-def send_sms(config, to_phone, message):
-    url = "https://api-app2.simpletexting.com/v2/api/messages"
-    headers = {
-        "Authorization": f"Bearer {config['simpletexting']['api_key']}",
-        "Content-Type": "application/json",
-    }
-    payload = {
-        "contactPhone": to_phone,
-        "accountPhone": config["simpletexting"]["account_phone"],
-        "type": "SINGLE_SMS",
-        "text": message,
-    }
-    resp = requests.post(url, json=payload, headers=headers, timeout=30)
-    return resp.status_code, resp.text
+def send_sms(config, to_phone, message, *, source="birthday_campaign", dedupe_namespace=""):
+    return send_sms_once(config, to_phone, message, source=source, dedupe_namespace=dedupe_namespace)
 
 
 def log_event(contact, status_code, response):
@@ -114,7 +103,11 @@ def main():
 
         msg = template.format(name=first_name(contact.get("name", "there")))
         print(f"Sending birthday freebie text to {contact.get('name')} ({contact.get('phone')})")
-        status, resp = send_sms(config, contact["phone"], msg)
+        status, resp = send_sms(
+            config, contact["phone"], msg,
+            source=f"birthday_campaign:{today.year}",
+            dedupe_namespace=f"year:{today.year}",
+        )
         log_event(contact, status, resp)
 
         if 200 <= status < 300:

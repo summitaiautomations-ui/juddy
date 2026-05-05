@@ -9,10 +9,14 @@ branch yet — work is split across feature branches that have not been merged.
   - `lead-automation/sms.py` — **the only place that should call the
     SimpleTexting send endpoint.** Exports `send_sms_once(config, to_phone,
     message, *, source, dedupe_namespace="")` which writes to
-    `sms_ledger.json` before returning, so the same `(phone, text)` pair can
-    never be sent twice — even across crashes, double daemons, or
-    state-file resets. Pass `dedupe_namespace="year:2026"` etc. when a
-    template is intentionally recurring (birthdays).
+    `sms_ledger.json` before returning. Dedupe is fuzzy on purpose:
+    (1) normalize emoji + whitespace + case before hashing, so two
+    welcomes that differ only by a trailing 😊 are treated as the same
+    text; (2) split each message into substantial sentences (>= 40 chars)
+    and block if any sentence has already been sent to this number, so
+    two market-update texts that share a closing paragraph won't both
+    fire. Pass `dedupe_namespace="year:2026"` etc. when a template is
+    intentionally recurring (birthdays).
   - `lead-automation/nurture_engine.py` — daemon. Loops every 60s, calls
     `check_inbound_deactivation`, `process_contacts`, periodic
     `check_demotions`. Sends via `sms.send_sms_once`. `process_contacts`

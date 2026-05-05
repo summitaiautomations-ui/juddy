@@ -34,7 +34,13 @@ pmset -a \
   hibernatemode 0
 
 echo "==> scheduling nightly restart at 04:00 to clear leaks"
-pmset repeat restart MTWRFSU 04:00
+# pmset repeat syntax varies by macOS version (and isn't supported on some
+# Apple Silicon configs). Try the HH:MM:SS form first, fall back to HH:MM,
+# and if both fail just warn and continue -- the nightly restart is optional.
+if ! pmset repeat restart MTWRFSU 04:00:00 2>/dev/null \
+  && ! pmset repeat restart MTWRFSU 04:00 2>/dev/null; then
+  echo "   (skipped: this macOS / Mac model doesn't accept pmset repeat for restart)"
+fi
 
 echo "==> current power settings:"
 pmset -g custom

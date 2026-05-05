@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Summit Mortgage — Lead Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e1a;
+  --panel:rgba(255,255,255,0.04);
+  --card:#172636;
+  --line:rgba(255,255,255,0.08);
+  --line-2:rgba(255,255,255,0.05);
+  --text:#eaf2fb;
+  --muted:#8ea1b7;
+  --green:#34d399;
+  --green-deep:#005c4f;
+  --blue:#60a5fa;
+  --yellow:#fbbf24;
+  --purple:#a78bfa;
+  --red:#f87171;
+  --shadow:0 20px 50px rgba(0,0,0,.28);
+}
+body{font-family:Manrope,system-ui,sans-serif;background:#0a0e1a;color:var(--text);min-height:100vh}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0,92,79,.18) 0%, transparent 38%),
+    radial-gradient(ellipse at 80% 18%, rgba(139,92,246,.10) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 80%, rgba(16,185,129,.08) 0%, transparent 40%);
+}
+.container{max-width:1500px;margin:0 auto;padding:24px 20px 40px;position:relative;z-index:1}
+.header{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;flex-wrap:wrap;margin-bottom:22px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.header-left h1{font-family:Fraunces,serif;font-size:32px;line-height:1;letter-spacing:-.03em;color:var(--green)}
+.subtitle{font-size:13px;color:var(--muted);margin-top:8px}
+.header-right{text-align:right}
+.header-right .time{font-size:22px;font-weight:800;color:#f8fbff}
+.header-right .date{font-size:12px;color:var(--muted);margin-top:3px}
+.status-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.10);border:1px solid rgba(16,185,129,.18);border-radius:999px;padding:5px 12px;font-size:11px;font-weight:700;color:var(--green);margin-top:8px}
+.status-dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 0 0 rgba(52,211,153,.45);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(52,211,153,0)}}
+
+.kpi-row{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:22px}
+.kpi-card{background:linear-gradient(135deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:16px;padding:16px;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi-card:nth-child(1)::before{background:var(--blue)}
+.kpi-card:nth-child(2)::before{background:var(--red)}
+.kpi-card:nth-child(3)::before{background:var(--yellow)}
+.kpi-card:nth-child(4)::before{background:var(--green)}
+.kpi-card:nth-child(5)::before{background:var(--purple)}
+.kpi-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#71849a;margin-bottom:8px}
+.kpi-value{font-size:30px;font-weight:900;line-height:1}
+.kpi-card:nth-child(1) .kpi-value{color:var(--blue)}
+.kpi-card:nth-child(2) .kpi-value{color:var(--red)}
+.kpi-card:nth-child(3) .kpi-value{color:var(--yellow)}
+.kpi-card:nth-child(4) .kpi-value{color:var(--green)}
+.kpi-card:nth-child(5) .kpi-value{color:var(--purple)}
+.kpi-sub{font-size:11px;color:#52657a;margin-top:5px}
+
+.toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.search{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:12px 14px;min-width:280px;flex:1;max-width:420px}
+.search input{background:none;border:none;outline:none;color:var(--text);width:100%;font:inherit}
+.search input::placeholder{color:var(--muted)}
+.legend{display:flex;gap:10px;flex-wrap:wrap}
+.pill{font-size:11px;padding:7px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.03)}
+
+.board{display:grid;grid-template-columns:repeat(6,minmax(250px,1fr));gap:16px;align-items:start;overflow-x:auto;padding-bottom:10px}
+.column{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));border:1px solid var(--line);border-radius:22px;min-height:420px;display:flex;flex-direction:column}
+.column.drag-over{border-color:rgba(52,211,153,.55);box-shadow:0 0 0 1px rgba(52,211,153,.45) inset,0 0 0 10px rgba(52,211,153,.05)}
+.column-header{padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.04);border-radius:22px 22px 0 0;background:linear-gradient(180deg,rgba(18,25,39,.95),rgba(18,25,39,.82));backdrop-filter:blur(12px);position:sticky;top:0;z-index:2}
+.column-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.column-title{font-size:14px;font-weight:900;letter-spacing:.02em}
+.column-count{font-size:12px;color:var(--muted);background:rgba(255,255,255,.05);padding:5px 8px;border-radius:999px}
+.column-sub{font-size:12px;color:var(--muted);margin-top:6px}
+.column-body{padding:12px;display:flex;flex-direction:column;gap:12px;min-height:240px}
+.lead-card{background:linear-gradient(180deg,#172636,#122131);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:14px;box-shadow:var(--shadow);cursor:grab;transition:transform .18s ease,border-color .18s ease}
+.lead-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.15)}
+.lead-card.dragging{opacity:.45;transform:rotate(1deg) scale(.98)}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.name{font-size:15px;font-weight:900;line-height:1.25}
+.track{font-size:10px;padding:5px 8px;border-radius:999px;white-space:nowrap;text-transform:uppercase;letter-spacing:.08em;border:1px solid transparent}
+.track-cold{background:rgba(96,165,250,.12);color:var(--blue);border-color:rgba(96,165,250,.18)}
+.track-warm{background:rgba(251,191,36,.12);color:var(--yellow);border-color:rgba(251,191,36,.18)}
+.track-hot{background:rgba(248,113,113,.12);color:var(--red);border-color:rgba(248,113,113,.18)}
+.track-active_preapproval{background:rgba(167,139,250,.12);color:var(--purple);border-color:rgba(167,139,250,.18)}
+.track-past_client{background:rgba(52,211,153,.12);color:var(--green);border-color:rgba(52,211,153,.18)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;color:var(--muted);font-size:12px}
+.notes{margin-top:10px;font-size:12px;color:#cad6e5;line-height:1.45}
+.card-actions{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:12px}
+.mini-btn{background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px 10px;font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.mini-btn:hover{background:rgba(255,255,255,.08)}
+.updated{font-size:11px;color:var(--muted)}
+.empty{border:1px dashed rgba(255,255,255,.08);border-radius:14px;padding:16px;text-align:center;color:var(--muted);font-size:12px}
+.toast{position:fixed;right:18px;bottom:18px;z-index:60;background:#0d1d16;border:1px solid rgba(52,211,153,.35);color:#baf5e6;padding:12px 14px;border-radius:14px;box-shadow:var(--shadow);display:none}
+.toast.show{display:block}
+@media(max-width:1180px){.kpi-row{grid-template-columns:repeat(3,1fr)}.board{grid-template-columns:repeat(6,280px)}}
+@media(max-width:720px){.kpi-row{grid-template-columns:repeat(2,1fr)}.header-left h1{font-size:28px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-left">
+      <h1>Summit Mortgage Corp</h1>
+      <div class="subtitle">Lead Dashboard — Justin Neal · NMLS #400661</div>
+    </div>
+    <div class="header-right">
+      <div class="time" id="clock">--:--</div>
+      <div class="date" id="dateLabel">Loading…</div>
+      <div class="status-badge"><span class="status-dot"></span> Pipeline Online</div>
+    </div>
+  </div>
+
+  <div class="kpi-row" id="kpiRow"></div>
+
+  <div class="toolbar">
+    <label class="search">
+      <span>🔍</span>
+      <input id="searchInput" placeholder="Search by name, city, phone, notes…" />
+    </label>
+    <div class="legend">
+      <span class="pill">Drag any card to update its stage</span>
+      <span class="pill" id="lastRefresh">Loading…</span>
+    </div>
+  </div>
+
+  <section class="board" id="board"></section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const STAGES = [
+  {id:'initial_lead', title:'Initial Lead', sub:'Fresh lead in the door'},
+  {id:'contact_attempted', title:'Contact Attempted', sub:'Calls/texts started'},
+  {id:'connected', title:'Connected', sub:'Live convo or active reply'},
+  {id:'application', title:'Application / Pre-Approval', sub:'App sent or pre-approval in progress'},
+  {id:'closed', title:'Closed', sub:'Clear to close / funded'},
+  {id:'past_client', title:'Past Client', sub:'Long-term relationship / nurture'}
+];
+const stageLabel = Object.fromEntries(STAGES.map(s => [s.id, s.title]));
+let contacts = [];
+let searchTerm = '';
+let draggingPhone = null;
+
+const board = document.getElementById('board');
+const searchInput = document.getElementById('searchInput');
+const toast = document.getElementById('toast');
+const lastRefresh = document.getElementById('lastRefresh');
+const kpiRow = document.getElementById('kpiRow');
+
+searchInput.addEventListener('input', e => { searchTerm = e.target.value.toLowerCase().trim(); render(); });
+
+function updateClock(){
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',timeZone:'America/Chicago'});
+  document.getElementById('dateLabel').textContent = now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric',timeZone:'America/Chicago'});
+}
+setInterval(updateClock, 1000); updateClock();
+
+function normalizeStage(c){
+  if (c.current_stage) return c.current_stage;
+  if (c.track === 'past_client') return 'past_client';
+  if (c.track === 'active_preapproval') return 'application';
+  if (c.track === 'hot' || c.track === 'warm') return 'connected';
+  return 'initial_lead';
+}
+function fmtPhone(phone=''){const d=String(phone).replace(/\D/g,''); if(d.length===10) return `(${d.slice(0,3)}) ${d.slice(3,6)}-${d.slice(6)}`; return phone || '—';}
+function shortDate(value){ if(!value) return '—'; const dt=new Date(value); if(isNaN(dt)) return value; return dt.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}); }
+function safe(v){ return v ?? '—'; }
+function escapeHtml(str=''){ return String(str).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;'); }
+function contactMatches(c){ if(!searchTerm) return true; const hay=[c.name,c.phone,c.city,c.state,c.notes,c.email,c.loan_type,c.timeline,c.track].filter(Boolean).join(' ').toLowerCase(); return hay.includes(searchTerm); }
+function showToast(msg, ok=true){ toast.textContent=msg; toast.style.background=ok?'#0d1d16':'#2b1114'; toast.style.borderColor=ok?'rgba(52,211,153,.35)':'rgba(248,113,113,.35)'; toast.classList.add('show'); clearTimeout(showToast._t); showToast._t=setTimeout(()=>toast.classList.remove('show'),2600); }
+
+function renderSummary(filtered){
+  const allLeads = contacts.filter(c => (c.contact_type || 'lead') === 'lead');
+  const totalEver = allLeads.length;
+  const active = filtered.length;
+  const app = allLeads.filter(c => {
+    const stage = c.current_stage || normalizeStage(c);
+    return ['application','closed','won','past_client'].includes(stage) || c.track === 'active_preapproval';
+  }).length;
+  const closedAll = allLeads.filter(c => ['closed','won'].includes(c.current_stage || normalizeStage(c))).length;
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const closedThisMonth = allLeads.filter(c => {
+    const stage = c.current_stage || normalizeStage(c);
+    if (!['closed','won'].includes(stage)) return false;
+    const ts = c.pipeline?.closed || c.pipeline?.won || '';
+    return ts >= monthStart;
+  }).length;
+
+  const leadToApp = totalEver > 0 ? (app / totalEver * 100).toFixed(1) : 0;
+  const appToClose = app > 0 ? (closedAll / app * 100).toFixed(1) : 0;
+
+  kpiRow.innerHTML = `
+    <div class="kpi-card"><div class="kpi-label">Total Leads</div><div class="kpi-value">${totalEver}</div><div class="kpi-sub">${active} active</div></div>
+    <div class="kpi-card"><div class="kpi-label">Lead → App %</div><div class="kpi-value">${leadToApp}%</div><div class="kpi-sub">${app} of ${totalEver}</div></div>
+    <div class="kpi-card"><div class="kpi-label">App → Close %</div><div class="kpi-value">${appToClose}%</div><div class="kpi-sub">${closedAll} of ${app}</div></div>
+    <div class="kpi-card"><div class="kpi-label">Applications</div><div class="kpi-value">${app}</div><div class="kpi-sub">incl. active pre-approvals</div></div>
+    <div class="kpi-card"><div class="kpi-label">Closings This Month</div><div class="kpi-value">${closedThisMonth}</div><div class="kpi-sub">goal: 2/month</div></div>
+  `;
+}
+
+function render(){
+  const filtered = contacts.filter(c => c.active !== false).filter(contactMatches);
+  renderSummary(filtered);
+  const grouped = Object.fromEntries(STAGES.map(s => [s.id, []]));
+  for (const c of filtered) {
+    (grouped[normalizeStage(c)] || grouped.initial_lead).push(c);
+  }
+  board.innerHTML = STAGES.map(stage => {
+    const list = (grouped[stage.id] || []).sort((a,b) => scoreContact(b) - scoreContact(a));
+    return `
+      <section class="column" data-stage="${stage.id}">
+        <div class="column-header">
+          <div class="column-top"><div class="column-title">${stage.title}</div><div class="column-count">${list.length}</div></div>
+          <div class="column-sub">${stage.sub}</div>
+        </div>
+        <div class="column-body" data-dropzone="${stage.id}">
+          ${list.length ? list.map(renderCard).join('') : `<div class="empty">Drop a lead here</div>`}
+        </div>
+      </section>`;
+  }).join('');
+  bindBoardEvents();
+}
+
+function scoreContact(c){
+  let score = 0;
+  if (c.track === 'hot') score += 100;
+  if (c.track === 'warm') score += 70;
+  if (c.track === 'active_preapproval') score += 90;
+  if (c.needs_referral) score += 25;
+  return score;
+}
+
+function renderCard(c){
+  const stage = normalizeStage(c);
+  const lastTouched = c.pipeline?.[stage] || c.promoted_at || c.enrolled_at || c.last_call;
+  const note = (c.notes || '').trim();
+  const trimmedNote = note.length > 110 ? note.slice(0,110) + '…' : note;
+  return `
+    <article class="lead-card" draggable="true" data-phone="${c.phone}" data-stage="${stage}">
+      <div class="card-top">
+        <div class="name">${c.name || 'Unknown Lead'}</div>
+        <span class="track track-${c.track || 'cold'}">${(c.track || 'cold').replace(/_/g,' ')}</span>
+      </div>
+      <div class="meta">
+        <span>📍 ${safe(c.city)}${c.state ? ', ' + c.state : ''}</span>
+        <span>📞 ${fmtPhone(c.phone)}</span>
+      </div>
+      ${trimmedNote ? `<div class="notes">${escapeHtml(trimmedNote)}</div>` : ''}
+      <div class="card-actions">
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button class="mini-btn" data-action="called" data-phone="${c.phone}">Called</button>
+          <button class="mini-btn" data-action="texted" data-phone="${c.phone}">Texted</button>
+          <button class="mini-btn" data-action="app_sent" data-phone="${c.phone}">App Sent</button>
+        </div>
+        <div class="updated">${lastTouched ? shortDate(lastTouched) : ''}</div>
+      </div>
+    </article>`;
+}
+
+function bindBoardEvents(){
+  document.querySelectorAll('.lead-card').forEach(card => {
+    card.addEventListener('dragstart', () => { draggingPhone = card.dataset.phone; card.classList.add('dragging'); });
+    card.addEventListener('dragend', () => {
+      draggingPhone = null;
+      card.classList.remove('dragging');
+      document.querySelectorAll('.column').forEach(c => c.classList.remove('drag-over'));
+    });
+  });
+
+  document.querySelectorAll('[data-dropzone]').forEach(zone => {
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.closest('.column').classList.add('drag-over'); });
+    zone.addEventListener('dragleave', () => zone.closest('.column').classList.remove('drag-over'));
+    zone.addEventListener('drop', async e => {
+      e.preventDefault();
+      zone.closest('.column').classList.remove('drag-over');
+      if (!draggingPhone) return;
+      await updateStage(draggingPhone, zone.dataset.dropzone);
+    });
+  });
+
+  document.querySelectorAll('[data-action]').forEach(btn => {
+    btn.addEventListener('click', async e => {
+      e.stopPropagation();
+      await quickAction(btn.dataset.phone, btn.dataset.action);
+    });
+  });
+}
+
+async function quickAction(phone, action){
+  const res = await fetch('/api/contacts/quick_action', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ phone, action })
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) { showToast('Quick action failed', false); return; }
+  showToast(`${action.replace('_',' ')} logged`);
+  await load();
+}
+
+async function updateStage(phone, stage){
+  const res = await fetch('/api/contacts/update_stage', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ phone, stage })
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) { showToast('Stage update failed', false); return; }
+  showToast(`Moved to ${stageLabel[stage]}`);
+  await load();
+}
+
+async function load(){
+  const res = await fetch('/api/contacts');
+  const json = await res.json();
+  contacts = (json.contacts || [])
+    .filter(c => (c.contact_type || 'lead') === 'lead')
+    .map(c => ({...c, current_stage: c.current_stage || normalizeStage(c)}));
+  lastRefresh.textContent = `Refreshed ${new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})}`;
+  render();
+}
+
+load().catch(err => {
+  console.error(err);
+  showToast('Could not load dashboard data', false);
+});
+</script>
+</body>
+</html>

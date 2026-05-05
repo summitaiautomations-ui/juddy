@@ -1,0 +1,20 @@
+{
+  "paul": {
+    "name": "Paul Docauer",
+    "phone": "7634398314",
+    "email": "Paul@MnRealEstateTeam.com",
+    "brokerage": "RE/MAX Advantage Plus",
+    "areas": ["Blaine", "Andover", "Hermantown", "Esko", "Duluth"],
+    "license": "20271523",
+    "intro_template": "Hey {name}! I've got a great agent for you — Paul Docauer has been selling homes in Minnesota for 25+ years and he's part of the #1 home selling team in the state. He covers the north metro, Blaine, Andover and beyond. I filled him in on what you're looking for and he's pumped to work with you. He'll be reaching out soon — trust me, you're in really good hands! 🏡\nPaul's cell: (763) 439-8314"
+  },
+  "cody": {
+    "name": "Cody Emmans",
+    "phone": "7636705098",
+    "email": "",
+    "brokerage": "eXp Realty",
+    "areas": ["Edina", "Maple Grove"],
+    "license": "",
+    "intro_template": "Hey {name}! I wanted to connect you with someone awesome — my guy Cody Emmans is one of the top agents in the west metro. He knows the Maple Grove, Plymouth, Corcoran area inside and out and he's helped a ton of my clients find exactly what they're looking for. I told him a little about your situation and he's excited to help. He'll be reaching out — you're in great hands! 🏡\nCody's cell: (763) 670-5098"
+  }
+}

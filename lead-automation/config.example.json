@@ -1,0 +1,16 @@
+{
+  "welcome_text": "Hey {name}! It's Justin — saw you were looking at homes in {city} online. Still exploring or getting serious? 😊",
+  "nudge_text": "New lead: {name} - {phone} - {email}\nLooking in {city}, {state} - ${property_value}\nCredit: {credit} | Income: ${income}+ | Down: ${down_payment}\nFirst-time buyer: {first_time} | Has agent: {has_agent}\n\nCall them NOW!",
+  "delays": {
+    "welcome_text_seconds": 60,
+    "nudge_text_seconds": 300,
+    "followup_1h_seconds": 3600,
+    "followup_day2_seconds": 86400,
+    "followup_day3_seconds": 172800
+  },
+  "followup_1h_text": "Hey {name} — just making sure my text came through! Here's a little about me if it helps: https://linktr.ee/welcometosummit — no rush, just here when you're ready 👍",
+  "followup_day2_text": "Hey {name} — been keeping an eye on the {city} market, some good stuff out there right now. Want me to send you a quick breakdown of what's doable in your price range?",
+  "followup_day3_text": "Hey {name} — rates have been moving this week. Happy to run some quick numbers for you if you're curious what you'd qualify for. No cost or commitment 😊",
+  "linktree": "https://linktr.ee/welcometosummit",
+  "birthday_freebie_text": "Hey {name} — happy early birthday! 🎉\n\nRandom fun one for you... there are 100+ places that give you free stuff on your birthday! 🎁\n\nHere are some of the best ones:\n☕ Starbucks & Caribou — free drinks\n🍔 Red Robin & Culvers — free food\n🎬 AMC & Puttshack — free fun\n💄 Sephora & Ulta — free gifts\n\nMost just need you to join their free rewards club BEFORE your birthday.\n\nFull list with all deals + signup links:\nhttps://leads.applywithjustinneal.com/birthday-freebies.html\n\nHope you score some good stuff! And if you or anyone needs mortgage help, I'm always here. 👍\n\n— Justin"
+}

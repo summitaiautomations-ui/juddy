@@ -1,0 +1,23 @@
+.env
+.env.local
+*.local
+
+# Live config + state — never commit
+lead-automation/config.json
+lead-automation/state.json
+lead-automation/lead_log.json
+lead-automation/nurture_log.json
+lead-automation/nurture_contacts.json
+lead-automation/realtor_partners.json
+lead-automation/monitor.pid
+lead-automation/nurture_engine.pid
+lead-automation/dashboard_server.log
+lead-automation/*.log
+
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+.DS_Store

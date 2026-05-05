@@ -42,10 +42,28 @@ import requests
 SCRIPT_DIR = Path(__file__).resolve().parent
 LEDGER_PATH = SCRIPT_DIR / "sms_ledger.json"
 
-# Sentences shorter than this are too generic to dedupe on (e.g. "Hey Isiah!",
-# "Thanks!"). Long enough to catch the multi-clause closers that caused the
-# Friday-on-Friday duplicate Isiah received.
-MIN_SENTENCE_CHARS = 40
+# Sentences shorter than this are too generic to dedupe on (e.g. "Hey Isiah!"
+# at 10 chars normalized). Tight enough that medium-length clauses like
+# "How's the search going?" (23 chars normalized) count — if Isiah's already
+# heard that sentence, a different message that reuses it is a duplicate.
+MIN_SENTENCE_CHARS = 20
+
+# Sentences that look like a human greeting/closer are excluded from the
+# dedupe set regardless of length (up to SALUTATION_MAX_CHARS), because we
+# WANT the engine to text like a person. "Hey Isiah, how's it going?" should
+# be free to recur naturally across messages; only substantive content
+# should pin a message as a duplicate.
+SALUTATION_MAX_CHARS = 60
+SALUTATION_PREFIXES = (
+    "hey ", "hey,", "hi ", "hi,", "hello", "howdy", "yo ",
+    "good morning", "good afternoon", "good evening",
+    "morning,", "afternoon,", "evening,",
+    "hope you", "hope your", "hope all",
+    "just checking in", "just wanted to check",
+    "just circling back", "just wanted to circle",
+    "thanks", "thank you", "talk soon", "talk later",
+    "have a great", "have a good",
+)
 
 
 def normalize_phone(value):
@@ -63,14 +81,23 @@ def _normalize_text(text):
     return collapsed
 
 
+def _is_salutation(normalized_sentence):
+    """A short-ish sentence that opens or closes with a human-greeting
+    pattern. Excluded from the dedupe set so warm openers and closers can
+    recur naturally across messages."""
+    if len(normalized_sentence) > SALUTATION_MAX_CHARS:
+        return False
+    return any(normalized_sentence.startswith(p) for p in SALUTATION_PREFIXES)
+
+
 def _substantial_sentences(text):
     """Return the set of normalized sentences in `text` long enough to be
-    distinctive. Sentence boundaries: . ! ? — \\n. Short fragments dropped."""
+    distinctive AND not salutation-shaped. Sentence boundaries: . ! ? — \\n."""
     pieces = re.split(r"(?<=[.!?])\s+|\s+—\s+|\n+", str(text))
     out = set()
     for p in pieces:
         n = _normalize_text(p)
-        if len(n) >= MIN_SENTENCE_CHARS:
+        if len(n) >= MIN_SENTENCE_CHARS and not _is_salutation(n):
             out.add(n)
     return out
 

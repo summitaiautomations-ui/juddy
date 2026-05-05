@@ -48,6 +48,25 @@ branch yet — work is split across feature branches that have not been merged.
 - **`claude/auto-insurance-comparison-agent-Q9v8T`** — separate insurance
   comparison agent. Unrelated to nurture.
 
+## Voice — message content style
+
+When writing or generating outbound text content, Justin's voice is **short,
+direct, conversational**. Default openers:
+
+- ✅ `Hey {name}!` / `Hey {name} —`
+- ✅ `Morning!` / `Hey!`
+
+Avoid:
+
+- ❌ `Quick one for you {name}` — too cute / formal
+- ❌ `Real quick {name}` — same
+- ❌ `Pro tip:` / `Heads up,` / `Fun fact —` / `FYI` openers — stilted
+- ❌ `Just wanted to circle back on…` — wordy
+
+Closers like `— Justin` are fine. Emoji at end of line is fine sparingly.
+Multi-paragraph nurture texts should still feel like one human texting another,
+not a marketing email.
+
 ## Conventions
 
 - Phone numbers are normalized via `_digits()` (strip non-digits, drop leading

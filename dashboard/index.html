@@ -72,6 +72,13 @@
   .card{background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--border);
     border-radius:12px;padding:12px;cursor:default;transition:.16s;position:relative}
   .card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(0,0,0,.8)}
+  .card[draggable]{cursor:grab}
+  .card[draggable]:active{cursor:grabbing}
+  .col.drop{outline:2px dashed var(--accent);outline-offset:-3px;background:rgba(109,139,255,.07)}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);padding:12px 20px;border-radius:12px;
+    font-size:13.5px;font-weight:600;color:#fff;box-shadow:0 12px 40px -8px rgba(0,0,0,.7);transition:opacity .35s;z-index:99;opacity:0;pointer-events:none}
+  #toast.good{background:linear-gradient(135deg,#2bbf82,#3ddc97)}
+  #toast.bad{background:linear-gradient(135deg,#e8505b,#ff7a59)}
   .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
   .card .cn{font-weight:680;font-size:13.5px;letter-spacing:-.2px}
   .card .cc{color:var(--muted);font-size:11.5px;margin-top:2px}
@@ -261,7 +268,7 @@ function renderBoard(){
         else if(dd<=7){cls="soon";fu="◔ Follow-up "+fmtDate(d.nextFollowUp);}
         else {fu="○ Follow-up "+fmtDate(d.nextFollowUp);}
       }
-      return `<div class="card">
+      return `<div class="card" draggable="true" data-id="${esc(d.id||'')}">
         <div class="top">
           <div>
             <div class="cn"><a href="${esc(d.url)}" target="_blank" style="color:inherit;text-decoration:none">${esc(d.name)}</a></div>
@@ -272,11 +279,12 @@ function renderBoard(){
         <div class="stats">
           <div><b>${fmtM(d.volume)}</b>2025 vol</div>
           <div><b>${d.units||0}</b>units</div>
+          ${d.nmls?`<div><b>${esc(d.nmls)}</b>NMLS</div>`:""}
         </div>
         ${fu?`<div class="fu ${cls}">${fu}</div>`:""}
       </div>`;
     }).join("") || `<div class="empty" style="padding:18px">No candidates</div>`;
-    return `<div class="col">
+    return `<div class="col" data-stage="${esc(stage)}">
       <div class="col-h">
         <div class="nm"><span class="dot" style="background:${STAGE_COLORS[stage]}"></span>${stage}</div>
         <span class="ct">${items.length}</span>
@@ -286,6 +294,53 @@ function renderBoard(){
     </div>`;
   }).join("");
   host.innerHTML = `<div class="board">${cols}</div>`;
+  wireDragAndDrop();
+}
+
+// ---------- drag & drop (syncs to Notion via server.mjs) ----------
+let dragId=null;
+function wireDragAndDrop(){
+  document.querySelectorAll('#view-board .card').forEach(card=>{
+    card.addEventListener('dragstart',e=>{ dragId=card.dataset.id; card.style.opacity=.4; e.dataTransfer.effectAllowed='move'; });
+    card.addEventListener('dragend',()=>{ card.style.opacity=1; });
+  });
+  document.querySelectorAll('#view-board .col').forEach(col=>{
+    col.addEventListener('dragover',e=>{ e.preventDefault(); col.classList.add('drop'); });
+    col.addEventListener('dragleave',()=>col.classList.remove('drop'));
+    col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('drop'); moveCard(dragId, col.dataset.stage); });
+  });
+}
+async function moveCard(id, stage){
+  if(!id) return;
+  const rec = DATA.find(d=>d.id===id);
+  if(!rec || rec.stage===stage) return;
+  const prev = {stage:rec.stage, priority:rec.priority};
+  // optimistic update + stage->priority convention
+  rec.stage = stage;
+  const conv = {Offer:"Hot", Interview:"Warm"};
+  if(conv[stage]) rec.priority = conv[stage];
+  render();
+  try{
+    const res = await fetch('/api/move',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,stage})});
+    if(!res.ok) throw new Error((await res.json()).error||res.status);
+    toast(`Moved ${rec.name} → ${stage}${conv[stage]?` (set ${conv[stage]})`:''} · synced to Notion`, true);
+  }catch(err){
+    // No server / not synced: revert if it's a hard failure, else keep local
+    const offline = String(err).includes('Failed to fetch');
+    if(offline){
+      toast(`Moved locally — not synced (open via the live server to sync to Notion)`, false);
+    }else{
+      rec.stage=prev.stage; rec.priority=prev.priority; render();
+      toast(`Sync failed: ${err}. Reverted.`, false);
+    }
+  }
+}
+let toastTimer;
+function toast(msg, good){
+  let el=document.getElementById('toast');
+  if(!el){ el=document.createElement('div'); el.id='toast'; document.body.appendChild(el); }
+  el.textContent=msg; el.className=good?'good':'bad'; el.style.opacity=1;
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.style.opacity=0, 3800);
 }
 
 // ---------- Leaderboard ----------

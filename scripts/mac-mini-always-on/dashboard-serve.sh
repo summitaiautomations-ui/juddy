@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Serves the recruiting dashboard on a local port so an open browser tab can
-# live-poll data.json (every 15 min). Kept alive by launchd
+# Serves the recruiting dashboard on a local port and syncs drag-and-drop
+# stage changes back to Notion. Kept alive by launchd
 # (see com.juddy.dashboard-serve.plist.template).
 #
 # Open the dashboard at:  http://localhost:8800/
+# Requires NOTION_TOKEN in the environment for the drag-to-Notion sync.
 
 set -uo pipefail
-
-PORT="${DASHBOARD_PORT:-8800}"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DASH_DIR="$(cd "${SCRIPT_DIR}/../../dashboard" && pwd)"
 
-# Bind to localhost only — this is a personal dashboard, not a public site.
-exec python3 -m http.server "${PORT}" --bind 127.0.0.1 --directory "${DASH_DIR}"
+cd "${DASH_DIR}" || { echo "ERROR: dashboard dir not found"; exit 1; }
+
+exec node server.mjs

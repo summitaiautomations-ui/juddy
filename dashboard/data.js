@@ -23,7 +23,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 19 units $9.5M. GA. Left VM 4/7 - no callback. Still in play.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812aa8b0c5e2e1a36e31"
+      "url": "https://www.notion.so/3405ba8cd26f812aa8b0c5e2e1a36e31",
+      "id": "3405ba8cd26f812aa8b0c5e2e1a36e31"
     },
     {
       "name": "Toshe Metzger",
@@ -47,7 +48,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-11",
       "notes": "23 units/$4M in 2025. Fairway LO. HIRED 4/14/2026. Expected production: 1 unit/month (~12 units/year). Updated 5/11. Merged from duplicate 'Toshie Metzler' on 4/22.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f816fb48dd581e0ea184f"
+      "url": "https://www.notion.so/3405ba8cd26f816fb48dd581e0ea184f",
+      "id": "3405ba8cd26f816fb48dd581e0ea184f"
     },
     {
       "name": "Tony Burns",
@@ -71,7 +73,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 54 units $18.5M. RM Prospect. [Text Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812d9217fc01e6aee5ef"
+      "url": "https://www.notion.so/3405ba8cd26f812d9217fc01e6aee5ef",
+      "id": "3405ba8cd26f812d9217fc01e6aee5ef"
     },
     {
       "name": "Titus Mhiripiri",
@@ -95,7 +98,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "62 units $18.2M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f810d95fbc066818b3531"
+      "url": "https://www.notion.so/3405ba8cd26f810d95fbc066818b3531",
+      "id": "3405ba8cd26f810d95fbc066818b3531"
     },
     {
       "name": "Tim Steinbrecher",
@@ -119,12 +123,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-03",
       "notes": "HIRED 🎉 (5/11/26) — accepted revised offer, in onboarding. MI, ~30u/$8M producer from Caliber.",
       "engagement": "2 offer letters sent 4/28",
-      "url": "https://www.notion.so/3405ba8cd26f81538a0ae5cfc299b620"
+      "url": "https://www.notion.so/3405ba8cd26f81538a0ae5cfc299b620",
+      "id": "3405ba8cd26f81538a0ae5cfc299b620"
     },
     {
       "name": "Tim Peterson",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "Granite",
       "city": "Lakeville",
@@ -143,7 +148,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-01",
       "notes": "Q1 offer extended. Wants $60k upfront, we offered $30k+$10k. Declined current offer letter, staying put. Relationship positive, moves back to middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b7affdc78d28d50cce"
+      "url": "https://www.notion.so/3405ba8cd26f81b7affdc78d28d50cce",
+      "id": "3405ba8cd26f81b7affdc78d28d50cce"
     },
     {
       "name": "Tim Day",
@@ -167,7 +173,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Hired Q1. 1 unit/month.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f38c59e1270552d1c6"
+      "url": "https://www.notion.so/3405ba8cd26f81f38c59e1270552d1c6",
+      "id": "3405ba8cd26f81f38c59e1270552d1c6"
     },
     {
       "name": "Tanishia Bean",
@@ -191,7 +198,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Licensed in TX and FL (mostly Texas). 27 units/$7.3M in 2025 (~2.25 units/mo). Agreed to discovery Zoom 4/15.",
       "engagement": "",
-      "url": "https://www.notion.so/3435ba8cd26f8198b941d087ce25e961"
+      "url": "https://www.notion.so/3435ba8cd26f8198b941d087ce25e961",
+      "id": "3435ba8cd26f8198b941d087ce25e961"
     },
     {
       "name": "Tabatha De Leon",
@@ -215,7 +223,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "May target. 42 units/$8M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81de9ba3eac82a16f2f0"
+      "url": "https://www.notion.so/3405ba8cd26f81de9ba3eac82a16f2f0",
+      "id": "3405ba8cd26f81de9ba3eac82a16f2f0"
     },
     {
       "name": "Steven Dickie",
@@ -239,7 +248,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 26 units $9.4M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8189a487f157c53e6ed0"
+      "url": "https://www.notion.so/3405ba8cd26f8189a487f157c53e6ed0",
+      "id": "3405ba8cd26f8189a487f157c53e6ed0"
     },
     {
       "name": "Steve Rice",
@@ -263,7 +273,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 24 units $7.6M. [Mobile Only]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812eaa35ec603f381986"
+      "url": "https://www.notion.so/3405ba8cd26f812eaa35ec603f381986",
+      "id": "3405ba8cd26f812eaa35ec603f381986"
     },
     {
       "name": "Steve Dickey",
@@ -287,7 +298,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "US Bank. 2025: 26u/$9.4M.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f81c59698fc63b1232a72"
+      "url": "https://www.notion.so/3675ba8cd26f81c59698fc63b1232a72",
+      "id": "3675ba8cd26f81c59698fc63b1232a72"
     },
     {
       "name": "Steve Brand",
@@ -311,7 +323,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Boxcar Mortgage. 2025: 29u/$11M. No cell number yet.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f818b8a08ef50c33e71d4"
+      "url": "https://www.notion.so/3675ba8cd26f818b8a08ef50c33e71d4",
+      "id": "3675ba8cd26f818b8a08ef50c33e71d4"
     },
     {
       "name": "Steve Brand",
@@ -335,7 +348,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 29 units $11.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c7a699dad7a155bab8"
+      "url": "https://www.notion.so/3405ba8cd26f81c7a699dad7a155bab8",
+      "id": "3405ba8cd26f81c7a699dad7a155bab8"
     },
     {
       "name": "Shelley Young",
@@ -359,7 +373,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "33 units $5.4M. [Text Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f811991cccc115496fcac"
+      "url": "https://www.notion.so/3405ba8cd26f811991cccc115496fcac",
+      "id": "3405ba8cd26f811991cccc115496fcac"
     },
     {
       "name": "Sergio Abud",
@@ -383,7 +398,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 14u/$5.4M.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f81bfa290e211cb185395"
+      "url": "https://www.notion.so/3675ba8cd26f81bfa290e211cb185395",
+      "id": "3675ba8cd26f81bfa290e211cb185395"
     },
     {
       "name": "Scott Miller",
@@ -407,7 +423,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817c8464fa11b2be3fc0"
+      "url": "https://www.notion.so/3405ba8cd26f817c8464fa11b2be3fc0",
+      "id": "3405ba8cd26f817c8464fa11b2be3fc0"
     },
     {
       "name": "Sarah Zaruba",
@@ -431,7 +448,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "29 units/$11M. Found on social media 4/5.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81809492fe34463db449"
+      "url": "https://www.notion.so/3405ba8cd26f81809492fe34463db449",
+      "id": "3405ba8cd26f81809492fe34463db449"
     },
     {
       "name": "Ryan Petersen",
@@ -455,7 +473,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-11",
       "notes": "44 units/$13.0M. Responded to FB DM 4/10 but misunderstanding — has not actually responded. Moving back to outreach.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81128ec1e753e2d2891a"
+      "url": "https://www.notion.so/3405ba8cd26f81128ec1e753e2d2891a",
+      "id": "3405ba8cd26f81128ec1e753e2d2891a"
     },
     {
       "name": "Robert Mangiaracina",
@@ -479,7 +498,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 18 units $4.4M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f0a2bed3c1434b222c"
+      "url": "https://www.notion.so/3405ba8cd26f81f0a2bed3c1434b222c",
+      "id": "3405ba8cd26f81f0a2bed3c1434b222c"
     },
     {
       "name": "Robert Klein",
@@ -503,7 +523,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-07-14",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c5b9b2f44cd21c48dd"
+      "url": "https://www.notion.so/3405ba8cd26f81c5b9b2f44cd21c48dd",
+      "id": "3405ba8cd26f81c5b9b2f44cd21c48dd"
     },
     {
       "name": "Robert Clausen",
@@ -527,7 +548,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "18 units $6.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8117b2e6f3d919a56b73"
+      "url": "https://www.notion.so/3405ba8cd26f8117b2e6f3d919a56b73",
+      "id": "3405ba8cd26f8117b2e6f3d919a56b73"
     },
     {
       "name": "Rita Jarlekian",
@@ -551,7 +573,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-07-01",
       "notes": "Wintrust, Pasadena CA. 2025: 18u/$14.8M (~$822K avg, ~1.5u/mo). Comp: 90 + 5 bps LOA. Contract through Oct 2026. Knows Mark Kurth.",
       "engagement": "GREAT first conversation 5/11. Comp: 90 bps + 5 bps LOA. Compared rates — hers slightly better but at lower comp; mine at 120 bps were 'very close, almost the same.' Knows Mark Kurth. On 1-year contract until Oct — speak again later this month. | Confirmed open to joining once clawback/contract ends Oct 2026.",
-      "url": "https://www.notion.so/3655ba8cd26f81359bb7e03ef4fbba06"
+      "url": "https://www.notion.so/3655ba8cd26f81359bb7e03ef4fbba06",
+      "id": "3655ba8cd26f81359bb7e03ef4fbba06"
     },
     {
       "name": "Rick Salerno",
@@ -575,7 +598,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-28",
       "notes": "Broker in FL. Early in conversation.",
       "engagement": "",
-      "url": "https://www.notion.so/34a5ba8cd26f810681d4e2d392d1003e"
+      "url": "https://www.notion.so/34a5ba8cd26f810681d4e2d392d1003e",
+      "id": "34a5ba8cd26f810681d4e2d392d1003e"
     },
     {
       "name": "Rich Postlethwait",
@@ -599,7 +623,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 84 units $26.0M. IL, RM Prospect.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81849ac5e963525f61e7"
+      "url": "https://www.notion.so/3405ba8cd26f81849ac5e963525f61e7",
+      "id": "3405ba8cd26f81849ac5e963525f61e7"
     },
     {
       "name": "Raymond Reinhardt",
@@ -623,7 +648,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "Justin's MN 2025 hot list. RM Prospect.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8187b080e0c46107ca9a"
+      "url": "https://www.notion.so/3405ba8cd26f8187b080e0c46107ca9a",
+      "id": "3405ba8cd26f8187b080e0c46107ca9a"
     },
     {
       "name": "Ralph McCarthy",
@@ -647,7 +673,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "14 units $3.5M. Middle Funnel, WI hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81dfbeebcac59c7bfab0"
+      "url": "https://www.notion.so/3405ba8cd26f81dfbeebcac59c7bfab0",
+      "id": "3405ba8cd26f81dfbeebcac59c7bfab0"
     },
     {
       "name": "Quiyn Nguyen",
@@ -671,7 +698,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Hired Q1. FT hire. Expected production: 1-2 units/month.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f811298c8fb1793c478c8"
+      "url": "https://www.notion.so/3405ba8cd26f811298c8fb1793c478c8",
+      "id": "3405ba8cd26f811298c8fb1793c478c8"
     },
     {
       "name": "Preston Schmidt",
@@ -695,7 +723,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-08",
       "notes": "37 units $968K. Meeting Wed 4/8. Clawback started July 2025.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8101b102ede16ac4907b"
+      "url": "https://www.notion.so/3405ba8cd26f8101b102ede16ac4907b",
+      "id": "3405ba8cd26f8101b102ede16ac4907b"
     },
     {
       "name": "Peter Shrake",
@@ -719,7 +748,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 30 units $9.4M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81ba8852fafb76bf53fe"
+      "url": "https://www.notion.so/3405ba8cd26f81ba8852fafb76bf53fe",
+      "id": "3405ba8cd26f81ba8852fafb76bf53fe"
     },
     {
       "name": "Peter Boyle",
@@ -743,7 +773,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-06",
       "notes": "28 units $9.0M. Justin's MN 2025 hot list. RM Prospect.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81a69eded839df05db47"
+      "url": "https://www.notion.so/3405ba8cd26f81a69eded839df05db47",
+      "id": "3405ba8cd26f81a69eded839df05db47"
     },
     {
       "name": "Paul Melby",
@@ -767,7 +798,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 13 units $3.5M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81baa21fe31f48fd8e56"
+      "url": "https://www.notion.so/3405ba8cd26f81baa21fe31f48fd8e56",
+      "id": "3405ba8cd26f81baa21fe31f48fd8e56"
     },
     {
       "name": "Norman Phillips",
@@ -791,7 +823,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 21 units $46.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f815cab4cc7ddb938f173"
+      "url": "https://www.notion.so/3405ba8cd26f815cab4cc7ddb938f173",
+      "id": "3405ba8cd26f815cab4cc7ddb938f173"
     },
     {
       "name": "Nirmal Mann",
@@ -815,7 +848,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-08-11",
       "notes": "Broker at Rate Beat LLC in Chatsworth, CA (near LA). 2025: 40u/$26M (~3.3u/mo, $650K avg loan). Open to conversation but happy where he is. Reluctant to share earnings vs spending. Re-engage in 3 months (Aug 11).",
       "engagement": "Initial conversation 5/11. Happy as a broker, but always open to the conversation. Wouldn't discuss earnings/spending gap.",
-      "url": "https://www.notion.so/3655ba8cd26f81a4b5bbd5a3d402d9a0"
+      "url": "https://www.notion.so/3655ba8cd26f81a4b5bbd5a3d402d9a0",
+      "id": "3655ba8cd26f81a4b5bbd5a3d402d9a0"
     },
     {
       "name": "Nathan Reich",
@@ -839,7 +873,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f811697e2fa3a4609665a"
+      "url": "https://www.notion.so/3405ba8cd26f811697e2fa3a4609665a",
+      "id": "3405ba8cd26f811697e2fa3a4609665a"
     },
     {
       "name": "Nate Hanson",
@@ -863,7 +898,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Motto Mortgage. Senior LO. Found on LinkedIn 4/4.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f813e8368d0c7ec0acdf6"
+      "url": "https://www.notion.so/3405ba8cd26f813e8368d0c7ec0acdf6",
+      "id": "3405ba8cd26f813e8368d0c7ec0acdf6"
     },
     {
       "name": "Nancy Gehrke",
@@ -887,12 +923,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "May target. 19 units/$5M.",
       "engagement": "Pushing for a rate check / rate quote (5/20).",
-      "url": "https://www.notion.so/3405ba8cd26f81d48294e97eece49deb"
+      "url": "https://www.notion.so/3405ba8cd26f81d48294e97eece49deb",
+      "id": "3405ba8cd26f81d48294e97eece49deb"
     },
     {
       "name": "Morgan Sawyer",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "NFM",
       "city": "Tuscaloosa",
@@ -911,7 +948,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-11",
       "notes": "Recruiting update call done 4/30. ~$60K gap to $200-250K W2 goal. Locked in until Dec (signing $ owed if leaves early). Pro forma scheduled — swamped week of 4/30, follow up week of 5/11.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81ed82ace188ccc7b550"
+      "url": "https://www.notion.so/3405ba8cd26f81ed82ace188ccc7b550",
+      "id": "3405ba8cd26f81ed82ace188ccc7b550"
     },
     {
       "name": "Monty Kinseth",
@@ -935,7 +973,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "High value target. 70 units $15.0M. NO CONTACT INFO.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f810e8c12d8d532418335"
+      "url": "https://www.notion.so/3405ba8cd26f810e8c12d8d532418335",
+      "id": "3405ba8cd26f810e8c12d8d532418335"
     },
     {
       "name": "Michael Sunnarborg",
@@ -959,7 +998,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "27 units $4.4M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81d885f7e78e19ed11ea"
+      "url": "https://www.notion.so/3405ba8cd26f81d885f7e78e19ed11ea",
+      "id": "3405ba8cd26f81d885f7e78e19ed11ea"
     },
     {
       "name": "Michael Benson",
@@ -983,7 +1023,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "DEAD - Wants salary+commission, cannot accommodate.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81859149d5f8b1db91be"
+      "url": "https://www.notion.so/3405ba8cd26f81859149d5f8b1db91be",
+      "id": "3405ba8cd26f81859149d5f8b1db91be"
     },
     {
       "name": "Melissa Langdale",
@@ -1007,7 +1048,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-09",
       "notes": "Facebook friends, 26 mutual. DM sent 4/6. Founder/CEO at Praxis. Based in Austin TX. Meeting Thu 4/9.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f813497aadeac8ba305e0"
+      "url": "https://www.notion.so/3405ba8cd26f813497aadeac8ba305e0",
+      "id": "3405ba8cd26f813497aadeac8ba305e0"
     },
     {
       "name": "Matthew Adams",
@@ -1031,12 +1073,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 19u/$7.2M. Pat (retiring Summit Regional Manager) may know him.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f81ee96b8f0ae016e95d7"
+      "url": "https://www.notion.so/3675ba8cd26f81ee96b8f0ae016e95d7",
+      "id": "3675ba8cd26f81ee96b8f0ae016e95d7"
     },
     {
       "name": "Matt Chimel",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": "Loan Officer",
       "company": "",
       "city": "",
@@ -1055,7 +1098,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-24",
       "notes": "Matt Chimel and wife. Said he is going to start sending docs over — strong sign of intent.",
       "engagement": "",
-      "url": "https://www.notion.so/34a5ba8cd26f814390c3ca798ee4beae"
+      "url": "https://www.notion.so/34a5ba8cd26f814390c3ca798ee4beae",
+      "id": "34a5ba8cd26f814390c3ca798ee4beae"
     },
     {
       "name": "Mary Katsiroubas",
@@ -1079,7 +1123,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-07-01",
       "notes": "All good at this time.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812f9775cb289a0a38b4"
+      "url": "https://www.notion.so/3405ba8cd26f812f9775cb289a0a38b4",
+      "id": "3405ba8cd26f812f9775cb289a0a38b4"
     },
     {
       "name": "Marlen Maddux",
@@ -1103,7 +1148,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "High value target. 91 units $20.0M. NO CONTACT INFO.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f39d8ed44f2a6baf87"
+      "url": "https://www.notion.so/3405ba8cd26f81f39d8ed44f2a6baf87",
+      "id": "3405ba8cd26f81f39d8ed44f2a6baf87"
     },
     {
       "name": "Marla Butler",
@@ -1127,7 +1173,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 12 units $3.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c4b135fb71a68fd7ea"
+      "url": "https://www.notion.so/3405ba8cd26f81c4b135fb71a68fd7ea",
+      "id": "3405ba8cd26f81c4b135fb71a68fd7ea"
     },
     {
       "name": "Mark Svihel",
@@ -1151,7 +1198,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-13",
       "notes": "53 units/$16M in 2025 (~$302k avg loan). RCU. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f815ea5d8f069cdd93ca3"
+      "url": "https://www.notion.so/3405ba8cd26f815ea5d8f069cdd93ca3",
+      "id": "3405ba8cd26f815ea5d8f069cdd93ca3"
     },
     {
       "name": "Mark Kurth",
@@ -1175,7 +1223,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-05",
       "notes": "HIRED 🎉 (5/11/26). From Wintrust, Pine City. 2025: 7u/$2.7M (~0.6u/mo).",
       "engagement": "Discovery meeting scheduled Tue 5/5",
-      "url": "https://www.notion.so/3405ba8cd26f81ea8687f2cfb61f42f3"
+      "url": "https://www.notion.so/3405ba8cd26f81ea8687f2cfb61f42f3",
+      "id": "3405ba8cd26f81ea8687f2cfb61f42f3"
     },
     {
       "name": "Marc Brown",
@@ -1199,7 +1248,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "7 units/$2.2M in 2025. ~0.6 units/mo. LoanDepot CA.",
       "engagement": "",
-      "url": "https://www.notion.so/3425ba8cd26f812da46ed5211b1e955e"
+      "url": "https://www.notion.so/3425ba8cd26f812da46ed5211b1e955e",
+      "id": "3425ba8cd26f812da46ed5211b1e955e"
     },
     {
       "name": "Lynne Violett",
@@ -1223,7 +1273,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-04",
       "notes": "High value target. 83 units $21.0M. Seems impossible to pull from Movement.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81d1a254e6ebe5e522b2"
+      "url": "https://www.notion.so/3405ba8cd26f81d1a254e6ebe5e522b2",
+      "id": "3405ba8cd26f81d1a254e6ebe5e522b2"
     },
     {
       "name": "Lynne Owenby",
@@ -1247,12 +1298,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f811783b8f77ad4d5efaa"
+      "url": "https://www.notion.so/3405ba8cd26f811783b8f77ad4d5efaa",
+      "id": "3405ba8cd26f811783b8f77ad4d5efaa"
     },
     {
       "name": "Lisa Sozio",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "NFM",
       "city": "",
@@ -1271,7 +1323,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-15",
       "notes": "May target. 40 units/$13M (w/ Jack Minnig). Mark S main contact. Exploring mini JV option.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c0a3b2fa36a6fd91fa"
+      "url": "https://www.notion.so/3405ba8cd26f81c0a3b2fa36a6fd91fa",
+      "id": "3405ba8cd26f81c0a3b2fa36a6fd91fa"
     },
     {
       "name": "Kyle Spitzer",
@@ -1295,7 +1348,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-08-31",
       "notes": "Lost to Granite Bank (4/30/26). Re-engage in ~4 months (early Sept) to check in. Was at Planet Home Lending ABM, 16u/$5.2M. Pain points: processing instability. Asked 170 bps + $200 office. Offer letter sent 4/15/26 — declined.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b4aee4fedadc500926"
+      "url": "https://www.notion.so/3405ba8cd26f81b4aee4fedadc500926",
+      "id": "3405ba8cd26f81b4aee4fedadc500926"
     },
     {
       "name": "Kyle Morrissey",
@@ -1319,7 +1373,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 22 units $7.8M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b0a561de865ebbeb54"
+      "url": "https://www.notion.so/3405ba8cd26f81b0a561de865ebbeb54",
+      "id": "3405ba8cd26f81b0a561de865ebbeb54"
     },
     {
       "name": "Kyle Abbot",
@@ -1343,7 +1398,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Never spoken yet. 2025: 43u/$13M.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f81eda151df6d19b2166d"
+      "url": "https://www.notion.so/3675ba8cd26f81eda151df6d19b2166d",
+      "id": "3675ba8cd26f81eda151df6d19b2166d"
     },
     {
       "name": "Kochul Thao",
@@ -1367,7 +1423,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "In talks. 71 units $25.0M. Lunch scheduled Friday 4/11.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8154bad8f5d02eaf79de"
+      "url": "https://www.notion.so/3405ba8cd26f8154bad8f5d02eaf79de",
+      "id": "3405ba8cd26f8154bad8f5d02eaf79de"
     },
     {
       "name": "Kevin Nachreiner",
@@ -1391,7 +1448,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-09",
       "notes": "13 units $3.4M. Re-engaged by iMessage 4/8 asking for quick call.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81e1a8c5d7ca593d2fc8"
+      "url": "https://www.notion.so/3405ba8cd26f81e1a8c5d7ca593d2fc8",
+      "id": "3405ba8cd26f81e1a8c5d7ca593d2fc8"
     },
     {
       "name": "Kevin Lawson",
@@ -1415,7 +1473,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 9 units $2.5M. [Text Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81bb8bc7c828fd531208"
+      "url": "https://www.notion.so/3405ba8cd26f81bb8bc7c828fd531208",
+      "id": "3405ba8cd26f81bb8bc7c828fd531208"
     },
     {
       "name": "Kelly Straka Brendy",
@@ -1439,7 +1498,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-06",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8173a2cbe5bd66b88a76"
+      "url": "https://www.notion.so/3405ba8cd26f8173a2cbe5bd66b88a76",
+      "id": "3405ba8cd26f8173a2cbe5bd66b88a76"
     },
     {
       "name": "Kelly Cordero",
@@ -1463,7 +1523,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "High value target. 130 units $44.0M. Shot her a FB DM.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8187a5ebe7686a5b310e"
+      "url": "https://www.notion.so/3405ba8cd26f8187a5ebe7686a5b310e",
+      "id": "3405ba8cd26f8187a5ebe7686a5b310e"
     },
     {
       "name": "Justin Haley",
@@ -1487,12 +1548,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "High value target. 67 units $26.0M. Reached out via FB.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f810e9b26e3f9c5e5d404"
+      "url": "https://www.notion.so/3405ba8cd26f810e9b26e3f9c5e5d404",
+      "id": "3405ba8cd26f810e9b26e3f9c5e5d404"
     },
     {
       "name": "Jorge Sandoval",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "NAF",
       "city": "",
@@ -1511,7 +1573,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "Very interested but has personal life issue at the moment. Assigned to Matt Redding. Offer letter pending.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81dcba4fdcb5d5f18dbe"
+      "url": "https://www.notion.so/3405ba8cd26f81dcba4fdcb5d5f18dbe",
+      "id": "3405ba8cd26f81dcba4fdcb5d5f18dbe"
     },
     {
       "name": "Joni Pruett",
@@ -1535,7 +1598,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 23 units $6.5M. Justin's MN 2025 hot list. [Text Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f818f9f05fa404712fc3f"
+      "url": "https://www.notion.so/3405ba8cd26f818f9f05fa404712fc3f",
+      "id": "3405ba8cd26f818f9f05fa404712fc3f"
     },
     {
       "name": "John Skoglund",
@@ -1559,7 +1623,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "14 units $5.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81bea99dcd0d9d092d2d"
+      "url": "https://www.notion.so/3405ba8cd26f81bea99dcd0d9d092d2d",
+      "id": "3405ba8cd26f81bea99dcd0d9d092d2d"
     },
     {
       "name": "John Richter",
@@ -1583,7 +1648,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-11",
       "notes": "17 units $6.7M. FB DM 4/7. Interested in coffee. Into curling, mortgage marketing, AI. Confirm Friday meeting.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81e0a3b2cb566e9408f9"
+      "url": "https://www.notion.so/3405ba8cd26f81e0a3b2cb566e9408f9",
+      "id": "3405ba8cd26f81e0a3b2cb566e9408f9"
     },
     {
       "name": "John Ludwig",
@@ -1607,7 +1673,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "22 units $8.6M. Justin's MN 2025 hot list, Middle Funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81148a79c5675374be04"
+      "url": "https://www.notion.so/3405ba8cd26f81148a79c5675374be04",
+      "id": "3405ba8cd26f81148a79c5675374be04"
     },
     {
       "name": "John Hudson",
@@ -1631,7 +1698,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "33 units $8.5M. Coffee meeting being set for next week in Red Wing. Call scheduled Friday.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f819ea589cd240a8bb3fe"
+      "url": "https://www.notion.so/3405ba8cd26f819ea589cd240a8bb3fe",
+      "id": "3405ba8cd26f819ea589cd240a8bb3fe"
     },
     {
       "name": "Joe Tursi",
@@ -1655,7 +1723,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "DEAD - Wanted too much salary. Management passed.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f814fa1d8ca8c2318c3a1"
+      "url": "https://www.notion.so/3405ba8cd26f814fa1d8ca8c2318c3a1",
+      "id": "3405ba8cd26f814fa1d8ca8c2318c3a1"
     },
     {
       "name": "Joe Pannkuk",
@@ -1679,7 +1748,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f813c86add20795004d6e"
+      "url": "https://www.notion.so/3405ba8cd26f813c86add20795004d6e",
+      "id": "3405ba8cd26f813c86add20795004d6e"
     },
     {
       "name": "Joe Metzler",
@@ -1703,7 +1773,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Cambria Mortgage. 20 units/$5.9M. Active on LinkedIn. Spotted 4/3.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8142b4a1f7026c6ee557"
+      "url": "https://www.notion.so/3405ba8cd26f8142b4a1f7026c6ee557",
+      "id": "3405ba8cd26f8142b4a1f7026c6ee557"
     },
     {
       "name": "Jessica Duren",
@@ -1727,7 +1798,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. Justin 2025 Hot List - WI. [Email Opted Out] [Text Opted Out — phone only]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812a8081e8f56d2d80ca"
+      "url": "https://www.notion.so/3405ba8cd26f812a8081e8f56d2d80ca",
+      "id": "3405ba8cd26f812a8081e8f56d2d80ca"
     },
     {
       "name": "Jessica Adame",
@@ -1751,7 +1823,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 43u/$7.6M.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f817eabebe188e825097b"
+      "url": "https://www.notion.so/3675ba8cd26f817eabebe188e825097b",
+      "id": "3675ba8cd26f817eabebe188e825097b"
     },
     {
       "name": "Jessi Brickner Sonson",
@@ -1775,7 +1848,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "59 units/$26M. Found on Facebook 4/5.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81d8bfd4ec0b3cbdb907"
+      "url": "https://www.notion.so/3405ba8cd26f81d8bfd4ec0b3cbdb907",
+      "id": "3405ba8cd26f81d8bfd4ec0b3cbdb907"
     },
     {
       "name": "Jeremy Thompson",
@@ -1799,7 +1873,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-04",
       "notes": "HIRED 🎉 — start date 5/21/26. From Heritage, 12u/$6.2M in 2025 (~1u/mo). MIL passed mid-recruit, re-engaged 5/4 and closed.",
       "engagement": "2 offer letters sent 4/28",
-      "url": "https://www.notion.so/3405ba8cd26f812c9e79c4d9a67e4b5c"
+      "url": "https://www.notion.so/3405ba8cd26f812c9e79c4d9a67e4b5c",
+      "id": "3405ba8cd26f812c9e79c4d9a67e4b5c"
     },
     {
       "name": "Jennifer Plath Dierkhising",
@@ -1823,7 +1898,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "RM Prospect. Lives in Florida. DM sent 4/6.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81aba3dbcf8e0fc15be0"
+      "url": "https://www.notion.so/3405ba8cd26f81aba3dbcf8e0fc15be0",
+      "id": "3405ba8cd26f81aba3dbcf8e0fc15be0"
     },
     {
       "name": "Jenie Jones",
@@ -1847,7 +1923,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 28 units $16.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f813a943ac28e2c71cfd7"
+      "url": "https://www.notion.so/3405ba8cd26f813a943ac28e2c71cfd7",
+      "id": "3405ba8cd26f813a943ac28e2c71cfd7"
     },
     {
       "name": "Jeffrey Winship",
@@ -1871,7 +1948,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "33 units $9.5M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817e899aeead506f87f5"
+      "url": "https://www.notion.so/3405ba8cd26f817e899aeead506f87f5",
+      "id": "3405ba8cd26f817e899aeead506f87f5"
     },
     {
       "name": "Jeffrey Stephens",
@@ -1895,7 +1973,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "22 units $7.7M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81a5a4e1d11035c9e243"
+      "url": "https://www.notion.so/3405ba8cd26f81a5a4e1d11035c9e243",
+      "id": "3405ba8cd26f81a5a4e1d11035c9e243"
     },
     {
       "name": "Jeff Wilson",
@@ -1919,7 +1998,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Added 2026-05-06 by Justin/Juddy. Matt Redding has been in conversation with Jeff. Role type defaulted to Loan Officer — confirm whether LO at a brokerage vs. Broker of Record. Backfill: company, NMLS #, phone, email, city/state, production figures.",
       "engagement": "",
-      "url": "https://www.notion.so/3585ba8cd26f81a0a256d07e3e46af5b"
+      "url": "https://www.notion.so/3585ba8cd26f81a0a256d07e3e46af5b",
+      "id": "3585ba8cd26f81a0a256d07e3e46af5b"
     },
     {
       "name": "Jeff Scherber",
@@ -1943,7 +2023,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "25 units $7.6M. Former Summit LO. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8126a4cec7558bd0e739"
+      "url": "https://www.notion.so/3405ba8cd26f8126a4cec7558bd0e739",
+      "id": "3405ba8cd26f8126a4cec7558bd0e739"
     },
     {
       "name": "Jeff Engum",
@@ -1967,7 +2048,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 30 units $7.3M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8130b41efa7d6959bb83"
+      "url": "https://www.notion.so/3405ba8cd26f8130b41efa7d6959bb83",
+      "id": "3405ba8cd26f8130b41efa7d6959bb83"
     },
     {
       "name": "Jason Grubba",
@@ -1991,7 +2073,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-30",
       "notes": "8 units $21.0M. NMLS 273104. SecurityNational Mortgage, Delafield WI. Sent info 4/14.",
       "engagement": "Zoom scheduled for Thu 4/30",
-      "url": "https://www.notion.so/3405ba8cd26f81968f42f08699d1a380"
+      "url": "https://www.notion.so/3405ba8cd26f81968f42f08699d1a380",
+      "id": "3405ba8cd26f81968f42f08699d1a380"
     },
     {
       "name": "Jamie Adyman",
@@ -2015,7 +2098,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 19u/$6.6M. No cell number yet.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f8127924fd2cba5444d94"
+      "url": "https://www.notion.so/3675ba8cd26f8127924fd2cba5444d94",
+      "id": "3675ba8cd26f8127924fd2cba5444d94"
     },
     {
       "name": "James Revord",
@@ -2039,7 +2123,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81bfac5ffbfc6009c045"
+      "url": "https://www.notion.so/3405ba8cd26f81bfac5ffbfc6009c045",
+      "id": "3405ba8cd26f81bfac5ffbfc6009c045"
     },
     {
       "name": "Jamal Mack",
@@ -2063,7 +2148,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-21",
       "notes": "About 30 days out. Waiting for list of team.",
       "engagement": "",
-      "url": "https://www.notion.so/34a5ba8cd26f810f9eedcf414632481d"
+      "url": "https://www.notion.so/34a5ba8cd26f810f9eedcf414632481d",
+      "id": "34a5ba8cd26f810f9eedcf414632481d"
     },
     {
       "name": "Jake Mueller",
@@ -2087,7 +2173,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 62 units $16.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c58851c63f6e0581a8"
+      "url": "https://www.notion.so/3405ba8cd26f81c58851c63f6e0581a8",
+      "id": "3405ba8cd26f81c58851c63f6e0581a8"
     },
     {
       "name": "Jaime Wambach",
@@ -2111,7 +2198,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "63 units $20.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8113aa38edffd31f52eb"
+      "url": "https://www.notion.so/3405ba8cd26f8113aa38edffd31f52eb",
+      "id": "3405ba8cd26f8113aa38edffd31f52eb"
     },
     {
       "name": "Jacqueline Ramirez",
@@ -2135,7 +2223,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "HIRED 4/14/2026. PT hire — expected production: 1 unit per quarter (~4 units/year).",
       "engagement": "",
-      "url": "https://www.notion.so/3425ba8cd26f81c291d3f50331fdebad"
+      "url": "https://www.notion.so/3425ba8cd26f81c291d3f50331fdebad",
+      "id": "3425ba8cd26f81c291d3f50331fdebad"
     },
     {
       "name": "Jacob Gregory",
@@ -2159,12 +2248,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81e289a8c59ef6fd9ec5"
+      "url": "https://www.notion.so/3405ba8cd26f81e289a8c59ef6fd9ec5",
+      "id": "3405ba8cd26f81e289a8c59ef6fd9ec5"
     },
     {
       "name": "Jack Minnig",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "NFM",
       "city": "",
@@ -2183,7 +2273,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "May target. 40 units/$13M (w/ Lisa Sozio).",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81998880d6dba0bd6ba7"
+      "url": "https://www.notion.so/3405ba8cd26f81998880d6dba0bd6ba7",
+      "id": "3405ba8cd26f81998880d6dba0bd6ba7"
     },
     {
       "name": "J. Alfredo Robles",
@@ -2207,7 +2298,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-13",
       "notes": "Middle funnel. 21 units $3.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81da9005c2d14ef5909b"
+      "url": "https://www.notion.so/3405ba8cd26f81da9005c2d14ef5909b",
+      "id": "3405ba8cd26f81da9005c2d14ef5909b"
     },
     {
       "name": "Heather Adams",
@@ -2231,7 +2323,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 13u/$4.7M. No cell number yet.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f8121b58cd0df2c75ede0"
+      "url": "https://www.notion.so/3675ba8cd26f8121b58cd0df2c75ede0",
+      "id": "3675ba8cd26f8121b58cd0df2c75ede0"
     },
     {
       "name": "Greg Rios",
@@ -2255,7 +2348,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Hired Q1. 1.5 units/month.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8100a49ddc54b69f49a3"
+      "url": "https://www.notion.so/3405ba8cd26f8100a49ddc54b69f49a3",
+      "id": "3405ba8cd26f8100a49ddc54b69f49a3"
     },
     {
       "name": "Fong Fang",
@@ -2279,7 +2373,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 22 units $7.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81eaaaefd56c903628f6"
+      "url": "https://www.notion.so/3405ba8cd26f81eaaaefd56c903628f6",
+      "id": "3405ba8cd26f81eaaaefd56c903628f6"
     },
     {
       "name": "Ernest Page",
@@ -2303,7 +2398,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-06-15",
       "notes": "PennyMac Loan Services, Los Angeles. Strong first call 5/11. Currently on a European cruise — reconnect mid-June.",
       "engagement": "First conversation 5/11 — went very well. Agreed to reconnect after he returns from a European cruise. Touch base mid-June. | Follow-up 5/20 went great — reconnect mid-June when back from European river cruise.",
-      "url": "https://www.notion.so/3665ba8cd26f817586b2d9c3bbb33406"
+      "url": "https://www.notion.so/3665ba8cd26f817586b2d9c3bbb33406",
+      "id": "3665ba8cd26f817586b2d9c3bbb33406"
     },
     {
       "name": "Erin Leck",
@@ -2327,7 +2423,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-07-07",
       "notes": "RM Prospect. Just changed companies - 3-month check-in set for 7/7/2026.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81ffbf15d89a3fb09eeb"
+      "url": "https://www.notion.so/3405ba8cd26f81ffbf15d89a3fb09eeb",
+      "id": "3405ba8cd26f81ffbf15d89a3fb09eeb"
     },
     {
       "name": "Eric Roering",
@@ -2351,7 +2448,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-17",
       "notes": "In talks. 38 units $12.7M. Declined beer meeting 4/8. No current opportunity.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f791b6f528b46adfc4"
+      "url": "https://www.notion.so/3405ba8cd26f81f791b6f528b46adfc4",
+      "id": "3405ba8cd26f81f791b6f528b46adfc4"
     },
     {
       "name": "Enda Moore",
@@ -2375,7 +2473,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "April target. 36 units/$14M. Won't schedule lunch - keep following up. [Email Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f815a8507e391e92d9a2d"
+      "url": "https://www.notion.so/3405ba8cd26f815a8507e391e92d9a2d",
+      "id": "3405ba8cd26f815a8507e391e92d9a2d"
     },
     {
       "name": "Elton Twitchell",
@@ -2399,7 +2498,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "38 units $17.0M. CO, Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81a6b9f3de3590c17e2a"
+      "url": "https://www.notion.so/3405ba8cd26f81a6b9f3de3590c17e2a",
+      "id": "3405ba8cd26f81a6b9f3de3590c17e2a"
     },
     {
       "name": "Ellen Sinkey",
@@ -2423,7 +2523,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817ba857c150db660c07"
+      "url": "https://www.notion.so/3405ba8cd26f817ba857c150db660c07",
+      "id": "3405ba8cd26f817ba857c150db660c07"
     },
     {
       "name": "Eileen Theisen",
@@ -2447,7 +2548,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "22 units $6.6M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812586aac6aee8be988a"
+      "url": "https://www.notion.so/3405ba8cd26f812586aac6aee8be988a",
+      "id": "3405ba8cd26f812586aac6aee8be988a"
     },
     {
       "name": "DUPLICATE - merged into Chris Sims (delete)",
@@ -2471,7 +2573,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Duplicate of existing Chris Sims record (34a5ba8cd26f817aaeeafd9e0581f8e9). Merged on 2026-04-29. Safe to delete.",
       "engagement": "",
-      "url": "https://www.notion.so/3515ba8cd26f818ba3c9dcec7b74c7ff"
+      "url": "https://www.notion.so/3515ba8cd26f818ba3c9dcec7b74c7ff",
+      "id": "3515ba8cd26f818ba3c9dcec7b74c7ff"
     },
     {
       "name": "Drew Peterson",
@@ -2495,7 +2598,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-09",
       "notes": "Edge Home Finance. 36 units/$10M. On vacation - follow up Wed 4/9.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81bd8254d7edda5643fc"
+      "url": "https://www.notion.so/3405ba8cd26f81bd8254d7edda5643fc",
+      "id": "3405ba8cd26f81bd8254d7edda5643fc"
     },
     {
       "name": "Drew Messner",
@@ -2519,7 +2623,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 19 units $6.1M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b79c28d34701785b17"
+      "url": "https://www.notion.so/3405ba8cd26f81b79c28d34701785b17",
+      "id": "3405ba8cd26f81b79c28d34701785b17"
     },
     {
       "name": "Diwas Hikari",
@@ -2543,7 +2648,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 29u/$11M. No cell number yet.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f8158bfd4e4f02477f223"
+      "url": "https://www.notion.so/3675ba8cd26f8158bfd4e4f02477f223",
+      "id": "3675ba8cd26f8158bfd4e4f02477f223"
     },
     {
       "name": "Diana De Leon",
@@ -2567,7 +2673,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Team De Leon Financial. 23 years in finance. 3.6K followers on FB. Found on Facebook 4/5.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8102b0dbc290f0ed9c62"
+      "url": "https://www.notion.so/3405ba8cd26f8102b0dbc290f0ed9c62",
+      "id": "3405ba8cd26f8102b0dbc290f0ed9c62"
     },
     {
       "name": "David Craig",
@@ -2591,7 +2698,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 31 units $9.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f810c8a44de556120b713"
+      "url": "https://www.notion.so/3405ba8cd26f810c8a44de556120b713",
+      "id": "3405ba8cd26f810c8a44de556120b713"
     },
     {
       "name": "Dave Miller",
@@ -2615,7 +2723,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-12",
       "notes": "SnapFi. 2025: 6u/$3.5M all purchase (~$583K avg). Running ~1u/mo currently. Call scheduled 5/11.",
       "engagement": "Initial outreach 5/11. Call scheduled shortly.",
-      "url": "https://www.notion.so/3655ba8cd26f81658dcbdba1ba545502"
+      "url": "https://www.notion.so/3655ba8cd26f81658dcbdba1ba545502",
+      "id": "3655ba8cd26f81658dcbdba1ba545502"
     },
     {
       "name": "Darren Yassen",
@@ -2639,7 +2748,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-04",
       "notes": "Removed from active pipeline 4/15 — insufficient production.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f48995e0b180177243"
+      "url": "https://www.notion.so/3405ba8cd26f81f48995e0b180177243",
+      "id": "3405ba8cd26f81f48995e0b180177243"
     },
     {
       "name": "Dana Lucas",
@@ -2663,7 +2773,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 62 units $12.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b1bbe5c7dd1f39174c"
+      "url": "https://www.notion.so/3405ba8cd26f81b1bbe5c7dd1f39174c",
+      "id": "3405ba8cd26f81b1bbe5c7dd1f39174c"
     },
     {
       "name": "Dan Haglund",
@@ -2687,7 +2798,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Hired Q1. Expected production: 1 unit every 3 months (~4 units/year).",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f812894d8e2d18dd99fc9"
+      "url": "https://www.notion.so/3405ba8cd26f812894d8e2d18dd99fc9",
+      "id": "3405ba8cd26f812894d8e2d18dd99fc9"
     },
     {
       "name": "Corri Klebaum",
@@ -2711,7 +2823,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 27 units $10.6M. [Text Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8147aef9dd77be30b8e2"
+      "url": "https://www.notion.so/3405ba8cd26f8147aef9dd77be30b8e2",
+      "id": "3405ba8cd26f8147aef9dd77be30b8e2"
     },
     {
       "name": "Corey Luckow",
@@ -2735,7 +2848,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "69 units/$21M. Found on LinkedIn 4/5.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8150944bcfc8c96b251e"
+      "url": "https://www.notion.so/3405ba8cd26f8150944bcfc8c96b251e",
+      "id": "3405ba8cd26f8150944bcfc8c96b251e"
     },
     {
       "name": "Cole Thimsen",
@@ -2759,12 +2873,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-06",
       "notes": "30 units $12.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f819886adf925a51f9e08"
+      "url": "https://www.notion.so/3405ba8cd26f819886adf925a51f9e08",
+      "id": "3405ba8cd26f819886adf925a51f9e08"
     },
     {
       "name": "Christopher Sims",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": "Loan Officer",
       "company": "Cambria Financial Group",
       "city": "",
@@ -2783,7 +2898,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-28",
       "notes": "~$18M in 2025. Early in conversations.",
       "engagement": "Verbally accepting to join Summit (5/20). Asked Matt re: sending a formal offer letter.",
-      "url": "https://www.notion.so/34a5ba8cd26f817aaeeafd9e0581f8e9"
+      "url": "https://www.notion.so/34a5ba8cd26f817aaeeafd9e0581f8e9",
+      "id": "34a5ba8cd26f817aaeeafd9e0581f8e9"
     },
     {
       "name": "Christian Disney",
@@ -2807,7 +2923,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-06-01",
       "notes": "Middle funnel. 15 units $6.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81feb101dcb668492cda"
+      "url": "https://www.notion.so/3405ba8cd26f81feb101dcb668492cda",
+      "id": "3405ba8cd26f81feb101dcb668492cda"
     },
     {
       "name": "Chris Marr",
@@ -2831,7 +2948,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 38 units $11.6M. [Mobile Only]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81e0ba97f695cccbeb03"
+      "url": "https://www.notion.so/3405ba8cd26f81e0ba97f695cccbeb03",
+      "id": "3405ba8cd26f81e0ba97f695cccbeb03"
     },
     {
       "name": "Chris Leerar",
@@ -2855,7 +2973,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 43 units $10.5M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81ea8b59d51bed100287"
+      "url": "https://www.notion.so/3405ba8cd26f81ea8b59d51bed100287",
+      "id": "3405ba8cd26f81ea8b59d51bed100287"
     },
     {
       "name": "Chris Baird",
@@ -2879,12 +2998,13 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "In talks. 27 units $12.0M. CA, LoanDepot LO recruits.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81999567ee56fabb64b6"
+      "url": "https://www.notion.so/3405ba8cd26f81999567ee56fabb64b6",
+      "id": "3405ba8cd26f81999567ee56fabb64b6"
     },
     {
       "name": "Chad Faur",
       "stage": "Interview",
-      "priority": "Hot",
+      "priority": "Warm",
       "role": null,
       "company": "",
       "city": "",
@@ -2903,7 +3023,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-13",
       "notes": "Referral from Mark Kurth. 21u in 6m last year (~3.5u/mo run rate, ~42u annualized). Solid producer.",
       "engagement": "Friend of Mark Kurth (just hired 5/11). 21 units in 6 months last year = ~42u/year run rate, ~3.5u/mo. MN-based.",
-      "url": "https://www.notion.so/3605ba8cd26f8109a846f2f3c5ea4216"
+      "url": "https://www.notion.so/3605ba8cd26f8109a846f2f3c5ea4216",
+      "id": "3605ba8cd26f8109a846f2f3c5ea4216"
     },
     {
       "name": "Bryan Kuhn",
@@ -2927,7 +3048,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-09",
       "notes": "9 units for $4M in 2025.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81efa858ef6effddf140"
+      "url": "https://www.notion.so/3405ba8cd26f81efa858ef6effddf140",
+      "id": "3405ba8cd26f81efa858ef6effddf140"
     },
     {
       "name": "Brian St. Mary",
@@ -2951,7 +3073,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 11 units $4.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b7b1a3c2a8cc71ef53"
+      "url": "https://www.notion.so/3405ba8cd26f81b7b1a3c2a8cc71ef53",
+      "id": "3405ba8cd26f81b7b1a3c2a8cc71ef53"
     },
     {
       "name": "Brian Emerson",
@@ -2975,7 +3098,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 10 units $3.1M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8157a8fdf3c55032f070"
+      "url": "https://www.notion.so/3405ba8cd26f8157a8fdf3c55032f070",
+      "id": "3405ba8cd26f8157a8fdf3c55032f070"
     },
     {
       "name": "Brett Toyne",
@@ -2999,7 +3123,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-17",
       "notes": "RM prospect. Synergy One. Waiting on commission 4/15. Decision by 4/30. Meeting Thursday 4/17 to run thru more info.",
       "engagement": "Lost to Chase 4/29",
-      "url": "https://www.notion.so/3405ba8cd26f818d9cc0cf68a3cd3fdb"
+      "url": "https://www.notion.so/3405ba8cd26f818d9cc0cf68a3cd3fdb",
+      "id": "3405ba8cd26f818d9cc0cf68a3cd3fdb"
     },
     {
       "name": "Brent Verleger",
@@ -3023,7 +3148,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-06-08",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817baf53fbb7b89226fc"
+      "url": "https://www.notion.so/3405ba8cd26f817baf53fbb7b89226fc",
+      "id": "3405ba8cd26f817baf53fbb7b89226fc"
     },
     {
       "name": "Brandy Afuvai",
@@ -3047,7 +3173,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "2025: 33u/$14M.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f811aa222c9e0b4d385ba"
+      "url": "https://www.notion.so/3675ba8cd26f811aa222c9e0b4d385ba",
+      "id": "3675ba8cd26f811aa222c9e0b4d385ba"
     },
     {
       "name": "Brady Mergenthal",
@@ -3071,7 +3198,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-10",
       "notes": "20 units $6.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81f7bbfbe469ca46fc7e"
+      "url": "https://www.notion.so/3405ba8cd26f81f7bbfbe469ca46fc7e",
+      "id": "3405ba8cd26f81f7bbfbe469ca46fc7e"
     },
     {
       "name": "Bill Frierson",
@@ -3095,7 +3223,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-15",
       "notes": "",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81a58b71e30610089753"
+      "url": "https://www.notion.so/3405ba8cd26f81a58b71e30610089753",
+      "id": "3405ba8cd26f81a58b71e30610089753"
     },
     {
       "name": "Betsy Lowther",
@@ -3119,7 +3248,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81da9888c40e6b41b177"
+      "url": "https://www.notion.so/3405ba8cd26f81da9888c40e6b41b177",
+      "id": "3405ba8cd26f81da9888c40e6b41b177"
     },
     {
       "name": "Belinda Price",
@@ -3143,7 +3273,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-05-05",
       "notes": "City First Mortgage. 37 units / $12M in 2025 (~$322k avg loan). Discovery meeting 4/9. ON VACATION this week — resuming talks next week (4/28).",
       "engagement": "Zoom rescheduled from Thu 4/30 to Tue 5/5",
-      "url": "https://www.notion.so/3405ba8cd26f81399154d791a4e9ac06"
+      "url": "https://www.notion.so/3405ba8cd26f81399154d791a4e9ac06",
+      "id": "3405ba8cd26f81399154d791a4e9ac06"
     },
     {
       "name": "Anne Meikle",
@@ -3167,7 +3298,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-08",
       "notes": "Started at Summit 4/30/26. 🎉",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817b9943ccb71ed93994"
+      "url": "https://www.notion.so/3405ba8cd26f817b9943ccb71ed93994",
+      "id": "3405ba8cd26f817b9943ccb71ed93994"
     },
     {
       "name": "Angela Bousey",
@@ -3191,7 +3323,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "CMG Mortgage. 2025: 24u/$7M. Believed to be in Texas.",
       "engagement": "",
-      "url": "https://www.notion.so/3675ba8cd26f81528d79c4787da91922"
+      "url": "https://www.notion.so/3675ba8cd26f81528d79c4787da91922",
+      "id": "3675ba8cd26f81528d79c4787da91922"
     },
     {
       "name": "Angela Bouse",
@@ -3215,7 +3348,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 24 units $7.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81b7b55fd282f8507a89"
+      "url": "https://www.notion.so/3405ba8cd26f81b7b55fd282f8507a89",
+      "id": "3405ba8cd26f81b7b55fd282f8507a89"
     },
     {
       "name": "Anders Johnson",
@@ -3239,7 +3373,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "Legal first name: Carl. 26 units/$11M in 2025 (~2.2 units/mo). CMG.",
       "engagement": "",
-      "url": "https://www.notion.so/3435ba8cd26f81adba2bdcab595768a7"
+      "url": "https://www.notion.so/3435ba8cd26f81adba2bdcab595768a7",
+      "id": "3435ba8cd26f81adba2bdcab595768a7"
     },
     {
       "name": "Amy Statz",
@@ -3263,7 +3398,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-04",
       "notes": "High value target. 69 units $40.0M.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81c6bcbfec2fe7f54fb6"
+      "url": "https://www.notion.so/3405ba8cd26f81c6bcbfec2fe7f54fb6",
+      "id": "3405ba8cd26f81c6bcbfec2fe7f54fb6"
     },
     {
       "name": "Amanda Hassan",
@@ -3287,7 +3423,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-09",
       "notes": "Replied 4/8 - open to leadership roles. Based in Ferndale, Michigan. 9 years at Quicken.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f817a9c83d5b507e49b59"
+      "url": "https://www.notion.so/3405ba8cd26f817a9c83d5b507e49b59",
+      "id": "3405ba8cd26f817a9c83d5b507e49b59"
     },
     {
       "name": "Amanda Campeau",
@@ -3311,7 +3448,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "50 units $10.4M. Justin's MN 2025 hot list. [Mobile Only]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f815980caeb97a95170df"
+      "url": "https://www.notion.so/3405ba8cd26f815980caeb97a95170df",
+      "id": "3405ba8cd26f815980caeb97a95170df"
     },
     {
       "name": "Alyssa Csiki",
@@ -3335,7 +3473,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": null,
       "notes": "DEAD - Rejoined NAF.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81ff820edeaf967b5485"
+      "url": "https://www.notion.so/3405ba8cd26f81ff820edeaf967b5485",
+      "id": "3405ba8cd26f81ff820edeaf967b5485"
     },
     {
       "name": "Alissa Csiki",
@@ -3359,7 +3498,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-07",
       "notes": "25 units $11.0M. Justin's MN 2025 hot list.",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f8151a916e01b6504c99c"
+      "url": "https://www.notion.so/3405ba8cd26f8151a916e01b6504c99c",
+      "id": "3405ba8cd26f8151a916e01b6504c99c"
     },
     {
       "name": "Adam Long",
@@ -3383,7 +3523,8 @@ window.PIPELINE_PAYLOAD = {
       "nextFollowUp": "2026-04-14",
       "notes": "Middle funnel. 14 units $4.3M. [Email Opted Out]",
       "engagement": "",
-      "url": "https://www.notion.so/3405ba8cd26f81169165cb91ca58b7c6"
+      "url": "https://www.notion.so/3405ba8cd26f81169165cb91ca58b7c6",
+      "id": "3405ba8cd26f81169165cb91ca58b7c6"
     }
   ]
 };

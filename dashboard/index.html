@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summit Recruiting — Pipeline Command Center</title>
+<style>
+  :root{
+    --bg:#0a0e1a; --bg2:#0f1424; --panel:rgba(255,255,255,.04); --panel2:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.08); --border2:rgba(255,255,255,.14);
+    --txt:#e8ecf6; --muted:#8b95ad; --faint:#646e88;
+    --accent:#6d8bff; --accent2:#9d6bff;
+    --hot:#ff5d6c; --warm:#ffa24b; --cold:#5db4ff; --back:#c08a5a; --arch:#7a8398;
+    --green:#3ddc97; --shadow:0 10px 40px -12px rgba(0,0,0,.7);
+    --r:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 12% -10%, rgba(109,139,255,.16), transparent 55%),
+      radial-gradient(1000px 500px at 95% 0%, rgba(157,107,255,.14), transparent 50%),
+      var(--bg);
+    color:var(--txt); -webkit-font-smoothing:antialiased; min-height:100%;
+    padding:0 0 60px;
+  }
+  .wrap{max-width:1500px;margin:0 auto;padding:0 28px}
+
+  /* Header */
+  header{padding:30px 0 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:14px}
+  .logo{width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:grid;place-items:center;font-weight:800;font-size:20px;color:#fff;box-shadow:0 8px 24px -6px rgba(109,139,255,.6)}
+  h1{font-size:22px;font-weight:700;letter-spacing:-.3px}
+  .sub{color:var(--muted);font-size:13px;margin-top:3px}
+  .updated{color:var(--faint);font-size:12px;text-align:right}
+  .updated b{color:var(--muted)}
+
+  /* KPI cards */
+  .kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin:8px 0 22px}
+  .kpi{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--border);
+    border-radius:var(--r);padding:16px 16px 14px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .kpi::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+  .kpi .lbl{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.7px;font-weight:600}
+  .kpi .val{font-size:27px;font-weight:780;letter-spacing:-.5px;margin-top:7px;line-height:1}
+  .kpi .meta{font-size:11.5px;color:var(--faint);margin-top:6px}
+  .kpi.green::before{background:linear-gradient(90deg,#2bbf82,#3ddc97)}
+  .kpi.hot::before{background:linear-gradient(90deg,#ff3d52,#ff8a5d)}
+
+  /* Tabs + controls */
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+  .tabs{display:flex;gap:6px;background:var(--panel);border:1px solid var(--border);padding:5px;border-radius:13px}
+  .tab{padding:9px 16px;border-radius:9px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;border:none;background:none;transition:.18s}
+  .tab:hover{color:var(--txt)}
+  .tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 6px 18px -6px rgba(109,139,255,.7)}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .search{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:10px 14px;color:var(--txt);font-size:13.5px;width:230px;outline:none;transition:.18s}
+  .search:focus{border-color:var(--accent);background:var(--panel2)}
+  select.flt{background:var(--panel);border:1px solid var(--border);border-radius:11px;padding:10px 12px;color:var(--txt);font-size:13px;outline:none;cursor:pointer}
+  select.flt:focus{border-color:var(--accent)}
+
+  /* Board */
+  .board{display:flex;gap:14px;overflow-x:auto;padding-bottom:14px}
+  .col{flex:0 0 260px;background:var(--panel);border:1px solid var(--border);border-radius:var(--r);display:flex;flex-direction:column;max-height:72vh}
+  .col-h{padding:13px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0}
+  .col-h .nm{font-weight:700;font-size:13px;display:flex;align-items:center;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .col-h .ct{font-size:11px;color:var(--muted);background:var(--panel2);padding:2px 8px;border-radius:20px;font-weight:600}
+  .col-v{font-size:11px;color:var(--faint);padding:0 15px 8px}
+  .cards{padding:10px;overflow-y:auto;display:flex;flex-direction:column;gap:9px}
+  .card{background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--border);
+    border-radius:12px;padding:12px;cursor:default;transition:.16s;position:relative}
+  .card:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 12px 26px -14px rgba(0,0,0,.8)}
+  .card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .card .cn{font-weight:680;font-size:13.5px;letter-spacing:-.2px}
+  .card .cc{color:var(--muted);font-size:11.5px;margin-top:2px}
+  .pri{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;padding:3px 7px;border-radius:6px;white-space:nowrap}
+  .card .stats{display:flex;gap:12px;margin-top:10px;font-size:11px;color:var(--faint)}
+  .card .stats b{color:var(--txt);font-weight:680;font-size:12.5px;display:block}
+  .card .fu{margin-top:9px;font-size:10.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+  .fu.due{color:var(--hot)}
+  .fu.soon{color:var(--warm)}
+
+  /* Table */
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;padding:13px 16px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px;font-weight:700;border-bottom:1px solid var(--border);cursor:pointer;user-select:none;white-space:nowrap}
+  th:hover{color:var(--txt)}
+  th .ar{opacity:.5;font-size:9px}
+  td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+  tr:last-child td{border-bottom:none}
+  tbody tr{transition:.12s}
+  tbody tr:hover{background:var(--panel2)}
+  .rank{font-weight:800;color:var(--faint);width:34px}
+  .rank.top{color:#ffd166}
+  .tname{font-weight:680}
+  .tname a{color:var(--txt);text-decoration:none;border-bottom:1px dotted transparent}
+  .tname a:hover{border-bottom-color:var(--muted)}
+  .num{font-variant-numeric:tabular-nums;font-weight:680}
+  .chip{display:inline-block;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap}
+
+  /* Analytics */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .card-pad{padding:20px}
+  .ct-h{font-size:14px;font-weight:700;margin-bottom:3px}
+  .ct-s{font-size:12px;color:var(--muted);margin-bottom:18px}
+  .barrow{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+  .barrow .bl{width:120px;font-size:12.5px;color:var(--txt);font-weight:600;flex-shrink:0;display:flex;align-items:center;gap:7px}
+  .bartrack{flex:1;height:24px;background:rgba(255,255,255,.04);border-radius:7px;overflow:hidden;position:relative}
+  .barfill{height:100%;border-radius:7px;background:linear-gradient(90deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:flex-end;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+  .barrow .bv{width:74px;text-align:right;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums;flex-shrink:0}
+  .hidden{display:none}
+  .empty{padding:40px;text-align:center;color:var(--faint);font-size:13px}
+  ::-webkit-scrollbar{width:9px;height:9px}
+  ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:10px}
+  ::-webkit-scrollbar-track{background:transparent}
+  @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.grid2{grid-template-columns:1fr}}
+  @media(max-width:640px){.kpis{grid-template-columns:repeat(2,1fr)}.wrap{padding:0 14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">S</div>
+      <div>
+        <h1>Recruiting Pipeline — Command Center</h1>
+        <div class="sub">Summit Mortgage · live snapshot of the talent funnel</div>
+      </div>
+    </div>
+    <div class="updated">Data snapshot<br><b id="genDate">—</b></div>
+  </header>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="bar">
+    <div class="tabs">
+      <button class="tab active" data-view="board">Pipeline Board</button>
+      <button class="tab" data-view="leaderboard">Leaderboard</button>
+      <button class="tab" data-view="analytics">Analytics</button>
+      <button class="tab" data-view="followups">Follow-Ups</button>
+    </div>
+    <div class="controls">
+      <input class="search" id="search" placeholder="Search name / company…">
+      <select class="flt" id="fPriority"></select>
+      <select class="flt" id="fRecruiter"></select>
+      <select class="flt" id="fRole"></select>
+    </div>
+  </div>
+
+  <div id="view-board"></div>
+  <div id="view-leaderboard" class="hidden"></div>
+  <div id="view-analytics" class="hidden"></div>
+  <div id="view-followups" class="hidden"></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const DATA = window.PIPELINE_DATA || [];
+const TODAY = window.GENERATED_AT || new Date().toISOString().slice(0,10);
+document.getElementById('genDate').textContent = fmtDate(TODAY);
+
+const STAGES = ["Initial Outreach","Conversation","Interview","Offer","Hired","Passed"];
+const STAGE_COLORS = {"Initial Outreach":"#5db4ff","Conversation":"#9d6bff","Interview":"#ffd166","Offer":"#ffa24b","Hired":"#3ddc97","Passed":"#7a8398"};
+const PRI_COLORS = {"Hot":"var(--hot)","Warm":"var(--warm)","Cold":"var(--cold)","Back Burner":"var(--back)","Archived":"var(--arch)"};
+const PRI_BG = {"Hot":"rgba(255,93,108,.15)","Warm":"rgba(255,162,75,.15)","Cold":"rgba(93,180,255,.15)","Back Burner":"rgba(192,138,90,.15)","Archived":"rgba(122,131,152,.15)"};
+
+// ---------- helpers ----------
+function fmtM(v){ if(!v) return "$0"; if(v>=1e9) return "$"+(v/1e9).toFixed(2).replace(/\.?0+$/,'')+"B"; if(v>=1e6) return "$"+(v/1e6).toFixed(1).replace(/\.0$/,'')+"M"; if(v>=1e3) return "$"+Math.round(v/1e3)+"K"; return "$"+v; }
+function fmtDate(d){ if(!d) return "—"; const p=d.split("-"); if(p.length<3) return d; return p[1]+"/"+p[2]+"/"+p[0].slice(2); }
+function daysFrom(d){ if(!d) return null; return Math.round((new Date(d)-new Date(TODAY))/86400000); }
+function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function sum(a,f){ return a.reduce((s,x)=>s+(f(x)||0),0); }
+
+// ---------- filters ----------
+let filters = {search:"",priority:"",recruiter:"",role:""};
+function uniq(key){ return [...new Set(DATA.map(d=>d[key]).filter(Boolean))].sort(); }
+function buildSelect(id,label,key){
+  const el=document.getElementById(id);
+  el.innerHTML = `<option value="">All ${label}</option>` + uniq(key).map(v=>`<option>${esc(v)}</option>`).join("");
+  el.onchange = ()=>{ filters[key]=el.value; render(); };
+}
+function applyFilters(rows){
+  return rows.filter(d=>{
+    if(filters.priority && d.priority!==filters.priority) return false;
+    if(filters.recruiter && d.recruiter!==filters.recruiter) return false;
+    if(filters.role && d.role!==filters.role) return false;
+    if(filters.search){
+      const q=filters.search.toLowerCase();
+      if(!((d.name||"").toLowerCase().includes(q)||(d.company||"").toLowerCase().includes(q))) return false;
+    }
+    return true;
+  });
+}
+
+// ---------- KPIs ----------
+function renderKPIs(){
+  const active = DATA.filter(d=>d.stage!=="Passed");
+  const hired = DATA.filter(d=>d.stage==="Hired");
+  const offers = DATA.filter(d=>d.stage==="Offer"||d.stage==="Onboarding");
+  const hot = DATA.filter(d=>d.priority==="Hot"&&d.stage!=="Passed");
+  const vol = sum(active,d=>d.volume);
+  const units = sum(active,d=>d.units);
+  const withVol = active.filter(d=>d.volume>0);
+  const avg = withVol.length? sum(withVol,d=>d.volume)/sum(withVol,d=>d.units||0):0;
+  const k=[
+    {l:"Active Candidates",v:active.length,m:`${DATA.length} total in system`},
+    {l:"Pipeline Volume",v:fmtM(vol),m:`${units.toLocaleString()} units (2025)`,c:""},
+    {l:"Hot Prospects",v:hot.length,m:"flagged high priority",cls:"hot"},
+    {l:"In Offer Stage",v:offers.length,m:"closing stage",c:""},
+    {l:"Hired",v:hired.length,m:"converted to Summit",cls:"green"},
+    {l:"Avg Loan Size",v:fmtM(avg),m:"across producers",c:""},
+  ];
+  document.getElementById('kpis').innerHTML = k.map(x=>`
+    <div class="kpi ${x.cls||''}">
+      <div class="lbl">${x.l}</div>
+      <div class="val">${x.v}</div>
+      <div class="meta">${x.m}</div>
+    </div>`).join("");
+}
+
+// ---------- Board ----------
+function renderBoard(){
+  const rows = applyFilters(DATA);
+  const host=document.getElementById('view-board');
+  const cols = STAGES.map(stage=>{
+    const items = rows.filter(d=>d.stage===stage)
+      .sort((a,b)=>(b.volume||0)-(a.volume||0));
+    const vol = sum(items,d=>d.volume);
+    const cards = items.map(d=>{
+      const dd = daysFrom(d.nextFollowUp);
+      let fu="", cls="";
+      if(d.nextFollowUp){
+        if(dd<=0){cls="due";fu="⚠ Due "+fmtDate(d.nextFollowUp);}
+        else if(dd<=7){cls="soon";fu="◔ Follow-up "+fmtDate(d.nextFollowUp);}
+        else {fu="○ Follow-up "+fmtDate(d.nextFollowUp);}
+      }
+      return `<div class="card">
+        <div class="top">
+          <div>
+            <div class="cn"><a href="${esc(d.url)}" target="_blank" style="color:inherit;text-decoration:none">${esc(d.name)}</a></div>
+            <div class="cc">${esc(d.company||d.city||"—")}</div>
+          </div>
+          ${d.priority?`<span class="pri" style="color:${PRI_COLORS[d.priority]};background:${PRI_BG[d.priority]}">${esc(d.priority)}</span>`:""}
+        </div>
+        <div class="stats">
+          <div><b>${fmtM(d.volume)}</b>2025 vol</div>
+          <div><b>${d.units||0}</b>units</div>
+        </div>
+        ${fu?`<div class="fu ${cls}">${fu}</div>`:""}
+      </div>`;
+    }).join("") || `<div class="empty" style="padding:18px">No candidates</div>`;
+    return `<div class="col">
+      <div class="col-h">
+        <div class="nm"><span class="dot" style="background:${STAGE_COLORS[stage]}"></span>${stage}</div>
+        <span class="ct">${items.length}</span>
+      </div>
+      <div class="col-v">${fmtM(vol)} pipeline volume</div>
+      <div class="cards">${cards}</div>
+    </div>`;
+  }).join("");
+  host.innerHTML = `<div class="board">${cols}</div>`;
+}
+
+// ---------- Leaderboard ----------
+let sortKey="volume", sortDir=-1;
+function renderLeaderboard(){
+  const rows = applyFilters(DATA).slice().sort((a,b)=>{
+    let av=a[sortKey], bv=b[sortKey];
+    if(typeof av==="string"||typeof bv==="string"){av=(av||"").toLowerCase();bv=(bv||"").toLowerCase();}
+    if(av==null||av==="")av=-Infinity; if(bv==null||bv==="")bv=-Infinity;
+    return av<bv?-sortDir:av>bv?sortDir:0;
+  });
+  const cols=[["name","Candidate"],["company","Company"],["stage","Stage"],["priority","Priority"],["volume","2025 Vol"],["units","Units"],["recruiter","Recruiter"],["nextFollowUp","Next F/U"]];
+  const head=cols.map(([k,l])=>`<th data-k="${k}">${l} <span class="ar">${sortKey===k?(sortDir<0?"▼":"▲"):""}</span></th>`).join("");
+  const body=rows.map((d,i)=>`<tr>
+      <td class="rank ${i<3?'top':''}">${i+1}</td>
+      <td class="tname"><a href="${esc(d.url)}" target="_blank">${esc(d.name)}</a></td>
+      <td style="color:var(--muted)">${esc(d.company||"—")}</td>
+      <td><span class="chip" style="color:${STAGE_COLORS[d.stage]};background:rgba(255,255,255,.05)">${esc(d.stage||"—")}</span></td>
+      <td>${d.priority?`<span class="chip" style="color:${PRI_COLORS[d.priority]};background:${PRI_BG[d.priority]}">${esc(d.priority)}</span>`:"—"}</td>
+      <td class="num">${fmtM(d.volume)}</td>
+      <td class="num">${d.units||0}</td>
+      <td style="color:var(--muted)">${esc(d.recruiter||"—")}</td>
+      <td style="color:var(--muted)">${fmtDate(d.nextFollowUp)}</td>
+    </tr>`).join("");
+  document.getElementById('view-leaderboard').innerHTML =
+    `<div class="panel"><table><thead><tr><th>#</th>${head}</tr></thead><tbody>${body||`<tr><td colspan=9 class="empty">No matches</td></tr>`}</tbody></table></div>`;
+  document.querySelectorAll('#view-leaderboard th[data-k]').forEach(th=>{
+    th.onclick=()=>{const k=th.dataset.k; if(sortKey===k)sortDir*=-1; else {sortKey=k;sortDir=-1;} renderLeaderboard();};
+  });
+}
+
+// ---------- Analytics ----------
+function barChart(title,sub,rows,opts={}){
+  const max=Math.max(...rows.map(r=>r.v),1);
+  const body=rows.map(r=>`
+    <div class="barrow">
+      <div class="bl">${r.dot?`<span class="dot" style="background:${r.dot}"></span>`:""}${esc(r.l)}</div>
+      <div class="bartrack"><div class="barfill" style="width:${Math.max(r.v/max*100,2)}%;${r.color?`background:${r.color}`:''}"></div></div>
+      <div class="bv">${opts.money?fmtM(r.v):r.v.toLocaleString()}</div>
+    </div>`).join("");
+  return `<div class="panel card-pad"><div class="ct-h">${title}</div><div class="ct-s">${sub}</div>${body}</div>`;
+}
+function renderAnalytics(){
+  const rows=applyFilters(DATA);
+  const byStage=STAGES.map(s=>({l:s,v:rows.filter(d=>d.stage===s).length,dot:STAGE_COLORS[s],color:STAGE_COLORS[s]}));
+  const volStage=STAGES.map(s=>({l:s,v:sum(rows.filter(d=>d.stage===s),d=>d.volume),dot:STAGE_COLORS[s],color:STAGE_COLORS[s]}));
+  const pris=["Hot","Warm","Cold","Back Burner","Archived"];
+  const byPri=pris.map(p=>({l:p,v:rows.filter(d=>d.priority===p).length,color:PRI_COLORS[p].replace('var(--hot)','#ff5d6c').replace('var(--warm)','#ffa24b').replace('var(--cold)','#5db4ff').replace('var(--back)','#c08a5a').replace('var(--arch)','#7a8398')}));
+  const comp={};
+  rows.forEach(d=>{ if(d.company){comp[d.company]=(comp[d.company]||0)+(d.volume||0);} });
+  const topComp=Object.entries(comp).sort((a,b)=>b[1]-a[1]).slice(0,8).map(([l,v])=>({l,v}));
+  document.getElementById('view-analytics').innerHTML=`<div class="grid2">
+    ${barChart("Candidates by Stage","How the funnel is distributed",byStage)}
+    ${barChart("Pipeline Volume by Stage","2025 production $ at each stage",volStage,{money:true})}
+    ${barChart("Candidates by Priority","Where attention is focused",byPri)}
+    ${barChart("Top Source Companies","By recruited 2025 volume",topComp,{money:true})}
+  </div>`;
+}
+
+// ---------- Follow-ups ----------
+function renderFollowups(){
+  const rows=applyFilters(DATA).filter(d=>d.nextFollowUp&&d.stage!=="Passed"&&d.stage!=="Hired")
+    .sort((a,b)=>new Date(a.nextFollowUp)-new Date(b.nextFollowUp));
+  const overdue=rows.filter(d=>daysFrom(d.nextFollowUp)<0);
+  const today=rows.filter(d=>daysFrom(d.nextFollowUp)===0);
+  const upcoming=rows.filter(d=>daysFrom(d.nextFollowUp)>0);
+  function tbl(list){
+    if(!list.length) return `<div class="empty">Nothing here 🎉</div>`;
+    return `<table><tbody>${list.map(d=>{
+      const dd=daysFrom(d.nextFollowUp);
+      const tag=dd<0?`<span class="chip" style="color:var(--hot);background:rgba(255,93,108,.15)">${Math.abs(dd)}d overdue</span>`
+        :dd===0?`<span class="chip" style="color:var(--warm);background:rgba(255,162,75,.15)">today</span>`
+        :`<span class="chip" style="color:var(--muted);background:rgba(255,255,255,.05)">in ${dd}d</span>`;
+      return `<tr>
+        <td class="tname"><a href="${esc(d.url)}" target="_blank">${esc(d.name)}</a><div style="color:var(--faint);font-size:11px">${esc(d.company||"—")}</div></td>
+        <td><span class="chip" style="color:${STAGE_COLORS[d.stage]};background:rgba(255,255,255,.05)">${esc(d.stage)}</span></td>
+        <td class="num">${fmtM(d.volume)}</td>
+        <td style="color:var(--muted)">${esc(d.phone||"—")}</td>
+        <td style="text-align:right">${fmtDate(d.nextFollowUp)} ${tag}</td>
+      </tr>`;}).join("")}</tbody></table>`;
+  }
+  document.getElementById('view-followups').innerHTML=`
+    <div class="panel card-pad" style="margin-bottom:16px">
+      <div class="ct-h" style="color:var(--hot)">⚠ Overdue (${overdue.length})</div>
+      <div class="ct-s">Past their scheduled follow-up date</div>${tbl(overdue)}
+    </div>
+    <div class="panel card-pad" style="margin-bottom:16px">
+      <div class="ct-h" style="color:var(--warm)">Due Today (${today.length})</div><div class="ct-s"></div>${tbl(today)}
+    </div>
+    <div class="panel card-pad">
+      <div class="ct-h">Upcoming (${upcoming.length})</div>
+      <div class="ct-s">Scheduled follow-ups ahead</div>${tbl(upcoming)}
+    </div>`;
+}
+
+// ---------- view switching ----------
+let current="board";
+function render(){
+  renderKPIs();
+  if(current==="board")renderBoard();
+  if(current==="leaderboard")renderLeaderboard();
+  if(current==="analytics")renderAnalytics();
+  if(current==="followups")renderFollowups();
+}
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    current=t.dataset.view;
+    ["board","leaderboard","analytics","followups"].forEach(v=>
+      document.getElementById('view-'+v).classList.toggle('hidden',v!==current));
+    render();
+  };
+});
+document.getElementById('search').oninput=e=>{filters.search=e.target.value;render();};
+buildSelect('fPriority','Priorities','priority');
+buildSelect('fRecruiter','Recruiters','recruiter');
+buildSelect('fRole','Roles','role');
+render();
+</script>
+</body>
+</html>

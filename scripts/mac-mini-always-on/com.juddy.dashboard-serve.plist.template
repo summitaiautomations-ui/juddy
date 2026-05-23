@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.juddy.dashboard-serve</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__REPO__/scripts/mac-mini-always-on/dashboard-serve.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO__/dashboard</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>DASHBOARD_PORT</key>
+        <string>8800</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <!-- Long-running server: relaunch it if it ever exits. -->
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/__USER__/Library/Logs/juddy/dashboard-serve.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/__USER__/Library/Logs/juddy/dashboard-serve.log</string>
+</dict>
+</plist>

@@ -22,6 +22,8 @@ remove_agent() {
 
 remove_agent "com.juddy.claude-code"
 remove_agent "com.juddy.healthcheck"
+remove_agent "com.juddy.dashboard-refresh"
+remove_agent "com.juddy.dashboard-serve"
 
 echo "==> cancelling nightly restart"
 sudo pmset repeat cancel || true

@@ -129,7 +129,7 @@
         <div class="sub">Summit Mortgage · live snapshot of the talent funnel</div>
       </div>
     </div>
-    <div class="updated">Data snapshot<br><b id="genDate">—</b></div>
+    <div class="updated">Auto-refresh · 15 min<br>snapshot <b id="genDate">—</b></div>
   </header>
 
   <div class="kpis" id="kpis"></div>
@@ -157,9 +157,31 @@
 
 <script src="data.js"></script>
 <script>
-const DATA = window.PIPELINE_DATA || [];
-const TODAY = window.GENERATED_AT || new Date().toISOString().slice(0,10);
-document.getElementById('genDate').textContent = fmtDate(TODAY);
+// Initial load comes from data.js (works on file://). The poller below
+// re-fetches data.json every 15 min so an open dashboard self-updates.
+const PAYLOAD = window.PIPELINE_PAYLOAD || {generatedAt: window.GENERATED_AT, records: window.PIPELINE_DATA || []};
+let DATA = PAYLOAD.records || [];
+let TODAY = PAYLOAD.generatedAt || new Date().toISOString().slice(0,10);
+function setSnapshot(){ document.getElementById('genDate').textContent = fmtDate(TODAY); }
+setSnapshot();
+
+const REFRESH_MS = 15*60*1000;
+async function poll(){
+  try{
+    const res = await fetch('data.json?t='+Date.now(), {cache:'no-store'});
+    if(!res.ok) return;
+    const p = await res.json();
+    const recs = p.records || p;
+    if(Array.isArray(recs) && recs.length){
+      DATA = recs;
+      TODAY = p.generatedAt || TODAY;
+      rebuildFilters();
+      setSnapshot();
+      render();
+    }
+  }catch(e){ /* file:// or offline — keep current snapshot */ }
+}
+setInterval(poll, REFRESH_MS);
 
 const STAGES = ["Initial Outreach","Conversation","Interview","Offer","Hired","Passed"];
 const STAGE_COLORS = {"Initial Outreach":"#5db4ff","Conversation":"#9d6bff","Interview":"#ffd166","Offer":"#ffa24b","Hired":"#3ddc97","Passed":"#7a8398"};
@@ -176,11 +198,14 @@ function sum(a,f){ return a.reduce((s,x)=>s+(f(x)||0),0); }
 // ---------- filters ----------
 let filters = {search:"",priority:"",recruiter:"",role:""};
 function uniq(key){ return [...new Set(DATA.map(d=>d[key]).filter(Boolean))].sort(); }
+const SELECTS=[["fPriority","Priorities","priority"],["fRecruiter","Recruiters","recruiter"],["fRole","Roles","role"]];
 function buildSelect(id,label,key){
   const el=document.getElementById(id);
   el.innerHTML = `<option value="">All ${label}</option>` + uniq(key).map(v=>`<option>${esc(v)}</option>`).join("");
+  el.value = filters[key] || "";
   el.onchange = ()=>{ filters[key]=el.value; render(); };
 }
+function rebuildFilters(){ SELECTS.forEach(([id,l,k])=>buildSelect(id,l,k)); }
 function applyFilters(rows){
   return rows.filter(d=>{
     if(filters.priority && d.priority!==filters.priority) return false;
@@ -376,9 +401,7 @@ document.querySelectorAll('.tab').forEach(t=>{
   };
 });
 document.getElementById('search').oninput=e=>{filters.search=e.target.value;render();};
-buildSelect('fPriority','Priorities','priority');
-buildSelect('fRecruiter','Recruiters','recruiter');
-buildSelect('fRole','Roles','role');
+rebuildFilters();
 render();
 </script>
 </body>

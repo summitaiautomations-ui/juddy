@@ -1,53 +1,66 @@
-Recruiting Dashboard — Live Sync Setup
-=======================================
+Recruiting Dashboard — Setup
+=============================
 
-Goal: get the dashboard running locally so dragging cards between stages
-saves the change back to Notion.
+After this 5-minute setup, the dashboard runs in the background 24/7.
+You never need to touch Terminal again -- just open
+http://localhost:8800 in your browser whenever you want it.
 
 ONE-TIME STEPS
 --------------
 
 1) Install Node.js (skip if already installed)
-   - Check first: open Terminal, type:   node --version
-   - If you see something like "v20.x", you're set.
-   - If not, download the macOS installer (LTS) from:
+   - Check: open Terminal, type:  node --version
+   - If you see "v20.x" you're set.
+   - If "command not found", install the macOS LTS from:
        https://nodejs.org/en/download
-     Run the installer. Done.
 
-2) Create a Notion integration (gives you the token)
-   - Open in your browser:
-       https://www.notion.so/profile/integrations
-   - Click "+ New integration".
-   - Name it: Recruiting Dashboard
-   - Associated workspace: choose your workspace.
-   - Type: Internal.
-   - Submit, then on the next screen click "Show" next to the
-     "Internal Integration Secret" and COPY it. It starts with
-     "ntn_" or "secret_". Save it somewhere safe for a moment.
+2) Create a Notion integration
+   - Visit:  https://www.notion.so/profile/integrations
+   - Click "+ New integration"
+   - Name: Recruiting Dashboard
+   - Workspace: yours
+   - Type: Internal
+   - Submit, then COPY the "Internal Integration Secret"
+     (it starts with "ntn_" or "secret_"). Save it for step 5.
 
-3) Share the Recruiting Pipeline database with the integration
+3) Share the database with the integration
    - Open the Recruiting Pipeline database in Notion.
-   - Top right: click the "..." menu → Connections → "+ Add connections"
-   - Search and select "Recruiting Dashboard". Confirm.
+   - Top-right "..." menu -> Connections -> "+ Add connections"
+   - Pick "Recruiting Dashboard". Confirm.
 
-4) Unzip this folder somewhere convenient (e.g. ~/Documents/dashboard).
+4) Run Install-Always-On.command
+   - Unzip this folder somewhere permanent (e.g. ~/Documents/dashboard).
+     Do NOT move it after running the installer (the service points
+     at this exact location).
+   - Double-click  Install-Always-On.command  in this folder.
+   - First time only: macOS may say "cannot be opened because the
+     developer cannot be verified." Right-click the file -> Open ->
+     click "Open" in the dialog. (Apple's standard quarantine for
+     downloaded scripts.)
+   - A Terminal window pops up, runs for a few seconds, opens your
+     browser to http://localhost:8800, and tells you it's installed.
+
+5) In the dashboard header, click "Enable Notion sync ->"
+   - Paste the token from step 2. It saves to your browser only.
+   - The pill turns green:  "Notion sync: ON"
+
+You're done. Bookmark http://localhost:8800.
 
 EVERYDAY USE
 ------------
 
-5) Double-click "Start-Dashboard.command" in the unzipped folder.
-   - A Terminal window opens (leave it running).
-   - Your browser opens to http://localhost:8800
-   - (First time only) in the dashboard header, click "Enable Notion sync →"
-     and paste your token. The browser remembers it.
+Just open http://localhost:8800 in your browser. The service is always
+running. Drag candidates between stage columns -- each drop syncs to
+Notion:
 
-6) Drag candidates between stage columns. Each drop syncs to Notion.
-   - Offer column → auto-sets priority to Hot
-   - Interview column → auto-sets priority to Warm
-   - Passed column → clears priority
+   Offer column   -> auto-sets priority to Hot
+   Interview      -> auto-sets priority to Warm
+   Passed         -> clears priority
 
-When you're done, close the Terminal window. Next time, just double-click
-Start-Dashboard.command again.
+To remove the service later, double-click Uninstall-Always-On.command.
 
-If anything goes wrong, tell Claude and share the line from the Terminal
-window — happy to debug.
+For a one-time launch without installing as a service, double-click
+Start-Dashboard.command instead.
+
+If anything goes wrong, share what you see (Terminal output, browser
+error) with Claude -- happy to debug.

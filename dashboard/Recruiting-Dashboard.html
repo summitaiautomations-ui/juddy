@@ -644,7 +644,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Robert Mangiaracina",
       "stage": "Passed",
-      "priority": "Warm",
+      "priority": null,
       "role": null,
       "company": "Movement Mortgage",
       "city": "Mokena",
@@ -1169,7 +1169,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Michael Benson",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "Cornerstone",
       "city": "",
@@ -1494,7 +1494,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Kyle Spitzer",
       "stage": "Passed",
-      "priority": "Cold",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -1869,7 +1869,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Joe Tursi",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -2219,7 +2219,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Jason Grubba",
       "stage": "Passed",
-      "priority": "Warm",
+      "priority": null,
       "role": null,
       "company": "SecurityNational Mortgage",
       "city": "Delafield",
@@ -2894,7 +2894,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Darren Yassen",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -3269,7 +3269,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Brett Toyne",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "Synergy One",
       "city": "",
@@ -3344,7 +3344,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Brady Mergenthal",
       "stage": "Passed",
-      "priority": "Hot",
+      "priority": null,
       "role": null,
       "company": "New Rez",
       "city": "",
@@ -3419,7 +3419,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Belinda Price",
       "stage": "Passed",
-      "priority": "Hot",
+      "priority": null,
       "role": null,
       "company": "City First Mortgage",
       "city": "",
@@ -3619,7 +3619,7 @@ window.PIPELINE_PAYLOAD = {
     {
       "name": "Alyssa Csiki",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -3850,7 +3850,8 @@ async function moveCard(id, stage){
   // optimistic update + stage->priority convention
   rec.stage = stage;
   const conv = {Offer:"Hot", Interview:"Warm"};
-  if(conv[stage]) rec.priority = conv[stage];
+  if(stage==="Passed") rec.priority = null;
+  else if(conv[stage]) rec.priority = conv[stage];
   render();
   try{
     const res = await fetch('/api/move',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,stage})});

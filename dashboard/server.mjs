@@ -57,10 +57,15 @@ const server = createServer(async (req, res) => {
         const { id, stage } = JSON.parse(raw || "{}");
         if (!id || !stage) return send(res, 400, JSON.stringify({ error: "id and stage required" }), MIME[".json"]);
         const props = { Stage: { select: { name: stage } } };
-        const priority = STAGE_PRIORITY[stage];
-        if (priority) props.Priority = { select: { name: priority } };
+        if (stage === "Passed") {
+          props.Priority = { select: null };
+        } else {
+          const priority = STAGE_PRIORITY[stage];
+          if (priority) props.Priority = { select: { name: priority } };
+        }
         await notionPatch(id, props);
-        send(res, 200, JSON.stringify({ ok: true, stage, priority: priority || null }), MIME[".json"]);
+        const appliedPriority = stage === "Passed" ? null : (STAGE_PRIORITY[stage] || null);
+        send(res, 200, JSON.stringify({ ok: true, stage, priority: appliedPriority }), MIME[".json"]);
       } catch (e) {
         send(res, 502, JSON.stringify({ error: String(e.message || e) }), MIME[".json"]);
       }

@@ -479,7 +479,7 @@
     {
       "name": "Robert Mangiaracina",
       "stage": "Passed",
-      "priority": "Warm",
+      "priority": null,
       "role": null,
       "company": "Movement Mortgage",
       "city": "Mokena",
@@ -1004,7 +1004,7 @@
     {
       "name": "Michael Benson",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "Cornerstone",
       "city": "",
@@ -1329,7 +1329,7 @@
     {
       "name": "Kyle Spitzer",
       "stage": "Passed",
-      "priority": "Cold",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -1704,7 +1704,7 @@
     {
       "name": "Joe Tursi",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -2054,7 +2054,7 @@
     {
       "name": "Jason Grubba",
       "stage": "Passed",
-      "priority": "Warm",
+      "priority": null,
       "role": null,
       "company": "SecurityNational Mortgage",
       "city": "Delafield",
@@ -2729,7 +2729,7 @@
     {
       "name": "Darren Yassen",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",
@@ -3104,7 +3104,7 @@
     {
       "name": "Brett Toyne",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "Synergy One",
       "city": "",
@@ -3179,7 +3179,7 @@
     {
       "name": "Brady Mergenthal",
       "stage": "Passed",
-      "priority": "Hot",
+      "priority": null,
       "role": null,
       "company": "New Rez",
       "city": "",
@@ -3254,7 +3254,7 @@
     {
       "name": "Belinda Price",
       "stage": "Passed",
-      "priority": "Hot",
+      "priority": null,
       "role": null,
       "company": "City First Mortgage",
       "city": "",
@@ -3454,7 +3454,7 @@
     {
       "name": "Alyssa Csiki",
       "stage": "Passed",
-      "priority": "Archived",
+      "priority": null,
       "role": null,
       "company": "",
       "city": "",

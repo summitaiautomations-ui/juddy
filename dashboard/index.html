@@ -318,7 +318,8 @@ async function moveCard(id, stage){
   // optimistic update + stage->priority convention
   rec.stage = stage;
   const conv = {Offer:"Hot", Interview:"Warm"};
-  if(conv[stage]) rec.priority = conv[stage];
+  if(stage==="Passed") rec.priority = null;
+  else if(conv[stage]) rec.priority = conv[stage];
   render();
   try{
     const res = await fetch('/api/move',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,stage})});

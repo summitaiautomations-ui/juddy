@@ -75,6 +75,11 @@
   .card[draggable]{cursor:grab}
   .card[draggable]:active{cursor:grabbing}
   .col.drop{outline:2px dashed var(--accent);outline-offset:-3px;background:rgba(109,139,255,.07)}
+  .syncpill{font-size:11px;font-weight:700;padding:5px 11px;border-radius:20px;border:1px solid var(--border2);background:var(--panel);color:var(--muted);cursor:pointer;transition:.18s;text-transform:uppercase;letter-spacing:.5px}
+  .syncpill:hover{color:var(--txt);border-color:var(--accent)}
+  .syncpill.on{color:#3ddc97;border-color:rgba(61,220,151,.4);background:rgba(61,220,151,.08)}
+  .syncpill.off{color:var(--faint)}
+  .syncpill.standalone{color:var(--faint);cursor:default;border-style:dashed}
   #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);padding:12px 20px;border-radius:12px;
     font-size:13.5px;font-weight:600;color:#fff;box-shadow:0 12px 40px -8px rgba(0,0,0,.7);transition:opacity .35s;z-index:99;opacity:0;pointer-events:none}
   #toast.good{background:linear-gradient(135deg,#2bbf82,#3ddc97)}
@@ -136,7 +141,10 @@
         <div class="sub">Summit Mortgage · live snapshot of the talent funnel</div>
       </div>
     </div>
-    <div class="updated">Auto-refresh · 15 min<br>snapshot <b id="genDate">—</b></div>
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+      <button id="syncPill" type="button" class="syncpill" title="Click to set your Notion token">Notion sync: checking…</button>
+      <div class="updated">Auto-refresh · 15 min<br>snapshot <b id="genDate">—</b></div>
+    </div>
   </header>
 
   <div class="kpis" id="kpis"></div>
@@ -310,6 +318,28 @@ function wireDragAndDrop(){
     col.addEventListener('drop',e=>{ e.preventDefault(); col.classList.remove('drop'); moveCard(dragId, col.dataset.stage); });
   });
 }
+// --- Notion token (stored in this browser only) ---
+const TOKEN_KEY = 'notionToken';
+const getToken = ()=>localStorage.getItem(TOKEN_KEY)||'';
+const setToken = t=>{ if(t) localStorage.setItem(TOKEN_KEY,t); else localStorage.removeItem(TOKEN_KEY); };
+const SERVED = location.protocol.startsWith('http');
+function updateSyncPill(){
+  const el=document.getElementById('syncPill');
+  if(!SERVED){ el.textContent='Sync: standalone file'; el.className='syncpill standalone'; el.title='Open via http://localhost:8800 to enable Notion sync'; return; }
+  if(getToken()){ el.textContent='Notion sync: ON'; el.className='syncpill on'; el.title='Click to update or remove your token'; }
+  else { el.textContent='Enable Notion sync →'; el.className='syncpill off'; el.title='Paste your Notion integration token'; }
+}
+function promptForToken(){
+  const cur=getToken();
+  const v=prompt('Paste your Notion internal integration token (starts with "ntn_" or "secret_").\nLeave blank to clear.', cur?'(keep current)':'');
+  if(v===null) return;
+  if(v==='' ){ setToken(''); }
+  else if(v!=='(keep current)'){ setToken(v.trim()); }
+  updateSyncPill();
+  toast(getToken()?'Notion token saved in this browser.':'Notion token cleared.', !!getToken());
+}
+document.getElementById('syncPill').addEventListener('click',()=>{ if(SERVED) promptForToken(); });
+
 async function moveCard(id, stage){
   if(!id) return;
   const rec = DATA.find(d=>d.id===id);
@@ -321,19 +351,24 @@ async function moveCard(id, stage){
   if(stage==="Passed") rec.priority = null;
   else if(conv[stage]) rec.priority = conv[stage];
   render();
+  if(!SERVED){
+    toast('Moved locally — not synced (run via http://localhost:8800 to sync to Notion)', false);
+    return;
+  }
+  const headers={'Content-Type':'application/json'};
+  const tk=getToken(); if(tk) headers['X-Notion-Token']=tk;
   try{
-    const res = await fetch('/api/move',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,stage})});
-    if(!res.ok) throw new Error((await res.json()).error||res.status);
-    toast(`Moved ${rec.name} → ${stage}${conv[stage]?` (set ${conv[stage]})`:''} · synced to Notion`, true);
-  }catch(err){
-    // No server / not synced: revert if it's a hard failure, else keep local
-    const offline = String(err).includes('Failed to fetch');
-    if(offline){
-      toast(`Moved locally — not synced (open via the live server to sync to Notion)`, false);
-    }else{
-      rec.stage=prev.stage; rec.priority=prev.priority; render();
-      toast(`Sync failed: ${err}. Reverted.`, false);
+    const res = await fetch('/api/move',{method:'POST',headers,body:JSON.stringify({id,stage})});
+    const body = await res.json().catch(()=>({}));
+    if(res.status===401 && body.error==='no_token'){
+      toast('No Notion token set — click "Enable Notion sync" in the header.', false);
+      return; // keep the local move
     }
+    if(!res.ok) throw new Error(body.error||res.status);
+    toast(`Moved ${rec.name} → ${stage}${conv[stage]?` (auto-set ${conv[stage]})`:(stage==='Passed'?' (priority cleared)':'')} · synced`, true);
+  }catch(err){
+    rec.stage=prev.stage; rec.priority=prev.priority; render();
+    toast(`Sync failed: ${err}. Reverted.`, false);
   }
 }
 let toastTimer;
@@ -458,6 +493,7 @@ document.querySelectorAll('.tab').forEach(t=>{
 });
 document.getElementById('search').oninput=e=>{filters.search=e.target.value;render();};
 rebuildFilters();
+updateSyncPill();
 render();
 </script>
 </body>

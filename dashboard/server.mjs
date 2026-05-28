@@ -32,11 +32,11 @@ function send(res, code, body, type = "text/plain") {
   res.end(body);
 }
 
-async function notionPatch(pageId, props) {
+async function notionPatch(pageId, props, token) {
   const res = await fetch(`https://api.notion.com/v1/pages/${pageId}`, {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${TOKEN}`,
+      Authorization: `Bearer ${token}`,
       "Notion-Version": NOTION_VERSION,
       "Content-Type": "application/json",
     },
@@ -49,7 +49,9 @@ async function notionPatch(pageId, props) {
 const server = createServer(async (req, res) => {
   // --- API: move a candidate to a new stage ---
   if (req.method === "POST" && req.url === "/api/move") {
-    if (!TOKEN) return send(res, 500, JSON.stringify({ error: "NOTION_TOKEN not set on server" }), MIME[".json"]);
+    const headerToken = req.headers["x-notion-token"];
+    const effective = (typeof headerToken === "string" && headerToken) || TOKEN;
+    if (!effective) return send(res, 401, JSON.stringify({ error: "no_token" }), MIME[".json"]);
     let raw = "";
     req.on("data", (c) => (raw += c));
     req.on("end", async () => {
@@ -63,7 +65,7 @@ const server = createServer(async (req, res) => {
           const priority = STAGE_PRIORITY[stage];
           if (priority) props.Priority = { select: { name: priority } };
         }
-        await notionPatch(id, props);
+        await notionPatch(id, props, effective);
         const appliedPriority = stage === "Passed" ? null : (STAGE_PRIORITY[stage] || null);
         send(res, 200, JSON.stringify({ ok: true, stage, priority: appliedPriority }), MIME[".json"]);
       } catch (e) {

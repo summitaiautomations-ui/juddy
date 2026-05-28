@@ -1,0 +1,53 @@
+Recruiting Dashboard — Live Sync Setup
+=======================================
+
+Goal: get the dashboard running locally so dragging cards between stages
+saves the change back to Notion.
+
+ONE-TIME STEPS
+--------------
+
+1) Install Node.js (skip if already installed)
+   - Check first: open Terminal, type:   node --version
+   - If you see something like "v20.x", you're set.
+   - If not, download the macOS installer (LTS) from:
+       https://nodejs.org/en/download
+     Run the installer. Done.
+
+2) Create a Notion integration (gives you the token)
+   - Open in your browser:
+       https://www.notion.so/profile/integrations
+   - Click "+ New integration".
+   - Name it: Recruiting Dashboard
+   - Associated workspace: choose your workspace.
+   - Type: Internal.
+   - Submit, then on the next screen click "Show" next to the
+     "Internal Integration Secret" and COPY it. It starts with
+     "ntn_" or "secret_". Save it somewhere safe for a moment.
+
+3) Share the Recruiting Pipeline database with the integration
+   - Open the Recruiting Pipeline database in Notion.
+   - Top right: click the "..." menu → Connections → "+ Add connections"
+   - Search and select "Recruiting Dashboard". Confirm.
+
+4) Unzip this folder somewhere convenient (e.g. ~/Documents/dashboard).
+
+EVERYDAY USE
+------------
+
+5) Double-click "Start-Dashboard.command" in the unzipped folder.
+   - A Terminal window opens (leave it running).
+   - Your browser opens to http://localhost:8800
+   - (First time only) in the dashboard header, click "Enable Notion sync →"
+     and paste your token. The browser remembers it.
+
+6) Drag candidates between stage columns. Each drop syncs to Notion.
+   - Offer column → auto-sets priority to Hot
+   - Interview column → auto-sets priority to Warm
+   - Passed column → clears priority
+
+When you're done, close the Terminal window. Next time, just double-click
+Start-Dashboard.command again.
+
+If anything goes wrong, tell Claude and share the line from the Terminal
+window — happy to debug.

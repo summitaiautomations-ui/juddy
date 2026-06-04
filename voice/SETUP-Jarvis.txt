@@ -1,0 +1,72 @@
+Jarvis — Setup
+==============
+
+Always-listening voice assistant for your recruiting pipeline. Say "Jarvis"
+and ask it anything: "who needs me today," "what's Sims' status," "add Bob
+Smith, 25 units, 9 million, at Caliber, recruiter Mark Kurth." It searches,
+creates, updates, and moves cards in your Notion pipeline.
+
+ONE-TIME SETUP
+--------------
+
+1) Install Python 3 (skip if already installed)
+   - Check:  open Terminal, type:  python3 --version
+   - If "command not found", install from:
+       https://www.python.org/downloads/
+
+2) Get your three keys
+
+   a. Picovoice Access Key (free, no credit card)
+      - Go to:  https://console.picovoice.ai/
+      - Sign up; the Access Key is on the front page. Copy it.
+
+   b. Anthropic API key
+      - Go to:  https://console.anthropic.com/
+      - Settings -> API Keys -> Create Key. Copy it.
+
+   c. Notion token
+      - You already have one if you set up the dashboard. If not, see
+        the dashboard SETUP.txt for the integration steps.
+
+3) Save the keys
+   - Copy ".env.example" to ".env"  (right-click -> Duplicate, rename)
+   - Open .env and paste in the three values, no quotes:
+       PICOVOICE_ACCESS_KEY=ntn_...
+       ANTHROPIC_API_KEY=sk-ant-...
+       NOTION_TOKEN=ntn_...
+
+4) Run it
+   - Double-click Start-Jarvis.command
+   - macOS may say "cannot be opened because the developer cannot be verified."
+     Right-click -> Open -> click "Open" in the dialog. (First time only.)
+   - Terminal opens, installs Python deps the first time (a few minutes),
+     and downloads the Whisper speech model (~150 MB the first run).
+   - When you see "Listening for jarvis," you're live.
+   - macOS will ask for Microphone access. Allow it for Terminal.
+
+5) Talk to it
+   - Say: "Jarvis"
+   - You'll hear a chime. Then ask your question or give your command.
+   - It will speak back.
+
+EXAMPLES
+--------
+   "Jarvis, who needs me today."
+   "Jarvis, what is the pipeline summary."
+   "Jarvis, add Bob Smith, twenty-five units, nine million, at Caliber,
+    recruiter Mark Kurth."
+   "Jarvis, move Chris Sims to offer stage."
+   "Jarvis, what is Annie Gladden's NMLS."
+
+To stop: Ctrl+C in the Terminal window, or close the window.
+To start again: double-click Start-Jarvis.command.
+
+TROUBLESHOOTING
+---------------
+- "Microphone permission denied": System Settings -> Privacy & Security ->
+  Microphone -> turn on for Terminal.
+- Wake word missing your voice: speak a touch louder; "Jarvis" works best
+  with a clear J at the start.
+- It hears you but answers wrong: tell Claude what you really meant on the
+  next turn -- it keeps short-term memory of the session.
+- ANY other weirdness: paste the Terminal output to Claude and ask.

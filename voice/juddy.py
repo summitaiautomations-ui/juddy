@@ -9,7 +9,6 @@ Pipeline per turn:
   5. Speak the reply with macOS `say` (formal British butler voice)
 
 Env required:
-  PICOVOICE_ACCESS_KEY   (free from picovoice.ai/console)
   ANTHROPIC_API_KEY      (Claude)
   NOTION_TOKEN           (same integration as the dashboard)
 """
@@ -18,25 +17,22 @@ from __future__ import annotations
 
 import json
 import os
-import struct
 import subprocess
 import sys
-import time
-import wave
 from datetime import datetime
-from io import BytesIO
-from queue import Queue
 
 import numpy as np
-import pvporcupine
+import openwakeword
 import sounddevice as sd
 from anthropic import Anthropic
 from faster_whisper import WhisperModel
+from openwakeword.model import Model as WakeModel
 
 import notion_tools
 
 # ---------- config ----------
-WAKE_KEYWORD = "jarvis"
+WAKE_MODEL_NAME = "hey_jarvis_v0.1"   # "Hey Jarvis" pretrained model
+WAKE_THRESHOLD = 0.5
 WHISPER_MODEL = os.environ.get("WHISPER_MODEL", "small.en")
 TTS_VOICE = os.environ.get("TTS_VOICE", "Daniel")  # British butler
 TTS_RATE = os.environ.get("TTS_RATE", "190")
@@ -172,18 +168,20 @@ def play_chime(freq: int = 880, ms: int = 120) -> None:
     sd.play(audio, samplerate=sr); sd.wait()
 
 
-def listen_for_wake(porcupine: pvporcupine.Porcupine) -> None:
-    """Block until the wake word fires."""
-    frames_per_block = porcupine.frame_length
-    with sd.RawInputStream(
-        samplerate=porcupine.sample_rate, blocksize=frames_per_block,
-        dtype="int16", channels=1,
-    ) as stream:
+def listen_for_wake(wake_model: WakeModel) -> None:
+    """Block until 'Hey Jarvis' wake word is detected."""
+    sample_rate = 16000
+    chunk = 1280  # ~80ms at 16 kHz, required by OpenWakeWord
+    wake_model.reset()
+    with sd.RawInputStream(samplerate=sample_rate, blocksize=chunk,
+                           dtype="int16", channels=1) as stream:
         while True:
-            data, _ = stream.read(frames_per_block)
-            pcm = struct.unpack_from("h" * frames_per_block, data)
-            if porcupine.process(pcm) >= 0:
-                return
+            data, _ = stream.read(chunk)
+            audio = np.frombuffer(data, dtype=np.int16)
+            preds = wake_model.predict(audio)
+            for _, score in preds.items():
+                if score >= WAKE_THRESHOLD:
+                    return
 
 
 def record_utterance(sample_rate: int = 16000) -> np.ndarray:
@@ -287,10 +285,13 @@ def claude_turn(client: Anthropic, user_text: str, history: list[dict]) -> str:
 # ---------- main loop ----------
 
 def main() -> None:
-    for var in ("PICOVOICE_ACCESS_KEY", "ANTHROPIC_API_KEY", "NOTION_TOKEN"):
+    for var in ("ANTHROPIC_API_KEY", "NOTION_TOKEN"):
         if not os.environ.get(var):
             print(f"error: {var} not set. See SETUP-Jarvis.txt.", file=sys.stderr)
             sys.exit(1)
+
+    print("Downloading wake-word models (one-time, ~10 MB)...")
+    openwakeword.utils.download_models()
 
     print("Loading Whisper (this takes ~20s the first run while the model downloads)...")
     whisper_model = WhisperModel(
@@ -298,11 +299,8 @@ def main() -> None:
     )
     print(f"Whisper ready ({WHISPER_MODEL}).")
 
-    porcupine = pvporcupine.create(
-        access_key=os.environ["PICOVOICE_ACCESS_KEY"],
-        keywords=[WAKE_KEYWORD],
-    )
-    print(f"Listening for \"{WAKE_KEYWORD}\". Press Ctrl+C to stop.")
+    wake_model = WakeModel(wakeword_models=[WAKE_MODEL_NAME])
+    print("Listening for \"Hey Jarvis\". Press Ctrl+C to stop.")
 
     client = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
@@ -311,7 +309,7 @@ def main() -> None:
 
     try:
         while True:
-            listen_for_wake(porcupine)
+            listen_for_wake(wake_model)
             play_chime()
             print(f"[{datetime.now().strftime('%H:%M:%S')}] Wake. Listening...")
             audio = record_utterance()
@@ -333,8 +331,6 @@ def main() -> None:
                 history = history[-20:]
     except KeyboardInterrupt:
         pass
-    finally:
-        porcupine.delete()
 
 
 if __name__ == "__main__":

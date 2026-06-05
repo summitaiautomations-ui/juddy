@@ -9,9 +9,12 @@ cd "$(dirname "$0")" || exit 1
 # Make sure common Python install locations are on PATH.
 export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 
-# Load env from .env if present (PICOVOICE_ACCESS_KEY, ANTHROPIC_API_KEY, NOTION_TOKEN)
+# Load env from .env if present, falling back to env (without the dot) since
+# macOS Finder won't let you easily save a dot-prefixed file.
 if [ -f .env ]; then
   set -a; . ./.env; set +a
+elif [ -f env ]; then
+  set -a; . ./env; set +a
 fi
 
 if ! command -v python3 >/dev/null; then

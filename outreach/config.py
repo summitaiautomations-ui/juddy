@@ -39,7 +39,7 @@ def load_config():
         },
         "birthday_message_template": os.environ.get(
             "BIRTHDAY_MESSAGE_TEMPLATE",
-            "Hey {name} — happy early birthday!",
+            "Hi - It's Justin Neal from my work cell. Happy early birthday {name}!",
         ),
         "nudge_message_template": os.environ.get(
             "NUDGE_MESSAGE_TEMPLATE",

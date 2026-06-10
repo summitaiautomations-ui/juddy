@@ -73,9 +73,9 @@ processing — no back-fill of historical email.
 
 ### `day1_info`
 A second Day-1 touch sent **a couple of hours after the welcome**, during
-business hours only (default 9–17 local). For each lead added today whose
-Notes show the welcome marker but not yet an info-touch marker, sends an
-SMS with generic info about Justin + Summit Mortgage + linktree link.
+business hours only (default 9 AM – 9 PM local). For each lead added today
+whose Notes show the welcome marker but not yet an info-touch marker, sends
+an SMS with generic info about Justin + Summit Mortgage + linktree link.
 
 Sent **regardless of whether the lead has already replied** — per Justin's
 ask, the Day-1 sequence fires both touches no matter what. The

@@ -51,6 +51,7 @@ def load_config():
         # Empty default — Day-1 info touch is suppressed until set.
         "info_touch_message_template": os.environ.get("INFO_TOUCH_MESSAGE_TEMPLATE", ""),
         # Business-hours window for the info touch (24-hour local time).
+        # 9 AM – 9 PM per Justin's preference; welcome SMS is exempt.
         "business_hours_start": os.environ.get("BUSINESS_HOURS_START", "9"),
-        "business_hours_end": os.environ.get("BUSINESS_HOURS_END", "17"),
+        "business_hours_end": os.environ.get("BUSINESS_HOURS_END", "21"),
     }

@@ -32,7 +32,10 @@ def load_config():
             "app_password": os.environ.get("GMAIL_APP_PASSWORD", ""),
         },
         "digest": {
-            "to_email": os.environ.get("DIGEST_TO_EMAIL", ""),
+            "to_emails": [
+                e.strip() for e in os.environ.get("DIGEST_TO_EMAIL", "").split(",")
+                if e.strip()
+            ],
         },
         "justin": {
             "personal_cell": os.environ.get("JUSTIN_PERSONAL_CELL", ""),

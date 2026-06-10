@@ -278,14 +278,14 @@ def _compose_plain(today, summary, closings, hot, warm, cold_count, replies):
 def _send_email(cfg, subject, html_body, plain_body):
     user = cfg["gmail"]["email"]
     pw = cfg["gmail"]["app_password"]
-    to = cfg["digest"]["to_email"]
-    if not (user and pw and to):
+    recipients = cfg["digest"]["to_emails"]
+    if not (user and pw and recipients):
         raise RuntimeError(
             "Digest email requires GMAIL_EMAIL, GMAIL_APP_PASSWORD, DIGEST_TO_EMAIL"
         )
     msg = EmailMessage()
     msg["From"] = user
-    msg["To"] = to
+    msg["To"] = ", ".join(recipients)
     msg["Subject"] = subject
     msg.set_content(plain_body)
     msg.add_alternative(html_body, subtype="html")

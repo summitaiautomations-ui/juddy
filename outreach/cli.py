@@ -2,11 +2,12 @@
 
 import sys
 
-from outreach import birthday, digest, scan
+from outreach import birthday, day1_info, digest, scan
 
 FLOWS = {
     "birthday": birthday.run,
     "scan": scan.run,
+    "day1_info": day1_info.run,
     "digest": digest.run,
 }
 

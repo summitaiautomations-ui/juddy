@@ -14,7 +14,7 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from outreach import config, notion_client, sms
+from outreach import config, notion_client, realtor_com, sms
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 LEDGER_PATH = SCRIPT_DIR / "inbound_ledger.json"
@@ -90,6 +90,88 @@ def _fetch_new(mail, last_uid):
         body = _extract_body(msg)
         out.append((uid_bytes.decode(), from_addr, subject, body))
     return out
+
+
+def _send_welcome(cfg, lead_phone, lead_name, lead_id):
+    """Send the initial outreach SMS to a freshly-arrived Realtor.com lead.
+
+    Suppressed until WELCOME_MESSAGE_TEMPLATE is set in .env — leads are
+    still created in Notion, but no SMS fires. Dedupe namespace is the
+    Realtor.com Lead ID so the same lead can never be welcomed twice.
+    """
+    template = cfg.get("welcome_message_template") or ""
+    if not template:
+        return 0, "skipped:WELCOME_MESSAGE_TEMPLATE not set"
+    body = template.format(name=realtor_com.first_name(lead_name))
+    return sms.send_sms_once(
+        cfg, lead_phone, body,
+        source="lead_welcome",
+        dedupe_namespace=f"welcome:{lead_id}",
+    )
+
+
+def _process_realtor_lead(cfg, body, state, today_iso):
+    """Parse a Realtor.com email, create the Notion record (if not already
+    in the pipeline), and fire the welcome SMS (if template configured).
+    """
+    lead = realtor_com.parse(body)
+    if not lead:
+        state["digest_queue"].append({
+            "received_at": today_iso,
+            "kind": "realtor_lead_malformed",
+            "matched": False,
+        })
+        return "malformed"
+
+    existing = notion_client.find_by_phone(
+        cfg["notion"]["token"], cfg["notion"]["database_id"],
+        sms.normalize_phone(lead["phone"]),
+    )
+    if existing:
+        notion_client.append_note(
+            cfg["notion"]["token"], existing["id"],
+            f"[{today_iso}] Realtor.com re-received this lead (existing record). "
+            f"Lead ID {lead['lead_id']}. No welcome fired.",
+        )
+        state["digest_queue"].append({
+            "received_at": today_iso,
+            "kind": "realtor_lead_duplicate",
+            "name": existing["name"],
+            "lead_id": lead["lead_id"],
+            "matched": True,
+        })
+        return "duplicate"
+
+    page_id = notion_client.create_lead(
+        cfg["notion"]["token"], cfg["notion"]["database_id"],
+        lead, realtor_com.build_notes_summary(lead),
+    )
+
+    status, resp = _send_welcome(cfg, lead["phone"], lead["name"], lead["lead_id"])
+    stamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+    if 200 <= status < 300:
+        outcome = "welcomed"
+        notion_client.append_note(
+            cfg["notion"]["token"], page_id,
+            f"[{stamp}] AUTO welcome SMS sent.",
+        )
+    else:
+        outcome = "no_welcome"
+        notion_client.append_note(
+            cfg["notion"]["token"], page_id,
+            f"[{stamp}] AUTO welcome SMS NOT sent ({resp[:200]}).",
+        )
+
+    state["digest_queue"].append({
+        "received_at": today_iso,
+        "kind": "realtor_lead_new",
+        "name": lead["name"],
+        "phone": lead["phone"],
+        "lead_id": lead["lead_id"],
+        "welcomed": outcome == "welcomed",
+        "matched": True,
+    })
+    return outcome
 
 
 def _send_nudge(cfg, lead_name, lead_phone):
@@ -190,13 +272,29 @@ def run(today=None):
 
     state["last_uid"] = str(max(int(r[0]) for r in results))
 
-    logged = unknown = 0
+    counts = {"reply": 0, "unknown_reply": 0, "welcomed": 0,
+              "no_welcome": 0, "duplicate_lead": 0, "malformed_lead": 0}
     for uid, from_addr, subject, body in results:
-        outcome = _process_reply(cfg, from_addr, subject, body, state, today)
-        if outcome == "logged":
-            logged += 1
+        if realtor_com.is_realtor_lead_email(from_addr, subject):
+            outcome = _process_realtor_lead(cfg, body, state, today)
+            if outcome == "welcomed":
+                counts["welcomed"] += 1
+            elif outcome == "no_welcome":
+                counts["no_welcome"] += 1
+            elif outcome == "duplicate":
+                counts["duplicate_lead"] += 1
+            else:
+                counts["malformed_lead"] += 1
         else:
-            unknown += 1
+            outcome = _process_reply(cfg, from_addr, subject, body, state, today)
+            if outcome == "logged":
+                counts["reply"] += 1
+            else:
+                counts["unknown_reply"] += 1
 
     save_state(state)
-    print(f"scan: logged={logged} unknown={unknown}")
+    print(
+        f"scan: reply={counts['reply']} unknown_reply={counts['unknown_reply']} "
+        f"welcomed={counts['welcomed']} no_welcome={counts['no_welcome']} "
+        f"dup_lead={counts['duplicate_lead']} malformed={counts['malformed_lead']}"
+    )

@@ -1,9 +1,11 @@
 """Minimal Notion client for the Mortgage Pipeline DB.
 
-Fetches past-client records with DOB + phone, finds records by phone,
-updates simple properties (date, select), and appends activity lines
-back to a record's Notes property.
+Fetches past-client records with DOB + phone, finds records by phone or
+email, creates new lead records from Realtor.com data, updates simple
+properties (date, select), and appends activity lines to Notes.
 """
+
+from datetime import datetime
 
 import requests
 
@@ -167,6 +169,96 @@ def is_engaged(notes_text):
     """True if the Notes already show any received message — used by nurture
     flows to stop sending automated texts once Justin takes over."""
     return "RCVD:" in (notes_text or "")
+
+
+_LOAN_TYPE_MAP = {
+    "conventional": "Conventional",
+    "fha": "FHA",
+    "va": "VA",
+    "usda": "USDA",
+    "jumbo": "Jumbo",
+}
+
+
+def _safe_int(value):
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+
+def create_lead(token, database_id, lead, summary_notes):
+    """Create a new pipeline page from a parsed Realtor.com lead.
+
+    Pre-fills Lead Name, Phone, Email, Status=Lead, Priority=Hot,
+    Lead Source=Realtor.com, Date Added, Last Contact, Loan Type
+    (if mappable), Loan Amount, Property Address, and Notes.
+
+    Returns the new page ID.
+    """
+    today = datetime.now().date().isoformat()
+    name = lead.get("name") or "(unknown)"
+    phone = lead.get("phone") or ""
+    email_addr = lead.get("email") or ""
+
+    properties = {
+        "Lead Name": {"title": [{"type": "text", "text": {"content": name}}]},
+        "Status": {"select": {"name": "Lead"}},
+        "Priority": {"select": {"name": "Hot"}},
+        "Lead Source": {"select": {"name": "Realtor.com"}},
+        "Date Added": {"date": {"start": today}},
+        "Last Contact": {"date": {"start": today}},
+    }
+
+    if phone:
+        properties["Phone"] = {"phone_number": phone}
+    if email_addr:
+        properties["Email"] = {"email": email_addr}
+
+    loan_type = _LOAN_TYPE_MAP.get((lead.get("loan_product") or "").lower())
+    if loan_type:
+        properties["Loan Type"] = {"select": {"name": loan_type}}
+
+    property_value = _safe_int(lead.get("property_value"))
+    if property_value:
+        properties["Loan Amount"] = {"number": property_value}
+
+    address_parts = [lead.get("city", ""), lead.get("state", ""), lead.get("zip", "")]
+    address = ", ".join(p for p in address_parts if p)
+    if address:
+        properties["Property Address"] = {
+            "rich_text": [{"type": "text", "text": {"content": address}}],
+        }
+
+    properties["Notes"] = {"rich_text": _to_rich_text_chunks(summary_notes)}
+
+    r = requests.post(
+        f"{API}/pages",
+        json={"parent": {"database_id": database_id}, "properties": properties},
+        headers=_headers(token), timeout=30,
+    )
+    r.raise_for_status()
+    return r.json()["id"]
+
+
+def find_leads_for_info_touch(token, database_id, today_date):
+    """Yield leads added today that got their welcome but not the info touch.
+
+    Driven entirely by the marker lines in the Notes property — no
+    separate state file needed.
+    """
+    body = {
+        "filter": {
+            "and": [
+                {"property": "Date Added", "date": {"equals": today_date.isoformat()}},
+                {"property": "Notes", "rich_text": {"contains": "AUTO welcome SMS sent"}},
+                {"property": "Notes", "rich_text": {"does_not_contain": "AUTO info touch SMS"}},
+            ],
+        },
+        "page_size": 100,
+    }
+    for page in _query(token, database_id, body):
+        yield _record_from_page(page)
 
 
 def fetch_overdue_followups(token, database_id, today_date):

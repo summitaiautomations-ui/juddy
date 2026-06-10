@@ -45,4 +45,12 @@ def load_config():
             "NUDGE_MESSAGE_TEMPLATE",
             "{name} replied — your turn.",
         ),
+        # Empty default — welcome SMS is suppressed until Justin sets this
+        # in .env. New leads are still added to Notion either way.
+        "welcome_message_template": os.environ.get("WELCOME_MESSAGE_TEMPLATE", ""),
+        # Empty default — Day-1 info touch is suppressed until set.
+        "info_touch_message_template": os.environ.get("INFO_TOUCH_MESSAGE_TEMPLATE", ""),
+        # Business-hours window for the info touch (24-hour local time).
+        "business_hours_start": os.environ.get("BUSINESS_HOURS_START", "9"),
+        "business_hours_end": os.environ.get("BUSINESS_HOURS_END", "17"),
     }

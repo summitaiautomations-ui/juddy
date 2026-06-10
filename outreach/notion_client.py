@@ -5,7 +5,7 @@ email, creates new lead records from Realtor.com data, updates simple
 properties (date, select), and appends activity lines to Notes.
 """
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -262,7 +262,11 @@ def find_leads_for_info_touch(token, database_id, today_date):
 
 
 def fetch_overdue_followups(token, database_id, today_date):
-    """Yield active records whose Next Follow-Up is on or before today."""
+    """Yield active records whose Next Follow-Up is on or before today.
+
+    Each record carries name, priority, status, loan amount, and fu_date so
+    the digest can rank by days-overdue and at-risk commission.
+    """
     body = {
         "filter": {
             "and": [
@@ -273,14 +277,13 @@ def fetch_overdue_followups(token, database_id, today_date):
         "sorts": [{"property": "Next Follow-Up", "direction": "ascending"}],
         "page_size": 100,
     }
-    from datetime import datetime as _dt
     for page in _query(token, database_id, body):
         props = page["properties"]
         fu = _date_start(props.get("Next Follow-Up", {}))
         if not fu:
             continue
         try:
-            fu_date = _dt.strptime(fu[:10], "%Y-%m-%d").date()
+            fu_date = datetime.strptime(fu[:10], "%Y-%m-%d").date()
         except ValueError:
             continue
         yield {
@@ -288,7 +291,41 @@ def fetch_overdue_followups(token, database_id, today_date):
             "name": _title(props.get("Lead Name", {})),
             "priority": _select_name(props.get("Priority", {})),
             "status": _select_name(props.get("Status", {})),
+            "loan": props.get("Loan Amount", {}).get("number"),
             "fu_date": fu_date,
+        }
+
+
+def fetch_upcoming_closings(token, database_id, today_date, window_days=14):
+    """Yield records with Closing Date within today..today+window_days."""
+    end_date = today_date + timedelta(days=window_days)
+    body = {
+        "filter": {
+            "and": [
+                {"property": "Closing Date", "date": {"on_or_after": today_date.isoformat()}},
+                {"property": "Closing Date", "date": {"on_or_before": end_date.isoformat()}},
+                {"property": "Priority", "select": {"does_not_equal": "Dead"}},
+            ],
+        },
+        "sorts": [{"property": "Closing Date", "direction": "ascending"}],
+        "page_size": 100,
+    }
+    for page in _query(token, database_id, body):
+        props = page["properties"]
+        close = _date_start(props.get("Closing Date", {}))
+        if not close:
+            continue
+        try:
+            close_date = datetime.strptime(close[:10], "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        yield {
+            "id": page["id"],
+            "name": _title(props.get("Lead Name", {})),
+            "priority": _select_name(props.get("Priority", {})),
+            "status": _select_name(props.get("Status", {})),
+            "loan": props.get("Loan Amount", {}).get("number"),
+            "closing_date": close_date,
         }
 
 

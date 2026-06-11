@@ -11,7 +11,7 @@ mkdir -p "${LOG_DIR}"
 ts() { date "+%Y-%m-%d %H:%M:%S"; }
 
 # The always-on launchd jobs we keep an eye on.
-JOBS=("com.juddy.claude-code" "com.juddy.jarvis")
+JOBS=("com.juddy.claude-code" "com.juddy.jarvis" "com.juddy.jarvis-capture")
 
 # Is a launchd job loaded and running? `launchctl list <label>` prints a dict
 # with PID = <n> when running, PID = - when loaded but not running.

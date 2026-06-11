@@ -49,31 +49,62 @@ def _render_workspace_memory():
         f"**{'ON' if config.BORROWER_DRAFT_ONLY else 'OFF'}**\n"
         f"- Claude permission mode: **{config.CLAUDE_PERMISSION_MODE}**\n\n"
     )
-    (config.WORKSPACE_DIR / "CLAUDE.md").write_text(header + "\n\n---\n\n".join(parts))
+    memory = header + "\n\n---\n\n".join(parts)
+    # Both the voice loop and the capture worker need the same foundation, and
+    # they run in separate working directories to keep their threads isolated.
+    for workspace in (config.WORKSPACE_DIR, config.CAPTURE_WORKSPACE_DIR):
+        workspace.mkdir(parents=True, exist_ok=True)
+        (workspace / "CLAUDE.md").write_text(memory)
 
 
 class Brain:
     def __init__(self):
         self._started = False
         config.WORKSPACE_DIR.mkdir(parents=True, exist_ok=True)
+        config.CAPTURE_WORKSPACE_DIR.mkdir(parents=True, exist_ok=True)
         _render_workspace_memory()
 
     def ask(self, text: str) -> str:
+        """Handle a spoken command, continuing the rolling voice conversation."""
+        reply = self._run(text, cwd=config.WORKSPACE_DIR, continue_=self._started)
+        self._started = True
+        return reply
+
+    def process_transcript(self, transcript: str, source: str = "recording") -> str:
+        """Summarize a captured conversation and log highlights to Notion.
+
+        Runs one-shot in its own workspace so it never disturbs the voice
+        conversation thread. The capture playbook (if present) drives the
+        summary / next-steps / pipeline-update behaviour.
+        """
+        capture_md = config.PLAYBOOKS_DIR / "capture.md"
+        instructions = (
+            capture_md.read_text()
+            if capture_md.exists()
+            else "Summarize this conversation, list next steps, and log key "
+            "highlights to the matching Notion pipeline record."
+        )
+        prompt = (
+            f"{instructions}\n\n---\nSOURCE: {source}\n\nTRANSCRIPT:\n{transcript}"
+        )
+        return self._run(prompt, cwd=config.CAPTURE_WORKSPACE_DIR, continue_=False)
+
+    def _run(self, prompt: str, cwd, continue_: bool) -> str:
         cmd = [
-            config.CLAUDE_BIN, "-p", text,
+            config.CLAUDE_BIN, "-p", prompt,
             "--output-format", "json",
             "--append-system-prompt", PERSONA,
             "--permission-mode", config.CLAUDE_PERMISSION_MODE,
         ]
         if config.CLAUDE_MODEL:
             cmd += ["--model", config.CLAUDE_MODEL]
-        if self._started:
+        if continue_:
             cmd.append("--continue")  # keep the conversation going
 
         try:
             out = subprocess.run(
                 cmd,
-                cwd=str(config.WORKSPACE_DIR),
+                cwd=str(cwd),
                 capture_output=True,
                 text=True,
                 timeout=config.CLAUDE_TIMEOUT_S,
@@ -86,7 +117,6 @@ class Brain:
             detail = err[-1] if err else "unknown error"
             return f"Sorry, I hit a problem talking to Claude: {detail}"
 
-        self._started = True
         return _parse_result(out.stdout)
 
 

@@ -66,3 +66,11 @@ ENABLED_PLAYBOOKS = [
 # Safety: borrower / consumer-facing messages are drafted for human approval,
 # never auto-sent. Recruiting (B2B) is governed by CLAUDE_PERMISSION_MODE.
 BORROWER_DRAFT_ONLY = _env_bool("JARVIS_BORROWER_DRAFT_ONLY", True)
+
+# --- Conversation capture (Plaud recorder, mic notes, dropped audio) --------
+# Drop an audio file or transcript here and Jarvis will transcribe it (if
+# needed), summarize it, pull next steps, and log highlights to Notion. Point
+# this at a cloud-synced folder (iCloud/Dropbox) that your Plaud exports into.
+CAPTURE_INBOX_DIR = Path(os.environ.get("JARVIS_INBOX", Path.home() / "JarvisInbox"))
+CAPTURE_WORKSPACE_DIR = WORKSPACE_DIR / "capture"  # isolated brain thread for capture
+CAPTURE_POLL_S = float(os.environ.get("JARVIS_CAPTURE_POLL", "10"))

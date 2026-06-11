@@ -80,6 +80,7 @@ install_agent "com.juddy.claude-code" "${SCRIPT_DIR}/com.juddy.claude-code.plist
 
 if [[ "${INSTALL_JARVIS}" == "1" && -x "${JARVIS_PYTHON}" ]]; then
   install_agent "com.juddy.jarvis" "${SCRIPT_DIR}/com.juddy.jarvis.plist.template"
+  install_agent "com.juddy.jarvis-capture" "${SCRIPT_DIR}/com.juddy.jarvis-capture.plist.template"
 else
   echo "==> skipping com.juddy.jarvis (no venv; run jarvis/setup.sh then re-run)"
 fi
@@ -98,11 +99,13 @@ cat <<EOF
   inspect the agents:
     launchctl print gui/$(id -u)/com.juddy.claude-code
     launchctl print gui/$(id -u)/com.juddy.jarvis
+    launchctl print gui/$(id -u)/com.juddy.jarvis-capture
     launchctl print gui/$(id -u)/com.juddy.healthcheck
 
   tail the logs:
     tail -f "${LOG_DIR}"/claude-code.{out,err}.log
     tail -f "${LOG_DIR}"/jarvis.log
+    tail -f "${LOG_DIR}"/jarvis-capture.log
     tail -f "${LOG_DIR}"/healthcheck.log
 
   uninstall:

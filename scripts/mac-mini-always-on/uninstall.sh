@@ -22,6 +22,7 @@ remove_agent() {
 
 remove_agent "com.juddy.claude-code"
 remove_agent "com.juddy.jarvis"
+remove_agent "com.juddy.jarvis-capture"
 remove_agent "com.juddy.healthcheck"
 
 echo "==> cancelling nightly restart"

@@ -76,3 +76,5 @@ CAPTURE_WORKSPACE_DIR = WORKSPACE_DIR / "capture"  # isolated brain thread for c
 CAPTURE_POLL_S = float(os.environ.get("JARVIS_CAPTURE_POLL", "10"))
 # Safety cap on a voice-triggered "take notes" session (default 2 hours).
 CAPTURE_MAX_SESSION_S = float(os.environ.get("JARVIS_NOTE_MAX", "7200"))
+# Speak the TL;DR aloud when a capture finishes processing.
+CAPTURE_READBACK = _env_bool("JARVIS_CAPTURE_READBACK", True)

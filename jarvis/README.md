@@ -136,3 +136,4 @@ Everything is tunable via environment variables (see `config.py`). Common ones:
 | `JARVIS_PLAYBOOKS`        | `recruiting,mortgage` | which playbooks to load    |
 | `JARVIS_BORROWER_DRAFT_ONLY` | `true`   | never auto-send to consumers         |
 | `JARVIS_INBOX`            | `~/JarvisInbox` | capture inbox folder            |
+| `JARVIS_CAPTURE_READBACK` | `true`      | speak the TL;DR after capture        |

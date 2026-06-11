@@ -8,6 +8,7 @@ highlights to the matching Notion pipeline record.
 Run it with:  python -m jarvis.capture
 """
 import logging
+import re
 import shutil
 import sys
 import time
@@ -16,6 +17,7 @@ from pathlib import Path
 from . import config
 from .brain import Brain
 from .stt import Transcriber
+from .tts import Speaker
 
 AUDIO_EXTS = {".m4a", ".mp3", ".wav", ".flac", ".m4b", ".aac", ".ogg", ".mp4"}
 TEXT_EXTS = {".txt", ".md", ".vtt", ".srt"}
@@ -43,6 +45,36 @@ def _ready_files(inbox: Path):
             yield path
 
 
+def _extract_tldr(summary: str) -> str:
+    """Pull the TL;DR out of the brain's summary for a spoken read-back.
+
+    Falls back to the first couple of sentences if there's no TL;DR heading.
+    """
+    lines = summary.splitlines()
+    for i, line in enumerate(lines):
+        if re.search(r"tl;?dr", line, re.IGNORECASE):
+            after = re.split(r"tl;?dr", line, flags=re.IGNORECASE)[-1]
+            collected = []
+            head = after.lstrip(" :*-—–)").strip()
+            if head:
+                collected.append(head)
+            for nxt in lines[i + 1:]:
+                s = nxt.strip()
+                if not s:
+                    if collected:
+                        break
+                    continue
+                if re.match(r"^(#{1,6}\s|\d+[.)]\s|[-*]\s|\*\*)", s):
+                    break
+                collected.append(s)
+            text = " ".join(collected).strip()
+            if text:
+                return text
+    plain = re.sub(r"[#*`>_]", "", summary).strip()
+    sentences = re.split(r"(?<=[.!?])\s+", plain)
+    return " ".join(sentences[:2]).strip()
+
+
 def _is_stable(path: Path, wait: float = 2.0) -> bool:
     """Guard against picking up a file that's still syncing/being written."""
     try:
@@ -53,7 +85,7 @@ def _is_stable(path: Path, wait: float = 2.0) -> bool:
     return path.exists() and path.stat().st_size == size and size > 0
 
 
-def _process(path: Path, stt: Transcriber, brain: Brain, log: logging.Logger,
+def _process(path: Path, stt: Transcriber, brain: Brain, speaker, log: logging.Logger,
              processed: Path, failed: Path):
     try:
         if path.suffix.lower() in AUDIO_EXTS:
@@ -73,6 +105,11 @@ def _process(path: Path, stt: Transcriber, brain: Brain, log: logging.Logger,
             f"# Capture summary — {path.name}\n\n{result}\n"
         )
         shutil.move(str(path), str(processed / path.name))
+
+        if speaker is not None:
+            tldr = _extract_tldr(result)
+            if tldr:
+                speaker.say(f"Here's the recap. {tldr}")
     except Exception as exc:  # noqa: BLE001 — keep the worker alive on any one file
         log.exception("Failed to process %s: %s", path.name, exc)
         shutil.move(str(path), str(failed / path.name))
@@ -89,12 +126,13 @@ def main():
     log.info("Loading models ...")
     stt = Transcriber()
     brain = Brain()
+    speaker = Speaker() if config.CAPTURE_READBACK else None
     log.info("Watching %s for recordings (Plaud, mic notes, dropped audio).", inbox)
 
     while True:
         for path in _ready_files(inbox):
             if _is_stable(path):
-                _process(path, stt, brain, log, processed, failed)
+                _process(path, stt, brain, speaker, log, processed, failed)
         time.sleep(config.CAPTURE_POLL_S)
 
 

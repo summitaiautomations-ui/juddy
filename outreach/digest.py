@@ -14,7 +14,7 @@ from email.message import EmailMessage
 
 from outreach import config, notion_client, scan
 
-COMMISSION_RATE = 0.014
+COMMISSION_RATE = 0.0125  # 125 bps
 CLOSING_WINDOW_DAYS = 14
 
 

@@ -67,6 +67,8 @@ addEventListener("resize", resize); resize();
 let state = "idle";
 let amp = 0;          // smoothed "loudness" driving the animation
 let targetAmp = 0.05;
+let voiceAmp = 0;     // latest real TTS amplitude frame (0..1)
+let voiceTs = -1e9;   // when it arrived (ms)
 const bars = new Array(72).fill(0);
 const ripples = [];
 let t = 0;
@@ -130,8 +132,16 @@ function draw() {
   const [primary, accent] = THEMES[state] || THEMES.idle;
 
   // Drive the amplitude target from state.
+  const haveVoice = (performance.now() - voiceTs) < 250;  // recent real amplitude?
+  let smooth = 0.08;
   if (state === "speaking") {
-    targetAmp = 0.45 + Math.random() * 0.55;
+    if (haveVoice) {
+      targetAmp = 0.12 + voiceAmp * 0.95;  // ride Jarvis's actual voice
+      smooth = 0.55;                        // snap to the real envelope
+    } else {
+      targetAmp = 0.45 + Math.random() * 0.4;  // fallback if no amplitude stream
+      smooth = 0.35;
+    }
   } else if (state === "listening") {
     targetAmp = 0.18 + Math.sin(t * 3) * 0.06 + Math.random() * 0.05;
   } else if (state === "thinking") {
@@ -139,7 +149,7 @@ function draw() {
   } else {
     targetAmp = 0.06 + Math.sin(t * 1.2) * 0.03;
   }
-  amp = lerp(amp, targetAmp, state === "speaking" ? 0.35 : 0.08);
+  amp = lerp(amp, targetAmp, smooth);
 
   // Trailing fade for a soft motion-glow.
   ctx.globalCompositeOperation = "source-over";
@@ -209,7 +219,12 @@ function connect() {
   es.onmessage = (e) => {
     try {
       const msg = JSON.parse(e.data);
-      setState(msg.state, msg.text);
+      if (msg.amp !== undefined) {
+        voiceAmp = msg.amp;
+        voiceTs = performance.now();
+      } else if (msg.state !== undefined) {
+        setState(msg.state, msg.text);
+      }
     } catch (_) {}
   };
   es.onerror = () => { es.close(); setTimeout(connect, 1500); };

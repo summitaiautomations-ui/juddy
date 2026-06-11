@@ -30,6 +30,20 @@ class _State:
         with self._lock:
             return dict(self._current)
 
+    def _broadcast(self, payload: str):
+        # Drop the oldest queued frame rather than the subscriber, so a brief
+        # slow client doesn't get cut off during high-rate amplitude streaming.
+        with self._lock:
+            for q in self._subscribers:
+                try:
+                    q.put_nowait(payload)
+                except queue.Full:
+                    try:
+                        q.get_nowait()
+                        q.put_nowait(payload)
+                    except (queue.Empty, queue.Full):
+                        pass
+
     def update(self, state: str, text: str):
         with self._lock:
             self._current = {
@@ -38,14 +52,10 @@ class _State:
                 "seq": self._current["seq"] + 1,
             }
             payload = json.dumps(self._current)
-            dead = []
-            for q in self._subscribers:
-                try:
-                    q.put_nowait(payload)
-                except queue.Full:
-                    dead.append(q)
-            for q in dead:
-                self._subscribers.discard(q)
+        self._broadcast(payload)
+
+    def amplitude(self, value: float):
+        self._broadcast(json.dumps({"amp": round(float(value), 3)}))
 
     def subscribe(self) -> "queue.Queue[str]":
         q: "queue.Queue[str]" = queue.Queue(maxsize=32)
@@ -139,3 +149,8 @@ class Hud:
     def set_state(self, state: str, text: str = ""):
         if self._server is not None:
             self._state.update(state, text)
+
+    def set_amp(self, value: float):
+        """Stream a live voice-amplitude frame (0..1) to the HUD."""
+        if self._server is not None:
+            self._state.amplitude(value)

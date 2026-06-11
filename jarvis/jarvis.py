@@ -171,7 +171,7 @@ def main():
             reply = brain.ask(text)
             log.info("Jarvis: %s", reply)
             hud.set_state("speaking", reply)
-            tts.say(reply)
+            tts.say(reply, on_amp=hud.set_amp)
 
             wake.reset()
             mic.drain()

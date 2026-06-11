@@ -93,9 +93,10 @@ into (iCloud/Dropbox), or just drop its `.m4a`/`.mp3`/transcript exports into
 
 Jarvis serves a full-screen, animated reactor that reacts to its state — a
 dim idle pulse, listening ripples, a faster "processing" spin, and an
-audio-style equalizer that comes alive while it speaks, with the current text
-as a subtitle. It's built into the voice process (Python stdlib, no extra
-deps), so just open it on the Mac mini's display:
+audio-style equalizer whose rings **move to Jarvis's actual voice** while it
+speaks (the TTS amplitude envelope is streamed to the HUD in sync), with the
+current text as a subtitle. It's built into the voice process (Python stdlib,
+no extra deps), so just open it on the Mac mini's display:
 
 ```bash
 # any browser, then go fullscreen (Cmd-Ctrl-F in Safari / F11 in Chrome):

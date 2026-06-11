@@ -14,7 +14,29 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV="${SCRIPT_DIR}/.venv"
 PY="${PYTHON_BIN:-python3}"
 
+py_minor() { "$1" -c 'import sys; print(sys.version_info[1])' 2>/dev/null || echo 0; }
+py_major() { "$1" -c 'import sys; print(sys.version_info[0])' 2>/dev/null || echo 0; }
+
+# faster-whisper / onnxruntime / numpy need prebuilt wheels, which lag the very
+# newest Python (3.13+). If the default is too new and no PYTHON_BIN override was
+# given, prefer a 3.12/3.11 if one is installed; otherwise warn.
+if [[ -z "${PYTHON_BIN:-}" && "$(py_major "${PY}")" == "3" && "$(py_minor "${PY}")" -ge 13 ]]; then
+  for alt in python3.12 python3.11; do
+    if command -v "${alt}" >/dev/null 2>&1; then
+      echo "==> default python is 3.$(py_minor "${PY}") (too new for some ML wheels); using ${alt}"
+      PY="${alt}"
+      break
+    fi
+  done
+fi
+
 echo "==> python: $("${PY}" --version 2>&1) ($(command -v "${PY}"))"
+
+if [[ "$(py_major "${PY}")" == "3" && "$(py_minor "${PY}")" -ge 13 ]]; then
+  echo "warning: Python 3.$(py_minor "${PY}") may lack wheels for faster-whisper/onnxruntime."
+  echo "         If the pip step fails, run:"
+  echo "           brew install python@3.12 && PYTHON_BIN=python3.12 bash jarvis/setup.sh"
+fi
 
 # sounddevice needs PortAudio. Install it via Homebrew if it's missing.
 if [[ ! -e /opt/homebrew/lib/libportaudio.dylib && ! -e /usr/local/lib/libportaudio.dylib ]]; then

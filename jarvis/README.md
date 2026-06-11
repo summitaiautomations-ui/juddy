@@ -66,13 +66,19 @@ A capture worker (`com.juddy.jarvis-capture`) watches an inbox folder; drop in
 any audio file or transcript and it transcribes (faster-whisper), summarizes,
 pulls next steps, and updates the matching pipeline record.
 
-```bash
-# the inbox (override with JARVIS_INBOX); processed/ and failed/ are created inside
-~/JarvisInbox/
+Three ways to feed it:
 
-# record a live conversation from the mic into the inbox:
+```bash
+# 1. Just talk to Jarvis:
+#    "Hey Jarvis, take notes"  ->  ...conversation...  ->  "Hey Jarvis, done"
+#    It records, drops the audio in the inbox, and summarizes to Notion.
+
+# 2. Record from the mic manually:
 jarvis/.venv/bin/python -m jarvis.record        # Ctrl-C to stop
 jarvis/.venv/bin/python -m jarvis.record 600    # cap at 600s
+
+# 3. Drop any audio/transcript into the inbox (override with JARVIS_INBOX):
+~/JarvisInbox/                                  # processed/ and failed/ created inside
 ```
 
 **Plaud:** point `JARVIS_INBOX` at the cloud-synced folder your Plaud exports

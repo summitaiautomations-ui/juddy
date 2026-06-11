@@ -5,6 +5,7 @@ detector reads from it continuously; once triggered, `record_utterance` reads
 from the same queue until the speaker goes quiet.
 """
 import queue
+import wave
 
 import numpy as np
 import sounddevice as sd
@@ -56,6 +57,15 @@ class Microphone:
                 self._q.get_nowait()
         except queue.Empty:
             pass
+
+
+def save_wav(path, audio_int16: np.ndarray):
+    """Write a mono int16 array to a 16 kHz WAV file."""
+    with wave.open(str(path), "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)  # int16
+        wf.setframerate(config.SAMPLE_RATE)
+        wf.writeframes(audio_int16.tobytes())
 
 
 def rms(frame_int16: np.ndarray) -> float:

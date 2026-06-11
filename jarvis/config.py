@@ -74,3 +74,5 @@ BORROWER_DRAFT_ONLY = _env_bool("JARVIS_BORROWER_DRAFT_ONLY", True)
 CAPTURE_INBOX_DIR = Path(os.environ.get("JARVIS_INBOX", Path.home() / "JarvisInbox"))
 CAPTURE_WORKSPACE_DIR = WORKSPACE_DIR / "capture"  # isolated brain thread for capture
 CAPTURE_POLL_S = float(os.environ.get("JARVIS_CAPTURE_POLL", "10"))
+# Safety cap on a voice-triggered "take notes" session (default 2 hours).
+CAPTURE_MAX_SESSION_S = float(os.environ.get("JARVIS_NOTE_MAX", "7200"))

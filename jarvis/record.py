@@ -9,13 +9,12 @@ summarizes it and logs highlights to Notion. Handy for in-person meetings or
 calls on speakerphone.
 """
 import sys
-import wave
 from datetime import datetime
 
 import numpy as np
 
 from . import config
-from .audio import Microphone
+from .audio import Microphone, save_wav
 
 
 def main():
@@ -46,11 +45,7 @@ def main():
         return
 
     audio = np.concatenate(frames)
-    with wave.open(str(tmp), "wb") as wf:
-        wf.setnchannels(1)
-        wf.setsampwidth(2)  # int16
-        wf.setframerate(config.SAMPLE_RATE)
-        wf.writeframes(audio.tobytes())
+    save_wav(tmp, audio)
     tmp.rename(out)
     print(f"Saved {len(audio) / config.SAMPLE_RATE:.0f}s to {out}")
 

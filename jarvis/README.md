@@ -17,13 +17,25 @@ Everything except Claude runs locally on the machine:
 
 ## Setup
 
+Going live on the Mac mini, in order:
+
 ```bash
-bash jarvis/setup.sh          # creates jarvis/.venv, installs deps, downloads models
-jarvis/.venv/bin/python -m jarvis   # run it; then say "Hey Jarvis"
+bash jarvis/setup.sh            # 1. venv, deps, downloaded models
+bash jarvis/wire-mcp.sh         # 2. connect the brain to Notion (+ Gmail) — see below
+bash scripts/mac-mini-always-on/install.sh   # 3. power settings + all LaunchAgents
+bash jarvis/doctor.sh           # 4. preflight: verify everything is wired up
+```
+
+Or just run it interactively to try it first:
+
+```bash
+bash jarvis/setup.sh
+jarvis/.venv/bin/python -m jarvis    # then say "Hey Jarvis"
 ```
 
 `setup.sh` installs PortAudio via Homebrew if it's missing. The first run
-downloads the wake-word and Whisper models.
+downloads the wake-word and Whisper models. `doctor.sh` is safe to run any
+time — it reports what's ready and what's missing.
 
 > **Microphone permission:** macOS gates mic access. The first interactive run
 > shows a prompt. If Jarvis runs headless under launchd and never prompts,
@@ -112,14 +124,23 @@ lives in `hud.html` — edit it freely.
 ## Wiring the brain to Notion + Gmail (required for real work)
 
 The MCP servers must be added to the **`claude` CLI on the Mac mini** (separate
-from any web session). For example:
+from any web session). `wire-mcp.sh` does this at user scope:
 
 ```bash
-claude mcp add notion --transport http https://mcp.notion.com/mcp
-claude mcp add gmail  ...   # your Gmail MCP endpoint
+# Notion only:
+bash jarvis/wire-mcp.sh
+
+# Notion + Gmail (Gmail has no standard endpoint — supply yours):
+GMAIL_MCP_URL=https://your-gmail-mcp/endpoint \
+  GMAIL_MCP_HEADER="Authorization: Bearer <token>" \
+  bash jarvis/wire-mcp.sh
 ```
 
-Until they're added, Jarvis can talk but can't read/update pipelines or draft
+Under the hood it runs `claude mcp add --transport http --scope user notion
+https://mcp.notion.com/mcp`. After registering, run `claude` once and type
+`/mcp` to complete the browser OAuth for Notion (and any server that needs it).
+
+Until they're wired, Jarvis can talk but can't read/update pipelines or draft
 email. To let it take actions (draft/send, update Notion) unattended, also raise
 `JARVIS_PERMISSION_MODE` (below).
 

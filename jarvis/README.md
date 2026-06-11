@@ -89,6 +89,25 @@ into (iCloud/Dropbox), or just drop its `.m4a`/`.mp3`/transcript exports into
 > Capture **records and logs only** — it never sends outbound messages. Mind
 > recording-consent norms when capturing client conversations.
 
+## On-screen HUD (the movie reactor)
+
+Jarvis serves a full-screen, animated reactor that reacts to its state — a
+dim idle pulse, listening ripples, a faster "processing" spin, and an
+audio-style equalizer that comes alive while it speaks, with the current text
+as a subtitle. It's built into the voice process (Python stdlib, no extra
+deps), so just open it on the Mac mini's display:
+
+```bash
+# any browser, then go fullscreen (Cmd-Ctrl-F in Safari / F11 in Chrome):
+open http://127.0.0.1:8765
+
+# or launch Chrome straight into kiosk mode on the connected screen:
+open -na "Google Chrome" --args --kiosk --app=http://127.0.0.1:8765
+```
+
+Disable with `JARVIS_HUD=false`, or move it with `JARVIS_HUD_PORT`. The look
+lives in `hud.html` — edit it freely.
+
 ## Wiring the brain to Notion + Gmail (required for real work)
 
 The MCP servers must be added to the **`claude` CLI on the Mac mini** (separate
@@ -137,3 +156,5 @@ Everything is tunable via environment variables (see `config.py`). Common ones:
 | `JARVIS_BORROWER_DRAFT_ONLY` | `true`   | never auto-send to consumers         |
 | `JARVIS_INBOX`            | `~/JarvisInbox` | capture inbox folder            |
 | `JARVIS_CAPTURE_READBACK` | `true`      | speak the TL;DR after capture        |
+| `JARVIS_HUD`              | `true`      | serve the on-screen reactor HUD      |
+| `JARVIS_HUD_PORT`         | `8765`      | HUD localhost port                   |

@@ -78,3 +78,10 @@ CAPTURE_POLL_S = float(os.environ.get("JARVIS_CAPTURE_POLL", "10"))
 CAPTURE_MAX_SESSION_S = float(os.environ.get("JARVIS_NOTE_MAX", "7200"))
 # Speak the TL;DR aloud when a capture finishes processing.
 CAPTURE_READBACK = _env_bool("JARVIS_CAPTURE_READBACK", True)
+
+# --- On-screen HUD (the movie-style reactor) -------------------------------
+# The voice loop serves a localhost page that animates with Jarvis's state.
+# Open http://127.0.0.1:<port> fullscreen on the Mac mini's display.
+HUD_ENABLED = _env_bool("JARVIS_HUD", True)
+HUD_HOST = os.environ.get("JARVIS_HUD_HOST", "127.0.0.1")
+HUD_PORT = int(os.environ.get("JARVIS_HUD_PORT", "8765"))

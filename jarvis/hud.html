@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>JARVIS</title>
+<style>
+  :root { --cyan: #46d6ff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; background: #02060a; overflow: hidden; cursor: none; }
+  #c { display: block; width: 100vw; height: 100vh; }
+  #hud {
+    position: fixed; inset: 0; pointer-events: none;
+    font-family: "Helvetica Neue", Arial, sans-serif; color: var(--cyan);
+  }
+  #status {
+    position: absolute; top: 6%; left: 0; right: 0; text-align: center;
+    letter-spacing: 0.5em; font-size: clamp(14px, 2.2vw, 28px);
+    text-transform: uppercase; opacity: 0.85;
+    text-shadow: 0 0 18px rgba(70, 214, 255, 0.6);
+  }
+  #subtitle {
+    position: absolute; bottom: 9%; left: 8%; right: 8%; text-align: center;
+    font-size: clamp(16px, 2.6vw, 34px); line-height: 1.4; font-weight: 300;
+    opacity: 0; transition: opacity 0.4s ease;
+    text-shadow: 0 0 22px rgba(70, 214, 255, 0.45);
+  }
+  #subtitle.show { opacity: 0.95; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud">
+  <div id="status">Offline</div>
+  <div id="subtitle"></div>
+</div>
+<script>
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+const statusEl = document.getElementById("status");
+const subtitleEl = document.getElementById("subtitle");
+
+// Theme colours per state: [primary, accent]
+const THEMES = {
+  idle:      ["#2a9fd6", "#1d6f9c"],
+  listening: ["#46d6ff", "#7ef0ff"],
+  thinking:  ["#ffb648", "#ff8a3c"],
+  speaking:  ["#5fe0ff", "#bff4ff"],
+};
+const LABELS = {
+  idle: "Standing by",
+  listening: "Listening",
+  thinking: "Processing",
+  speaking: "Speaking",
+};
+
+let dpr = 1, W = 0, H = 0, cx = 0, cy = 0, R = 0;
+function resize() {
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  W = canvas.width = Math.floor(innerWidth * dpr);
+  H = canvas.height = Math.floor(innerHeight * dpr);
+  cx = W / 2; cy = H / 2;
+  R = Math.min(W, H) * 0.26;
+}
+addEventListener("resize", resize); resize();
+
+let state = "idle";
+let amp = 0;          // smoothed "loudness" driving the animation
+let targetAmp = 0.05;
+const bars = new Array(72).fill(0);
+const ripples = [];
+let t = 0;
+
+function setState(next, text) {
+  if (next && next !== state) {
+    state = next;
+    statusEl.textContent = LABELS[state] || state;
+  }
+  if (text && text.length) {
+    subtitleEl.textContent = text;
+    subtitleEl.classList.add("show");
+  } else if (state === "idle" || state === "listening") {
+    subtitleEl.classList.remove("show");
+  }
+}
+
+function lerp(a, b, k) { return a + (b - a) * k; }
+
+function hexA(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
+}
+
+function ring(radius, width, color, glow, dash) {
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+  ctx.lineWidth = width;
+  ctx.strokeStyle = color;
+  ctx.shadowBlur = glow; ctx.shadowColor = color;
+  if (dash) ctx.setLineDash(dash); else ctx.setLineDash([]);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.shadowBlur = 0;
+}
+
+function arc(radius, width, color, start, end, glow) {
+  ctx.beginPath();
+  ctx.arc(cx, cy, radius, start, end);
+  ctx.lineWidth = width;
+  ctx.strokeStyle = color;
+  ctx.shadowBlur = glow; ctx.shadowColor = color;
+  ctx.lineCap = "round";
+  ctx.stroke();
+  ctx.lineCap = "butt";
+  ctx.shadowBlur = 0;
+}
+
+function ticks(radius, count, len, color) {
+  ctx.strokeStyle = color; ctx.lineWidth = Math.max(1, dpr);
+  for (let i = 0; i < count; i++) {
+    const a = (i / count) * Math.PI * 2 + t * 0.15;
+    const x1 = cx + Math.cos(a) * radius, y1 = cy + Math.sin(a) * radius;
+    const x2 = cx + Math.cos(a) * (radius + len), y2 = cy + Math.sin(a) * (radius + len);
+    ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+  }
+}
+
+function draw() {
+  t += 0.016;
+  const [primary, accent] = THEMES[state] || THEMES.idle;
+
+  // Drive the amplitude target from state.
+  if (state === "speaking") {
+    targetAmp = 0.45 + Math.random() * 0.55;
+  } else if (state === "listening") {
+    targetAmp = 0.18 + Math.sin(t * 3) * 0.06 + Math.random() * 0.05;
+  } else if (state === "thinking") {
+    targetAmp = 0.22 + Math.sin(t * 6) * 0.1;
+  } else {
+    targetAmp = 0.06 + Math.sin(t * 1.2) * 0.03;
+  }
+  amp = lerp(amp, targetAmp, state === "speaking" ? 0.35 : 0.08);
+
+  // Trailing fade for a soft motion-glow.
+  ctx.globalCompositeOperation = "source-over";
+  ctx.fillStyle = "rgba(2, 6, 10, 0.28)";
+  ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = "lighter";
+
+  // Outer rotating tick ring + faint boundary.
+  ticks(R * 1.7, 60, R * 0.05, hexA(primary, 0.25));
+  ring(R * 1.55, dpr, hexA(primary, 0.18), 0);
+
+  // Spinning arc segments (faster while thinking).
+  const spin = t * (state === "thinking" ? 1.6 : 0.5);
+  arc(R * 1.35, dpr * 2.5, hexA(accent, 0.9), spin, spin + 1.1, 16);
+  arc(R * 1.35, dpr * 2.5, hexA(accent, 0.9), spin + Math.PI, spin + Math.PI + 0.7, 16);
+  arc(R * 1.2, dpr * 1.5, hexA(primary, 0.7), -spin * 1.3, -spin * 1.3 + 2.2, 10);
+  ring(R * 1.05, dpr, hexA(primary, 0.5), 6, [dpr * 2, dpr * 10]);
+
+  // Circular audio-reactive equalizer.
+  for (let i = 0; i < bars.length; i++) {
+    const phase = i / bars.length;
+    const wobble = Math.sin(phase * Math.PI * 10 + t * 8) * 0.5 + 0.5;
+    const target = amp * (0.4 + wobble * 0.6);
+    bars[i] = lerp(bars[i], target, 0.4);
+    const a = phase * Math.PI * 2 - Math.PI / 2;
+    const inner = R * 0.62;
+    const outer = inner + bars[i] * R * 0.6;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(a) * inner, cy + Math.sin(a) * inner);
+    ctx.lineTo(cx + Math.cos(a) * outer, cy + Math.sin(a) * outer);
+    ctx.lineWidth = (Math.PI * 2 * inner / bars.length) * 0.5;
+    ctx.strokeStyle = hexA(primary, 0.85);
+    ctx.shadowBlur = 12; ctx.shadowColor = primary;
+    ctx.stroke();
+  }
+  ctx.shadowBlur = 0;
+
+  // Glowing core.
+  const coreR = R * (0.34 + amp * 0.12);
+  const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR);
+  g.addColorStop(0, hexA(accent, 0.95));
+  g.addColorStop(0.5, hexA(primary, 0.55));
+  g.addColorStop(1, hexA(primary, 0));
+  ctx.beginPath(); ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
+  ctx.fillStyle = g; ctx.fill();
+  ring(coreR * 0.6, dpr * 1.5, hexA(accent, 0.8), 18);
+
+  // Listening ripples.
+  if (state === "listening" && Math.random() < 0.06) {
+    ripples.push({ r: R * 0.6, a: 0.5 });
+  }
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    const rp = ripples[i];
+    rp.r += R * 0.012; rp.a *= 0.97;
+    ring(rp.r, dpr * 1.5, hexA(primary, rp.a), 8);
+    if (rp.a < 0.02 || rp.r > R * 1.6) ripples.splice(i, 1);
+  }
+
+  ctx.globalCompositeOperation = "source-over";
+  requestAnimationFrame(draw);
+}
+requestAnimationFrame(draw);
+
+// Live state from the Jarvis process via Server-Sent Events.
+function connect() {
+  const es = new EventSource("/events");
+  es.onmessage = (e) => {
+    try {
+      const msg = JSON.parse(e.data);
+      setState(msg.state, msg.text);
+    } catch (_) {}
+  };
+  es.onerror = () => { es.close(); setTimeout(connect, 1500); };
+}
+connect();
+</script>
+</body>
+</html>

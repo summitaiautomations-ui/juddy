@@ -15,6 +15,7 @@ import numpy as np
 from . import config
 from .audio import Microphone, record_utterance, save_wav
 from .brain import Brain
+from .hud import Hud
 from .stt import Transcriber
 from .tts import Speaker
 from .wake import WakeWord
@@ -40,13 +41,14 @@ def _wants_stop(text: str) -> bool:
     return any(k in t for k in _STOP_TRIGGERS)
 
 
-def _take_notes_session(mic, wake, stt, tts, log):
+def _take_notes_session(mic, wake, stt, tts, hud, log):
     """Record a conversation until the user says 'Hey Jarvis, done'.
 
     Buffers audio while still running the wake-word detector, so a second
     wake + a stop word ends the session. The recording is dropped into the
     capture inbox, where the capture worker transcribes and summarizes it.
     """
+    hud.set_state("listening", "Taking notes…")
     tts.say("Okay, I'm taking notes. Say 'Hey Jarvis, done' when you're finished.",
             friendly=False)
     mic.drain()
@@ -86,6 +88,7 @@ def _take_notes_session(mic, wake, stt, tts, log):
         tts.say("I didn't catch anything.", friendly=False)
         return
 
+    hud.set_state("thinking", "Saving notes…")
     audio = np.concatenate(frames)
     config.CAPTURE_INBOX_DIR.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -118,6 +121,10 @@ def main():
     stt = Transcriber()
     tts = Speaker()
     brain = Brain()
+    hud = Hud().start()
+    if config.HUD_ENABLED:
+        log.info("HUD at http://%s:%d", config.HUD_HOST, config.HUD_PORT)
+    hud.set_state("idle")
     log.info("Models ready. Listening for the wake word %r.", config.WAKE_MODEL)
 
     with Microphone() as mic:
@@ -134,6 +141,7 @@ def main():
             log.info("Wake word detected.")
             wake.reset()
             mic.drain()
+            hud.set_state("listening")
 
             if config.WAKE_ACK:
                 tts.say(config.WAKE_ACK, friendly=False)
@@ -142,26 +150,32 @@ def main():
             audio = record_utterance(mic)
             if audio is None:
                 log.info("No speech captured after wake word.")
+                hud.set_state("idle")
                 continue
 
             text = stt.transcribe(audio)
             if not text:
                 log.info("Empty transcription; ignoring.")
+                hud.set_state("idle")
                 continue
             log.info("Heard: %s", text)
 
             if _wants_notes(text):
-                _take_notes_session(mic, wake, stt, tts, log)
+                _take_notes_session(mic, wake, stt, tts, hud, log)
                 wake.reset()
                 mic.drain()
+                hud.set_state("idle")
                 continue
 
+            hud.set_state("thinking", text)
             reply = brain.ask(text)
             log.info("Jarvis: %s", reply)
+            hud.set_state("speaking", reply)
             tts.say(reply)
 
             wake.reset()
             mic.drain()
+            hud.set_state("idle")
 
 
 if __name__ == "__main__":

@@ -49,9 +49,10 @@ TTS_RATE = os.environ.get("JARVIS_TTS_RATE", "")      # words/min; blank = syste
 
 # --- Brain (the `claude` CLI in non-interactive mode) ----------------------
 CLAUDE_BIN = os.environ.get("CLAUDE_BIN", "claude")
-# "default" refuses tools that need approval (safe). Set to "acceptEdits" or
-# "bypassPermissions" to let Jarvis actually take actions. See jarvis/README.md.
-CLAUDE_PERMISSION_MODE = os.environ.get("JARVIS_PERMISSION_MODE", "default")
+# Full autonomy: "bypassPermissions" lets Jarvis act (update Notion, send email)
+# without prompting — required since -p mode can't answer permission prompts.
+# Dial back with "default" (refuses tools needing approval). See jarvis/README.md.
+CLAUDE_PERMISSION_MODE = os.environ.get("JARVIS_PERMISSION_MODE", "bypassPermissions")
 CLAUDE_TIMEOUT_S = float(os.environ.get("JARVIS_BRAIN_TIMEOUT", "120"))
 CLAUDE_MODEL = os.environ.get("JARVIS_CLAUDE_MODEL", "")  # blank = CLI default
 
@@ -63,9 +64,10 @@ ENABLED_PLAYBOOKS = [
     for p in os.environ.get("JARVIS_PLAYBOOKS", "recruiting,mortgage").split(",")
     if p.strip()
 ]
-# Safety: borrower / consumer-facing messages are drafted for human approval,
-# never auto-sent. Recruiting (B2B) is governed by CLAUDE_PERMISSION_MODE.
-BORROWER_DRAFT_ONLY = _env_bool("JARVIS_BORROWER_DRAFT_ONLY", True)
+# When ON, borrower/consumer messages are drafted for approval instead of sent.
+# Default OFF (full autonomy). The lawful-conduct rules in the foundation
+# (consent/DNC, no rate promises, fair lending) apply either way.
+BORROWER_DRAFT_ONLY = _env_bool("JARVIS_BORROWER_DRAFT_ONLY", False)
 
 # --- Conversation capture (Plaud recorder, mic notes, dropped audio) --------
 # Drop an audio file or transcript here and Jarvis will transcribe it (if

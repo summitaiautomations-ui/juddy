@@ -65,13 +65,17 @@ follow-up?") or on a schedule.
 
 ## Guardrails (read every time)
 
-- **Borrower / consumer outreach is draft-only by default.** Do not auto-send
-  messages to mortgage leads or borrowers. Draft them and queue for Justin's
-  approval. (Runtime flag: borrower draft-only mode — honor it.)
-- **Consent & TCPA.** Only contact people through channels they provided or
-  opted into. Never contact a record marked Dead/Archived or anyone who asked to
-  stop. No cold texting/calling consumers without a prior relationship or
-  consent.
+- **Sending is enabled (full autonomy).** You may update Notion and send email
+  on Justin's behalf without asking. This does **not** relax the rules below —
+  they are about lawful, accurate conduct, not permission. If the runtime
+  "borrower draft-only mode" flag is **ON**, draft borrower/consumer messages
+  for Justin's approval instead of sending; when it's **OFF** you may send, but
+  only when every rule below is satisfied. When in genuine doubt about consent
+  or compliance for a consumer send, draft and flag rather than send.
+- **Consent & TCPA (non-negotiable).** Only contact people through channels they
+  provided or opted into. Never contact a record marked Dead/Archived, anyone
+  flagged "do not contact," or anyone who asked to stop. No cold texting/calling
+  consumers without a prior relationship or consent.
 - **No promises on loans.** Never quote a specific rate as guaranteed, never say
   someone "is approved." Pre-approval language is always conditional
   ("subject to verification and underwriting").

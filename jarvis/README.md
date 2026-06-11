@@ -152,14 +152,18 @@ keep the conversation going. Because it's the same `claude` CLI the always-on
 setup already authenticates, Jarvis inherits your login and the full agent
 toolset (files, MCP servers, etc.) for free — no separate API key.
 
-By default the permission mode is `default`, so Claude will **not** run tools
-that need approval (it can't prompt you by voice). To let Jarvis actually take
-actions, raise the permission level — be deliberate, this lets it act
-unattended:
+**Full autonomy is the default.** Permission mode is `bypassPermissions`, so
+Jarvis updates Notion and sends email on its own without prompting (a voice
+assistant in `-p` mode can't answer permission prompts). `JARVIS_BORROWER_DRAFT_ONLY`
+defaults to `false`, so it sends to consumers too. The lawful-conduct rules in
+`playbooks/foundation.md` (consent/DNC, no rate promises, fair lending) still
+apply regardless — they're enforced by instruction, not permissions.
+
+To dial it back:
 
 ```bash
-# in the LaunchAgent env or your shell
-export JARVIS_PERMISSION_MODE=acceptEdits      # or bypassPermissions for full autonomy
+export JARVIS_BORROWER_DRAFT_ONLY=true     # draft borrower messages for approval
+export JARVIS_PERMISSION_MODE=default      # refuse any tool action needing approval
 ```
 
 ## Configuration
@@ -171,11 +175,11 @@ Everything is tunable via environment variables (see `config.py`). Common ones:
 | `JARVIS_WAKE_THRESHOLD`   | `0.5`       | wake sensitivity (lower = touchier)  |
 | `JARVIS_STT_MODEL`        | `base.en`   | Whisper model (`tiny.en`…`small.en`) |
 | `JARVIS_VOICE`            | `Daniel`    | macOS `say` voice (`say -v ?`)       |
-| `JARVIS_PERMISSION_MODE`  | `default`   | Claude tool permissions              |
+| `JARVIS_PERMISSION_MODE`  | `bypassPermissions` | Claude tool permissions (full autonomy) |
 | `JARVIS_CLAUDE_MODEL`     | CLI default | pin a specific model                 |
 | `JARVIS_INPUT_DEVICE`     | system mic  | input device name or index           |
 | `JARVIS_PLAYBOOKS`        | `recruiting,mortgage` | which playbooks to load    |
-| `JARVIS_BORROWER_DRAFT_ONLY` | `true`   | never auto-send to consumers         |
+| `JARVIS_BORROWER_DRAFT_ONLY` | `false`  | if true, draft (not send) to consumers |
 | `JARVIS_INBOX`            | `~/JarvisInbox` | capture inbox folder            |
 | `JARVIS_CAPTURE_READBACK` | `true`      | speak the TL;DR after capture        |
 | `JARVIS_HUD`              | `true`      | serve the on-screen reactor HUD      |

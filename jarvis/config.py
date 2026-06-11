@@ -6,6 +6,13 @@ Every value can be overridden with an environment variable, so the LaunchAgent
 import os
 from pathlib import Path
 
+
+def _env_bool(name: str, default: bool) -> bool:
+    val = os.environ.get(name)
+    if val is None:
+        return default
+    return val.strip().lower() in ("1", "true", "yes", "on")
+
 # --- Paths -----------------------------------------------------------------
 JARVIS_DIR = Path(__file__).resolve().parent
 REPO_ROOT = JARVIS_DIR.parent
@@ -47,3 +54,15 @@ CLAUDE_BIN = os.environ.get("CLAUDE_BIN", "claude")
 CLAUDE_PERMISSION_MODE = os.environ.get("JARVIS_PERMISSION_MODE", "default")
 CLAUDE_TIMEOUT_S = float(os.environ.get("JARVIS_BRAIN_TIMEOUT", "120"))
 CLAUDE_MODEL = os.environ.get("JARVIS_CLAUDE_MODEL", "")  # blank = CLI default
+
+# --- Playbooks (domain knowledge the brain operates with) ------------------
+PLAYBOOKS_DIR = JARVIS_DIR / "playbooks"
+# Which playbooks to load as the brain's project memory (comma-separated).
+ENABLED_PLAYBOOKS = [
+    p.strip()
+    for p in os.environ.get("JARVIS_PLAYBOOKS", "recruiting,mortgage").split(",")
+    if p.strip()
+]
+# Safety: borrower / consumer-facing messages are drafted for human approval,
+# never auto-sent. Recruiting (B2B) is governed by CLAUDE_PERMISSION_MODE.
+BORROWER_DRAFT_ONLY = _env_bool("JARVIS_BORROWER_DRAFT_ONLY", True)

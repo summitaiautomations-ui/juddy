@@ -1,0 +1,48 @@
+{
+  "identity": {
+    "name": "Justin Neal",
+    "title": "VP of Strategic Acquisition",
+    "company": "Summit Mortgage Corp",
+    "markets": ["MN", "WI"],
+    "phone": "612-203-9883",
+    "email": "trustedsalescoach@gmail.com"
+  },
+  "pipelines": {
+    "recruiting": {
+      "name": "Recruiting Pipeline",
+      "database_id": "e0a85bb7-a051-4af1-b549-92580e4bddb5",
+      "data_source_id": "db7b25ed-d721-4a52-974b-58b3379f5309",
+      "title_property": "Candidate Name",
+      "stage_property": "Stage",
+      "stages": ["Initial Outreach", "Conversation", "Interview", "Offer", "Hired", "Passed"],
+      "terminal_or_excluded_stages": ["Hired", "Passed"],
+      "nurture_property": "Nurture Stage",
+      "nurture_steps": ["Not Started", "Touch 1", "Touch 2", "Touch 3", "Touch 4", "Touch 5", "Engaged", "Converted"],
+      "next_followup_property": "Next Follow-Up",
+      "last_contact_property": "Last Contact",
+      "last_touch_property": "Last Touchpoint Type",
+      "preferred_channel_property": "Preferred Channel",
+      "priority_property": "Priority",
+      "audience": "b2b"
+    },
+    "mortgage": {
+      "name": "Mortgage Pipeline",
+      "database_id": "72d29207-8f45-4c35-972f-d9f5a54e51fb",
+      "data_source_id": "4a3cbfe3-76a4-486f-8254-0b0b9c9d4115",
+      "title_property": "Lead Name",
+      "stage_property": "Status",
+      "stages": ["Lead", "Called 2x on Day 1", "Connected", "Connected Live", "Application", "Income/Asset Verification", "Preapproved", "Real Deal", "Funded", "Friends and Family"],
+      "terminal_or_excluded_stages": ["Funded", "Dead"],
+      "post_close_stage": "Friends and Family",
+      "next_action_property": "Next Action",
+      "next_followup_property": "Next Follow-Up",
+      "last_contact_property": "Last Contact",
+      "channel_property": "Communication Channel",
+      "priority_property": "Priority",
+      "audience": "consumer"
+    }
+  },
+  "templates": {
+    "realtor_nurture": "https://app.notion.com/p/3415ba8cd26f8174b010e4389bc0193b"
+  }
+}

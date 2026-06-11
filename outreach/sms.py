@@ -134,7 +134,24 @@ def _find_duplicate(ledger, to_phone, message, namespace):
     return None
 
 
-def send_sms_once(config, to_phone, message, *, source, dedupe_namespace=""):
+def has_sent_today(to_phone, today_iso):
+    """True iff any successful SMS landed on this phone today.
+
+    Used by the daily-cap safeguard so day-2+ nurture flows can never
+    layer a second automated text onto a lead in the same day. Day 1
+    flows (welcome + info touch) are exempt because they pass
+    enforce_daily_cap=False — that's the intended 2-touch sequence.
+    """
+    phone = normalize_phone(to_phone)
+    for entry in _load_ledger().get("sent", {}).values():
+        if entry.get("phone") != phone:
+            continue
+        if str(entry.get("first_sent_at", "")).startswith(today_iso):
+            return True
+    return False
+
+
+def send_sms_once(config, to_phone, message, *, source, dedupe_namespace="", enforce_daily_cap=False):
     """
     Send `message` to `to_phone` via SimpleTexting iff no normalized-equivalent
     or sentence-overlapping message has already been delivered to this number
@@ -146,9 +163,23 @@ def send_sms_once(config, to_phone, message, *, source, dedupe_namespace=""):
     window so legitimately-recurring messages (annual birthdays, weekly
     market updates) can re-fire in a new window.
 
+    Pass enforce_daily_cap=True to short-circuit if any other SMS has
+    already landed on this phone today. Day-1 flows (welcome, info touch)
+    leave it False so the two-touch sequence isn't blocked; everything
+    else (day-2 nurture, Friday recap, …) should pass True so a lead
+    never gets more than one automated text per day after day 1.
+
     On a successful 2xx, the ledger entry is written BEFORE returning, so
     callers cannot lose the dedupe record by crashing.
     """
+    if enforce_daily_cap:
+        today_iso = datetime.now(timezone.utc).date().isoformat()
+        if has_sent_today(to_phone, today_iso):
+            return (
+                0,
+                "skipped:daily_cap (one automated SMS per lead per day after day 1)",
+            )
+
     ledger = _load_ledger()
     prior = _find_duplicate(ledger, to_phone, message, dedupe_namespace)
     if prior:

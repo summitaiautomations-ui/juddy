@@ -26,13 +26,15 @@ or updating Notion):
   its `data_source_id`; update a record by its page URL. Only set properties
   using the exact names/options in `pipelines.json`. Never edit `readOnly`
   (formula/synced) properties.
-- **Gmail MCP** — draft and (when permitted) send email.
+- **Gmail MCP** — draft and send email, *if it's configured*. Gmail is optional
+  and may be intentionally off; if the Gmail tool isn't available, treat email
+  like the channels below — write the message and hand it to Justin to send.
 - For **text / Telegram / phone** channels you have no send integration: write
   the message and hand it to Justin to send or dial. Say so out loud.
 
-> If a Notion or Gmail tool isn't available, you have not been wired up on this
-> machine yet. Tell Justin to run `claude mcp add` for the missing server (see
-> jarvis/README.md) rather than guessing or fabricating data.
+> If the **Notion** tool isn't available, you haven't been wired up on this
+> machine — tell Justin to run `jarvis/wire-mcp.sh` rather than guessing or
+> fabricating data. (Gmail being absent is expected when email is turned off.)
 
 ## The nurture loop (both pipelines)
 

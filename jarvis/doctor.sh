@@ -15,6 +15,7 @@ warns=0
 ok()   { printf "  \033[32m✓\033[0m %s\n" "$1"; }
 warn() { printf "  \033[33m!\033[0m %s\n" "$1"; warns=$((warns + 1)); }
 bad()  { printf "  \033[31m✗\033[0m %s\n" "$1"; fails=$((fails + 1)); }
+info() { printf "  \033[2m·\033[0m %s\n" "$1"; }
 
 echo "Jarvis preflight"
 echo "================"
@@ -59,7 +60,7 @@ echo "MCP servers (for Notion / Gmail)"
 if [[ -n "${CLAUDE_BIN}" ]]; then
   mcp_list="$("${CLAUDE_BIN}" mcp list 2>/dev/null || true)"
   if grep -qi "notion" <<<"${mcp_list}"; then ok "notion configured"; else warn "notion not configured — run jarvis/wire-mcp.sh"; fi
-  if grep -qi "gmail"  <<<"${mcp_list}"; then ok "gmail configured";  else warn "gmail not configured — see jarvis/wire-mcp.sh"; fi
+  if grep -qi "gmail"  <<<"${mcp_list}"; then ok "gmail configured";  else info "gmail not configured (optional — email features off)"; fi
 else
   warn "skipped (no claude CLI)"
 fi

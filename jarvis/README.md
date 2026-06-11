@@ -140,9 +140,10 @@ Under the hood it runs `claude mcp add --transport http --scope user notion
 https://mcp.notion.com/mcp`. After registering, run `claude` once and type
 `/mcp` to complete the browser OAuth for Notion (and any server that needs it).
 
-Until they're wired, Jarvis can talk but can't read/update pipelines or draft
-email. To let it take actions (draft/send, update Notion) unattended, also raise
-`JARVIS_PERMISSION_MODE` (below).
+Until Notion is wired, Jarvis can talk but can't read/update pipelines. **Gmail
+is optional** — with it off, Jarvis runs Notion-only and simply hands you email
+drafts to send yourself (just like the text/Telegram channels). Add it later
+without touching anything else.
 
 ## How the brain is wired
 

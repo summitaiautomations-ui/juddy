@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "day=$(date +%A); printf '{\"hookSpecificOutput\":{\"hookEventName\":\"SessionStart\",\"additionalContext\":\"Today is %s. Before anything else, greet the user with the daily affirmation from CLAUDE.md (Our Dialogue section), swapping in %s as the day of the week, then tell them: I am so glad you are here.\"}}' \"$day\" \"$day\"",
+            "statusMessage": "Preparing your morning affirmation"
+          }
+        ]
+      }
+    ]
+  }
+}

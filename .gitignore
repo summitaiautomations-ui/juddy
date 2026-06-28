@@ -3,5 +3,6 @@ outreach/.venv/
 outreach/sms_ledger.json
 outreach/inbound_ledger.json
 discs/.venv/
+discs/output/
 __pycache__/
 *.pyc

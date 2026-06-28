@@ -20,6 +20,7 @@ Before writing listings, identify the disc from the photo. Inspect carefully:
 - **Weight** — PRINTED on the rim in grams (e.g. "175g", "172", "173-176"). If not clearly visible in the photo, leave null and say so in extraction notes.
 - **Color** — dominant disc color, NOT the stamp color.
 - **Stamp condition** — Mint (crisp lines, full color) / Light Wear (faint but readable) / Faded (heavy fade, partial) / No Stamp / Inked (writing on disc with marker or pen).
+- **Back ink** — many players write their name/phone/initials in marker on the BACK (bottom) of the disc so a found disc can be returned. This is SEPARATE from stamp condition (which is the front foil art). If you can see the back: describe what's there ("Name 'JN' in black sharpie", "Phone number in red marker", "Initials only", "None visible — back is clean"). If the photo only shows the stamp side, write exactly "Not visible — back of disc not in photo". Heavy owner ink reduces resale 10–30% and buyers want to know up front.
 - **Sleeve condition (1-10)** based on:
   - 10: brand new, no wear, mint stamp
   - 8-9: lightly thrown, no rim wear, clean — "barely thrown"
@@ -48,7 +49,7 @@ Before writing listings, identify the disc from the photo. Inspect carefully:
 - Plain text, no HTML.
 - 4–8 lines, scannable.
 - Open with the mold's general purpose in 1 sentence ("The Destroyer is a popular overstable distance driver…"). Do NOT invent flight numbers — refer to "manufacturer flight numbers" without specifying.
-- Condition section: state sleeve rating, describe wear honestly (rim wear, dome/flat, ink, etc.).
+- Condition section: state sleeve rating, describe wear honestly (rim wear, dome/flat, ink, etc.). If `back_ink` indicates owner writing on the back of the disc, mention it plainly ("Owner ink on back: name 'JN' in black sharpie"). If back ink isn't visible in the photo, say "Back-of-disc ink: confirm before shipping".
 - Special run / stamp section if applicable.
 - Ship terms placeholder: "Ships within 1 business day. PayPal G&S accepted."
 
@@ -57,6 +58,7 @@ Before writing listings, identify the disc from the photo. Inspect carefully:
 - Markdown — use `**bold**` for emphasis, lists with `-`.
 - Lead with the identification line (Brand Plastic Mold Weight Color).
 - Include: condition with brief description, asking price as a placeholder `[$XX shipped]`, payment + shipping preferences placeholder, "Open to trades for [your wants]" closer.
+- If back ink is present, mention it plainly ("Light name ink on back" or "No ink on back"). Don't hide it.
 
 # eBay CATEGORY
 - Default: "Sporting Goods > Outdoor Sports & Recreation > Disc Golf > Discs".

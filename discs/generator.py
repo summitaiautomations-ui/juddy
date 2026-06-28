@@ -68,6 +68,10 @@ EXTRACTED_DISC_PROPERTIES = {
         "type": "string",
         "enum": ["Mint", "Light Wear", "Faded", "No Stamp / Inked"],
     },
+    "back_ink": {
+        "type": "string",
+        "description": "Owner ink/marker on the BACK of the disc (separate from stamp condition). 'None visible' if back is clean and visible. 'Not visible — back of disc not in photo' if only the stamp side is shown. Otherwise describe what's written and in what color.",
+    },
     "estimated_sleeve": {
         "type": "integer",
         "minimum": 1,

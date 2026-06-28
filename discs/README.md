@@ -32,8 +32,9 @@ discs/.venv/bin/python -m discs photo ~/Desktop/disc.jpg
 
 Pass any image path. Supports HEIC (iPhone default) automatically via
 pillow-heif. Claude Opus 4.8 vision identifies the disc — brand, mold,
-plastic, weight (read from the rim), color, stamp condition, estimated
-sleeve rating, category — then generates the listings in a single call.
+plastic, weight (read from the rim), color, stamp condition, **back ink
+(name/phone on the bottom of the disc)**, estimated sleeve rating,
+category — then generates the listings in a single call.
 
 Verify the identification block at the top before relying on the listing.
 If the weight wasn't visible in the photo or the angle hid wear, the
@@ -42,8 +43,22 @@ extraction notes will say so.
 **Tip for best identification:**
 - Photograph the stamp side flat-on so the mold name + plastic are readable
 - Include the rim where the weight is printed (usually opposite the stamp)
+- Flip the disc and snap the back too if it has owner ink — otherwise the
+  back-ink field will say "Not visible"
 - Good lighting, plain background
 - One disc per photo
+
+### Batch a whole folder
+
+Drop all the photos for a session into one folder, then:
+
+```bash
+discs/.venv/bin/python -m discs batch ~/Desktop/discs-to-list/
+```
+
+Processes every `.jpg/.jpeg/.png/.heic/.webp` in the folder — one Claude
+call per disc, each saved as its own markdown file in `discs/output/`.
+Failures are listed at the end; successful runs still save.
 
 ### Manual entry (when you don't have a photo)
 
@@ -56,7 +71,7 @@ special run, notes.
 
 ### Output
 
-Both commands print the same five labeled blocks:
+Every command prints the same five labeled blocks:
 - **eBay TITLE** (with character count vs. the 80-char limit)
 - **eBay DESCRIPTION** (plain text, no HTML)
 - **BST POST** (markdown for Reddit r/discexchange, DGCR BST forum, or the
@@ -64,7 +79,11 @@ Both commands print the same five labeled blocks:
 - **eBay CATEGORY** breadcrumb
 - **COMP PRICING SEARCH** — paste straight into eBay → Advanced → Sold listings
 
-Copy/paste from here into the platform.
+**Automation built in:**
+- Full output is auto-saved as markdown to `discs/output/<timestamp>_<mold>.md`
+  (gitignored, kept locally on the Mac mini)
+- The eBay title is auto-copied to your clipboard — open eBay → Sell and
+  ⌘V it straight into the title field
 
 ## Costs
 

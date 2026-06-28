@@ -24,23 +24,39 @@ Notion DB + eBay API integration come later (see project plan).
 
 ## Usage
 
+### Snap a pic (fastest)
+
+```bash
+discs/.venv/bin/python -m discs photo ~/Desktop/disc.jpg
+```
+
+Pass any image path. Supports HEIC (iPhone default) automatically via
+pillow-heif. Claude Opus 4.8 vision identifies the disc — brand, mold,
+plastic, weight (read from the rim), color, stamp condition, estimated
+sleeve rating, category — then generates the listings in a single call.
+
+Verify the identification block at the top before relying on the listing.
+If the weight wasn't visible in the photo or the angle hid wear, the
+extraction notes will say so.
+
+**Tip for best identification:**
+- Photograph the stamp side flat-on so the mold name + plastic are readable
+- Include the rim where the weight is printed (usually opposite the stamp)
+- Good lighting, plain background
+- One disc per photo
+
+### Manual entry (when you don't have a photo)
+
 ```bash
 discs/.venv/bin/python -m discs generate
 ```
 
-Interactive prompts:
-```
-Brand: Innova
-Mold: Destroyer
-Plastic: Star
-Weight (g): 175
-Color: Red
-Sleeve condition (1-10): 8
-Special run (optional): 2023 Tour Series
-Notes (optional): light rim wear, stamp intact
-```
+Interactive prompts for brand, mold, plastic, weight, color, sleeve,
+special run, notes.
 
-Output is four labeled blocks:
+### Output
+
+Both commands print the same five labeled blocks:
 - **eBay TITLE** (with character count vs. the 80-char limit)
 - **eBay DESCRIPTION** (plain text, no HTML)
 - **BST POST** (markdown for Reddit r/discexchange, DGCR BST forum, or the

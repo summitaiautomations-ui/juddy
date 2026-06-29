@@ -4,5 +4,6 @@ outreach/sms_ledger.json
 outreach/inbound_ledger.json
 discs/.venv/
 discs/output/
+discs/.ebay_state.json
 __pycache__/
 *.pyc

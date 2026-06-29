@@ -95,10 +95,36 @@ warm cache: ~$0.005.
 Switch to a cheaper model (Sonnet 4.6 or Haiku 4.5) by editing the `MODEL`
 constant in `discs/generator.py` if cost matters more than quality.
 
+### Push to eBay as a draft
+
+End-to-end: folder of disc photos → draft listing in your eBay Seller Hub
+that you tap **Publish** on to make live.
+
+```bash
+discs/.venv/bin/python -m discs ebay-setup        # one-time OAuth + policies
+discs/.venv/bin/python -m discs ebay-draft ~/Desktop/destroyer-172-yellow/
+```
+
+Folder layout:
+
+```
+destroyer-172-yellow/
+  stamp.jpg     (front — primary photo)
+  back.jpg      (back — source of truth for back ink)
+  profile.jpg   (side profile)
+  weight.jpg    (rim where weight is printed)
+  price.txt     (optional: just the number, e.g. "25")
+```
+
+If `price.txt` is missing, the command prompts for a price.
+
+See `discs/EBAY_SETUP.md` for the full one-time setup (developer account,
+credentials, business policies).
+
 ## Roadmap
 
 - v2: Notion DB integration (inventory tracking) — blocked on MCP write
   permissions
 - v2: eBay sold-listings comp lookup (price band suggestion)
-- v3: eBay API auto-posting (Sell API + OAuth)
-- v4: Batch mode — JSON file of N discs → N listings
+- v3: eBay auto-publish flag (currently draft-only — review before going live)
+- v4: Batch mode for `ebay-draft` (parent folder of N disc folders)

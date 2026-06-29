@@ -151,45 +151,52 @@ def generate_listings(disc: Disc, *, api_key: str) -> dict:
 
 
 def generate_from_image(image_path: str, *, api_key: str) -> dict:
-    """Photo path: identify the disc from an image, then generate listings.
+    """Single-photo convenience wrapper around generate_from_images."""
+    return generate_from_images([image_path], api_key=api_key)
+
+
+def generate_from_images(image_paths, *, api_key: str) -> dict:
+    """Photo path: identify the disc from one or more images, then generate listings.
 
     Returns both the extracted disc fields (so the caller can verify
-    identification) and the listings. Single API call.
+    identification) and the listings. Single API call regardless of photo count.
     """
-    image_data, media_type = image_loader.load_for_api(image_path)
+    image_blocks = []
+    for path in image_paths:
+        data, media_type = image_loader.load_for_api(path)
+        image_blocks.append({
+            "type": "image",
+            "source": {"type": "base64", "media_type": media_type, "data": data},
+        })
+
+    if len(image_paths) == 1:
+        instruction = (
+            "Identify this disc from the photo, then generate listings. "
+            "Be honest about what you can and can't see — if weight isn't "
+            "visible on the rim, leave it null and note it. State your "
+            "uncertainty about condition in extraction_notes."
+        )
+    else:
+        instruction = (
+            f"These are {len(image_paths)} photos of the SAME disc from different angles. "
+            "Use ALL of them together to identify the disc and assess condition. "
+            "The back-of-disc photo (if present) is the source of truth for back_ink. "
+            "The rim/weight photo (if present) is the source of truth for weight. "
+            "Be honest about what you still can't see and note it in extraction_notes."
+        )
 
     client = anthropic.Anthropic(api_key=api_key)
     response = client.messages.create(
         model=MODEL,
         max_tokens=MAX_TOKENS,
         thinking={"type": "adaptive"},
-        # Default effort (high) — visual identification + extraction + listing
-        # generation in one shot is harder than the text-only path.
         output_config={
             "format": {"type": "json_schema", "schema": PHOTO_OUTPUT_SCHEMA},
         },
         system=_system_block(),
         messages=[{
             "role": "user",
-            "content": [
-                {
-                    "type": "image",
-                    "source": {
-                        "type": "base64",
-                        "media_type": media_type,
-                        "data": image_data,
-                    },
-                },
-                {
-                    "type": "text",
-                    "text": (
-                        "Identify this disc from the photo, then generate listings. "
-                        "Be honest about what you can and can't see — if weight isn't "
-                        "visible on the rim, leave it null and note it. State your "
-                        "uncertainty about condition in extraction_notes."
-                    ),
-                },
-            ],
+            "content": image_blocks + [{"type": "text", "text": instruction}],
         }],
     )
     return _parse_response(response)

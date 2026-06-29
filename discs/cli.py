@@ -248,10 +248,152 @@ def cmd_batch(args):
             print(f"  - {name}: {err}", file=sys.stderr)
 
 
+def _disc_folder_photos(folder):
+    """Return all photo paths in a folder, sorted with stamp.* first if present."""
+    paths = sorted(p for p in folder.iterdir() if p.suffix.lower() in PHOTO_EXTENSIONS)
+    stamp = [p for p in paths if p.stem.lower() == "stamp"]
+    others = [p for p in paths if p.stem.lower() != "stamp"]
+    return stamp + others
+
+
+def _read_price(folder):
+    """Read price.txt from folder; if missing, prompt interactively."""
+    price_file = folder / "price.txt"
+    if price_file.exists():
+        raw = price_file.read_text().strip().lstrip("$")
+        try:
+            return float(raw)
+        except ValueError:
+            print(f"Invalid price in {price_file}: {raw!r}", file=sys.stderr)
+            sys.exit(2)
+    print(f"No price.txt in {folder.name}. Enter asking price in USD.")
+    raw = input("Price ($): ").strip().lstrip("$")
+    try:
+        return float(raw)
+    except ValueError:
+        print(f"Invalid price: {raw!r}", file=sys.stderr)
+        sys.exit(2)
+
+
+def cmd_ebay_setup(args):
+    """One-time: OAuth consent + fetch business policies + create inventory location."""
+    from discs.ebay import auth as ebay_auth, policies as ebay_policies
+
+    print("Step 1/3: eBay OAuth consent (browser will open)…\n")
+    state = ebay_auth.run_consent_flow()
+
+    print("\nStep 2/3: Fetching your Business Policy IDs…")
+    f_id, p_id, r_id = ebay_policies.fetch_first_policies()
+    state.fulfillment_policy_id = f_id
+    state.payment_policy_id = p_id
+    state.return_policy_id = r_id
+    state.save()
+    print(f"  Fulfillment: {f_id}")
+    print(f"  Payment:     {p_id}")
+    print(f"  Return:      {r_id}")
+
+    print("\nStep 3/3: Inventory location.")
+    zip_code = state.zip_code or input("ZIP code to ship from: ").strip()
+    if not re.fullmatch(r"\d{5}", zip_code):
+        print(f"Invalid ZIP: {zip_code!r}", file=sys.stderr)
+        sys.exit(2)
+    state.zip_code = zip_code
+    state.merchant_location_key = ebay_policies.ensure_merchant_location(zip_code)
+    state.save()
+    print(f"  Location key: {state.merchant_location_key} (ZIP {zip_code})")
+
+    print("\n✓ eBay setup complete. Try: python -m discs ebay-test")
+
+
+def cmd_ebay_test(args):
+    """Sanity check: confirm auth works + print policy IDs."""
+    from discs.ebay import auth as ebay_auth, policies as ebay_policies
+
+    state = ebay_auth.EbayState.load()
+    if not state.refresh_token:
+        print("No eBay auth yet. Run: python -m discs ebay-setup", file=sys.stderr)
+        sys.exit(2)
+
+    print("Refreshing access token…")
+    ebay_auth.get_access_token()
+    print("✓ Access token valid.\n")
+
+    print("Business policies:")
+    all_pol = ebay_policies.list_all_policies()
+    for kind in ("fulfillment", "payment", "return"):
+        print(f"  {kind}:")
+        for p in all_pol[kind]:
+            pid_key = f"{kind}PolicyId"
+            print(f"    - {p.get('name')} ({p[pid_key]})")
+    print(f"\nActive: fulfillment={state.fulfillment_policy_id}  "
+          f"payment={state.payment_policy_id}  return={state.return_policy_id}")
+    print(f"Ships from: ZIP {state.zip_code} ({state.merchant_location_key})")
+
+
+def cmd_ebay_draft(args):
+    """Snap a folder of disc photos → eBay draft listing.
+
+    Folder layout:
+      <disc-folder>/
+        stamp.jpg     (front, used as primary photo)
+        back.jpg      (back of disc — read for back_ink)
+        profile.jpg   (side profile)
+        weight.jpg    (rim with weight printed)
+        price.txt     (optional, just the number e.g. "25" or "$25")
+    """
+    if len(args) < 1:
+        print("usage: python -m discs ebay-draft <disc-folder>", file=sys.stderr)
+        sys.exit(2)
+
+    folder = Path(args[0]).expanduser()
+    if not folder.is_dir():
+        print(f"Not a directory: {folder}", file=sys.stderr)
+        sys.exit(2)
+
+    photos = _disc_folder_photos(folder)
+    if not photos:
+        print(f"No photos in {folder}", file=sys.stderr)
+        sys.exit(1)
+
+    cfg = config.load()
+    print(f"Identifying disc from {len(photos)} photo(s) in {folder.name}…", file=sys.stderr)
+    result = generator.generate_from_images(
+        [str(p) for p in photos],
+        api_key=cfg["anthropic_api_key"],
+    )
+
+    _print_identification(result["extracted_disc"])
+    _print_listings(result)
+    _print_usage(result)
+
+    price = _read_price(folder)
+    print(f"\nAsking price: ${price:.2f}", file=sys.stderr)
+
+    from discs.ebay import draft as ebay_draft
+    print("\nPushing to eBay (draft)…", file=sys.stderr)
+    out = ebay_draft.create_draft(
+        result["extracted_disc"],
+        result,
+        [str(p) for p in photos],
+        price,
+    )
+    print()
+    print(SEP)
+    print("EBAY DRAFT CREATED  (unpublished — review and publish in Seller Hub)")
+    print(SEP)
+    print(f"SKU:        {out['sku']}")
+    print(f"Offer ID:   {out['offer_id']}")
+    print(f"Drafts:     {out['seller_hub_url']}")
+    _post_run(result, source_label=f"ebay-draft:{folder.name}")
+
+
 COMMANDS = {
     "generate": cmd_generate,
     "photo": cmd_photo,
     "batch": cmd_batch,
+    "ebay-setup": cmd_ebay_setup,
+    "ebay-test": cmd_ebay_test,
+    "ebay-draft": cmd_ebay_draft,
 }
 
 
@@ -261,8 +403,11 @@ def main():
             f"usage: python -m discs <{'|'.join(COMMANDS)}> [args]",
             file=sys.stderr,
         )
-        print("  generate          interactive prompts", file=sys.stderr)
-        print("  photo <path>      identify + list from a photo", file=sys.stderr)
-        print("  batch <folder>    process every photo in a folder", file=sys.stderr)
+        print("  generate            interactive prompts", file=sys.stderr)
+        print("  photo <path>        identify + list from a photo", file=sys.stderr)
+        print("  batch <folder>      process every photo in a folder", file=sys.stderr)
+        print("  ebay-setup          one-time: OAuth + policies + location", file=sys.stderr)
+        print("  ebay-test           verify eBay auth works", file=sys.stderr)
+        print("  ebay-draft <folder> create an eBay draft listing from a disc folder", file=sys.stderr)
         sys.exit(2)
     COMMANDS[sys.argv[1]](sys.argv[2:])

@@ -70,6 +70,36 @@ def _flatten(page):
     }
 
 
+class NotionAccessError(RuntimeError):
+    pass
+
+
+def _check(r, database_id):
+    """Turn Notion's terse 401/403/404 into an actionable message."""
+    if r.status_code in (401, 403, 404):
+        raise NotionAccessError(
+            f"Notion returned {r.status_code} for the Recruiting Pipeline DB "
+            f"({database_id}).\n"
+            "  In Notion this almost always means the integration behind your "
+            "NOTION_TOKEN has not been given access to this database.\n"
+            "  Fix: open the Recruiting Pipeline database in Notion → top-right "
+            "••• menu → Connections → add the same integration you use for the "
+            "Mortgage Pipeline, then re-run.\n"
+            "  (401 instead means the token itself is wrong.)"
+        )
+    r.raise_for_status()
+
+
+def db_meta(token, database_id):
+    """Fetch the database object (title etc.); raises NotionAccessError on 4xx."""
+    r = requests.get(
+        f"{API}/databases/{database_id}",
+        headers=_headers(token), timeout=30,
+    )
+    _check(r, database_id)
+    return r.json()
+
+
 def fetch_candidates(token, database_id):
     """Yield a flat dict for every page in the recruiting database."""
     body = {"page_size": 100}
@@ -81,7 +111,7 @@ def fetch_candidates(token, database_id):
             f"{API}/databases/{database_id}/query",
             json=body, headers=_headers(token), timeout=30,
         )
-        r.raise_for_status()
+        _check(r, database_id)
         data = r.json()
         for page in data["results"]:
             yield _flatten(page)

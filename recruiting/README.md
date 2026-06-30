@@ -1,12 +1,16 @@
 # recruiting
 
 Daily recruiting digest — one snazzy HTML email each morning tracking
-progress toward the hiring goal (default **12 hires**), sourced live from
-the Notion **Recruiting Pipeline** database.
+progress toward the hiring goal (default **12 hires, each producing 2–3
+units/month** last year), sourced live from the Notion **Recruiting
+Pipeline** database.
 
 Each email shows:
 
 - **Goal progress** — `X / 12 hired`, a progress bar, and how many to go
+- **Production caliber** — how many hires hit the 2–3 u/mo target, the
+  hired average u/mo, and the monthly book of business added (2025 Units
+  is annual, so u/mo = units ÷ 12)
 - **Stat strip** — active candidates, in-Offer, in-Interview, new this week
 - **Overdue alert** — late-stage follow-ups that have gone past due
 - **On the doorstep** — every Offer / Interview candidate (the next hires
@@ -52,6 +56,8 @@ same pattern as the other always-on jobs in
 | Env var | Default | Meaning |
 | --- | --- | --- |
 | `HIRING_GOAL` | `12` | The number of hires the email tracks toward |
+| `TARGET_UPM_MIN` | `2` | Lower bound of the units/mo caliber target |
+| `TARGET_UPM_HIGH` | `3` | Upper bound, for the "2–3 u/mo" label |
 | `NOTION_RECRUITING_DB` | known DB id | Recruiting Pipeline database |
 | `RECRUITING_DIGEST_TO` | `DIGEST_TO_EMAIL` | Recipient(s), comma-separated |
 | `RECRUITING_OVERDUE_DAYS` | `0` | Grace days before a follow-up is "overdue" |

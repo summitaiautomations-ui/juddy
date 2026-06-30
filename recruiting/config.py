@@ -47,6 +47,10 @@ def load_config():
         },
         # The number of hires that counts as "mission accomplished".
         "hiring_goal": int(os.environ.get("HIRING_GOAL", "12")),
+        # Target caliber: each hire should have produced this many units/month
+        # last year (2-3 u/mo). 2025 Units is an annual figure, so u/mo = /12.
+        "target_upm_min": float(os.environ.get("TARGET_UPM_MIN", "2")),
+        "target_upm_high": float(os.environ.get("TARGET_UPM_HIGH", "3")),
         # A follow-up older than this many days is flagged as overdue.
         "overdue_grace_days": int(os.environ.get("RECRUITING_OVERDUE_DAYS", "0")),
     }

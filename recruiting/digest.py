@@ -53,14 +53,38 @@ def _location(c):
     return ", ".join(bits)
 
 
+def _upm_str(upm):
+    """'2.3/mo' for a known rate, '—/mo' when units are unknown."""
+    if upm is None:
+        return "—/mo"
+    return f"{upm:.1f}/mo"
+
+
+def _upm_badge(c):
+    """Coloured units/month pill: green on-target, amber below, gray unknown."""
+    upm = c.get("upm")
+    if upm is None:
+        return _pill("— u/mo", "#f1f5f9", MUTED)
+    if c.get("on_target"):
+        return _pill(f"{upm:.1f} u/mo ✓", GREEN_SOFT, "#166534")
+    return _pill(f"{upm:.1f} u/mo", "#fef3c7", "#92400e")
+
+
 # ---------------------------------------------------------------------------
 # Analytics
 # ---------------------------------------------------------------------------
 
-def analyze(candidates, today, goal, grace_days):
+def _upm(units):
+    """2025 Units is annual; units/month = /12. None stays None (unknown)."""
+    return None if units is None else units / 12.0
+
+
+def analyze(candidates, today, goal, grace_days, target_upm=2.0, target_upm_high=3.0):
     by_stage = {}
     for c in candidates:
         by_stage[c["stage"]] = by_stage.get(c["stage"], 0) + 1
+        c["upm"] = _upm(c.get("units_2025"))
+        c["on_target"] = c["upm"] is not None and c["upm"] >= target_upm
 
     hired = [c for c in candidates if c["stage"] == "Hired"]
     offers = [c for c in candidates if c["stage"] == "Offer"]
@@ -99,9 +123,19 @@ def analyze(candidates, today, goal, grace_days):
     remaining = max(goal - hired_count, 0)
     pct = min(int(round(hired_count / goal * 100)), 100) if goal else 0
 
+    # Production caliber: target is hires producing 2-3+ units/mo last year.
+    hired_known = [c for c in hired if c["upm"] is not None]
+    hired_on_target = sum(1 for c in hired if c["on_target"])
+    hired_avg_upm = (sum(c["upm"] for c in hired_known) / len(hired_known)
+                     if hired_known else None)
+    # Monthly book of business carried by the hires (sum of their u/mo).
+    hired_monthly_units = sum(c["upm"] for c in hired_known)
+    quality_pct = (min(int(round(hired_on_target / goal * 100)), 100)
+                   if goal else 0)
+
     return {
         "by_stage": by_stage,
-        "hired": hired,
+        "hired": sorted(hired, key=lambda c: -(c["upm"] or -1)),
         "hired_count": hired_count,
         "offers": offers,
         "interviews": interviews,
@@ -114,6 +148,12 @@ def analyze(candidates, today, goal, grace_days):
         "goal": goal,
         "remaining": remaining,
         "pct": pct,
+        "hired_on_target": hired_on_target,
+        "hired_avg_upm": hired_avg_upm,
+        "hired_monthly_units": hired_monthly_units,
+        "quality_pct": quality_pct,
+        "target_upm": target_upm,
+        "target_upm_high": target_upm_high,
     }
 
 
@@ -176,7 +216,7 @@ def _doorstep_rows(doorstep):
                               else ("#fef9c3", "#854d0e"))
         meta_bits = [b for b in (
             c.get("role"), _location(c),
-            (f'{c["units_2025"]:.0f}u' if c.get("units_2025") else None),
+            (f'{c["units_2025"]:.0f}u in \'25' if c.get("units_2025") else None),
             _money(c.get("volume_2025")),
             (f'rec: {c["recruiter"]}' if c.get("recruiter") else None),
         ) if b]
@@ -197,7 +237,8 @@ def _doorstep_rows(doorstep):
             f'{meta}</div>{flag}'
             f'</td>'
             f'<td valign="top" align="right" style="white-space:nowrap;padding-left:10px;">'
-            f'{_pill(stage, stage_bg, stage_fg)}</td>'
+            f'{_pill(stage, stage_bg, stage_fg)}'
+            f'<div style="margin-top:6px;">{_upm_badge(c)}</div></td>'
             f'</tr></table>'
             f'</td></tr>'
         )
@@ -233,18 +274,36 @@ def _funnel_rows(by_stage):
 def _hired_chips(hired):
     if not hired:
         return ""
-    chips = "".join(
-        f'<span style="display:inline-block;background:{GREEN_SOFT};color:#166534;'
-        f'font:600 12px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;'
-        f'padding:6px 10px;border-radius:999px;margin:0 6px 6px 0;">✓ {_esc(c["name"])}</span>'
-        for c in hired
-    )
-    return chips
+    chips = []
+    for c in hired:
+        on = c.get("on_target")
+        bg, fg = (GREEN_SOFT, "#166534") if on else ("#f1f5f9", "#475569")
+        star = "★" if on else "✓"
+        rate = _upm_str(c.get("upm"))
+        chips.append(
+            f'<span style="display:inline-block;background:{bg};color:{fg};'
+            f'font:600 12px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;'
+            f'padding:6px 10px;border-radius:999px;margin:0 6px 6px 0;">'
+            f'{star} {_esc(c["name"])} '
+            f'<span style="opacity:.7;font-weight:700;">{rate}</span></span>'
+        )
+    return "".join(chips)
 
 
 def compose_html(today, a):
     goal, hired_count, remaining, pct = a["goal"], a["hired_count"], a["remaining"], a["pct"]
     pretty_date = today.strftime("%A, %B %-d, %Y")
+
+    # Production-caliber card values
+    lo, hi = a["target_upm"], a["target_upm_high"]
+    target_band = f"{lo:g}–{hi:g}"
+    hired_on_target = a["hired_on_target"]
+    quality_bar = _bar(a["quality_pct"], INDIGO, height=12, radius=6)
+    avg_upm = f"{a['hired_avg_upm']:.1f}" if a["hired_avg_upm"] is not None else "—"
+    monthly_units = f"{a['hired_monthly_units']:.0f}"
+    below = hired_count - hired_on_target
+    on_target_note = (f"{below} hired below {lo:g} u/mo" if below > 0
+                      else "every hire on-target")
 
     if remaining == 0:
         headline = f"🎉 Goal hit — {hired_count} hired!"
@@ -310,6 +369,27 @@ def compose_html(today, a):
     </tr></table>
   </td></tr>
 
+  <!-- Production caliber -->
+  <tr><td style="padding:8px 24px 4px 24px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+      style="background:#f8fafc;border:1px solid {LINE};border-radius:14px;"><tr>
+      <td style="padding:14px 16px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+          <td style="font:800 12px/1.2 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{INK};text-transform:uppercase;letter-spacing:.06em;">
+            Production caliber <span style="color:{MUTED};font-weight:600;text-transform:none;letter-spacing:0;">— target {target_band} u/mo each</span>
+          </td>
+          <td align="right" style="font:800 14px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{GREEN};white-space:nowrap;">{hired_on_target} / {goal} on-target</td>
+        </tr></table>
+        <div style="margin:10px 0 8px 0;">{quality_bar}</div>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+          <td style="font:400 12px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{MUTED};">
+            Hired avg <b style="color:{INK};">{avg_upm}</b> u/mo · book added <b style="color:{INK};">{monthly_units}</b> u/mo · {on_target_note}
+          </td>
+        </tr></table>
+      </td>
+    </tr></table>
+  </td></tr>
+
   <!-- Stat strip -->
   <tr><td style="padding:14px 16px 18px 16px;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"
@@ -351,7 +431,7 @@ def compose_html(today, a):
   <!-- Footer -->
   <tr><td style="padding:20px 24px 26px 24px;">
     <div style="border-top:1px solid {LINE};padding-top:14px;font:400 11px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:#94a3b8;">
-      Daily recruiting digest · generated from the Notion Recruiting Pipeline.<br>Goal: {goal} hires.
+      Daily recruiting digest · generated from the Notion Recruiting Pipeline.<br>Goal: {goal} hires producing {target_band} units/mo each.
     </div>
   </td></tr>
 
@@ -366,6 +446,10 @@ def compose_plain(today, a):
     L.append("=" * 48)
     L.append(f"{a['hired_count']} / {a['goal']} hired  ({a['pct']}%)  —  "
              f"{a['remaining']} to go")
+    avg = f"{a['hired_avg_upm']:.1f}" if a["hired_avg_upm"] is not None else "—"
+    L.append(f"Caliber: {a['hired_on_target']} / {a['goal']} hires at "
+             f"{a['target_upm']:g}-{a['target_upm_high']:g} u/mo target  "
+             f"(hired avg {avg} u/mo)")
     L.append(f"{a['active_total']} active · {len(a['offers'])} offer · "
              f"{len(a['interviews'])} interview · {a['new_7']} new this week")
     L.append("")
@@ -377,14 +461,19 @@ def compose_plain(today, a):
     L.append("ON THE DOORSTEP (Offer / Interview):")
     for c in a["doorstep"]:
         tag = f"  [{c['overdue']}d overdue]" if c["overdue"] is not None else ""
-        L.append(f"   {c['stage']:<10} {c['name']}{tag}")
+        star = " *" if c.get("on_target") else ""
+        L.append(f"   {c['stage']:<10} {_upm_str(c.get('upm')):>7}  "
+                 f"{c['name']}{star}{tag}")
     L.append("")
     L.append("FUNNEL:")
     for s in FUNNEL:
         L.append(f"   {s:<18} {a['by_stage'].get(s, 0)}")
     L.append(f"   {'Passed':<18} {a['passed']}")
     L.append("")
-    L.append("HIRED: " + ", ".join(c["name"] for c in a["hired"]))
+    L.append("HIRED (units/mo):")
+    for c in a["hired"]:
+        star = " *" if c.get("on_target") else ""
+        L.append(f"   {_upm_str(c.get('upm')):>7}  {c['name']}{star}")
     return "\n".join(L)
 
 
@@ -418,11 +507,13 @@ def build(today=None, dry_run=False):
     today = today or datetime.now().date()
     candidates = list(notion.fetch_candidates(
         cfg["notion"]["token"], cfg["notion"]["database_id"]))
-    a = analyze(candidates, today, cfg["hiring_goal"], cfg["overdue_grace_days"])
+    a = analyze(candidates, today, cfg["hiring_goal"], cfg["overdue_grace_days"],
+                cfg["target_upm_min"], cfg["target_upm_high"])
     if a["remaining"] == 0:
         subject = f"🎉 Recruiting: goal hit — {a['hired_count']}/{a['goal']} hired"
     else:
-        subject = (f"Recruiting: {a['hired_count']}/{a['goal']} hired · "
+        subject = (f"Recruiting: {a['hired_count']}/{a['goal']} hired "
+                   f"({a['hired_on_target']} on-target) · "
                    f"{a['remaining']} to go · {today.isoformat()}")
     html = compose_html(today, a)
     plain = compose_plain(today, a)

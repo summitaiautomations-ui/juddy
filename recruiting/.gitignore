@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 .env
 preview.png
+.weekly_state.json

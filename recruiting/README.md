@@ -32,24 +32,49 @@ Each email shows:
    `outreach/` is already running, only two are new: `NOTION_RECRUITING_DB`
    (optional) and `RECRUITING_DIGEST_TO`.
 
+## Two emails
+
+- **`daily`** — the goal-tracking digest: progress toward the hiring goal
+  and the 2–3 u/mo production caliber, on-the-doorstep candidates, overdue
+  follow-ups, funnel, and hired roll call.
+- **`weekly`** — a funnel-health review with **no goal/caliber numbers**:
+  Top / Middle / Bottom of funnel counts with week-over-week movement (who
+  advanced a stage, new entries, hired/passed this week). It saves a
+  snapshot (`recruiting/.weekly_state.json`, gitignored) each run and diffs
+  against last week's; the first run just establishes the baseline.
+
+  Funnel buckets: Top = Initial Outreach · Middle = Conversation, Interview
+  · Bottom = Offer. Hired/Passed are exits, reported as "this week," not
+  standing buckets.
+
 ## Usage
 
 ```bash
-# Send today's digest
+# Daily digest
 recruiting/.venv/bin/python -m recruiting daily
-
-# Print the plain-text version without sending
 recruiting/.venv/bin/python -m recruiting daily --dry-run
 
-# Render the HTML to recruiting/preview.html (open it in a browser)
+# Weekly funnel review (--dry-run does not send or save a snapshot)
+recruiting/.venv/bin/python -m recruiting weekly
+recruiting/.venv/bin/python -m recruiting weekly --dry-run
+
+# Render either to recruiting/preview.html (open in a browser)
 recruiting/.venv/bin/python -m recruiting preview
+recruiting/.venv/bin/python -m recruiting preview weekly
 ```
 
 ## Schedule it (launchd)
 
-Run `daily` once each morning, e.g. 7:00 AM, with a `launchd` agent — the
-same pattern as the other always-on jobs in
-`scripts/mac-mini-always-on/`.
+One installer wires up both agents — daily every morning (7:00 AM) and
+weekly on Monday (7:30 AM):
+
+```bash
+bash recruiting/install-schedule.sh
+```
+
+Override times with env vars, e.g. `DIGEST_HOUR=6 DIGEST_MINUTE=30` for the
+daily, or `WEEKLY_WEEKDAY=1 WEEKLY_HOUR=8` for the weekly (Weekday: 0/7=Sun,
+1=Mon). Matches the always-on pattern in `scripts/mac-mini-always-on/`.
 
 ## Configuration
 

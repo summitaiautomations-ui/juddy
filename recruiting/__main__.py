@@ -1,15 +1,17 @@
 """Recruiting digest CLI.
 
-    python -m recruiting check            # verify Notion token + DB access
-    python -m recruiting daily            # send today's digest email
-    python -m recruiting daily --dry-run  # print plain-text, don't send
-    python -m recruiting preview          # write the HTML to recruiting/preview.html
+    python -m recruiting check             # verify Notion token + DB access
+    python -m recruiting daily             # send today's digest email
+    python -m recruiting daily --dry-run   # print plain-text, don't send
+    python -m recruiting weekly            # send the weekly funnel email
+    python -m recruiting weekly --dry-run  # print it, don't send or snapshot
+    python -m recruiting preview [weekly]  # write HTML to recruiting/preview.html
 """
 
 import sys
 from pathlib import Path
 
-from recruiting import config, digest, notion
+from recruiting import config, digest, notion, weekly
 
 
 def _check():
@@ -43,8 +45,11 @@ def _check():
     return 0
 
 
-def _preview():
-    subject, html, plain, a, _cfg = digest.build()
+def _preview(which="daily"):
+    if which == "weekly":
+        subject, html, plain, *_ = weekly.build()
+    else:
+        subject, html, plain, *_ = digest.build()
     out = Path(__file__).resolve().parent / "preview.html"
     out.write_text(html, encoding="utf-8")
     print(plain)
@@ -59,8 +64,10 @@ def main(argv=None):
 
     if cmd == "daily":
         digest.run(dry_run=dry)
+    elif cmd == "weekly":
+        weekly.run(dry_run=dry)
     elif cmd == "preview":
-        _preview()
+        _preview("weekly" if "weekly" in argv else "daily")
     elif cmd == "check":
         return _check()
     else:

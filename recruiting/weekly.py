@@ -68,14 +68,16 @@ def save_state(candidates, today):
 # ---------------------------------------------------------------------------
 
 def analyze(candidates, prev, today):
-    # Current bucket + stage counts
+    # Current bucket + stage counts, plus the members of each bucket
     bucket_counts = {name: 0 for name, _, _ in BUCKETS}
+    bucket_members = {name: [] for name, _, _ in BUCKETS}
     stage_counts = {}
     for c in candidates:
         stage_counts[c["stage"]] = stage_counts.get(c["stage"], 0) + 1
         b = _bucket_of(c["stage"])
         if b:
             bucket_counts[b] += 1
+            bucket_members[b].append(c)
 
     # New into the pipeline this week (independent of snapshot)
     week_ago = today - timedelta(days=7)
@@ -119,6 +121,7 @@ def analyze(candidates, prev, today):
 
     return {
         "bucket_counts": bucket_counts,
+        "bucket_members": bucket_members,
         "bucket_deltas": bucket_deltas,
         "stage_counts": stage_counts,
         "new_entries": new_entries,
@@ -142,6 +145,93 @@ EMERALD = "#059669"
 INDIGO = "#4f46e5"
 
 
+# What to do next at each stage when nothing is overdue.
+NEXT_STEP = {
+    "Initial Outreach": "Start outreach",
+    "Conversation": "Book interview",
+    "Interview": "Move to offer",
+    "Offer": "Close / decision",
+}
+_PRIO_RANK = {"Hot": 0, "Warm": 1, "Cold": 2, "Back Burner": 3, "Archived": 4}
+
+
+def _overdue_days(c, today):
+    fu = c.get("next_followup")
+    return (today - fu).days if fu else None
+
+
+def _action(c, today):
+    """(label, note, urgent) — the next action for this candidate."""
+    od = _overdue_days(c, today)
+    if od is not None and od > 0:
+        return ("Follow up", f"{od}d overdue", True)
+    lc = c.get("last_contact")
+    if lc and (today - lc).days >= 21:
+        return ("Re-engage", f"quiet {(today - lc).days}d", True)
+    step = NEXT_STEP.get(c["stage"], "Next step")
+    if c.get("next_followup"):
+        return (step, f"due {c['next_followup'].strftime('%b %-d')}", False)
+    return (step, "no follow-up set", False)
+
+
+def _notable(members, today, limit=3):
+    """Pick the candidates most worth attention: overdue first, then hot,
+    then biggest producers."""
+    def key(c):
+        od = _overdue_days(c, today)
+        overdue = od is not None and od > 0
+        return (
+            0 if overdue else 1,
+            -(od or 0),
+            _PRIO_RANK.get(c.get("priority"), 2),
+            -(c.get("units_2025") or 0),
+        )
+    return sorted(members, key=key)[:limit]
+
+
+def _bucket_action_summary(members, today):
+    overdue = sum(1 for c in members
+                  if (_overdue_days(c, today) or 0) > 0)
+    no_step = sum(1 for c in members if not c.get("next_followup"))
+    bits = []
+    if overdue:
+        bits.append(f"{overdue} follow-up{'s' if overdue != 1 else ''} overdue")
+    if no_step:
+        bits.append(f"{no_step} with no next step")
+    return "  ·  ".join(bits)
+
+
+def _notable_rows(members, today):
+    rows = []
+    for c in _notable(members, today):
+        label, note, urgent = _action(c, today)
+        desc_bits = []
+        if c.get("priority") in ("Hot", "Warm"):
+            desc_bits.append(c["priority"])
+        if c.get("units_2025"):
+            desc_bits.append(f"{c['units_2025']:.0f}u in '25")
+        if c.get("recruiter"):
+            desc_bits.append(c["recruiter"])
+        desc = "  ·  ".join(_esc(b) for b in desc_bits)
+        act_bg, act_fg = (("#fee2e2", RED) if urgent else ("#eef2ff", INDIGO))
+        action_pill = _pill(f"{label} · {note}" if note else label, act_bg, act_fg)
+        rows.append(
+            f'<tr>'
+            f'<td valign="middle" style="padding:7px 0;border-top:1px solid {LINE};">'
+            f'<div style="font:700 13px/1.3 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{INK};">{_esc(c["name"])}</div>'
+            + (f'<div style="font:400 11px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{MUTED};margin-top:1px;">{desc}</div>' if desc else '')
+            + f'</td>'
+            f'<td valign="middle" align="right" style="padding:7px 0 7px 8px;border-top:1px solid {LINE};white-space:nowrap;">{action_pill}</td>'
+            f'</tr>'
+        )
+    if not rows:
+        return ""
+    return (
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        f'style="margin-top:10px;">{"".join(rows)}</table>'
+    )
+
+
 def _delta_badge(d):
     if d is None:
         return ""
@@ -152,11 +242,17 @@ def _delta_badge(d):
     return _pill("no change", "#f1f5f9", MUTED)
 
 
-def _bucket_card(name, stages, color, count, delta, stage_counts, top):
+def _bucket_card(name, stages, color, count, delta, stage_counts, top,
+                 members, today):
     inner = "  ·  ".join(
         f'{s} {stage_counts.get(s, 0)}' for s in stages
     )
     width = int(round(count / top * 100)) if top else 0
+    summary = _bucket_action_summary(members, today)
+    summary_html = (
+        f'<div style="font:600 11px/1.4 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;'
+        f'color:{MUTED};margin-top:6px;">⚑ {_esc(summary)}</div>' if summary else ""
+    )
     return (
         f'<tr><td style="padding:8px 0;">'
         f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
@@ -171,9 +267,11 @@ def _bucket_card(name, stages, color, count, delta, stage_counts, top):
         f'</td>'
         f'<td valign="middle" align="right" style="white-space:nowrap;padding-left:10px;">'
         f'<div style="font:800 30px/1 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:{INK};">{count}</div>'
+        f'<div style="margin-top:4px;">{_delta_badge(delta)}</div>'
         f'</td></tr></table>'
-        f'<div style="margin:10px 0 8px 0;">{_bar(width, color, height=10, radius=5)}</div>'
-        f'<div>{_delta_badge(delta)}</div>'
+        f'<div style="margin:10px 0 4px 0;">{_bar(width, color, height=10, radius=5)}</div>'
+        f'{summary_html}'
+        f'{_notable_rows(members, today)}'
         f'</td></tr></table>'
         f'</td></tr>'
     )
@@ -217,7 +315,8 @@ def compose_html(today, a):
 
     cards = "".join(
         _bucket_card(name, stages, color, a["bucket_counts"][name],
-                     a["bucket_deltas"][name], a["stage_counts"], top)
+                     a["bucket_deltas"][name], a["stage_counts"], top,
+                     a["bucket_members"][name], today)
         for name, stages, color in BUCKETS
     )
 
@@ -303,7 +402,14 @@ def compose_plain(today, a):
         inner = ", ".join(f"{s} {a['stage_counts'].get(s, 0)}" for s in stages)
         L.append(f"{name}: {a['bucket_counts'][name]}{dtxt}")
         L.append(f"   {inner}")
-    L.append("")
+        summary = _bucket_action_summary(a["bucket_members"][name], today)
+        if summary:
+            L.append(f"   ! {summary}")
+        for c in _notable(a["bucket_members"][name], today):
+            label, note, _u = _action(c, today)
+            extra = f" [{c['units_2025']:.0f}u]" if c.get("units_2025") else ""
+            L.append(f"     - {c['name']}{extra}: {label} ({note})")
+        L.append("")
     if not a["have_prev"]:
         L.append("(Baseline saved — week-over-week movement starts next week.)")
         L.append("")

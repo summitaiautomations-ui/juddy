@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.juddy.recruiting-digest</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>__REPO__/recruiting/.venv/bin/python</string>
+        <string>-m</string>
+        <string>recruiting</string>
+        <string>daily</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO__</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <!-- Fire once every morning at 7:00 AM local time. -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>__HOUR__</integer>
+        <key>Minute</key>
+        <integer>__MINUTE__</integer>
+    </dict>
+
+    <!-- If the Mac was asleep/off at 7 AM, run as soon as it wakes. -->
+    <key>StartCalendarIntervalRunMissed</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/__USER__/Library/Logs/juddy/recruiting-digest.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/__USER__/Library/Logs/juddy/recruiting-digest.log</string>
+</dict>
+</plist>

@@ -22,7 +22,8 @@
         <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
     </dict>
 
-    <!-- Fire once every morning at 7:00 AM local time. -->
+    <!-- Fire once every morning at 7:00 AM local time. launchd also runs a
+         missed calendar fire on wake if the Mac was asleep at the time. -->
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
@@ -30,10 +31,6 @@
         <key>Minute</key>
         <integer>__MINUTE__</integer>
     </dict>
-
-    <!-- If the Mac was asleep/off at 7 AM, run as soon as it wakes. -->
-    <key>StartCalendarIntervalRunMissed</key>
-    <true/>
 
     <key>StandardOutPath</key>
     <string>/Users/__USER__/Library/Logs/juddy/recruiting-digest.log</string>

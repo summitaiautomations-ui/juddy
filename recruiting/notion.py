@@ -90,6 +90,18 @@ def _check(r, database_id):
     r.raise_for_status()
 
 
+def whoami(token):
+    """Return the integration's display name (Notion bot user) for this token."""
+    r = requests.get(f"{API}/users/me", headers=_headers(token), timeout=30)
+    if r.status_code == 401:
+        raise NotionAccessError("401 from Notion — NOTION_TOKEN is invalid.")
+    r.raise_for_status()
+    data = r.json()
+    bot = data.get("name") or "(unnamed integration)"
+    owner = (((data.get("bot") or {}).get("owner") or {}).get("workspace_name"))
+    return bot, owner
+
+
 def db_meta(token, database_id):
     """Fetch the database object (title etc.); raises NotionAccessError on 4xx."""
     r = requests.get(

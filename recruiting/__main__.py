@@ -17,6 +17,14 @@ def _check():
     db_id = cfg["notion"]["database_id"]
     token = cfg["notion"]["token"]
     print(f"NOTION_TOKEN     : set ({token[:7]}…{token[-4:]})")
+    try:
+        bot, workspace = notion.whoami(token)
+        ws = f" · workspace: {workspace}" if workspace else ""
+        print(f"integration name : \"{bot}\"{ws}")
+        print("                   ^ connect THIS one to the Recruiting DB in Notion")
+    except notion.NotionAccessError as e:
+        print(f"integration name : ?\n\n{e}")
+        return 1
     print(f"recruiting DB id : {db_id}")
     try:
         meta = notion.db_meta(token, db_id)

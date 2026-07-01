@@ -37,15 +37,25 @@ touch "${SEEN}"
 # Needs (a) a Shortcuts shortcut named "Remove Background" containing the
 # Remove Background action, and (b) ImageMagick for the white composite.
 # Quietly skips if either is missing. BGCLEAN=0 disables.
-BG_SHORTCUT="${BG_SHORTCUT:-Remove Background}"
+bg_shortcut() {
+  local candidate
+  for candidate in "${BG_SHORTCUT:-}" "Remove Background" "Remove Image Background"; do
+    [[ -n "${candidate}" ]] || continue
+    if shortcuts list 2>/dev/null | grep -Fxq "${candidate}"; then
+      echo "${candidate}"
+      return 0
+    fi
+  done
+  return 1
+}
 clean_background() {
-  local f="$1" cutout="${1%.*}.cutout.png"
+  local f="$1" cutout="${1%.*}.cutout.png" shortcut
   if [[ "${BGCLEAN:-1}" == "0" ]]; then
     return 0
   fi
   command -v magick >/dev/null 2>&1 || return 0
-  shortcuts list 2>/dev/null | grep -Fxq "${BG_SHORTCUT}" || return 0
-  if shortcuts run "${BG_SHORTCUT}" -i "${f}" -o "${cutout}" 2>/dev/null && [[ -s "${cutout}" ]]; then
+  shortcut="$(bg_shortcut)" || return 0
+  if shortcuts run "${shortcut}" -i "${f}" -o "${cutout}" 2>/dev/null && [[ -s "${cutout}" ]]; then
     # Flatten the cutout onto white with a little breathing room.
     magick "${cutout}" -background white -flatten \
       -bordercolor white -border 48 "${f}" \

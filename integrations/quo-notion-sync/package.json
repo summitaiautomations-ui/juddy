@@ -1,0 +1,19 @@
+{
+  "name": "quo-notion-sync",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Auto-append Quo conversation transcripts + notes into the matching Notion record (Recruiting + Mortgage pipelines) for Summit.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test:match": "node src/find-record.js"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.2.15",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

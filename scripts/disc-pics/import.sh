@@ -6,6 +6,11 @@
 # Usage:
 #   ./import.sh            # copy new photos into the inbox
 #   FLIP=1 ./import.sh     # also un-mirror them (Photo Booth mirrors by default)
+#   ENHANCE=0 ./import.sh  # skip photo cleanup
+#
+# Photos are auto-enhanced on import: with ImageMagick installed
+# (brew install imagemagick) they get auto-levels, a gentle saturation
+# boost, and sharpening; otherwise they're just capped at 1600px.
 
 set -euo pipefail
 
@@ -28,6 +33,22 @@ fi
 mkdir -p "${INBOX}"
 touch "${SEEN}"
 
+# Clean up a photo in place: fix exposure/color cast from indoor webcam
+# shots, sharpen a touch, and cap the size. Falls back to a resize-only
+# pass via sips when ImageMagick isn't installed.
+enhance() {
+  local f="$1"
+  if [[ "${ENHANCE:-1}" == "0" ]]; then
+    return 0
+  fi
+  if command -v magick >/dev/null 2>&1; then
+    magick "${f}" -auto-orient -auto-level -auto-gamma \
+      -modulate 100,112,100 -unsharp 0x1.2 -resize '1600x1600>' -strip "${f}"
+  else
+    sips --resampleHeightWidthMax 1600 "${f}" >/dev/null 2>&1 || true
+  fi
+}
+
 count=0
 while IFS= read -r -d '' src; do
   name="$(basename "${src}")"
@@ -38,6 +59,7 @@ while IFS= read -r -d '' src; do
   if [[ "${FLIP:-0}" == "1" ]]; then
     sips --flip horizontal "${INBOX}/${name}" >/dev/null
   fi
+  enhance "${INBOX}/${name}"
   echo "${name}" >> "${SEEN}"
   echo "==> imported: ${name}"
   count=$((count + 1))

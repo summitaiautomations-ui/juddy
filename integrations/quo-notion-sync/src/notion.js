@@ -121,7 +121,7 @@ export async function appendConversation(record, event) {
     properties[ds.lastContactProp] = { date: { start: dateOnly } };
   }
   if (ds.touchpointProp) {
-    properties[ds.touchpointProp] = { select: { name: 'Text' } };
+    properties[ds.touchpointProp] = { select: { name: event.touchpointType || 'Text' } };
   }
   if (ds.channelProp) {
     // Preserve existing channels; add "Quo" if missing.

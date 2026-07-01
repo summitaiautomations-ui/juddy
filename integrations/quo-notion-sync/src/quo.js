@@ -2,73 +2,121 @@ import crypto from 'node:crypto';
 import { config } from './config.js';
 
 /**
- * Verify the webhook really came from Quo.
+ * Quo is the rebrand of OpenPhone, so this maps the OpenPhone v-series webhook
+ * schema. Confirm once with a real "test event" from Quo's webhook settings, in
+ * case field names shift under the Quo branding.
  *
- * TODO (needs Quo docs): confirm how Quo signs webhooks. Two common schemes are
- * supported below — pick the one Quo uses and delete the other:
- *   A) HMAC-SHA256 of the raw body in a header (e.g. X-Quo-Signature).
- *   B) A static shared secret sent in a header.
- * If Quo does neither, restrict access another way (secret in the URL path).
+ * Signature: Quo/OpenPhone sends an `openphone-signature` header shaped like
+ *   hmac;1;<timestamp>;<base64-digest>
+ * The digest is HMAC-SHA256 over `<timestamp>.<rawBody>` using the base64-decoded
+ * signing key shown in Quo's webhook settings.
  */
 export function verifyWebhook(req) {
-  if (!config.quoWebhookSecret) return true; // no secret configured → skip (dev only)
+  if (!config.quoSigningKey) return true; // no key configured → skip (dev only)
 
-  // Scheme A: HMAC signature over the raw body.
-  const sig = req.get('X-Quo-Signature'); // TODO: confirm header name
-  if (sig) {
-    const expected = crypto
-      .createHmac('sha256', config.quoWebhookSecret)
-      .update(req.rawBody || '')
-      .digest('hex');
-    try {
-      return crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected));
-    } catch {
-      return false;
-    }
+  const header = req.get('openphone-signature') || req.get('quo-signature');
+  if (!header) return false;
+
+  const parts = header.split(';');
+  const timestamp = parts[2];
+  const providedDigest = parts[3];
+  if (!timestamp || !providedDigest) return false;
+
+  const signedData = `${timestamp}.${req.rawBody || ''}`;
+  const key = Buffer.from(config.quoSigningKey, 'base64');
+  const computed = crypto.createHmac('sha256', key).update(signedData).digest('base64');
+
+  try {
+    return crypto.timingSafeEqual(Buffer.from(computed), Buffer.from(providedDigest));
+  } catch {
+    return false;
   }
-
-  // Scheme B: static shared secret header.
-  const headerSecret = req.get('X-Quo-Secret'); // TODO: confirm header name
-  if (headerSecret) return headerSecret === config.quoWebhookSecret;
-
-  return false;
 }
 
+const asArray = (v) => (Array.isArray(v) ? v : v ? [v] : []);
+
 /**
- * Map Quo's webhook payload into the shape appendConversation() expects.
+ * Normalize a Quo webhook into:
+ *   { type, direction, timestamp, transcript, summary, candidatePhones, callId }
  *
- * TODO (needs Quo docs): replace the field paths below with Quo's real payload.
- * The normalized shape we need is:
- *   { phone, direction, timestamp, summary, transcript }
- *   - phone:      the client/recruit's number (NOT your Quo number)
- *   - direction:  "inbound" | "outbound" | "conversation" (optional label)
- *   - timestamp:  ISO string or epoch ms of the message/conversation
- *   - summary:    AI notes / summary of the chat (optional)
- *   - transcript: full text of the conversation/message
+ * candidatePhones lists every number on the event; the server tries each against
+ * Notion and keeps the first that matches a record (so we never need to know
+ * which of your own Quo numbers is which).
  */
 export function parseEvent(body) {
-  // ---- placeholder mapping — adjust to Quo's actual JSON ----
-  const contactPhone =
-    body.contact?.phone ??
-    body.from ??
-    body.customer?.phone_number ??
-    null;
+  const type = body.type || '';
+  const obj = body.data?.object || {};
+  const timestamp = body.createdAt || obj.createdAt || obj.completedAt || undefined;
 
-  const transcript =
-    body.transcript ??
-    body.message?.text ??
-    (Array.isArray(body.messages)
-      ? body.messages
-          .map((m) => `${m.direction === 'outbound' ? 'Me' : 'Them'} [${m.timestamp || ''}]: ${m.text || m.body || ''}`)
-          .join('\n')
-      : '') ??
-    '';
+  // --- text messages: message.received / message.delivered ---
+  if (type.startsWith('message.')) {
+    const from = obj.from;
+    const to = asArray(obj.to);
+    const incoming = obj.direction === 'incoming';
+    const who = incoming ? 'Them' : 'Me';
+    return {
+      type,
+      direction: incoming ? 'inbound text' : 'outbound text',
+      touchpointType: 'Text',
+      timestamp,
+      transcript: obj.body ? `${who}: ${obj.body}` : '',
+      summary: undefined,
+      candidatePhones: [from, ...to].filter(Boolean),
+      callId: undefined,
+    };
+  }
 
-  return {
-    phone: contactPhone,
-    direction: body.direction || (Array.isArray(body.messages) ? 'conversation' : undefined),
-    timestamp: body.timestamp || body.created_at || body.ended_at || undefined,
-    summary: body.summary || body.ai_notes || undefined,
-    transcript,
-  };
+  // --- call transcript: has per-line speaker phone numbers in `dialogue` ---
+  if (type === 'call.transcript.completed') {
+    const dialogue = asArray(obj.dialogue);
+    const phones = [...new Set(dialogue.map((d) => d.identifier).filter(Boolean))];
+    const transcript = dialogue
+      .map((d) => `${d.identifier || 'Speaker'}: ${d.content || ''}`)
+      .join('\n');
+    return {
+      type,
+      direction: 'call',
+      touchpointType: 'Phone Call',
+      timestamp,
+      transcript,
+      summary: undefined,
+      candidatePhones: phones,
+      callId: obj.callId || obj.id,
+    };
+  }
+
+  // --- call summary: AI notes; no phone in payload, matched via callId cache ---
+  if (type === 'call.summary.completed') {
+    const summary = asArray(obj.summary).join('\n');
+    const nextSteps = asArray(obj.nextSteps);
+    const summaryText = [summary, nextSteps.length ? `Next steps:\n- ${nextSteps.join('\n- ')}` : '']
+      .filter(Boolean)
+      .join('\n\n');
+    return {
+      type,
+      direction: 'call',
+      touchpointType: 'Phone Call',
+      timestamp,
+      transcript: '',
+      summary: summaryText,
+      candidatePhones: asArray(obj.participants).filter(Boolean),
+      callId: obj.callId || obj.id,
+    };
+  }
+
+  // --- call completed: no notes, but lets us learn callId → phone ---
+  if (type === 'call.completed' || type === 'call.recording.completed') {
+    return {
+      type,
+      direction: 'call',
+      touchpointType: 'Phone Call',
+      timestamp,
+      transcript: '',
+      summary: undefined,
+      candidatePhones: asArray(obj.participants).filter(Boolean),
+      callId: obj.id || obj.callId,
+    };
+  }
+
+  return { type, direction: undefined, timestamp, transcript: '', summary: undefined, candidatePhones: [], callId: undefined };
 }

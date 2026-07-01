@@ -8,7 +8,8 @@ function required(name) {
 
 export const config = {
   notionToken: required('NOTION_TOKEN'),
-  quoWebhookSecret: process.env.QUO_WEBHOOK_SECRET || '',
+  // The base64 "signing key" shown in Quo's webhook settings.
+  quoSigningKey: process.env.QUO_SIGNING_KEY || '',
   port: Number(process.env.PORT || 8080),
   defaultCountryCode: process.env.DEFAULT_COUNTRY_CODE || '1',
   phoneCacheTtlSeconds: Number(process.env.PHONE_CACHE_TTL_SECONDS || 120),

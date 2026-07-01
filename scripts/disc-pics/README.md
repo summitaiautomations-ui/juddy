@@ -13,8 +13,27 @@ Everything lives under `~/Pictures/disc-pics/` (override with `DISC_PICS_DIR`):
 |-----------------|---------------------------------------------------------|
 | `inbox/`        | Imported photos waiting to be identified                |
 | `library/`      | Cataloged photos, renamed like `007-champion-destroyer.jpg` |
-| `inventory.csv` | One row per disc: mold, brand, plastic, color, weight, condition, notes |
+| `inventory.csv` | One row per disc: mold, brand, plastic, color, weight, condition, price, notes |
 | `.imported`     | Bookkeeping so re-running import never duplicates       |
+
+## Fully automatic mode
+
+```bash
+./install.sh
+```
+
+Installs a LaunchAgent (`com.juddy.disc-pics`) that watches the Photo Booth
+library and runs import + catalog by itself every time you snap a photo.
+Snap a disc, and ~30 seconds later it's identified, priced, filed, and in the
+inventory. Log: `~/Library/Logs/juddy/disc-pics.log`.
+
+## Pricing
+
+Claude suggests an asking price per disc, anchored to the local-shop
+economics: the shop pays **$3** flat, an average used disc lists at **$9**.
+Beat-in base plastic runs $5-7, near-new premium plastic $10-14, hot molds
+and limited/tour stamps $15+. Anything it would price under ~$5 is usually
+not worth the hassle -- just take the shop's $3.
 
 ## One-time Photo Booth setup
 

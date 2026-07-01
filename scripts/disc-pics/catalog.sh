@@ -28,7 +28,7 @@ fi
 
 mkdir -p "${LIBRARY}"
 if [[ ! -f "${INVENTORY}" ]]; then
-  echo 'id,date,photo,mold,brand,plastic,color,weight,condition,notes' > "${INVENTORY}"
+  echo 'id,date,photo,mold,brand,plastic,color,weight,condition,price,notes' > "${INVENTORY}"
 fi
 
 # CSV-quote a single field: wrap in quotes, double any embedded quotes.
@@ -47,11 +47,16 @@ identify_prompt() {
   cat <<EOF
 Read the image file at ${photo}. It is a photo of a single disc golf disc.
 Identify it as best you can from the stamp, shape, and color.
-Reply with exactly one line and nothing else: seven fields separated by
+Reply with exactly one line and nothing else: eight fields separated by
 the | character, in this order:
-mold|brand|plastic|color|weight|condition|notes
+mold|brand|plastic|color|weight|condition|price|notes
 - condition is the Sleepy Scale, 1-10
 - weight is in grams if visible on the disc, otherwise unknown
+- price is a suggested asking price in whole US dollars, number only.
+  Anchor: an average used disc in decent shape is 9. Beat-in base plastic
+  is 5-7, near-new premium plastic is 10-14, hot molds or limited/tour
+  stamps can be 15 or more. Anything condition 5 or below caps at 6.
+  Never go below 4 -- the local shop pays 3 with zero effort.
 - notes: stamp, run, dyes, ink, wear -- anything a buyer or trader would want
 - use the word unknown for any field you cannot determine
 - do not use commas, quotes, or | inside a field
@@ -75,13 +80,13 @@ for photo in "${photos[@]}"; do
   line="$("${CLAUDE_BIN}" -p "$(identify_prompt "${photo}")" 2>/dev/null | awk 'NF {last=$0} END {print last}')"
 
   pipes="${line//[^|]/}"
-  if [[ ${#pipes} -ne 6 ]]; then
+  if [[ ${#pipes} -ne 7 ]]; then
     echo "    could not parse response, leaving in inbox: ${line:-<empty>}" >&2
     skipped=$((skipped + 1))
     continue
   fi
 
-  IFS='|' read -r mold brand plastic color weight condition notes <<< "${line}"
+  IFS='|' read -r mold brand plastic color weight condition price notes <<< "${line}"
 
   rows=$(( $(wc -l < "${INVENTORY}") - 1 ))
   id="$(printf '%03d' $((rows + 1)))"
@@ -92,13 +97,13 @@ for photo in "${photos[@]}"; do
   mv "${photo}" "${LIBRARY}/${new_name}"
   {
     printf '%s,%s,%s' "${id}" "$(date +%Y-%m-%d)" "$(csv_field "${new_name}")"
-    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${notes}"; do
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${price}" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'
   } >> "${INVENTORY}"
 
-  echo "    ${id}: ${brand} ${mold} (${plastic}, ${color}) -> library/${new_name}"
+  echo "    ${id}: ${brand} ${mold} (${plastic}, ${color}) ~\$${price} -> library/${new_name}"
   cataloged=$((cataloged + 1))
 done
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.juddy.disc-pics</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>__REPO__/scripts/disc-pics/auto-catalog.sh</string>
+  </array>
+
+  <!-- Fire whenever Photo Booth writes into its library. -->
+  <key>WatchPaths</key>
+  <array>
+    <string>/Users/__USER__/Pictures/Photo Booth Library/Pictures</string>
+  </array>
+
+  <!-- Also catch anything that arrived while the job wasn't loaded. -->
+  <key>RunAtLoad</key>
+  <true/>
+
+  <!-- Batch rapid-fire shots into one run instead of one run per photo. -->
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>CLAUDE_BIN</key>
+    <string>__CLAUDE_BIN__</string>
+    <key>PATH</key>
+    <string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+</dict>
+</plist>

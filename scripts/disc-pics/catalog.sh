@@ -90,6 +90,9 @@ if [[ ${#photos[@]} -eq 0 ]]; then
   exit 0
 fi
 
+ERR_LOG="${HOME}/Library/Logs/juddy/claude-catalog.err.log"
+mkdir -p "$(dirname "${ERR_LOG}")"
+
 cataloged=0
 skipped=0
 for photo in "${photos[@]}"; do
@@ -97,7 +100,13 @@ for photo in "${photos[@]}"; do
   echo "==> identifying: ${name}"
 
   # Take the last non-empty line in case the model adds any preamble.
-  line="$("${CLAUDE_BIN}" -p "$(identify_prompt "${photo}")" 2>/dev/null | awk 'NF {last=$0} END {print last}')"
+  # A claude failure must not kill the whole run (set -e); errors go to
+  # the error log so they can actually be diagnosed.
+  line="$("${CLAUDE_BIN}" -p "$(identify_prompt "${photo}")" 2>>"${ERR_LOG}" | awk 'NF {last=$0} END {print last}')" || {
+    echo "    claude failed for ${name} (see ${ERR_LOG}), leaving in inbox" >&2
+    skipped=$((skipped + 1))
+    continue
+  }
 
   pipes="${line//[^|]/}"
   if [[ ${#pipes} -ne 7 ]]; then

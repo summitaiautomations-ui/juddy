@@ -56,6 +56,39 @@ Google refreshes `IMPORTDATA` roughly hourly. New discs appear on their own.
 > prices, and notes in `disc-pics-data/` are visible to anyone with the link.
 > Don't put anything personal in the notes.
 
+## Approval -> Shopify / eBay listings
+
+Flow: your kid marks approved discs in the Google Sheet, `listings.py` pulls
+the approved rows and generates import-ready listing files.
+
+One-time sheet setup (on top of the IMPORTDATA setup above):
+
+1. In **M1** type `Approved`. Approving a disc = typing `yes` (or `x`/`ok`)
+   in column M of its row.
+2. **File > Share > Publish to web**, pick that tab, format **CSV**, publish,
+   and copy the URL.
+
+Then generate listings any time:
+
+```bash
+APPROVALS_URL="https://docs.google.com/...output=csv" ./listings.py
+```
+
+Outputs in `disc-pics-data/listings/`:
+
+| File                   | Import it at                                        |
+|------------------------|-----------------------------------------------------|
+| `shopify-products.csv` | Shopify admin > Products > Import (images load from the public photo URLs) |
+| `ebay-listings.csv`    | eBay Seller Hub > Listings > Upload (File Exchange format; verify the category ID, override with `EBAY_CATEGORY`) |
+| `listings.md`          | Human-readable copy-paste fallback                  |
+
+Knobs: `EBAY_CATEGORY` (default 79807), `EBAY_LOCATION` (default USA),
+`SHIP_COST` (default 5.00).
+
+Fully automatic posting (no CSV import step) is possible later: Shopify needs
+a custom-app Admin API token; eBay needs a developer account + OAuth. The
+CSV route needs no credentials.
+
 ## Pricing
 
 Claude suggests an asking price per disc, anchored to the local-shop

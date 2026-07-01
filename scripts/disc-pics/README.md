@@ -93,6 +93,23 @@ not worth the hassle -- just take the shop's $3.
 2. Turn the screen-flash on (the camera button flashes the display white) --
    it doubles as a fill light.
 
+## Photo cleanup (automatic on import)
+
+Every imported photo gets: exposure/color-cast fix, a gentle saturation
+boost, sharpening, and a 1600px cap (needs `brew install imagemagick`;
+resize-only without it). `ENHANCE=0` skips it.
+
+For a pro look, the background is also replaced with clean white using
+macOS subject isolation. One-time setup on the Mac mini:
+
+1. `brew install imagemagick` (if you haven't)
+2. Open **Shortcuts**, make a new shortcut named exactly `Remove Background`,
+   add the **Remove Background** action (set its input to Shortcut Input).
+
+If the shortcut or ImageMagick is missing the step is skipped quietly.
+`BGCLEAN=0` disables it; `BG_SHORTCUT="Other Name"` points at a different
+shortcut.
+
 ## Taking good disc pics
 
 - Plain, contrasting background: a sheet of white or black poster board.

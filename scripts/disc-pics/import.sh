@@ -33,6 +33,27 @@ fi
 mkdir -p "${INBOX}"
 touch "${SEEN}"
 
+# Replace the background with clean white using macOS subject isolation.
+# Needs (a) a Shortcuts shortcut named "Remove Background" containing the
+# Remove Background action, and (b) ImageMagick for the white composite.
+# Quietly skips if either is missing. BGCLEAN=0 disables.
+BG_SHORTCUT="${BG_SHORTCUT:-Remove Background}"
+clean_background() {
+  local f="$1" cutout="${1%.*}.cutout.png"
+  if [[ "${BGCLEAN:-1}" == "0" ]]; then
+    return 0
+  fi
+  command -v magick >/dev/null 2>&1 || return 0
+  shortcuts list 2>/dev/null | grep -Fxq "${BG_SHORTCUT}" || return 0
+  if shortcuts run "${BG_SHORTCUT}" -i "${f}" -o "${cutout}" 2>/dev/null && [[ -s "${cutout}" ]]; then
+    # Flatten the cutout onto white with a little breathing room.
+    magick "${cutout}" -background white -flatten \
+      -bordercolor white -border 48 "${f}" \
+      && echo "    background cleaned: $(basename "${f}")"
+  fi
+  rm -f "${cutout}"
+}
+
 # Clean up a photo in place: fix exposure/color cast from indoor webcam
 # shots, sharpen a touch, and cap the size. Falls back to a resize-only
 # pass via sips when ImageMagick isn't installed.
@@ -59,6 +80,7 @@ while IFS= read -r -d '' src; do
   if [[ "${FLIP:-0}" == "1" ]]; then
     sips --flip horizontal "${INBOX}/${name}" >/dev/null
   fi
+  clean_background "${INBOX}/${name}"
   enhance "${INBOX}/${name}"
   echo "${name}" >> "${SEEN}"
   echo "==> imported: ${name}"

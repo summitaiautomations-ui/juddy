@@ -58,9 +58,9 @@ Google refreshes `IMPORTDATA` roughly hourly. New discs appear on their own.
 
 ## Shopify / eBay listings
 
-Every disc with a photo automatically gets listing files regenerated after
-each catalog pass (or run `./listings.py` by hand). The Google Sheet is
-view-only for sharing -- no approval step.
+Deliberately NOT automatic: build up the spreadsheet first, and once the
+inventory looks right, run `./listings.py` to generate import files for
+every disc that has a photo. The Google Sheet itself is view-only sharing.
 
 Outputs in `disc-pics-data/listings/`:
 

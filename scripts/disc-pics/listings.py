@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
-"""Extract son-approved discs from the shared Google Sheet and generate
-listing files ready to import:
+"""Generate listing files for every cataloged disc that has a photo:
 
   disc-pics-data/listings/shopify-products.csv  (Shopify: Products > Import)
   disc-pics-data/listings/ebay-listings.csv     (eBay Seller Hub: bulk upload / File Exchange)
   disc-pics-data/listings/listings.md           (human-readable, copy-paste fallback)
 
-Approval flow: the Google Sheet imports sheet.csv into columns B:L; your son
-marks approvals in column M (yes/x/ok/true, case-insensitive). Publish that
-tab as CSV (File > Share > Publish to web > that tab > CSV) and pass the URL:
+Runs automatically after each catalog pass (see auto-catalog.sh), or by hand:
 
-  APPROVALS_URL="https://docs.google.com/...output=csv" ./listings.py
-
-With no APPROVALS_URL it falls back to the local sheet.csv and treats every
-disc with a photo as approved (useful for testing).
+  ./listings.py
 """
 
 import csv
-import io
 import os
-import re
 import sys
-import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
@@ -33,60 +24,26 @@ EBAY_CATEGORY = os.environ.get("EBAY_CATEGORY", "79807")
 EBAY_LOCATION = os.environ.get("EBAY_LOCATION", "USA")
 SHIP_COST = os.environ.get("SHIP_COST", "5.00")
 
-APPROVED = re.compile(r"^(yes|y|x|ok|true|approved|✓)$", re.IGNORECASE)
 
-
-def fetch_rows():
-    url = os.environ.get("APPROVALS_URL", "")
-    if url:
-        with urllib.request.urlopen(url, timeout=30) as resp:
-            text = resp.read().decode("utf-8")
-    else:
-        text = (DATA_DIR / "sheet.csv").read_text(encoding="utf-8")
-    return list(csv.reader(io.StringIO(text)))
-
-
-def approved_discs(rows):
+def load_discs():
+    with (DATA_DIR / "sheet.csv").open(encoding="utf-8", newline="") as f:
+        rows = list(csv.reader(f))
     header = [h.strip().lower() for h in rows[0]]
+    fields = ["photo_url", "id", "mold", "brand", "plastic", "color",
+              "weight_g", "condition", "price_usd", "notes"]
+    try:
+        idx = {name: header.index(name) for name in fields}
+    except ValueError as e:
+        sys.exit(f"error: sheet.csv header is missing a column: {e}")
 
-    def col(name, default=None):
-        return header.index(name) if name in header else default
-
-    # The Google Sheet has a "Pic" IMAGE column at A; the published CSV
-    # therefore has photo_url shifted right by one. Find columns by name.
-    idx = {
-        "photo_url": col("photo_url"),
-        "id": col("id"),
-        "mold": col("mold"),
-        "brand": col("brand"),
-        "plastic": col("plastic"),
-        "color": col("color"),
-        "weight": col("weight_g"),
-        "condition": col("condition"),
-        "price": col("price_usd"),
-        "notes": col("notes"),
-    }
-    missing = [k for k, v in idx.items() if v is None]
-    if missing:
-        sys.exit(f"error: could not find columns {missing} in the sheet header: {rows[0]}")
-
-    approve_col = col("approved")
-    using_fallback = "APPROVALS_URL" not in os.environ
-
+    keys = {"weight_g": "weight", "price_usd": "price"}
     discs = []
     for row in rows[1:]:
         if len(row) <= idx["notes"] or not row[idx["id"]].strip():
             continue
-        if using_fallback:
-            ok = bool(row[idx["photo_url"]].strip())
-        elif approve_col is not None and len(row) > approve_col:
-            ok = bool(APPROVED.match(row[approve_col].strip()))
-        else:
-            # No "Approved" header: treat the first cell past the notes column as the mark.
-            extra = row[idx["notes"] + 1] if len(row) > idx["notes"] + 1 else ""
-            ok = bool(APPROVED.match(extra.strip()))
-        if ok:
-            discs.append({k: row[v].strip() for k, v in idx.items()})
+        d = {keys.get(name, name): row[i].strip() for name, i in idx.items()}
+        if d["photo_url"]:  # no photo, no listing
+            discs.append(d)
     return discs
 
 
@@ -172,11 +129,10 @@ def write_ebay(discs):
 def write_markdown(discs):
     path = OUT_DIR / "listings.md"
     with path.open("w", encoding="utf-8") as f:
-        f.write("# Approved disc listings\n\n")
+        f.write("# Disc listings\n\n")
         for d in discs:
             f.write(f'## {d["id"]}: {title(d)} — ${d["price"]}\n\n')
-            if d["photo_url"]:
-                f.write(f'![disc {d["id"]}]({d["photo_url"]})\n\n')
+            f.write(f'![disc {d["id"]}]({d["photo_url"]})\n\n')
             for line in description(d):
                 f.write(f"- {line}\n")
             f.write("\n")
@@ -184,15 +140,14 @@ def write_markdown(discs):
 
 
 def main():
-    rows = fetch_rows()
-    discs = approved_discs(rows)
+    discs = load_discs()
     if not discs:
-        print("==> no approved discs found -- nothing to generate")
+        print("==> no discs with photos yet -- nothing to generate")
         return
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for path in (write_shopify(discs), write_ebay(discs), write_markdown(discs)):
         print(f"==> wrote {path.relative_to(REPO_ROOT)}")
-    print(f"==> {len(discs)} approved disc(s) ready to list")
+    print(f"==> {len(discs)} disc(s) ready to list")
 
 
 if __name__ == "__main__":

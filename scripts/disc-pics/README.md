@@ -56,23 +56,11 @@ Google refreshes `IMPORTDATA` roughly hourly. New discs appear on their own.
 > prices, and notes in `disc-pics-data/` are visible to anyone with the link.
 > Don't put anything personal in the notes.
 
-## Approval -> Shopify / eBay listings
+## Shopify / eBay listings
 
-Flow: your kid marks approved discs in the Google Sheet, `listings.py` pulls
-the approved rows and generates import-ready listing files.
-
-One-time sheet setup (on top of the IMPORTDATA setup above):
-
-1. In **M1** type `Approved`. Approving a disc = typing `yes` (or `x`/`ok`)
-   in column M of its row.
-2. **File > Share > Publish to web**, pick that tab, format **CSV**, publish,
-   and copy the URL.
-
-Then generate listings any time:
-
-```bash
-APPROVALS_URL="https://docs.google.com/...output=csv" ./listings.py
-```
+Every disc with a photo automatically gets listing files regenerated after
+each catalog pass (or run `./listings.py` by hand). The Google Sheet is
+view-only for sharing -- no approval step.
 
 Outputs in `disc-pics-data/listings/`:
 

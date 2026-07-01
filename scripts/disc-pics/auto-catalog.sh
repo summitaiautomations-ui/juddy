@@ -17,4 +17,5 @@ sleep 3
 
 bash "${SCRIPT_DIR}/import.sh"
 bash "${SCRIPT_DIR}/catalog.sh"
+python3 "${SCRIPT_DIR}/listings.py" || echo "warn: listings generation failed, syncing anyway"
 bash "${SCRIPT_DIR}/sync.sh"

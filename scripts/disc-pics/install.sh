@@ -31,7 +31,7 @@ echo "==> claude binary : ${CLAUDE_BIN}"
 echo "==> watching      : ${HOME}/Pictures/Photo Booth Library/Pictures"
 
 mkdir -p "${LAUNCH_AGENTS}"
-chmod +x "${SCRIPT_DIR}/import.sh" "${SCRIPT_DIR}/catalog.sh" "${SCRIPT_DIR}/auto-catalog.sh"
+chmod +x "${SCRIPT_DIR}/import.sh" "${SCRIPT_DIR}/catalog.sh" "${SCRIPT_DIR}/auto-catalog.sh" "${SCRIPT_DIR}/sync.sh"
 
 dest="${LAUNCH_AGENTS}/${LABEL}.plist"
 launchctl bootout "gui/$(id -u)/${LABEL}" 2>/dev/null || true

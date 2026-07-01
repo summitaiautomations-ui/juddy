@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Runs Claude over every photo waiting in the inbox, appends one row per disc
-# to inventory.csv, and files the photo into library/ renamed after the disc.
+# to the repo inventory, and files the photo into disc-pics-data/photos/.
 # Photos Claude can't parse are left in the inbox so nothing is lost.
 #
 # Usage:
@@ -10,10 +10,15 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+
 DISC_PICS_DIR="${DISC_PICS_DIR:-${HOME}/Pictures/disc-pics}"
 INBOX="${DISC_PICS_DIR}/inbox"
-LIBRARY="${DISC_PICS_DIR}/library"
-INVENTORY="${DISC_PICS_DIR}/inventory.csv"
+DATA_DIR="${REPO_ROOT}/disc-pics-data"
+PHOTOS="${DATA_DIR}/photos"
+INVENTORY="${DATA_DIR}/inventory.csv"
+SHEET="${DATA_DIR}/sheet.csv"
 
 CLAUDE_BIN="${CLAUDE_BIN:-$(command -v claude || true)}"
 if [[ -z "${CLAUDE_BIN}" ]]; then
@@ -26,10 +31,25 @@ if [[ ! -d "${INBOX}" ]]; then
   exit 1
 fi
 
-mkdir -p "${LIBRARY}"
+mkdir -p "${PHOTOS}"
 if [[ ! -f "${INVENTORY}" ]]; then
   echo 'id,date,photo,mold,brand,plastic,color,weight,condition,price,notes' > "${INVENTORY}"
 fi
+if [[ ! -f "${SHEET}" ]]; then
+  echo 'photo_url,id,date,mold,brand,plastic,color,weight_g,condition,price_usd,notes' > "${SHEET}"
+fi
+
+# Public raw-file URL prefix for photos, derived from the git remote and the
+# currently checked-out branch. Used by the shared Google Sheet's IMAGE column.
+raw_base() {
+  local remote owner_repo branch
+  remote="$(git -C "${REPO_ROOT}" remote get-url origin)"
+  # owner/repo = last two path segments; works for https, ssh, and proxy URLs.
+  owner_repo="$(echo "${remote%.git}" | tr ':' '/' | awk -F/ '{print $(NF-1)"/"$NF}')"
+  branch="$(git -C "${REPO_ROOT}" rev-parse --abbrev-ref HEAD)"
+  echo "https://raw.githubusercontent.com/${owner_repo}/${branch}/disc-pics-data/photos"
+}
+RAW_BASE="$(raw_base)"
 
 # CSV-quote a single field: wrap in quotes, double any embedded quotes.
 csv_field() {
@@ -93,17 +113,27 @@ for photo in "${photos[@]}"; do
   ext="${name##*.}"
   slug="$(slugify "${mold}")"
   new_name="${id}-${slug:-disc}.${ext}"
+  today="$(date +%Y-%m-%d)"
 
-  mv "${photo}" "${LIBRARY}/${new_name}"
+  mv "${photo}" "${PHOTOS}/${new_name}"
+
   {
-    printf '%s,%s,%s' "${id}" "$(date +%Y-%m-%d)" "$(csv_field "${new_name}")"
+    printf '%s,%s,%s' "${id}" "${today}" "$(csv_field "${new_name}")"
     for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${price}" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'
   } >> "${INVENTORY}"
 
-  echo "    ${id}: ${brand} ${mold} (${plastic}, ${color}) ~\$${price} -> library/${new_name}"
+  {
+    printf '%s,%s,%s' "$(csv_field "${RAW_BASE}/${new_name}")" "${id}" "${today}"
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${price}" "${notes}"; do
+      printf ',%s' "$(csv_field "${f}")"
+    done
+    printf '\n'
+  } >> "${SHEET}"
+
+  echo "    ${id}: ${brand} ${mold} (${plastic}, ${color}) ~\$${price} -> photos/${new_name}"
   cataloged=$((cataloged + 1))
 done
 

@@ -17,3 +17,4 @@ sleep 3
 
 bash "${SCRIPT_DIR}/import.sh"
 bash "${SCRIPT_DIR}/catalog.sh"
+bash "${SCRIPT_DIR}/sync.sh"

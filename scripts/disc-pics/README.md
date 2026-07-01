@@ -4,17 +4,18 @@ Photograph your discs with the Mac's built-in **Photo Booth** app, then let
 Claude identify each one and build a searchable inventory.
 
 ```
-Photo Booth  --import.sh-->  inbox/  --catalog.sh-->  library/ + inventory.csv
+Photo Booth --import.sh--> inbox/ --catalog.sh--> disc-pics-data/ --sync.sh--> GitHub --> Google Sheet
 ```
 
-Everything lives under `~/Pictures/disc-pics/` (override with `DISC_PICS_DIR`):
+The inbox lives under `~/Pictures/disc-pics/` (override with `DISC_PICS_DIR`);
+everything cataloged lives in the repo so it can be shared:
 
-| Path            | What it is                                              |
-|-----------------|---------------------------------------------------------|
-| `inbox/`        | Imported photos waiting to be identified                |
-| `library/`      | Cataloged photos, renamed like `007-champion-destroyer.jpg` |
-| `inventory.csv` | One row per disc: mold, brand, plastic, color, weight, condition, price, notes |
-| `.imported`     | Bookkeeping so re-running import never duplicates       |
+| Path                          | What it is                                          |
+|-------------------------------|-----------------------------------------------------|
+| `~/Pictures/disc-pics/inbox/` | Imported photos waiting to be identified            |
+| `disc-pics-data/photos/`      | Cataloged photos, renamed like `007-champion-destroyer.jpg` |
+| `disc-pics-data/inventory.csv`| One row per disc: mold, brand, plastic, color, weight, condition, price, notes |
+| `disc-pics-data/sheet.csv`    | Same rows plus a public photo URL -- the Google Sheet feed |
 
 ## Fully automatic mode
 
@@ -23,9 +24,37 @@ Everything lives under `~/Pictures/disc-pics/` (override with `DISC_PICS_DIR`):
 ```
 
 Installs a LaunchAgent (`com.juddy.disc-pics`) that watches the Photo Booth
-library and runs import + catalog by itself every time you snap a photo.
-Snap a disc, and ~30 seconds later it's identified, priced, filed, and in the
-inventory. Log: `~/Library/Logs/juddy/disc-pics.log`.
+library and runs import + catalog + sync by itself every time you snap a
+photo. Snap a disc, and ~30 seconds later it's identified, priced, filed,
+pushed to GitHub, and on its way into the shared Google Sheet.
+Log: `~/Library/Logs/juddy/disc-pics.log`.
+
+## Shared Google Sheet (one-time setup)
+
+The Mac mini pushes `disc-pics-data/` to GitHub; a Google Sheet reads it
+live over raw URLs. Set it up once:
+
+1. Create a blank sheet at [sheets.new](https://sheets.new).
+2. In **B1**:
+
+   ```
+   =IMPORTDATA("https://raw.githubusercontent.com/<owner>/<repo>/<branch>/disc-pics-data/sheet.csv")
+   ```
+
+   (`<branch>` = whatever branch the Mac mini is checked out on.)
+3. In **A1** type `Pic`, and in **A2**:
+
+   ```
+   =ARRAYFORMULA(IF(LEN(B2:B), IMAGE(B2:B), ""))
+   ```
+4. Format > Rows > taller rows so the pictures show, then **Share** with
+   your friend (viewer).
+
+Google refreshes `IMPORTDATA` roughly hourly. New discs appear on their own.
+
+> **Privacy note:** this only works because the repo is public -- the photos,
+> prices, and notes in `disc-pics-data/` are visible to anyone with the link.
+> Don't put anything personal in the notes.
 
 ## Pricing
 

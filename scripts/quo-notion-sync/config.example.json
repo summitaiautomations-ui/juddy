@@ -18,6 +18,15 @@
       "phone_property": "Phone",
       "relation_property": "Lead",
       "last_contact_property": null
+    },
+    {
+      "label": "Recruiting Pipeline",
+      "database_id": "e0a85bb7a0514af1b54992580e4bddb5",
+      "phone_property": "Phone",
+      "relation_property": "Recruiting Candidate",
+      "last_contact_property": "Last Contact",
+      "touchpoint_property": "Last Touchpoint Type",
+      "touchpoint_options": {"Call": "Phone Call", "Voicemail": "Phone Call", "Text": "Text"}
     }
   ],
 

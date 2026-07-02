@@ -359,16 +359,24 @@ def load_contact_index(notion, contact_dbs):
     return index
 
 
-def touch_last_contact(notion, match, when_iso):
-    prop = match["db"].get("last_contact_property")
-    if not prop:
+def touch_last_contact(notion, match, when_iso, kind):
+    """Bump the contact's last-contact date and, if configured, the
+    touchpoint-type select (kind is 'Call', 'Voicemail', or 'Text')."""
+    props = {}
+    date_prop = match["db"].get("last_contact_property")
+    if date_prop:
+        props[date_prop] = {"date": {"start": when_iso}}
+    tp_prop = match["db"].get("touchpoint_property")
+    if tp_prop:
+        option = match["db"].get("touchpoint_options", {}).get(kind, kind)
+        if option:
+            props[tp_prop] = {"select": {"name": option}}
+    if not props:
         return
     try:
-        notion.update_page(
-            match["page_id"], {prop: {"date": {"start": when_iso}}}
-        )
+        notion.update_page(match["page_id"], props)
     except ApiError as e:
-        log(f"warning: could not update '{prop}' on {match['name']}: HTTP {e.status}")
+        log(f"warning: could not update contact {match['name']}: HTTP {e.status}")
 
 
 # ---------------------------------------------------------------------------
@@ -602,8 +610,9 @@ def run_sync(config, state_path, dry_run=False, backfill_hours=None):
                          "since": iso(now)}
                     )
                 if matches and when and not dry_run:
+                    kind = "Voicemail" if call.get("voicemail") else "Call"
                     for m in matches:
-                        touch_last_contact(notion, m, when)
+                        touch_last_contact(notion, m, when, kind)
 
         if poll_messages:
             for msg in quo.messages(pn_id, ext, watermark):
@@ -615,7 +624,7 @@ def run_sync(config, state_path, dry_run=False, backfill_hours=None):
                 when = msg.get("createdAt")
                 if matches and when and not dry_run:
                     for m in matches:
-                        touch_last_contact(notion, m, when)
+                        touch_last_contact(notion, m, when, "Text")
 
     # 5. Retry pending transcripts.
     still_pending = []

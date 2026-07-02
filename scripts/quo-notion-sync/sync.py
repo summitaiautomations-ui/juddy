@@ -89,6 +89,10 @@ def http_json(method, url, headers, payload=None, retries=3):
     last_err = None
     for attempt in range(retries):
         req = urllib.request.Request(url, data=data, method=method)
+        # Cloudflare in front of the Quo API rejects Python's default
+        # User-Agent with error 1010, so send a real one.
+        req.add_header("User-Agent", "juddy-quo-notion-sync/1.0")
+        req.add_header("Accept", "application/json")
         for k, v in headers.items():
             req.add_header(k, v)
         if data is not None:

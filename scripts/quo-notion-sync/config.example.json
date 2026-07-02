@@ -1,0 +1,27 @@
+{
+  "quo_api_key": "YOUR_QUO_API_KEY",
+  "notion_token": "YOUR_NOTION_INTEGRATION_TOKEN",
+
+  "communications_database_id": "477028d37d57414e8126520e345e2d0d",
+
+  "contact_databases": [
+    {
+      "label": "Realtor Contacts",
+      "database_id": "a1ff175ced0149eabe6d4a5e8a3a0f7f",
+      "phone_property": "Phone",
+      "relation_property": "Realtor Contact",
+      "last_contact_property": "Last Contact"
+    },
+    {
+      "label": "Leads",
+      "database_id": "498d3448a0fc43b49291c754118bc857",
+      "phone_property": "Phone",
+      "relation_property": "Lead",
+      "last_contact_property": null
+    }
+  ],
+
+  "poll_calls": true,
+  "poll_messages": true,
+  "backfill_hours": 72
+}

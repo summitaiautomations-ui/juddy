@@ -419,8 +419,9 @@
       var t=parseFloat(els.turn.value)||0, f=parseFloat(els.fade.value)||0;
       ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
       ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
-      arrow(px+pw*0.28,arrowBase,arrowTop, t*38, "#8FBF4D");
-      arrow(px+pw*0.72,arrowBase,arrowTop, f*26, "#D9442B");
+      // RHBH flight: negative turn drifts right, fade hooks left
+      arrow(px+pw*0.28,arrowBase,arrowTop, -t*38, "#8FBF4D");
+      arrow(px+pw*0.72,arrowBase,arrowTop, -f*26, "#D9442B");
     }
 
     // story

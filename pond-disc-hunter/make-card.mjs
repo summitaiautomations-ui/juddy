@@ -36,8 +36,9 @@ await page.goto(pathToFileURL(resolve(here, 'index.html')).href);
 await page.evaluate(() => localStorage.clear());
 await page.reload();
 
-// check unknown first: the checkbox handler prefills defaults, and explicit
-// --name/--story flags should win over them
+// orientation first (it resets pan), then unknown: the checkbox handler
+// prefills defaults, and explicit --name/--story flags should win over them
+if (has('vertical')) await page.selectOption('#orient', 'vertical');
 if (has('unknown')) await page.check('#unknown');
 for (const f of ['name', 'speed', 'glide', 'turn', 'fade', 'story']) {
   const v = opt(f);

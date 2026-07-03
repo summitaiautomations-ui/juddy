@@ -150,19 +150,35 @@
   var els = {};
   fields.forEach(function(id){ els[id] = document.getElementById(id); });
 
+  // Prefill for the current find. When a new disc is loaded here (new id),
+  // it overrides whatever was saved from the previous session.
+  var PREFILL = {
+    id: "boss-2026-07-03",
+    name: "INNOVA PRO BOSS",
+    speed: 13, glide: 5, turn: -1, fade: 3,
+    story: "Freed from the algae after who knows how many summers, this Pro Boss is the fastest thing to come out of the pond yet. The mold behind the world distance record — 1,108 feet — with 13 speed of grip-it-and-rip-it power, and Pro plastic only gets grippier with a little pond seasoning. Cleaned up and cleared for takeoff!"
+  };
+
   // ---------- persistence ----------
   function save(){
     try{
       var d = {};
       fields.forEach(function(id){ d[id]=els[id].value; });
       localStorage.setItem("pdh-card", JSON.stringify(d));
+      localStorage.setItem("pdh-prefill-id", PREFILL.id);
     }catch(e){}
+  }
+  function applyPrefill(){
+    fields.forEach(function(id){ els[id].value = PREFILL[id]; });
   }
   function load(){
     try{
+      if(localStorage.getItem("pdh-prefill-id") !== PREFILL.id){
+        applyPrefill(); save(); return;
+      }
       var d = JSON.parse(localStorage.getItem("pdh-card")||"null");
       if(d) fields.forEach(function(id){ if(d[id]!=null) els[id].value=d[id]; });
-    }catch(e){}
+    }catch(e){ applyPrefill(); }
   }
   load();
 
@@ -413,9 +429,7 @@
 
   document.getElementById("reset").addEventListener("click",function(){
     try{ localStorage.removeItem("pdh-card"); }catch(e){}
-    els.name.value="DISCRAFT MALTA";
-    els.speed.value=5; els.glide.value=4; els.turn.value=1; els.fade.value=3;
-    els.story.value="Pulled from the murk with its Paul McBeth stamp still sharp, this swirly purple Malta traded the pond floor for the fairway. An overstable midrange approach machine — point it at the pin, let the fade do the rest. Back in the rotation!";
+    applyPrefill();
     save(); draw();
   });
 

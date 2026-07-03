@@ -57,6 +57,7 @@
   }
   label.f{display:flex;flex-direction:column;gap:5px;font-size:12px;letter-spacing:.06em;
     text-transform:uppercase;color:var(--ink-soft)}
+  select,
   input[type=text],textarea,input[type=number]{
     font:inherit;color:var(--ink);background:var(--bg);
     border:1px solid var(--line);border-radius:4px;padding:8px 10px;width:100%;
@@ -69,6 +70,8 @@
   .nums input{text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
   input[type=range]{width:100%;accent-color:var(--accent)}
   input[type=file]{font-size:13px;color:var(--ink-soft)}
+  label.chk{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink);cursor:pointer}
+  label.chk input{accent-color:var(--accent)}
   .btnrow{display:flex;gap:10px;flex-wrap:wrap}
   button{
     font:inherit;font-weight:600;border:1px solid var(--line);border-radius:5px;
@@ -106,6 +109,9 @@
 
       <fieldset>
         <legend>Disc</legend>
+        <label class="f">Recent finds
+          <select id="finds"></select>
+        </label>
         <label class="f">Disc name
           <input type="text" id="name" value="DISCRAFT MALTA" maxlength="40">
         </label>
@@ -115,6 +121,8 @@
           <label class="f">Turn<input type="number" id="turn" value="1" step="0.5"></label>
           <label class="f">Fade<input type="number" id="fade" value="3" step="0.5"></label>
         </div>
+        <label class="chk"><input type="checkbox" id="unknown"> Mystery disc — no name / stamp unreadable</label>
+        <button type="button" id="womp">🎺 Sad trombone</button>
       </fieldset>
 
       <fieldset>
@@ -152,11 +160,28 @@
 
   // Prefill for the current find. When a new disc is loaded here (new id),
   // it overrides whatever was saved from the previous session.
-  var PREFILL = {
-    id: "boss-2026-07-03",
-    name: "INNOVA PRO BOSS",
-    speed: 13, glide: 5, turn: -1, fade: 3,
-    story: "Freed from the algae after who knows how many summers, this Pro Boss is the fastest thing to come out of the pond yet. The mold behind the world distance record — 1,108 feet — with 13 speed of grip-it-and-rip-it power, and Pro plastic only gets grippier with a little pond seasoning. Cleaned up and cleared for takeoff!"
+  // Every disc found so far. First entry is the newest — it's the default prefill.
+  var FINDS = [
+    { id:"blade-metalflake-2026-07-03", name:"GATEWAY BLADE",
+      speed:9, glide:5, turn:0, fade:3,
+      story:"A teal Metal Flake Blade, glittering through the algae like sunken treasure. Gateway is famous for putters, but this 9-speed fairway blade proves they can cut through a fairway too — dead straight with a dependable 3-fade finish. The sparkle survived the swamp. Back in action!" },
+    { id:"thunderbird-dye-2026-07-03", name:"INNOVA THUNDERBIRD",
+      speed:9, glide:5, turn:0, fade:2,
+      story:"Somebody loved this one — a full custom dye job in tie-dye greens, pinks, and blues, still glowing under the pond grime. The Thunderbird is the fairway driver Calvin Heimburg rides to victory, a point-and-shoot 9-speed that holds any line. Too pretty to stay sunk. Back in the bag!" },
+    { id:"star-destroyer-white-2026-07-03", name:"INNOVA STAR DESTROYER",
+      speed:12, glide:5, turn:-1, fade:3,
+      story:"Wearing a full coat of pond camo, this white Star Destroyer surfaced with its robot stamp still fighting. The most iconic distance driver in the game — the same mold behind Philo Brathwaite's legendary 850-foot albatross 'Holy Shot.' A scrub and a rinse, and this bot is back on distance duty!" },
+    { id:"boss-2026-07-03", name:"INNOVA PRO BOSS",
+      speed:13, glide:5, turn:-1, fade:3,
+      story:"Freed from the algae after who knows how many summers, this Pro Boss is the fastest thing to come out of the pond yet. The mold behind the world distance record — 1,108 feet — with 13 speed of grip-it-and-rip-it power, and Pro plastic only gets grippier with a little pond seasoning. Cleaned up and cleared for takeoff!" },
+    { id:"malta-2026-07-03", name:"DISCRAFT MALTA",
+      speed:5, glide:4, turn:1, fade:3,
+      story:"Pulled from the murk with its Paul McBeth stamp still sharp, this swirly purple Malta traded the pond floor for the fairway. An overstable midrange approach machine — point it at the pin, let the fade do the rest. Back in the rotation!" }
+  ];
+  var PREFILL = FINDS[0];
+  var MYSTERY = {
+    name: "MYSTERY DISC",
+    story: "No stamp. No name. No flight numbers. This poor nameless soldier gave everything to the pond and kept no identity to show for it. Speed unknown, glide unknown, allegiance unknown. We may never know what it was — only what it has become: found."
   };
 
   // ---------- persistence ----------
@@ -168,9 +193,23 @@
       localStorage.setItem("pdh-prefill-id", PREFILL.id);
     }catch(e){}
   }
-  function applyPrefill(){
-    fields.forEach(function(id){ els[id].value = PREFILL[id]; });
+  function applyPrefill(find){
+    var src = find || PREFILL;
+    fields.forEach(function(id){ els[id].value = src[id]; });
+    var un=document.getElementById("unknown");
+    if(un.checked){ un.checked=false; stash=null; }
   }
+
+  // recent-finds dropdown
+  var findsSel = document.getElementById("finds");
+  FINDS.forEach(function(f,i){
+    var o=document.createElement("option");
+    o.value=i; o.textContent=f.name + (i===0 ? " (latest)" : "");
+    findsSel.appendChild(o);
+  });
+  findsSel.addEventListener("change",function(){
+    applyPrefill(FINDS[findsSel.value|0]); save(); draw();
+  });
   function load(){
     try{
       if(localStorage.getItem("pdh-prefill-id") !== PREFILL.id){
@@ -287,6 +326,30 @@
     ctx.restore();
   }
 
+  // wilted arrow for mystery mode — rises, gives up, droops
+  function wiltedArrow(cx, baseY, topY, dir, color){
+    var g=ctx.createLinearGradient(0,baseY,0,topY);
+    g.addColorStop(0,"rgba(120,120,120,0)");
+    g.addColorStop(.5,color+"aa");
+    g.addColorStop(1,color);
+    ctx.strokeStyle=g;
+    ctx.lineWidth=30;
+    ctx.lineCap="round";
+    var peakY=topY+70, dropX=cx+dir*95, dropY=peakY+150;
+    ctx.beginPath();
+    ctx.moveTo(cx,baseY);
+    ctx.bezierCurveTo(cx,peakY+60, cx+dir*20,peakY, cx+dir*70,peakY+10);
+    ctx.bezierCurveTo(dropX+dir*20,peakY+40, dropX,dropY-70, dropX,dropY);
+    ctx.stroke();
+    ctx.fillStyle=color;
+    ctx.save();
+    ctx.translate(dropX,dropY);
+    ctx.beginPath();
+    ctx.moveTo(0,52); ctx.lineTo(38,-18); ctx.lineTo(-38,-18);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
   // ---------- panel ----------
   function drawPanel(){
     var px=1272, pw=678, py=42, ph=H-84;
@@ -298,13 +361,15 @@
     var cx=px+pw/2;
     ctx.textAlign="center";
 
+    var unknown = document.getElementById("unknown").checked;
+
     // heading
-    ctx.fillStyle="#E8956B";
+    ctx.fillStyle = unknown ? "#9BA3AB" : "#E8956B";
     ctx.font="700 84px "+COND;
     ctx.fillText("DISC FOUND:",cx,py+130);
     ctx.fillStyle="#F2EEE6";
     ctx.font="700 62px "+COND;
-    var name=(els.name.value||"UNKNOWN DISC").toUpperCase();
+    var name=((unknown ? (els.name.value||MYSTERY.name) : els.name.value)||"UNKNOWN DISC").toUpperCase();
     // shrink to fit
     while(ctx.measureText(name).width>pw-70 && parseInt(ctx.font)>34){
       ctx.font="700 "+(parseInt(ctx.font)-2)+"px "+COND;
@@ -320,7 +385,8 @@
     ctx.font="700 40px "+COND;
     ctx.fillText("FLIGHT NUMBERS",cx,fy+52);
     var labels=["SPEED","GLIDE","TURN","FADE"];
-    var vals=[els.speed.value,els.glide.value,els.turn.value,els.fade.value];
+    var vals = unknown ? ["?","?","?","?"]
+      : [els.speed.value,els.glide.value,els.turn.value,els.fade.value].map(fmt);
     var colW=(pw-90)/4;
     for(var i=0;i<4;i++){
       var lx=px+45+colW*i+colW/2;
@@ -329,7 +395,7 @@
       ctx.fillText(labels[i],lx,fy+105);
       ctx.fillStyle="#FFFFFF";
       ctx.font="700 64px "+COND;
-      ctx.fillText(fmt(vals[i]),lx,fy+172);
+      ctx.fillText(vals[i],lx,fy+172);
       if(i<3){
         ctx.strokeStyle="rgba(255,255,255,.18)";
         ctx.beginPath();
@@ -343,12 +409,19 @@
     var ay=fy+250;
     ctx.fillStyle="#C7BDB0";
     ctx.font="700 42px "+COND;
-    var t=parseFloat(els.turn.value)||0, f=parseFloat(els.fade.value)||0;
-    ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
-    ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
     var arrowTop=ay+50, arrowBase=ay+470;
-    arrow(px+pw*0.28,arrowBase,arrowTop, t*38, "#8FBF4D");
-    arrow(px+pw*0.72,arrowBase,arrowTop, f*26, "#D9442B");
+    if(unknown){
+      ctx.fillText("TURN: ?",px+pw*0.28,ay);
+      ctx.fillText("FADE: ?",px+pw*0.72,ay);
+      wiltedArrow(px+pw*0.28,arrowBase,arrowTop,-1,"#9BA3AB");
+      wiltedArrow(px+pw*0.72,arrowBase,arrowTop, 1,"#9BA3AB");
+    }else{
+      var t=parseFloat(els.turn.value)||0, f=parseFloat(els.fade.value)||0;
+      ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
+      ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
+      arrow(px+pw*0.28,arrowBase,arrowTop, t*38, "#8FBF4D");
+      arrow(px+pw*0.72,arrowBase,arrowTop, f*26, "#D9442B");
+    }
 
     // story
     var story=els.story.value||"";
@@ -395,6 +468,55 @@
     state.img=img; state.ox=0; state.oy=0;
   });
   fileToImg(document.getElementById("logo"),function(img){ state.logo=img; });
+
+  // mystery mode
+  var stash=null;
+  document.getElementById("unknown").addEventListener("change",function(e){
+    if(e.target.checked){
+      stash={name:els.name.value,story:els.story.value};
+      els.name.value=MYSTERY.name;
+      els.story.value=MYSTERY.story;
+      sadTrombone();
+    }else if(stash){
+      els.name.value=stash.name; els.story.value=stash.story; stash=null;
+    }
+    save(); draw();
+  });
+
+  // sad trombone — womp womp womp womaaaaah
+  var audioCtx=null;
+  function sadTrombone(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+      var ac=audioCtx, t0=ac.currentTime+0.05;
+      var notes=[
+        {f:233.08,d:0.42},{f:220.00,d:0.42},{f:207.65,d:0.42},{f:196.00,d:1.6,droop:true}
+      ];
+      var t=t0;
+      notes.forEach(function(n){
+        var osc=ac.createOscillator(), gain=ac.createGain(), filt=ac.createBiquadFilter();
+        osc.type="sawtooth";
+        filt.type="lowpass"; filt.frequency.value=900; filt.Q.value=2;
+        osc.frequency.setValueAtTime(n.f,t);
+        if(n.droop){
+          osc.frequency.setValueAtTime(n.f,t+0.25);
+          osc.frequency.exponentialRampToValueAtTime(n.f*0.82,t+n.d);
+          var lfo=ac.createOscillator(), lfoG=ac.createGain();
+          lfo.frequency.value=5.5; lfoG.gain.value=6;
+          lfo.connect(lfoG); lfoG.connect(osc.frequency);
+          lfo.start(t); lfo.stop(t+n.d);
+        }
+        gain.gain.setValueAtTime(0.0001,t);
+        gain.gain.exponentialRampToValueAtTime(0.35,t+0.06);
+        gain.gain.setValueAtTime(0.35,t+n.d-(n.droop?0.9:0.12));
+        gain.gain.exponentialRampToValueAtTime(0.0001,t+n.d);
+        osc.connect(filt); filt.connect(gain); gain.connect(ac.destination);
+        osc.start(t); osc.stop(t+n.d+0.05);
+        t+=n.d+(n.droop?0:0.05);
+      });
+    }catch(e){}
+  }
+  document.getElementById("womp").addEventListener("click",sadTrombone);
 
   // drag to pan
   var drag=null;

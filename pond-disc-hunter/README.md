@@ -11,3 +11,23 @@ Open `index.html` in any browser (double-click, no server needed):
 5. **Download PNG** — exports at 2000 × 1600.
 
 Fields persist in the browser between sessions (localStorage). "Reset fields" restores the defaults.
+
+## Fully automatic cards (make-card.mjs)
+
+`make-card.mjs` composites a finished card from the command line — used by Claude
+to build cards from photos uploaded to `/photos`:
+
+```
+node make-card.mjs photo.jpg --name "GATEWAY BLADE" \
+  --speed 9 --glide 5 --turn 0 --fade 3 \
+  --story "..." --zoom 1.2 --out card.png
+```
+
+Add `--unknown` for the Mystery Disc treatment (grey "?" stats, wilted arrows).
+Requires Playwright + Chromium (preinstalled in the Claude remote environment).
+
+## Mystery disc mode + sad trombone
+
+The generator has a "Mystery disc" checkbox for finds with no readable stamp:
+grey palette, "?" flight numbers, arrows that droop in defeat — and it plays a
+synthesized sad-gameshow-trombone (also available via the 🎺 button).

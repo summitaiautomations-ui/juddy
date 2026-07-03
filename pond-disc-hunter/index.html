@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pond Disc Hunter — Card Generator</title>
+<style>
+  :root{
+    --bg:#ECEFE6; --panel:#F7F8F2; --ink:#1F241C; --ink-soft:#5A6353;
+    --line:#C9CFBE; --accent:#A64B26; --accent-ink:#FFF6EF;
+    --focus:#7A9A4E;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#141712; --panel:#1C201A; --ink:#E8EAE0; --ink-soft:#9AA38E;
+      --line:#333A2E; --accent:#D97B4A; --accent-ink:#1A120C;
+      --focus:#8FAE52;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141712; --panel:#1C201A; --ink:#E8EAE0; --ink-soft:#9AA38E;
+    --line:#333A2E; --accent:#D97B4A; --accent-ink:#1A120C;
+    --focus:#8FAE52;
+  }
+  :root[data-theme="light"]{
+    --bg:#ECEFE6; --panel:#F7F8F2; --ink:#1F241C; --ink-soft:#5A6353;
+    --line:#C9CFBE; --accent:#A64B26; --accent-ink:#FFF6EF;
+    --focus:#7A9A4E;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:28px 24px 64px}
+  header.app{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+  h1{
+    margin:0;font-family:"Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight:700;font-size:30px;letter-spacing:.04em;text-transform:uppercase;
+  }
+  header.app p{margin:0;color:var(--ink-soft)}
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:26px;align-items:start}
+  @media (max-width:900px){.cols{grid-template-columns:1fr}}
+  .stage{position:relative}
+  canvas#card{width:100%;height:auto;display:block;border-radius:4px;cursor:grab;touch-action:none}
+  canvas#card.dragging{cursor:grabbing}
+  .hint{margin-top:8px;color:var(--ink-soft);font-size:13px}
+  .rail{display:flex;flex-direction:column;gap:18px}
+  fieldset{
+    border:1px solid var(--line);border-radius:6px;background:var(--panel);
+    padding:14px 16px 16px;margin:0;display:flex;flex-direction:column;gap:12px;
+  }
+  legend{
+    font-family:"Arial Narrow","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-soft);padding:0 6px;
+  }
+  label.f{display:flex;flex-direction:column;gap:5px;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--ink-soft)}
+  input[type=text],textarea,input[type=number]{
+    font:inherit;color:var(--ink);background:var(--bg);
+    border:1px solid var(--line);border-radius:4px;padding:8px 10px;width:100%;
+  }
+  input:focus-visible,textarea:focus-visible,button:focus-visible,input[type=range]:focus-visible{
+    outline:2px solid var(--focus);outline-offset:1px;
+  }
+  textarea{resize:vertical;min-height:110px;text-transform:none;letter-spacing:0}
+  .nums{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .nums input{text-align:center;font-variant-numeric:tabular-nums;font-weight:600}
+  input[type=range]{width:100%;accent-color:var(--accent)}
+  input[type=file]{font-size:13px;color:var(--ink-soft)}
+  .btnrow{display:flex;gap:10px;flex-wrap:wrap}
+  button{
+    font:inherit;font-weight:600;border:1px solid var(--line);border-radius:5px;
+    padding:9px 16px;background:var(--panel);color:var(--ink);cursor:pointer;
+  }
+  button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+  button:hover{filter:brightness(1.06)}
+</style>
+
+<div class="wrap">
+  <header class="app">
+    <h1>Pond Disc Hunter — Card Generator</h1>
+    <p>Drop in a rescue photo, fill the stats, download the card.</p>
+  </header>
+
+  <div class="cols">
+    <div class="stage">
+      <canvas id="card" width="2000" height="1600" aria-label="Disc card preview. Drag to reposition the photo."></canvas>
+      <p class="hint">Drag the image to frame the disc. Export is 2000 × 1600 PNG.</p>
+    </div>
+
+    <div class="rail">
+      <fieldset>
+        <legend>Photo</legend>
+        <label class="f">Disc photo
+          <input type="file" id="photo" accept="image/*">
+        </label>
+        <label class="f">Zoom
+          <input type="range" id="zoom" min="100" max="300" value="100">
+        </label>
+        <label class="f">Logo (optional PNG, replaces built-in)
+          <input type="file" id="logo" accept="image/*">
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Disc</legend>
+        <label class="f">Disc name
+          <input type="text" id="name" value="DISCRAFT MALTA" maxlength="40">
+        </label>
+        <div class="nums">
+          <label class="f">Speed<input type="number" id="speed" value="5" step="0.5"></label>
+          <label class="f">Glide<input type="number" id="glide" value="4" step="0.5"></label>
+          <label class="f">Turn<input type="number" id="turn" value="1" step="0.5"></label>
+          <label class="f">Fade<input type="number" id="fade" value="3" step="0.5"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Story</legend>
+        <label class="f">Recovery blurb
+          <textarea id="story">Pulled from the murk with its Paul McBeth stamp still sharp, this swirly purple Malta traded the pond floor for the fairway. An overstable midrange approach machine — point it at the pin, let the fade do the rest. Back in the rotation!</textarea>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Export</legend>
+        <div class="btnrow">
+          <button class="primary" id="download">Download PNG</button>
+          <button id="reset">Reset fields</button>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var cv = document.getElementById("card");
+  var ctx = cv.getContext("2d");
+  var W = cv.width, H = cv.height;
+  var COND = '"Arial Narrow","Helvetica Neue Condensed","Helvetica Neue",Helvetica,Arial,sans-serif';
+
+  var state = {
+    img:null, logo:null, zoom:1, ox:0, oy:0,
+  };
+  var fields = ["name","speed","glide","turn","fade","story"];
+  var els = {};
+  fields.forEach(function(id){ els[id] = document.getElementById(id); });
+
+  // ---------- persistence ----------
+  function save(){
+    try{
+      var d = {};
+      fields.forEach(function(id){ d[id]=els[id].value; });
+      localStorage.setItem("pdh-card", JSON.stringify(d));
+    }catch(e){}
+  }
+  function load(){
+    try{
+      var d = JSON.parse(localStorage.getItem("pdh-card")||"null");
+      if(d) fields.forEach(function(id){ if(d[id]!=null) els[id].value=d[id]; });
+    }catch(e){}
+  }
+  load();
+
+  // ---------- placeholder pond ----------
+  function drawPlaceholder(){
+    var g = ctx.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,"#3d4a2a"); g.addColorStop(.55,"#55663a"); g.addColorStop(1,"#2c3520");
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
+    // algae flecks
+    var seed=7;
+    function rnd(){ seed=(seed*16807)%2147483647; return seed/2147483647; }
+    for(var i=0;i<900;i++){
+      ctx.fillStyle="rgba("+(120+rnd()*80|0)+","+(140+rnd()*60|0)+",60,"+(0.05+rnd()*0.15)+")";
+      var r=1+rnd()*6;
+      ctx.beginPath(); ctx.arc(rnd()*W,rnd()*H,r,0,7); ctx.fill();
+    }
+    ctx.fillStyle="rgba(255,255,255,.55)";
+    ctx.font="600 54px "+COND;
+    ctx.textAlign="center";
+    ctx.fillText("ADD A DISC PHOTO",620,H/2);
+    ctx.textAlign="left";
+  }
+
+  // ---------- photo ----------
+  function drawPhoto(){
+    if(!state.img){ drawPlaceholder(); return; }
+    var img=state.img;
+    var s=Math.max(W/img.width,H/img.height)*state.zoom;
+    var dw=img.width*s, dh=img.height*s;
+    var x=(W-dw)/2+state.ox, y=(H-dh)/2+state.oy;
+    // clamp so the frame is always covered
+    x=Math.min(0,Math.max(W-dw,x)); y=Math.min(0,Math.max(H-dh,y));
+    state.ox=x-(W-dw)/2; state.oy=y-(H-dh)/2;
+    ctx.drawImage(img,x,y,dw,dh);
+  }
+
+  // ---------- logo ----------
+  function drawLogo(){
+    if(state.logo){
+      var lw=440, lh=lw*state.logo.height/state.logo.width;
+      ctx.drawImage(state.logo,55,50,lw,lh);
+      return;
+    }
+    ctx.save();
+    ctx.translate(55,55);
+    ctx.fillStyle="rgba(10,12,8,.85)";
+    rr(0,0,470,88,6); ctx.fill();
+    rr(0,98,470,60,6); ctx.fill();
+    ctx.fillStyle="#fff";
+    ctx.font="italic 700 78px "+COND;
+    ctx.textAlign="center";
+    ctx.fillText("P O N D",235,70);
+    ctx.font="italic 700 44px "+COND;
+    ctx.fillText("DISC HUNTER",235,145);
+    ctx.textAlign="left";
+    ctx.restore();
+  }
+
+  // ---------- helpers ----------
+  function rr(x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+  function wrapText(text,maxW,font){
+    ctx.font=font;
+    var words=text.split(/\s+/), lines=[], cur="";
+    words.forEach(function(w){
+      var t=cur?cur+" "+w:w;
+      if(ctx.measureText(t).width>maxW && cur){ lines.push(cur); cur=w; }
+      else cur=t;
+    });
+    if(cur) lines.push(cur);
+    return lines;
+  }
+  function fmt(v){
+    var n=parseFloat(v);
+    if(isNaN(n)) return "–";
+    return n%1===0 ? n.toFixed(0) : n.toString();
+  }
+
+  // ---------- arrows ----------
+  function arrow(cx, baseY, topY, curve, color){
+    var g=ctx.createLinearGradient(0,baseY,0,topY);
+    g.addColorStop(0,"rgba(120,120,120,0)");
+    g.addColorStop(.45,color+"99");
+    g.addColorStop(1,color);
+    ctx.strokeStyle=g;
+    ctx.lineWidth=30;
+    ctx.lineCap="round";
+    ctx.beginPath();
+    ctx.moveTo(cx,baseY);
+    ctx.quadraticCurveTo(cx, (baseY+topY)/2, cx+curve, topY+40);
+    ctx.stroke();
+    // head
+    var ang=Math.atan2((topY+40)-((baseY+topY)/2), curve*0.9) ;
+    ctx.fillStyle=color;
+    ctx.save();
+    ctx.translate(cx+curve,topY+40);
+    ctx.rotate(ang+Math.PI/2);
+    ctx.beginPath();
+    ctx.moveTo(0,-52); ctx.lineTo(38,18); ctx.lineTo(-38,18);
+    ctx.closePath(); ctx.fill();
+    ctx.restore();
+  }
+
+  // ---------- panel ----------
+  function drawPanel(){
+    var px=1272, pw=678, py=42, ph=H-84;
+    ctx.fillStyle="rgba(24,22,17,.84)";
+    rr(px,py,pw,ph,10); ctx.fill();
+    ctx.strokeStyle="rgba(255,255,255,.14)";
+    ctx.lineWidth=2; rr(px+10,py+10,pw-20,ph-20,8); ctx.stroke();
+
+    var cx=px+pw/2;
+    ctx.textAlign="center";
+
+    // heading
+    ctx.fillStyle="#E8956B";
+    ctx.font="700 84px "+COND;
+    ctx.fillText("DISC FOUND:",cx,py+130);
+    ctx.fillStyle="#F2EEE6";
+    ctx.font="700 62px "+COND;
+    var name=(els.name.value||"UNKNOWN DISC").toUpperCase();
+    // shrink to fit
+    while(ctx.measureText(name).width>pw-70 && parseInt(ctx.font)>34){
+      ctx.font="700 "+(parseInt(ctx.font)-2)+"px "+COND;
+    }
+    ctx.fillText(name,cx,py+210);
+
+    // flight numbers box
+    var fy=py+270;
+    ctx.strokeStyle="rgba(255,255,255,.25)";
+    ctx.lineWidth=2;
+    ctx.strokeRect(px+45,fy,pw-90,190);
+    ctx.fillStyle="#C7BDB0";
+    ctx.font="700 40px "+COND;
+    ctx.fillText("FLIGHT NUMBERS",cx,fy+52);
+    var labels=["SPEED","GLIDE","TURN","FADE"];
+    var vals=[els.speed.value,els.glide.value,els.turn.value,els.fade.value];
+    var colW=(pw-90)/4;
+    for(var i=0;i<4;i++){
+      var lx=px+45+colW*i+colW/2;
+      ctx.fillStyle="#C7BDB0";
+      ctx.font="700 34px "+COND;
+      ctx.fillText(labels[i],lx,fy+105);
+      ctx.fillStyle="#FFFFFF";
+      ctx.font="700 64px "+COND;
+      ctx.fillText(fmt(vals[i]),lx,fy+172);
+      if(i<3){
+        ctx.strokeStyle="rgba(255,255,255,.18)";
+        ctx.beginPath();
+        ctx.moveTo(px+45+colW*(i+1),fy+72);
+        ctx.lineTo(px+45+colW*(i+1),fy+180);
+        ctx.stroke();
+      }
+    }
+
+    // arrows section
+    var ay=fy+250;
+    ctx.fillStyle="#C7BDB0";
+    ctx.font="700 42px "+COND;
+    var t=parseFloat(els.turn.value)||0, f=parseFloat(els.fade.value)||0;
+    ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
+    ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
+    var arrowTop=ay+50, arrowBase=ay+470;
+    arrow(px+pw*0.28,arrowBase,arrowTop, t*38, "#8FBF4D");
+    arrow(px+pw*0.72,arrowBase,arrowTop, f*26, "#D9442B");
+
+    // story
+    var story=els.story.value||"";
+    var font="400 33px "+COND;
+    var lines=wrapText(story,pw-90,font);
+    var lh=44;
+    var sy=py+ph-40-(lines.length-1)*lh;
+    var maxTop=arrowBase+90;
+    if(sy<maxTop) sy=maxTop;
+    ctx.fillStyle="#EDE8DF";
+    ctx.font=font;
+    lines.forEach(function(l,i){
+      var yy=sy+i*lh;
+      if(yy<py+ph-30) ctx.fillText(l,cx,yy);
+    });
+    ctx.textAlign="left";
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    drawPhoto();
+    drawPanel();
+    drawLogo();
+  }
+
+  // ---------- inputs ----------
+  fields.forEach(function(id){
+    els[id].addEventListener("input",function(){ save(); draw(); });
+  });
+  document.getElementById("zoom").addEventListener("input",function(e){
+    state.zoom=e.target.value/100; draw();
+  });
+  function fileToImg(input,cb){
+    input.addEventListener("change",function(){
+      var f=input.files && input.files[0];
+      if(!f) return;
+      var url=URL.createObjectURL(f);
+      var img=new Image();
+      img.onload=function(){ cb(img); URL.revokeObjectURL(url); draw(); };
+      img.src=url;
+    });
+  }
+  fileToImg(document.getElementById("photo"),function(img){
+    state.img=img; state.ox=0; state.oy=0;
+  });
+  fileToImg(document.getElementById("logo"),function(img){ state.logo=img; });
+
+  // drag to pan
+  var drag=null;
+  cv.addEventListener("pointerdown",function(e){
+    if(!state.img) return;
+    drag={x:e.clientX,y:e.clientY,ox:state.ox,oy:state.oy};
+    cv.classList.add("dragging");
+    cv.setPointerCapture(e.pointerId);
+  });
+  cv.addEventListener("pointermove",function(e){
+    if(!drag) return;
+    var scale=W/cv.getBoundingClientRect().width;
+    state.ox=drag.ox+(e.clientX-drag.x)*scale;
+    state.oy=drag.oy+(e.clientY-drag.y)*scale;
+    draw();
+  });
+  ["pointerup","pointercancel"].forEach(function(ev){
+    cv.addEventListener(ev,function(){ drag=null; cv.classList.remove("dragging"); });
+  });
+
+  // export
+  document.getElementById("download").addEventListener("click",function(){
+    var name=(els.name.value||"disc").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+    cv.toBlob(function(b){
+      var a=document.createElement("a");
+      a.href=URL.createObjectURL(b);
+      a.download="pond-disc-hunter-"+(name||"card")+".png";
+      a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); },5000);
+    },"image/png");
+  });
+
+  document.getElementById("reset").addEventListener("click",function(){
+    try{ localStorage.removeItem("pdh-card"); }catch(e){}
+    els.name.value="DISCRAFT MALTA";
+    els.speed.value=5; els.glide.value=4; els.turn.value=1; els.fade.value=3;
+    els.story.value="Pulled from the murk with its Paul McBeth stamp still sharp, this swirly purple Malta traded the pond floor for the fairway. An overstable midrange approach machine — point it at the pin, let the fade do the rest. Back in the rotation!";
+    save(); draw();
+  });
+
+  draw();
+})();
+</script>
+</html>

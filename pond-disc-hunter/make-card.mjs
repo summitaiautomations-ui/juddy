@@ -36,11 +36,13 @@ await page.goto(pathToFileURL(resolve(here, 'index.html')).href);
 await page.evaluate(() => localStorage.clear());
 await page.reload();
 
+// check unknown first: the checkbox handler prefills defaults, and explicit
+// --name/--story flags should win over them
+if (has('unknown')) await page.check('#unknown');
 for (const f of ['name', 'speed', 'glide', 'turn', 'fade', 'story']) {
   const v = opt(f);
   if (v != null) await page.fill('#' + f, String(v));
 }
-if (has('unknown')) await page.check('#unknown');
 const zoom = parseFloat(opt('zoom', '1'));
 if (zoom !== 1) {
   await page.locator('#zoom').evaluate((el, z) => {

@@ -326,6 +326,46 @@
     ctx.restore();
   }
 
+  // rubber-stamp verdict for discs with no owner name on the back.
+  // Draws centered on (0,0); caller translates/rotates/scales.
+  function drawNoNameStamp(g, color){
+    color = color || "#AEB6BE";
+    var w=1150, h=560;
+    g.save();
+    g.strokeStyle=color; g.fillStyle=color;
+    g.lineWidth=16;
+    g.strokeRect(-w/2,-h/2,w,h);
+    g.lineWidth=5;
+    g.strokeRect(-w/2+22,-h/2+22,w-44,h-44);
+    g.textAlign="center";
+    g.font="700 240px "+COND;
+    g.fillText("NO NAME",0,-10);
+    g.font="700 52px "+COND;
+    g.fillText("NO OWNER  ·  NO NUMBER  ·  NO WAY HOME",0,90);
+    g.font="700 64px "+COND;
+    g.fillText("FINDERS KEEPERS — POND LAW",0,190);
+    // rubber-stamp grunge: punch speckles out of the ink
+    g.globalCompositeOperation="destination-out";
+    var seed=42;
+    function rnd(){ seed=(seed*16807)%2147483647; return seed/2147483647; }
+    for(var i=0;i<420;i++){
+      var rx=(rnd()-0.5)*w, ry=(rnd()-0.5)*h, rr2=1+rnd()*9;
+      g.globalAlpha=0.4+rnd()*0.6;
+      g.beginPath(); g.arc(rx,ry,rr2,0,7); g.fill();
+    }
+    g.restore();
+  }
+  try{
+    window.renderNoNameStamp = function(color){
+      var c=document.createElement("canvas");
+      c.width=1500; c.height=900;
+      var g=c.getContext("2d");
+      g.translate(750,450); g.rotate(-0.14);
+      drawNoNameStamp(g,color);
+      return c.toDataURL("image/png");
+    };
+  }catch(e){}
+
   // wilted arrow for mystery mode — rises, gives up, droops
   function wiltedArrow(cx, baseY, topY, dir, color){
     var g=ctx.createLinearGradient(0,baseY,0,topY);
@@ -446,6 +486,14 @@
   function draw(){
     ctx.clearRect(0,0,W,H);
     drawPhoto();
+    if(document.getElementById("unknown").checked){
+      ctx.save();
+      ctx.translate(636,H*0.56);
+      ctx.rotate(-0.14);
+      ctx.globalAlpha=0.88;
+      drawNoNameStamp(ctx,"#D8DEE4");
+      ctx.restore();
+    }
     drawPanel();
     drawLogo();
   }

@@ -121,7 +121,7 @@
           <label class="f">Turn<input type="number" id="turn" value="1" step="0.5"></label>
           <label class="f">Fade<input type="number" id="fade" value="3" step="0.5"></label>
         </div>
-        <label class="chk"><input type="checkbox" id="unknown"> Mystery disc — no name / stamp unreadable</label>
+        <label class="chk"><input type="checkbox" id="unknown"> No Name — stamp unreadable</label>
         <button type="button" id="womp">🎺 Sad trombone</button>
       </fieldset>
 
@@ -180,7 +180,7 @@
   ];
   var PREFILL = FINDS[0];
   var MYSTERY = {
-    name: "MYSTERY DISC",
+    name: "NO NAME",
     story: "No stamp. No name. No flight numbers. This poor nameless soldier gave everything to the pond and kept no identity to show for it. Speed unknown, glide unknown, allegiance unknown. We may never know what it was — only what it has become: found."
   };
 
@@ -368,11 +368,13 @@
     ctx.font="700 84px "+COND;
     ctx.fillText("DISC FOUND:",cx,py+130);
     ctx.fillStyle="#F2EEE6";
-    ctx.font="700 62px "+COND;
     var name=((unknown ? (els.name.value||MYSTERY.name) : els.name.value)||"UNKNOWN DISC").toUpperCase();
-    // shrink to fit
-    while(ctx.measureText(name).width>pw-70 && parseInt(ctx.font)>34){
-      ctx.font="700 "+(parseInt(ctx.font)-2)+"px "+COND;
+    // shrink to fit the panel
+    var nameSize=62;
+    ctx.font="700 "+nameSize+"px "+COND;
+    while(ctx.measureText(name).width>pw-70 && nameSize>30){
+      nameSize-=2;
+      ctx.font="700 "+nameSize+"px "+COND;
     }
     ctx.fillText(name,cx,py+210);
 

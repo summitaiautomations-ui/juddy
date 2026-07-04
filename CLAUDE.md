@@ -12,6 +12,14 @@
 - On each sync: update Last Contact (as UTC datetime), Notes, Next Action, Next Follow-Up, and Status/Priority for existing leads; create new pipeline rows and Quo contacts for unknown numbers.
 - Justin works primarily from his cell via Quo — an hourly scheduled scan (7am–9pm CT) keeps these records updated automatically; it stays quiet when there's nothing new.
 
+## Nurture sending mode
+
+**Current mode: DRAFT (Justin sends).** Do NOT auto-send any nurture text. Instead, when a cadence step comes due, create a Quo task: title "SEND → <lead name>: <step>" (e.g. "SEND → Brooke Niebeling: T1 intro"), description = the exact text to copy/paste, linked to the lead's conversation (CN id) if a thread exists, otherwise to inbox +17634964851, due immediately. Justin copies the text into the thread and sends it himself. Cadence timing advances based on the moment his outgoing text actually appears in the Quo thread — not when the task is created.
+
+After creating each draft task, text Justin's personal cell **+1 612-203-9883** from the Quo line with the FULL draft so he can copy/paste straight from that text: format "📝 T1 for <name> → copy & send to <lead phone>:" followed by the exact message. One notification text per draft (so each is cleanly copyable); if several come due in one scan, send them back-to-back. The Quo task is the durable checklist/record; the notification text is the fast path. If a queued task's step becomes obsolete (lead replied first), mark the task complete with the cadence stopped.
+
+When Justin says to switch to auto-send, change this mode to AUTO and resume sending directly per the cadence rules below.
+
 ## Auto-nurture text cadence (new Realtor.com leads)
 
 When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create the Mortgage Pipeline row + Quo contact, then run this text cadence from +1 763-496-4851. Justin calls and leaves VMs on day 1 and day 2 himself — the texts complement his calls, they don't replace them.

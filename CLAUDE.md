@@ -1,6 +1,6 @@
 # User Context
 
-- When Justin asks "who needs me" (or similar), give him the prioritized follow-up list directly — no clarifying questions, no trailing "want me to...?" offers. Just the answer.
+- When Justin asks "who needs me" (or similar): FIRST scan Gmail for new Realtor.com leads (from `Leads@mortgageresearchcenter.com`, subject "Realtor.com - Lead For <name>") since the last check, create/update Mortgage Pipeline rows and Quo contacts for them, THEN give him the prioritized follow-up list (new uncontacted leads first, then in-flight deals, then due follow-ups from both pipelines). No clarifying questions, no trailing "want me to...?" offers. Just the answer.
 
 - The user (Justin Neal, summitaiautomations@gmail.com) is in **US Central Time (America/Chicago)**. Always present dates/times to him in Central Time, and convert to UTC when writing timestamps to Notion, Quo, or other APIs. CDT = UTC-5 (summer), CST = UTC-6 (winter).
 

@@ -31,3 +31,19 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - **After T5 with no response:** set Next Follow-Up to +30 days with Next Action "Manual re-engage — auto cadence completed, no response."
 
 Track cadence state in the lead's Next Action field (e.g. "AUTO-NURTURE: T2 sent 7/5 2:15pm CT — T3 due 7/6").
+
+## Engaged-lead nurture cadence (leads who replied, then went quiet)
+
+For Mortgage Pipeline leads with Status **Connected** or **Connected Live** whose last two-way exchange was within the past 30 days, and who then go silent. Texts are composed per lead from their Notion record (property, loan type, where the conversation left off) in Justin's voice — short, one idea, casual with dashes/exclamations.
+
+**Steps (days of silence since last exchange):**
+- **Day 3:** personal check-in referencing their specific situation (e.g. "Hi Kevin - any luck finding other homes in Eveleth? Happy to check any address for you.")
+- **Day 7:** one-step value nudge — preapproval link if no application yet (https://ascent.summit-mortgage.com/dr/c/rhn1u), or offer to run updated numbers.
+- **Day 14:** soft check-in with a relevant, factual note (their area, their program) — no rate quotes.
+- **Day 30, then monthly:** brief "still here when you're ready" touch.
+
+**Rules (in addition to the non-negotiables above — quiet hours, reply kill switch, [auto] logging):**
+- Stops permanently if the lead advances to Application or beyond — active deals get Justin's personal attention, not drip texts.
+- Skips leads Justin has explicitly paused (e.g. Michael Dumonceaux) and anyone marked Dead.
+- Leads whose engagement is older than 30 days stay on Justin's manual call list — do not auto-text them.
+- Composed texts must stick to facts already in the lead's record: no rates, no approval promises, no commitments. If the right message is unclear, flag Justin instead of sending.

@@ -3,7 +3,10 @@
 //
 //   node make-card.mjs <photo> --name "INNOVA THUNDERBIRD" \
 //     --speed 9 --glide 5 --turn 0 --fade 2 --story "..." \
-//     [--unknown] [--zoom 1.2] [--out card.png]
+//     [--unknown] [--vertical] [--zoom 1.2] [--out card.png]
+//
+// --vertical exports a 1080×1920 full-bleed video slide (Reels/Shorts/TikTok
+// safe zones) instead of the 2000×1600 landscape card.
 //
 // Requires playwright (preinstalled in the Claude remote environment at
 // /opt/node22/lib/node_modules/playwright with browsers in /opt/pw-browsers).

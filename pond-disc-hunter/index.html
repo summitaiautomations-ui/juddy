@@ -90,7 +90,7 @@
   <div class="cols">
     <div class="stage">
       <canvas id="card" width="2000" height="1600" aria-label="Disc card preview. Drag to reposition the photo."></canvas>
-      <p class="hint">Drag the image to frame the disc. Exports 2000 × 1600 (landscape) or 1080 × 1920 (vertical).</p>
+      <p class="hint">Drag the image to frame the disc. Exports 2000 × 1600 (landscape) or 1080 × 1920 vertical — full-bleed photo, text kept clear of Reels/Shorts/TikTok UI.</p>
     </div>
 
     <div class="rail">
@@ -137,7 +137,7 @@
         <label class="f">Orientation
           <select id="orient">
             <option value="landscape">Landscape — 2000 × 1600</option>
-            <option value="vertical">Vertical — 1080 × 1920 (Reels/Shorts)</option>
+            <option value="vertical">Vertical — 1080 × 1920 (Reels/Shorts/TikTok)</option>
           </select>
         </label>
         <div class="btnrow">
@@ -156,7 +156,9 @@
   var ctx = cv.getContext("2d");
   var W = cv.width, H = cv.height;
   function vert(){ return document.getElementById("orient").value === "vertical"; }
-  function photoH(){ return vert() ? 960 : H; }  // photo band height; panel covers the rest in vertical
+  // Vertical video safe zones (Reels / Shorts / TikTok UI): keep content off
+  // the top ~140px, bottom ~270px, and right ~130px of the 1080×1920 frame.
+  var VSAFE = { left:70, right:130, top:140, bottom:270 };
   var COND = '"Arial Narrow","Helvetica Neue Condensed","Helvetica Neue",Helvetica,Arial,sans-serif';
 
   var state = {
@@ -230,52 +232,63 @@
   load();
 
   // ---------- placeholder pond ----------
-  function drawPlaceholder(rh){
-    var g = ctx.createLinearGradient(0,0,0,rh);
+  function drawPlaceholder(){
+    var g = ctx.createLinearGradient(0,0,0,H);
     g.addColorStop(0,"#3d4a2a"); g.addColorStop(.55,"#55663a"); g.addColorStop(1,"#2c3520");
-    ctx.fillStyle=g; ctx.fillRect(0,0,W,rh);
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H);
     // algae flecks
     var seed=7;
     function rnd(){ seed=(seed*16807)%2147483647; return seed/2147483647; }
     for(var i=0;i<900;i++){
       ctx.fillStyle="rgba("+(120+rnd()*80|0)+","+(140+rnd()*60|0)+",60,"+(0.05+rnd()*0.15)+")";
       var r=1+rnd()*6;
-      ctx.beginPath(); ctx.arc(rnd()*W,rnd()*rh,r,0,7); ctx.fill();
+      ctx.beginPath(); ctx.arc(rnd()*W,rnd()*H,r,0,7); ctx.fill();
     }
     ctx.fillStyle="rgba(255,255,255,.55)";
     ctx.font="600 54px "+COND;
     ctx.textAlign="center";
-    ctx.fillText("ADD A DISC PHOTO",vert()?W/2:620,rh/2);
+    ctx.fillText("ADD A DISC PHOTO",vert()?W/2:620,vert()?H*0.3:H/2);
     ctx.textAlign="left";
+  }
+
+  // bottom gradient scrim the vertical overlay text sits on — the photo
+  // stays full-bleed instead of being cut into a band
+  function drawScrim(){
+    var g=ctx.createLinearGradient(0,760,0,1230);
+    g.addColorStop(0,"rgba(12,11,8,0)");
+    g.addColorStop(1,"rgba(12,11,8,0.93)");
+    ctx.fillStyle=g;
+    ctx.fillRect(0,760,W,H-760);
   }
 
   // ---------- photo ----------
   function drawPhoto(){
-    var rh=photoH();
-    if(vert()){ ctx.fillStyle="#14120e"; ctx.fillRect(0,0,W,H); }
-    if(!state.img){ drawPlaceholder(rh); return; }
+    if(!state.img){ drawPlaceholder(); if(vert()) drawScrim(); return; }
     var img=state.img;
     ctx.save();
-    ctx.beginPath(); ctx.rect(0,0,W,rh); ctx.clip();
-    var s=Math.max(W/img.width,rh/img.height)*state.zoom;
+    ctx.beginPath(); ctx.rect(0,0,W,H); ctx.clip();
+    var s=Math.max(W/img.width,H/img.height)*state.zoom;
     var dw=img.width*s, dh=img.height*s;
-    var x=(W-dw)/2+state.ox, y=(rh-dh)/2+state.oy;
+    var x=(W-dw)/2+state.ox, y=(H-dh)/2+state.oy;
     // clamp so the frame is always covered
-    x=Math.min(0,Math.max(W-dw,x)); y=Math.min(0,Math.max(rh-dh,y));
-    state.ox=x-(W-dw)/2; state.oy=y-(rh-dh)/2;
+    x=Math.min(0,Math.max(W-dw,x)); y=Math.min(0,Math.max(H-dh,y));
+    state.ox=x-(W-dw)/2; state.oy=y-(H-dh)/2;
     ctx.drawImage(img,x,y,dw,dh);
     ctx.restore();
+    if(vert()) drawScrim();
   }
 
   // ---------- logo ----------
   function drawLogo(){
+    var lx = 55, ly = vert() ? VSAFE.top : 55;
     if(state.logo){
-      var lw=440, lh=lw*state.logo.height/state.logo.width;
-      ctx.drawImage(state.logo,55,50,lw,lh);
+      var lw = vert() ? 360 : 440, lh=lw*state.logo.height/state.logo.width;
+      ctx.drawImage(state.logo,lx,ly-5,lw,lh);
       return;
     }
     ctx.save();
-    ctx.translate(55,55);
+    ctx.translate(lx,ly);
+    if(vert()) ctx.scale(0.8,0.8);
     ctx.fillStyle="rgba(10,12,8,.85)";
     rr(0,0,470,88,6); ctx.fill();
     rr(0,98,470,60,6); ctx.fill();
@@ -379,8 +392,10 @@
     };
   }catch(e){}
 
-  // wilted arrow for mystery mode — rises, gives up, droops
-  function wiltedArrow(cx, baseY, topY, dir, color){
+  // wilted arrow for mystery mode — rises, gives up, droops.
+  // s scales the droop so it fits the shorter vertical-slide arrow zone.
+  function wiltedArrow(cx, baseY, topY, dir, color, s){
+    s = s || 1;
     var g=ctx.createLinearGradient(0,baseY,0,topY);
     g.addColorStop(0,"rgba(120,120,120,0)");
     g.addColorStop(.5,color+"aa");
@@ -388,29 +403,27 @@
     ctx.strokeStyle=g;
     ctx.lineWidth=30;
     ctx.lineCap="round";
-    var peakY=topY+70, dropX=cx+dir*95, dropY=peakY+150;
+    var peakY=topY+70*s, dropX=cx+dir*95*s, dropY=peakY+150*s;
     ctx.beginPath();
     ctx.moveTo(cx,baseY);
-    ctx.bezierCurveTo(cx,peakY+60, cx+dir*20,peakY, cx+dir*70,peakY+10);
-    ctx.bezierCurveTo(dropX+dir*20,peakY+40, dropX,dropY-70, dropX,dropY);
+    ctx.bezierCurveTo(cx,peakY+60*s, cx+dir*20*s,peakY, cx+dir*70*s,peakY+10*s);
+    ctx.bezierCurveTo(dropX+dir*20*s,peakY+40*s, dropX,dropY-70*s, dropX,dropY);
     ctx.stroke();
     ctx.fillStyle=color;
     ctx.save();
     ctx.translate(dropX,dropY);
+    ctx.scale(s,s);
     ctx.beginPath();
     ctx.moveTo(0,52); ctx.lineTo(38,-18); ctx.lineTo(-38,-18);
     ctx.closePath(); ctx.fill();
     ctx.restore();
   }
 
-  // ---------- panel ----------
+  // ---------- panel (landscape: boxed panel on the right) ----------
   function drawPanel(){
-    var V=vert();
-    var px = V ? 40 : 1272,
-        pw = V ? W-80 : 678,
-        py = V ? photoH()-20 : 42,
-        ph = V ? H-photoH()-20 : H-84;
-    ctx.fillStyle="rgba(24,22,17,"+(V?0.96:0.84)+")";
+    if(vert()){ drawPanelVert(); return; }
+    var px=1272, pw=678, py=42, ph=H-84;
+    ctx.fillStyle="rgba(24,22,17,0.84)";
     rr(px,py,pw,ph,10); ctx.fill();
     ctx.strokeStyle="rgba(255,255,255,.14)";
     ctx.lineWidth=2; rr(px+10,py+10,pw-20,ph-20,8); ctx.stroke();
@@ -422,27 +435,27 @@
 
     // heading
     ctx.fillStyle = unknown ? "#9BA3AB" : "#E8956B";
-    ctx.font="700 "+(V?70:84)+"px "+COND;
-    ctx.fillText("DISC FOUND:",cx,py+(V?90:130));
+    ctx.font="700 84px "+COND;
+    ctx.fillText("DISC FOUND:",cx,py+130);
     ctx.fillStyle="#F2EEE6";
     var name=((unknown ? (els.name.value||MYSTERY.name) : els.name.value)||"UNKNOWN DISC").toUpperCase();
     // shrink to fit the panel
-    var nameSize=V?48:62;
+    var nameSize=62;
     ctx.font="700 "+nameSize+"px "+COND;
     while(ctx.measureText(name).width>pw-70 && nameSize>30){
       nameSize-=2;
       ctx.font="700 "+nameSize+"px "+COND;
     }
-    ctx.fillText(name,cx,py+(V?152:210));
+    ctx.fillText(name,cx,py+210);
 
     // flight numbers box
-    var fy=py+(V?190:270), boxH=V?165:190;
+    var fy=py+270, boxH=190;
     ctx.strokeStyle="rgba(255,255,255,.25)";
     ctx.lineWidth=2;
     ctx.strokeRect(px+45,fy,pw-90,boxH);
     ctx.fillStyle="#C7BDB0";
-    ctx.font="700 "+(V?34:40)+"px "+COND;
-    ctx.fillText("FLIGHT NUMBERS",cx,fy+(V?46:52));
+    ctx.font="700 40px "+COND;
+    ctx.fillText("FLIGHT NUMBERS",cx,fy+52);
     var labels=["SPEED","GLIDE","TURN","FADE"];
     var vals = unknown ? ["?","?","?","?"]
       : [els.speed.value,els.glide.value,els.turn.value,els.fade.value].map(fmt);
@@ -450,25 +463,25 @@
     for(var i=0;i<4;i++){
       var lx=px+45+colW*i+colW/2;
       ctx.fillStyle="#C7BDB0";
-      ctx.font="700 "+(V?30:34)+"px "+COND;
-      ctx.fillText(labels[i],lx,fy+(V?92:105));
+      ctx.font="700 34px "+COND;
+      ctx.fillText(labels[i],lx,fy+105);
       ctx.fillStyle="#FFFFFF";
-      ctx.font="700 "+(V?52:64)+"px "+COND;
-      ctx.fillText(vals[i],lx,fy+(V?148:172));
+      ctx.font="700 64px "+COND;
+      ctx.fillText(vals[i],lx,fy+172);
       if(i<3){
         ctx.strokeStyle="rgba(255,255,255,.18)";
         ctx.beginPath();
-        ctx.moveTo(px+45+colW*(i+1),fy+(V?60:72));
-        ctx.lineTo(px+45+colW*(i+1),fy+(V?150:180));
+        ctx.moveTo(px+45+colW*(i+1),fy+72);
+        ctx.lineTo(px+45+colW*(i+1),fy+180);
         ctx.stroke();
       }
     }
 
     // arrows section
-    var ay=fy+boxH+(V?62:60);
+    var ay=fy+boxH+60;
     ctx.fillStyle="#C7BDB0";
-    ctx.font="700 "+(V?36:42)+"px "+COND;
-    var arrowTop=ay+(V?36:50), arrowBase=ay+(V?250:470);
+    ctx.font="700 42px "+COND;
+    var arrowTop=ay+50, arrowBase=ay+470;
     if(unknown){
       ctx.fillText("TURN: ?",px+pw*0.28,ay);
       ctx.fillText("FADE: ?",px+pw*0.72,ay);
@@ -479,21 +492,20 @@
       ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
       ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
       // RHBH flight: negative turn drifts right, fade hooks left
-      arrow(px+pw*0.28,arrowBase,arrowTop, -t*(V?26:38), "#8FBF4D");
-      arrow(px+pw*0.72,arrowBase,arrowTop, -f*(V?18:26), "#D9442B");
+      arrow(px+pw*0.28,arrowBase,arrowTop, -t*38, "#8FBF4D");
+      arrow(px+pw*0.72,arrowBase,arrowTop, -f*26, "#D9442B");
     }
 
     // story — auto-shrink until it fits between the arrows and the panel bottom
     var story=els.story.value||"";
-    var maxTop=arrowBase+(V?52:90);
-    var bottomPad=V?34:40;
-    var sizes=V?[31,29,27,25,23]:[33,31,29,27];
+    var maxTop=arrowBase+90;
+    var sizes=[33,31,29,27];
     var font,lines,lh,sy;
     for(var si=0;si<sizes.length;si++){
       font="400 "+sizes[si]+"px "+COND;
-      lh=sizes[si]+(V?9:11);
+      lh=sizes[si]+11;
       lines=wrapText(story,pw-90,font);
-      sy=py+ph-bottomPad-(lines.length-1)*lh;
+      sy=py+ph-40-(lines.length-1)*lh;
       if(sy>=maxTop) break;
     }
     if(sy<maxTop) sy=maxTop;
@@ -506,6 +518,99 @@
     ctx.textAlign="left";
   }
 
+  // ---------- vertical video slide (1080×1920) ----------
+  // Full-bleed photo with the card content overlaid on the bottom scrim.
+  // Everything stays inside VSAFE so Reels/Shorts/TikTok captions and the
+  // right-hand button rail don't cover it.
+  function drawPanelVert(){
+    var px=VSAFE.left, pw=W-VSAFE.left-VSAFE.right, cx=px+pw/2;
+    var bottomLim=H-VSAFE.bottom;
+    var unknown = document.getElementById("unknown").checked;
+    ctx.textAlign="center";
+
+    // heading
+    ctx.fillStyle = unknown ? "#9BA3AB" : "#E8956B";
+    ctx.font="700 82px "+COND;
+    ctx.fillText("DISC FOUND:",cx,940);
+    ctx.fillStyle="#F2EEE6";
+    var name=((unknown ? (els.name.value||MYSTERY.name) : els.name.value)||"UNKNOWN DISC").toUpperCase();
+    var nameSize=60;
+    ctx.font="700 "+nameSize+"px "+COND;
+    while(ctx.measureText(name).width>pw-20 && nameSize>32){
+      nameSize-=2;
+      ctx.font="700 "+nameSize+"px "+COND;
+    }
+    ctx.fillText(name,cx,1020);
+
+    // flight numbers box
+    var fy=1062, boxH=168;
+    ctx.strokeStyle="rgba(255,255,255,.3)";
+    ctx.lineWidth=2;
+    ctx.strokeRect(px,fy,pw,boxH);
+    ctx.fillStyle="#C7BDB0";
+    ctx.font="700 36px "+COND;
+    ctx.fillText("FLIGHT NUMBERS",cx,fy+48);
+    var labels=["SPEED","GLIDE","TURN","FADE"];
+    var vals = unknown ? ["?","?","?","?"]
+      : [els.speed.value,els.glide.value,els.turn.value,els.fade.value].map(fmt);
+    var colW=pw/4;
+    for(var i=0;i<4;i++){
+      var lx=px+colW*i+colW/2;
+      ctx.fillStyle="#C7BDB0";
+      ctx.font="700 32px "+COND;
+      ctx.fillText(labels[i],lx,fy+94);
+      ctx.fillStyle="#FFFFFF";
+      ctx.font="700 58px "+COND;
+      ctx.fillText(vals[i],lx,fy+152);
+      if(i<3){
+        ctx.strokeStyle="rgba(255,255,255,.18)";
+        ctx.beginPath();
+        ctx.moveTo(px+colW*(i+1),fy+62);
+        ctx.lineTo(px+colW*(i+1),fy+156);
+        ctx.stroke();
+      }
+    }
+
+    // arrows — compact, side by side
+    var ay=1296, arrowTop=1326, arrowBase=1462;
+    ctx.fillStyle="#C7BDB0";
+    ctx.font="700 36px "+COND;
+    if(unknown){
+      ctx.fillText("TURN: ?",px+pw*0.28,ay);
+      ctx.fillText("FADE: ?",px+pw*0.72,ay);
+      wiltedArrow(px+pw*0.28,arrowBase,arrowTop,-1,"#9BA3AB",0.6);
+      wiltedArrow(px+pw*0.72,arrowBase,arrowTop, 1,"#9BA3AB",0.6);
+    }else{
+      var t=parseFloat(els.turn.value)||0, f=parseFloat(els.fade.value)||0;
+      ctx.fillText("TURN: "+fmt(els.turn.value),px+pw*0.28,ay);
+      ctx.fillText("FADE: "+fmt(els.fade.value),px+pw*0.72,ay);
+      // RHBH flight: negative turn drifts right, fade hooks left
+      arrow(px+pw*0.28,arrowBase,arrowTop, -t*24, "#8FBF4D");
+      arrow(px+pw*0.72,arrowBase,arrowTop, -f*17, "#D9442B");
+    }
+
+    // story — auto-shrink to fit above the caption safe zone
+    var story=els.story.value||"";
+    var maxTop=arrowBase+94;
+    var sizes=[30,28,26,24,22,20];
+    var font,lines,lh,sy;
+    for(var si=0;si<sizes.length;si++){
+      font="400 "+sizes[si]+"px "+COND;
+      lh=sizes[si]+8;
+      lines=wrapText(story,pw-20,font);
+      sy=bottomLim-(lines.length-1)*lh;
+      if(sy>=maxTop) break;
+    }
+    if(sy<maxTop) sy=maxTop;
+    ctx.fillStyle="#EDE8DF";
+    ctx.font=font;
+    lines.forEach(function(l,i){
+      var yy=sy+i*lh;
+      if(yy<bottomLim+30) ctx.fillText(l,cx,yy);
+    });
+    ctx.textAlign="left";
+  }
+
   function draw(){
     var wantW=vert()?1080:2000, wantH=vert()?1920:1600;
     if(cv.width!==wantW){ cv.width=wantW; cv.height=wantH; }
@@ -514,7 +619,7 @@
     drawPhoto();
     if(document.getElementById("unknown").checked){
       ctx.save();
-      if(vert()){ ctx.translate(W/2,photoH()*0.52); ctx.scale(0.78,0.78); }
+      if(vert()){ ctx.translate(W/2,560); ctx.scale(0.68,0.68); }
       else ctx.translate(636,H*0.56);
       ctx.rotate(-0.14);
       ctx.globalAlpha=0.88;

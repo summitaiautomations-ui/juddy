@@ -23,7 +23,7 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - Tone per the 2026 NextGen Homebuyer Report: low-pressure, one idea per text, myth-busting, alignment-signaling. No rate quotes, no info dumps.
 
 **Steps** (`<First>` = first name, `<city>` = property city from the lead email):
-- **T1 — on arrival:** "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage. I just got your Realtor.com inquiry about <city> and I'll give you a call shortly! Feel free to text me here anytime - happy to help however I can."
+- **T1 — on arrival:** "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage Corp in Plymouth MN. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
 - **T2 — later day 1 (≥4 hrs after T1):** "Hi <First>, Justin again - just left you a voicemail. Quick thing worth knowing: most people think you need 20% down and perfect credit to buy a home. You usually don't - a lot of my buyers put down far less. Happy to run your real numbers whenever you're ready."
 - **T3 — day 2:** "Hi <First> - I know the homebuying stuff can feel overwhelming, so I'll keep it simple. My job is to give you straight answers about what you actually qualify for - even when the honest answer makes me less money. Call or text, whatever's easier!"
 - **T4 — day 4:** "Hi <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. Takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"

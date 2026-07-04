@@ -14,18 +14,16 @@ Fields persist in the browser between sessions (localStorage). "Reset fields" re
 
 ## Vertical video slides (Reels / Shorts / TikTok)
 
-Switch **Orientation** to *Vertical — 1080 × 1920* to export a 9:16 slide that
-drops straight into a vertical video edit:
+Two 1080 × 1920 options under **Orientation**:
 
-- The photo is **full-bleed** — it fills the whole frame instead of a top band.
-  Drag/zoom to put the disc in the upper half.
-- Card content (DISC FOUND, flight numbers, arrows, story) overlays a dark
-  gradient scrim on the lower half.
-- Everything is kept inside platform **safe zones** — clear of the top ~140px
-  (usernames/tabs), bottom ~270px (caption + music UI), and right ~130px
-  (like/comment/share rail) — so nothing gets covered when posted.
+- **Vertical** — the same card, just vertical: photo band on top, the familiar
+  boxed panel (DISC FOUND, flight numbers, arrows, story) below it.
+- **Vertical full-bleed** — a video-overlay style: the photo fills the whole
+  frame, content sits on a bottom gradient scrim, and text is kept inside
+  platform safe zones (clear of the top ~140px, bottom ~270px caption area,
+  and right ~130px button rail).
 
-From the command line, add `--vertical`:
+From the command line, add `--vertical` or `--fullbleed`:
 
 ```
 node make-card.mjs photo.jpg --vertical --name "GATEWAY BLADE" \
@@ -43,8 +41,9 @@ node make-card.mjs photo.jpg --name "GATEWAY BLADE" \
   --story "..." --zoom 1.2 --out card.png
 ```
 
-Add `--unknown` for the Mystery Disc treatment (grey "?" stats, wilted arrows)
-and `--vertical` for the 1080 × 1920 video slide.
+Add `--unknown` for the Mystery Disc treatment (grey "?" stats, wilted arrows),
+`--vertical` for the stacked 1080 × 1920 card, or `--fullbleed` for the
+full-bleed video slide.
 Requires Playwright + Chromium (preinstalled in the Claude remote environment).
 
 ## Mystery disc mode + sad trombone

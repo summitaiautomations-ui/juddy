@@ -3,10 +3,11 @@
 //
 //   node make-card.mjs <photo> --name "INNOVA THUNDERBIRD" \
 //     --speed 9 --glide 5 --turn 0 --fade 2 --story "..." \
-//     [--unknown] [--vertical] [--zoom 1.2] [--out card.png]
+//     [--unknown] [--vertical | --fullbleed] [--zoom 1.2] [--out card.png]
 //
-// --vertical exports a 1080×1920 full-bleed video slide (Reels/Shorts/TikTok
-// safe zones) instead of the 2000×1600 landscape card.
+// --vertical exports the same card stacked on a 1080×1920 canvas;
+// --fullbleed exports a 1080×1920 full-bleed video slide (photo fills the
+// frame, text kept inside Reels/Shorts/TikTok safe zones).
 //
 // Requires playwright (preinstalled in the Claude remote environment at
 // /opt/node22/lib/node_modules/playwright with browsers in /opt/pw-browsers).
@@ -42,6 +43,7 @@ await page.reload();
 // orientation first (it resets pan), then unknown: the checkbox handler
 // prefills defaults, and explicit --name/--story flags should win over them
 if (has('vertical')) await page.selectOption('#orient', 'vertical');
+if (has('fullbleed')) await page.selectOption('#orient', 'fullbleed');
 if (has('unknown')) await page.check('#unknown');
 for (const f of ['name', 'speed', 'glide', 'turn', 'fade', 'story']) {
   const v = opt(f);

@@ -1,5 +1,7 @@
 # User Context
 
+- When Justin asks "who needs me" (or similar), give him the prioritized follow-up list directly — no clarifying questions, no trailing "want me to...?" offers. Just the answer.
+
 - The user (Justin Neal, summitaiautomations@gmail.com) is in **US Central Time (America/Chicago)**. Always present dates/times to him in Central Time, and convert to UTC when writing timestamps to Notion, Quo, or other APIs. CDT = UTC-5 (summer), CST = UTC-6 (winter).
 
 ## Quo → Notion sync workflow

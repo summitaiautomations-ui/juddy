@@ -12,6 +12,7 @@
 - Lead activity from Quo (texts, calls, voicemails) gets synced into the Notion **Mortgage Pipeline** database (data source `collection://4a3cbfe3-76a4-486f-8254-0b0b9c9d4115`, under the Mortgage Pipeline Dashboard page).
 - Recruits (loan officers Justin is recruiting to Summit) go to the Notion **Recruiting Pipeline** database (under the Recruiting Dashboard page) instead.
 - On each sync: update Last Contact (as UTC datetime), Notes, Next Action, Next Follow-Up, and Status/Priority for existing leads; create new pipeline rows and Quo contacts for unknown numbers.
+- Justin runs ALL client conversations on the Quo line (calls + texts). Each scan must pull text threads, voicemail transcripts, AND call transcripts (fetch-call-transcripts — requires Quo Business plan with transcription enabled; keep trying each scan) and write the substance into the lead's Notion record: conversation summary + key facts (addresses, price ranges, timelines, decisions) into Notes/fields, not just timestamps.
 - Justin works primarily from his cell via Quo — an hourly scheduled scan (7am–9pm CT) keeps these records updated automatically; it stays quiet when there's nothing new.
 
 ## Nurture sending mode

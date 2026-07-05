@@ -14,11 +14,9 @@
 
 ## Nurture sending mode
 
-**Current mode: DRAFT (Justin sends).** Do NOT auto-send any nurture text. Instead, when a cadence step comes due, create a Quo task: title "SEND → <lead name>: <step>" (e.g. "SEND → Brooke Niebeling: T1 intro"), description = the exact text to copy/paste, linked to the lead's conversation (CN id) if a thread exists, otherwise to inbox +17634964851, due immediately. Justin copies the text into the thread and sends it himself. Cadence timing advances based on the moment his outgoing text actually appears in the Quo thread — not when the task is created.
+**Current mode: AUTO (Justin approved 7/4/26 after reviewing the T1 draft).** Send cadence texts directly from the Quo line per the rules below. Immediately after each send, text a receipt from the Quo line to Justin's personal cell **+1 612-203-9883**: "✅ Sent T1 to Brooke Niebeling (651-558-7290): <full text that was sent>" — always include the full sent text so he sees exactly what went out. If several sends happen in one scan, send one receipt per lead, back-to-back.
 
-After creating each draft task, text Justin's personal cell **+1 612-203-9883** from the Quo line with the FULL draft so he can copy/paste straight from that text: format "📝 T1 for <name> → copy & send to <lead phone>:" followed by the exact message. One notification text per draft (so each is cleanly copyable); if several come due in one scan, send them back-to-back. The Quo task is the durable checklist/record; the notification text is the fast path. If a queued task's step becomes obsolete (lead replied first), mark the task complete with the cadence stopped.
-
-When Justin says to switch to auto-send, change this mode to AUTO and resume sending directly per the cadence rules below.
+If Justin says to go back to drafts, switch to DRAFT mode: instead of sending, create a Quo task per due step ("SEND → <name>: <step>", exact text in the description, linked to the lead's conversation or the inbox) and text him the full draft to copy/paste; advance cadence timing off his actual sends in the thread.
 
 ## Auto-nurture text cadence (new Realtor.com leads)
 
@@ -31,7 +29,9 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - Tone per the 2026 NextGen Homebuyer Report: low-pressure, one idea per text, myth-busting, alignment-signaling. No rate quotes, no info dumps.
 
 **Steps** (`<First>` = first name, `<city>` = property city from the lead email):
-- **T1 — on arrival:** "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage Corp in Plymouth MN. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
+- **T1 — on arrival (two texts, seconds apart):**
+  1. "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
+  2. "by the way - I am local and based in Plymouth MN"
 - **T2 — later day 1 (≥4 hrs after T1):** "Hi <First>, Justin again - just left you a voicemail. Quick thing worth knowing: most people think you need 20% down and perfect credit to buy a home. You usually don't - a lot of my buyers put down far less. Happy to run your real numbers whenever you're ready."
 - **T3 — day 2:** "Hi <First> - I know the homebuying stuff can feel overwhelming, so I'll keep it simple. My job is to give you straight answers about what you actually qualify for - even when the honest answer makes me less money. Call or text, whatever's easier!"
 - **T4 — day 4:** "Hi <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. Takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"

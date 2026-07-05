@@ -29,6 +29,7 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - If the lead replies (text or call) at ANY point: stop the cadence immediately, update their row, and flag Justin. Never send another auto-text to a lead who has engaged.
 - Never restart or re-run a cadence for the same lead. Log every auto-send in the lead's Notes with an `[auto]` prefix and update Last Contact.
 - Tone per the 2026 NextGen Homebuyer Report: low-pressure, one idea per text, myth-busting, alignment-signaling. No rate quotes, no info dumps.
+- **Friend approach (applies to every text after T1, in all cadences):** casual "hey <First> -" openers, lowercase conversational phrasing, never reintroduce yourself after first contact ("Justin again" etc. is banned), write like a friend texting — not a rep working a script. T1 keeps the professional intro since it's first contact.
 
 **Steps** (`<First>` = first name, `<city>` = property city from the lead email):
 - **T1 — on arrival (two texts, seconds apart):**
@@ -36,11 +37,11 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
   2. "by the way - I am local and based in Plymouth MN"
 - **T2 — later day 1 (≥4 hrs after T1, single text):** "hey <First> - just wondering if you found any houses that catch your eye? shoot me the address and I can let you know available downpayment options (sometimes as low as zero down) - i can also provide you with a sample payment"
 - **T3 — day 2 (two texts seconds apart):**
-  1. "Hi <First> - I know the mortgage stuff can feel overwhelming, so I keep things simple. what's the #1 question on your mind about buying?"
+  1. "hey <First> - I know the mortgage stuff can feel overwhelming, so I keep things simple. what's the #1 question on your mind about buying?"
   2. "and if you want to know who you'd be working with, here's a bit about me: https://www.summit-mortgage.com/loan-officer/justin-neal/"
   (Branded Summit link on purpose — better SMS deliverability than linktr.ee and Justin tracks page visitors; note any known page visit in the lead's row as a warmth signal.)
-- **T4 — day 4:** "Hi <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. Takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"
-- **T5 — day 7 (final):** "Hi <First> - I won't keep bugging you! If the timing isn't right, no worries at all. Save my number and reach out whenever you're ready. Have a great one! - Justin @ Summit Mortgage www.linktr.ee/welcometosummit"
+- **T4 — day 4:** "hey <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"
+- **T5 — day 7 (final):** "hey <First> - I won't keep bugging you! if the timing isn't right, no worries at all. save my number and reach out whenever you're ready. have a great one! - Justin @ Summit Mortgage www.linktr.ee/welcometosummit"
 - **After T5 with no response:** set Next Follow-Up to +30 days with Next Action "Manual re-engage — auto cadence completed, no response."
 
 Track cadence state in the lead's Next Action field (e.g. "AUTO-NURTURE: T2 sent 7/5 2:15pm CT — T3 due 7/6").

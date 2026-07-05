@@ -50,6 +50,22 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 
 Track cadence state in the lead's Next Action field (e.g. "AUTO-NURTURE: T2 sent 7/5 2:15pm CT — T3 due 7/6").
 
+## Application-stage nurture (folks whose application is in)
+
+Justin asks each applicant to text his Quo line when they finish the application — that text is the trigger for this cadence.
+
+**On detecting an application-complete text** (any phrasing — "app is done", "just finished the application", etc.): set Status → Application, log it in Notes, update Last Contact, and text Justin: "🎉 <name> says their application is complete — <phone>". Justin replies to the lead personally; no auto-reply to the lead at this stage.
+
+**Then keep eyes on them — check-ins only when they go silent (days of silence):**
+- **Day 4:** "hey <First> - how's the house hunt treating you? if any address catches your eye i can run the payment on it"
+- **Day 10:** "hi <First> - want an updated list of homes in your range? happy to email it over"
+- **Every 2 weeks after that** (composed per lead: their search area, their program, where their file stands per Notion — never file specifics like docs/approvals/rates in an auto-text). After 90 days of silence, drop to monthly.
+
+**Rules (plus the usual: quiet hours, reply kill switch pauses the clock, [auto] logging, salutation rotation):**
+- Stops permanently at Real Deal / Funded — offers and closings are 100% Justin.
+- Any lead question about their file (docs, approval status, rates, numbers) → never auto-answer; flag Justin immediately.
+- This cadence supersedes the engaged-lead cadence's "stops at Application" rule — applicants move from that cadence into this one.
+
 ## Engaged-lead nurture cadence (leads who replied, then went quiet)
 
 For Mortgage Pipeline leads with Status **Connected** or **Connected Live** whose last two-way exchange was within the past 30 days, and who then go silent. Texts are composed per lead from their Notion record (property, loan type, where the conversation left off) in Justin's voice — short, one idea, casual with dashes/exclamations.

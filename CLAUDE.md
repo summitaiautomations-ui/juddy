@@ -29,7 +29,8 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - If the lead replies (text or call) at ANY point: stop the cadence immediately, update their row, and flag Justin. Never send another auto-text to a lead who has engaged.
 - Never restart or re-run a cadence for the same lead. Log every auto-send in the lead's Notes with an `[auto]` prefix and update Last Contact.
 - Tone per the 2026 NextGen Homebuyer Report: low-pressure, one idea per text, myth-busting, alignment-signaling. No rate quotes, no info dumps.
-- **Friend approach (applies to every text after T1, in all cadences):** casual "hey <First> -" openers; no capitalized sentence starts (lowercase "i" is fine and preferred); keep proper nouns capitalized (names, cities, Summit); never reintroduce yourself after first contact ("Justin again" etc. is banned); write like a friend texting — not a rep working a script. T1 keeps the professional intro and normal capitalization since it's first contact.
+- **Friend approach (applies to every text after T1, in all cadences):** casual openers; no capitalized sentence starts (lowercase "i" is fine and preferred); keep proper nouns capitalized (names, cities, Summit); never reintroduce yourself after first contact ("Justin again" etc. is banned); write like a friend texting — not a rep working a script. T1 keeps the professional intro and normal capitalization since it's first contact.
+- **Salutation rotation:** vary openers across a lead's texts — rotate among "hey <First> -", "hi <First> -", "<First>!", and time-aware ones like "good morning <First> -" (only if it's actually that time of day in CT). Never use the same opener twice in a row for the same lead. The salutations written in the step templates below are defaults — swap them per this rule as needed.
 
 **Steps** (`<First>` = first name, `<city>` = property city from the lead email):
 - **T1 — on arrival (two texts, seconds apart):**

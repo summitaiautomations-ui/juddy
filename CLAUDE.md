@@ -34,7 +34,7 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 
 **Steps** (`<First>` = first name, `<city>` = property city from the lead email):
 - **T1 — on arrival (two texts, seconds apart):**
-  1. "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
+  1. "Hi <First> - this is Justin Neal, friendly mortgage person with Summit Mortgage Corp. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
   2. "by the way - I am local and based in Plymouth MN"
 - **T2 — later day 1 (≥4 hrs after T1, single text):** "hey <First> - just wondering if you found any houses that catch your eye? shoot me the address and I can let you know available downpayment options (sometimes as low as zero down) - i can also provide you with a sample payment"
 - **T3 — day 2 (two texts seconds apart):**

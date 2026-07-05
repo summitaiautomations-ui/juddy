@@ -38,9 +38,9 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
   2. "by the way - I am local and based in Plymouth MN"
 - **T2 — later day 1 (≥4 hrs after T1, single text):** "hey <First> - just wondering if you found any houses that catch your eye? shoot me the address and I can let you know available downpayment options (sometimes as low as zero down) - i can also provide you with a sample payment"
 - **T3 — day 2 (two texts seconds apart):**
-  1. "hey <First> - i know the mortgage stuff can feel overwhelming, so i keep things simple. what's the #1 question on your mind about buying?"
-  2. "and if you want to know who you'd be working with, here's a bit about me: https://www.summit-mortgage.com/loan-officer/justin-neal/"
-  (Branded Summit link on purpose — better SMS deliverability than linktr.ee and Justin tracks page visitors; note any known page visit in the lead's row as a warmth signal.)
+  1. "hi <First> - if you send me a price range and the city you want to target, i can text you what the monthly payment would roughly look like - and even email you all the homes available that fit. no strings"
+  2. "more about me here if you're curious: https://www.summit-mortgage.com/loan-officer/justin-neal/"
+  (Branded Summit link on purpose — better SMS deliverability than linktr.ee and Justin tracks page visitors; note any known page visit in the lead's row as a warmth signal. If a lead replies with a price range / city, the cadence stops as usual — flag Justin with their criteria so he can send the payment estimate and the homes email.)
 - **T4 — day 4:** "hey <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"
 - **T5 — day 7 (final):** "hey <First> - i won't keep bugging you! if the timing isn't right, no worries at all. save my number and reach out whenever you're ready. have a great one! - Justin @ Summit Mortgage www.linktr.ee/welcometosummit"
 - **After T5 with no response:** set Next Follow-Up to +30 days with Next Action "Manual re-engage — auto cadence completed, no response."

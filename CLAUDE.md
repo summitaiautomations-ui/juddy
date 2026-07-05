@@ -67,6 +67,29 @@ Justin asks each applicant to text his Quo line when they finish the application
 - Any lead question about their file (docs, approval status, rates, numbers) → never auto-answer; flag Justin immediately.
 - This cadence supersedes the engaged-lead cadence's "stops at Application" rule — applicants move from that cadence into this one.
 
+## House Hunters (preapproved & shopping)
+
+Justin handles applicants personally through docs/preapproval — NO auto-texts during that stretch (they're working hard for him; leave them alone). This cadence starts the moment Justin marks a lead **Preapproved** (or tells me they're preapproved and shopping) and ends at **Real Deal** (accepted offer — 100% Justin from there).
+
+**On preapproval — send the frozen-finances kit (two texts, seconds apart):**
+1. "hey <First> - congrats again! one housekeeping thing before the fun starts: lenders re-check EVERYTHING right before closing. so until you have keys, keep your money life frozen. screenshot this next text 👇"
+2. "the do-not list until closing:
+• no new credit apps (cards, cars, furniture - even "no interest" offers)
+• no big purchases on credit
+• don't close old credit cards
+• keep balances low + every payment on time
+• no job changes or fewer hours without calling me FIRST
+• no big cash deposits without a paper trail
+• family gifting money? call me before it moves
+• don't co-sign for anyone
+• leave your down payment money sitting still
+
+if any of these come up, i can almost always make it work if we talk BEFORE it happens. that's the whole trick!"
+
+**While they shop (no rule-nagging after the kit):** shopping-fuel touches only when they go quiet — day 4 of silence: "hey <First> - how's the hunt going? shoot me any address and i'll run the real payment on it"; day 10: offer the homes-list email; then every 2 weeks composed per lead.
+
+**Watchdog rule:** if a House Hunter ever mentions anything list-adjacent in the thread (new car, financing anything, job change, hours cut, gift money, moving cash), do NOT auto-reply — flag Justin immediately. Deliver the kit once per lead, ever.
+
 ## Engaged-lead nurture cadence (leads who replied, then went quiet)
 
 For Mortgage Pipeline leads with Status **Connected** or **Connected Live** whose last two-way exchange was within the past 30 days, and who then go silent. Texts are composed per lead from their Notion record (property, loan type, where the conversation left off) in Justin's voice — short, one idea, casual with dashes/exclamations.

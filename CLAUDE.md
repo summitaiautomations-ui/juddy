@@ -17,7 +17,7 @@
 
 ## Nurture sending mode
 
-**Current mode: AUTO (Justin approved 7/4/26 after reviewing the T1 draft).** Send cadence texts directly from the Quo line per the rules below. Immediately after each send, text a receipt from the Quo line to Justin's personal cell **+1 612-203-9883**: "✅ Sent T1 to Brooke Niebeling (651-558-7290): <full text that was sent>" — always include the full sent text so he sees exactly what went out. If several sends happen in one scan, send one receipt per lead, back-to-back.
+**Current mode: AUTO (Justin approved 7/4/26 after reviewing the T1 draft).** Send cadence texts directly from the Quo line per the rules below. **Universal receipt rule — no exceptions:** 100% of the time, immediately after ANY text is sent to ANY client/lead/recruit for ANY reason (cadence step, composed touch, one-off), text a receipt from the Quo line to Justin's personal cell **+1 612-203-9883**: "✅ Sent T1 to Brooke Niebeling (651-558-7290): <full text that was sent>" — always include the full sent text so he sees exactly what went out. If several sends happen in one scan, send one receipt per lead, back-to-back. A text to a lead without a matching receipt to Justin is a workflow error.
 
 If Justin says to go back to drafts, switch to DRAFT mode: instead of sending, create a Quo task per due step ("SEND → <name>: <step>", exact text in the description, linked to the lead's conversation or the inbox) and text him the full draft to copy/paste; advance cadence timing off his actual sends in the thread.
 

@@ -36,7 +36,7 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
   2. "by the way - I am local and based in Plymouth MN"
 - **T2 — later day 1 (≥4 hrs after T1, two texts seconds apart).** Call-aware: check the lead's Quo thread/call log for an outgoing call from Justin first.
   1. If Justin called them: "Hi <First>, Justin again - just tried you and left a voicemail!" — if no call yet: "Hi <First>, Justin again - I'll try you by phone a little later too!"
-  2. "quick thing most people don't know - you do NOT need 20% down or perfect credit to buy. a lot of my buyers put down way less. want me to run your real numbers? takes about 10 min"
+  2. "have you found any houses that catch your eye? shoot me the address and I can let you know available downpayment options (sometimes as low as zero down)"
 - **T3 — day 2 (two texts seconds apart):**
   1. "Hi <First> - I know the mortgage stuff can feel overwhelming, so I keep things simple. what's the #1 question on your mind about buying?"
   2. "and if you want to know who you'd be working with, here's a bit about me: https://www.summit-mortgage.com/loan-officer/justin-neal/"

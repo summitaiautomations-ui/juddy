@@ -34,8 +34,13 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
 - **T1 — on arrival (two texts, seconds apart):**
   1. "Hi <First> - this is Justin Neal, mortgage banker with Summit Mortgage. I just got your Realtor.com inquiry about <city> and I'd love to help! Do you prefer to chat on the phone or by text?"
   2. "by the way - I am local and based in Plymouth MN"
-- **T2 — later day 1 (≥4 hrs after T1):** "Hi <First>, Justin again - just left you a voicemail. Quick thing worth knowing: most people think you need 20% down and perfect credit to buy a home. You usually don't - a lot of my buyers put down far less. Happy to run your real numbers whenever you're ready."
-- **T3 — day 2:** "Hi <First> - I know the homebuying stuff can feel overwhelming, so I'll keep it simple. My job is to give you straight answers about what you actually qualify for - even when the honest answer makes me less money. Call or text, whatever's easier!"
+- **T2 — later day 1 (≥4 hrs after T1, two texts seconds apart).** Call-aware: check the lead's Quo thread/call log for an outgoing call from Justin first.
+  1. If Justin called them: "Hi <First>, Justin again - just tried you and left a voicemail!" — if no call yet: "Hi <First>, Justin again - I'll try you by phone a little later too!"
+  2. "quick thing most people don't know - you do NOT need 20% down or perfect credit to buy. a lot of my buyers put down way less. want me to run your real numbers? takes about 10 min"
+- **T3 — day 2 (two texts seconds apart):**
+  1. "Hi <First> - I know the mortgage stuff can feel overwhelming, so I keep things simple. what's the #1 question on your mind about buying?"
+  2. "and if you want to know who you'd be working with, here's a bit about me: https://www.summit-mortgage.com/loan-officer/justin-neal/"
+  (Branded Summit link on purpose — better SMS deliverability than linktr.ee and Justin tracks page visitors; note any known page visit in the lead's row as a warmth signal.)
 - **T4 — day 4:** "Hi <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. Takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"
 - **T5 — day 7 (final):** "Hi <First> - I won't keep bugging you! If the timing isn't right, no worries at all. Save my number and reach out whenever you're ready. Have a great one! - Justin @ Summit Mortgage www.linktr.ee/welcometosummit"
 - **After T5 with no response:** set Next Follow-Up to +30 days with Next Action "Manual re-engage — auto cadence completed, no response."

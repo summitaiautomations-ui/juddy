@@ -42,8 +42,11 @@ When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create th
   2. "more about me here if you're curious: https://www.summit-mortgage.com/loan-officer/justin-neal/"
   (Branded Summit link on purpose — better SMS deliverability than linktr.ee and Justin tracks page visitors; note any known page visit in the lead's row as a warmth signal. If a lead replies with a price range / city, the cadence stops as usual — flag Justin with their criteria so he can send the payment estimate and the homes email.)
 - **T4 — day 4:** "hey <First> - one easy step if you're still exploring <city>: a quick preapproval so you know your real budget. takes about 10 minutes, no obligation: https://ascent.summit-mortgage.com/dr/c/rhn1u"
-- **T5 — day 7 (final):** "hey <First> - i won't keep bugging you! if the timing isn't right, no worries at all. save my number and reach out whenever you're ready. have a great one! - Justin @ Summit Mortgage www.linktr.ee/welcometosummit"
-- **After T5 with no response:** set Next Follow-Up to +30 days with Next Action "Manual re-engage — auto cadence completed, no response."
+- **T5 — day 7 (pressure release, NOT a goodbye):** "hey <First> - no pressure at all on my end, timing is everything with this stuff. i'll check in every once in a while with something useful - if you'd rather i didn't, just say the word!"
+- **T6 — day 14 (second myth-bust):** "hi <First> - random but useful: there are down payment assistance programs most buyers never hear about. worth a quick look at what you'd qualify for in <city/county> - happy to check for you"
+- **T7 — day 30 (homes offer):** "hello <First> - still thinking about <city>? if you send me a price range i can email you what's actually available right now. no strings"
+- **Monthly after T7 (long drip, composed per lead):** one value touch per month in Justin's voice, built from the lead's record — their city, loan type, seasonal angles (spring inventory, tax-refund-as-down-payment in Feb/Mar, year-end sellers, etc.). Facts only, no rates, rotating salutations. Runs through month 12 from lead date, then set Next Follow-Up +30 days with Next Action "Manual re-engage — 12-month auto nurture completed, no response" and stop auto-texting.
+- **Opt-out:** if a lead ever says stop/not interested (any phrasing), stop all texting permanently, mark Priority Dead (or per Justin's call), log it, and never text them again.
 
 Track cadence state in the lead's Next Action field (e.g. "AUTO-NURTURE: T2 sent 7/5 2:15pm CT — T3 due 7/6").
 

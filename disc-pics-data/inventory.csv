@@ -6,3 +6,5 @@ id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,pri
 005,2026-07-06,"","Buzzz","Discraft","ESP","pink","not stamped","180","8.5","13","Paul McBeth 6X stamp; ink on back"
 006,2026-07-06,"","Mako3","Innova","unknown","yellow","171","172","9","10","Custom shark design stamp; no ink"
 007,2026-07-06,"","Buzzz","Discraft","Z FLX","unknown","not stamped","178.6","9","15","Chris Dickerson 2024 Tour Series; no ink"
+008,2026-07-05,"008-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","unknown","photo unreadable - staging filename contains U+202F narrow no-break space that blocks the Read tool; rename staging-Photo*.jpg to an ASCII-only name and retry"
+009,2026-07-05,"009-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","4","photo unreadable — filename contains U+202F narrow no-break space that the sandbox blocks; please rename staging file to plain ASCII and re-run"

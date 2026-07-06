@@ -6,5 +6,14 @@ id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,pri
 005,2026-07-06,"","Buzzz","Discraft","ESP","pink","not stamped","180","8.5","13","Paul McBeth 6X stamp; ink on back"
 006,2026-07-06,"","Mako3","Innova","unknown","yellow","171","172","9","10","Custom shark design stamp; no ink"
 007,2026-07-06,"","Buzzz","Discraft","Z FLX","unknown","not stamped","178.6","9","15","Chris Dickerson 2024 Tour Series; no ink"
+<<<<<<< HEAD
 008,2026-07-05,"008-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","unknown","photo unreadable - staging filename contains U+202F narrow no-break space that blocks the Read tool; rename staging-Photo*.jpg to an ASCII-only name and retry"
 009,2026-07-05,"009-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","4","photo unreadable — filename contains U+202F narrow no-break space that the sandbox blocks; please rename staging file to plain ASCII and re-run"
+=======
+008,2026-07-06,"","Cicada","Discraft","unknown","purple","not stamped","170","9","15","Missy Gannon 2026 Tour Series; no ink"
+009,2026-07-06,"","Valkyrie","Innova","Champion","unknown","not stamped","171.5","8","10","Distance driver; custom dye job; no ink; scale weight garbled in dictation - confirm 171.5 vs 171"
+>>>>>>> 0d84993f09431efb362bb02ea5b401418f1cda22
+015,2026-07-05,"015-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","unknown","photo file could not be read - filename contains U+202F narrow no-break space and Read tool cannot open it - please rename staging-Photo on 7-5-26 at 9.01 PM.jpg to staging-disc-901.jpg and retry"
+016,2026-07-05,"016-mako3.jpg","Mako3","Innova","Star","yellow","unknown","unknown","8","12","colorful oriental stamp with temple cranes blossoms and orange marlin - looks like a special edition or tour series - stamp ink intact and bright - no obvious wear visible on flight plate"
+017,2026-07-05,"017-unknown.jpg","unknown","unknown","swirl translucent","multicolor splatter dye over cream/translucent base","unknown","unknown","8","10","translucent base plastic with heavy pink red orange yellow teal splatter or shatter dye; putter/midrange shape with shallow dome and small bead; stamp faint and unreadable in photo; edges look clean and glossy near-new"
+018,2026-07-05,"018-cicada.jpg","Cicada","Discraft","ESP Swirl","purple pink swirl","unknown","unknown","9","15","gold foil portrait stamp of woman with pixelating hair dispersing right rim looks clean near-new no ink"

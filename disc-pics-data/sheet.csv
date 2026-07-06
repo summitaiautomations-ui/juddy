@@ -1,3 +1,8 @@
 photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/001-cicada.jpg",001,"Cicada","Discraft","Z","pink","not stamped","171","9","11","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent"
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/002-fd.jpg",002,"FD","Discmania","C-Line","red/yellow","175","176.6","9","13","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; no ink"
+"",003,"unknown","Innova","unknown","unknown","168","168.4","8","8","Team Innova stamp; ink on back; mold TBD from photo"
+"",004,"Buzzz","Discraft","unknown","unknown","177","178","9","11","Custom donut stamp; no ink"
+"",005,"Buzzz","Discraft","ESP","pink","not stamped","180","8.5","13","Paul McBeth 6X stamp; ink on back"
+"",006,"Mako3","Innova","unknown","yellow","171","172","9","10","Custom shark design stamp; no ink"
+"",007,"Buzzz","Discraft","Z FLX","unknown","not stamped","178.6","9","15","Chris Dickerson 2024 Tour Series; no ink"

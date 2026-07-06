@@ -36,7 +36,7 @@ if [[ ! -f "${INVENTORY}" ]]; then
   echo 'id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,price,notes' > "${INVENTORY}"
 fi
 if [[ ! -f "${SHEET}" ]]; then
-  echo 'photo_url,id,date,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes' > "${SHEET}"
+  echo 'photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes' > "${SHEET}"
 fi
 
 # Public raw-file URL prefix for photos, derived from the git remote and the
@@ -145,7 +145,7 @@ for photo in "${photos[@]}"; do
   } >> "${INVENTORY}"
 
   {
-    printf '%s,%s,%s' "$(csv_field "${RAW_BASE}/${new_name}")" "${id}" "${today}"
+    printf '%s,%s' "$(csv_field "${RAW_BASE}/${new_name}")" "${id}"
     for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done

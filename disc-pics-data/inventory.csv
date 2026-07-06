@@ -1,3 +1,8 @@
 id,date,photo,mold,brand,plastic,color,weight,condition,price,notes
 001,2026-07-01,"","Cicada","Discraft","Z","pink","171","9","11","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent; 171g on scale (not marked on disc); photo pending"
 002,2026-07-01,"","FD","Discmania","C-Line","red/yellow","unknown","unknown","12","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; photo pending; awaiting scale weight and condition"
+003,2026-07-05,"003-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","could not read image file - permission denied"
+004,2026-07-05,"004-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","could not read image file - permission denied"
+005,2026-07-05,"005-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","could not read image file - permission denied"
+006,2026-07-05,"006-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","could not read image file - permission denied"
+007,2026-07-05,"007-unknown.jpg","unknown","unknown","unknown","unknown","unknown","unknown","unknown","image could not be read - permission denied"

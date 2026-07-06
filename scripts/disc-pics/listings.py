@@ -30,18 +30,20 @@ def load_discs():
         rows = list(csv.reader(f))
     header = [h.strip().lower() for h in rows[0]]
     fields = ["photo_url", "id", "mold", "brand", "plastic", "color",
-              "weight_g", "condition", "price_usd", "notes"]
+              "stamped_weight_g", "scale_weight_g", "condition", "price_usd", "notes"]
     try:
         idx = {name: header.index(name) for name in fields}
     except ValueError as e:
         sys.exit(f"error: sheet.csv header is missing a column: {e}")
 
-    keys = {"weight_g": "weight", "price_usd": "price"}
+    keys = {"stamped_weight_g": "stamped", "scale_weight_g": "scale", "price_usd": "price"}
     discs = []
     for row in rows[1:]:
         if len(row) <= idx["notes"] or not row[idx["id"]].strip():
             continue
         d = {keys.get(name, name): row[i].strip() for name, i in idx.items()}
+        # Scale weight is the truth; stamped weight is the fallback
+        d["weight"] = d["scale"] if d["scale"].isdigit() else d["stamped"]
         if d["photo_url"]:  # no photo, no listing
             discs.append(d)
     return discs
@@ -51,7 +53,7 @@ def title(d):
     parts = [d["brand"], d["plastic"] if d["plastic"] != "unknown" else "", d["mold"]]
     t = " ".join(p for p in parts if p)
     extras = []
-    if d["weight"] and d["weight"] != "unknown":
+    if d["weight"] and d["weight"].isdigit():
         extras.append(f'{d["weight"]}g')
     if d["condition"] and d["condition"] != "unknown":
         extras.append(f'{d["condition"]}/10')
@@ -65,8 +67,9 @@ def description(d):
         f'{d["brand"]} {d["mold"]}' + (f' in {d["plastic"]} plastic' if d["plastic"] != "unknown" else ""),
         f'Color: {d["color"]}',
     ]
-    if d["weight"] != "unknown":
-        lines.append(f'Weight: {d["weight"]}g')
+    if d["weight"].isdigit():
+        suffix = " (on scale)" if d["scale"].isdigit() else " (stamped)"
+        lines.append(f'Weight: {d["weight"]}g{suffix}')
     if d["condition"] != "unknown":
         lines.append(f'Condition: {d["condition"]}/10 (Sleepy Scale)')
     if d["notes"]:

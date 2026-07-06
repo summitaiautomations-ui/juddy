@@ -33,10 +33,10 @@ fi
 
 mkdir -p "${PHOTOS}"
 if [[ ! -f "${INVENTORY}" ]]; then
-  echo 'id,date,photo,mold,brand,plastic,color,weight,condition,price,notes' > "${INVENTORY}"
+  echo 'id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,price,notes' > "${INVENTORY}"
 fi
 if [[ ! -f "${SHEET}" ]]; then
-  echo 'photo_url,id,date,mold,brand,plastic,color,weight_g,condition,price_usd,notes' > "${SHEET}"
+  echo 'photo_url,id,date,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes' > "${SHEET}"
 fi
 
 # Public raw-file URL prefix for photos, derived from the git remote and the
@@ -69,9 +69,11 @@ Read the image file at ${photo}. It is a photo of a single disc golf disc.
 Identify it as best you can from the stamp, shape, and color.
 Reply with exactly one line and nothing else: eight fields separated by
 the | character, in this order:
-mold|brand|plastic|color|weight|condition|price|notes
+mold|brand|plastic|color|stamped_weight|condition|price|notes
 - condition is the Sleepy Scale, 1-10
-- weight is in grams if visible on the disc, otherwise unknown
+- stamped_weight is the weight in grams printed/stamped on the disc if
+  visible in the photo, otherwise unknown (the owner weighs discs on a
+  scale separately -- do not guess)
 - price is a suggested asking price in whole US dollars, number only.
   Anchor: an average used disc in decent shape is 9. Beat-in base plastic
   is 5-7, near-new premium plastic is 10-14, hot molds or limited/tour
@@ -122,7 +124,8 @@ for photo in "${photos[@]}"; do
     continue
   fi
 
-  IFS='|' read -r mold brand plastic color weight condition price notes <<< "${line}"
+  IFS='|' read -r mold brand plastic color stamped_weight condition price notes <<< "${line}"
+  scale_weight="unknown"  # filled in by hand when the owner weighs the disc
 
   rows=$(( $(wc -l < "${INVENTORY}") - 1 ))
   id="$(printf '%03d' $((rows + 1)))"
@@ -135,7 +138,7 @@ for photo in "${photos[@]}"; do
 
   {
     printf '%s,%s,%s' "${id}" "${today}" "$(csv_field "${new_name}")"
-    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${price}" "${notes}"; do
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'
@@ -143,7 +146,7 @@ for photo in "${photos[@]}"; do
 
   {
     printf '%s,%s,%s' "$(csv_field "${RAW_BASE}/${new_name}")" "${id}" "${today}"
-    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${weight}" "${condition}" "${price}" "${notes}"; do
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'

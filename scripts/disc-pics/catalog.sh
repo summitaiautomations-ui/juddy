@@ -99,11 +99,17 @@ for photo in "${photos[@]}"; do
   name="$(basename "${photo}")"
   echo "==> identifying: ${name}"
 
+  # Stage the photo inside the repo first: claude's sandbox can only read
+  # files under its working directory, and the inbox in ~/Pictures is not.
+  staged="${PHOTOS}/staging-${name}"
+  mv "${photo}" "${staged}"
+
   # Take the last non-empty line in case the model adds any preamble.
   # A claude failure must not kill the whole run (set -e); errors go to
   # the error log so they can actually be diagnosed.
-  line="$("${CLAUDE_BIN}" -p "$(identify_prompt "${photo}")" 2>>"${ERR_LOG}" | awk 'NF {last=$0} END {print last}')" || {
+  line="$(cd "${REPO_ROOT}" && "${CLAUDE_BIN}" -p "$(identify_prompt "${staged}")" 2>>"${ERR_LOG}" | awk 'NF {last=$0} END {print last}')" || {
     echo "    claude failed for ${name} (see ${ERR_LOG}), leaving in inbox" >&2
+    mv "${staged}" "${photo}"
     skipped=$((skipped + 1))
     continue
   }
@@ -111,6 +117,7 @@ for photo in "${photos[@]}"; do
   pipes="${line//[^|]/}"
   if [[ ${#pipes} -ne 7 ]]; then
     echo "    could not parse response, leaving in inbox: ${line:-<empty>}" >&2
+    mv "${staged}" "${photo}"
     skipped=$((skipped + 1))
     continue
   fi
@@ -124,7 +131,7 @@ for photo in "${photos[@]}"; do
   new_name="${id}-${slug:-disc}.${ext}"
   today="$(date +%Y-%m-%d)"
 
-  mv "${photo}" "${PHOTOS}/${new_name}"
+  mv "${staged}" "${PHOTOS}/${new_name}"
 
   {
     printf '%s,%s,%s' "${id}" "${today}" "$(csv_field "${new_name}")"

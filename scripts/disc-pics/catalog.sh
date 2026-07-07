@@ -33,10 +33,10 @@ fi
 
 mkdir -p "${PHOTOS}"
 if [[ ! -f "${INVENTORY}" ]]; then
-  echo 'id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,price,notes' > "${INVENTORY}"
+  echo 'id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,price,status,notes' > "${INVENTORY}"
 fi
 if [[ ! -f "${SHEET}" ]]; then
-  echo 'photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes' > "${SHEET}"
+  echo 'photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,status,notes' > "${SHEET}"
 fi
 
 # Public raw-file URL prefix for photos, derived from the git remote and the
@@ -138,7 +138,7 @@ for photo in "${photos[@]}"; do
 
   {
     printf '%s,%s,%s' "${id}" "${today}" "$(csv_field "${new_name}")"
-    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "${notes}"; do
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "available" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'
@@ -146,7 +146,7 @@ for photo in "${photos[@]}"; do
 
   {
     printf '%s,%s' "$(csv_field "${RAW_BASE}/${new_name}")" "${id}"
-    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "${notes}"; do
+    for f in "${mold}" "${brand}" "${plastic}" "${color}" "${stamped_weight}" "${scale_weight}" "${condition}" "${price}" "available" "${notes}"; do
       printf ',%s' "$(csv_field "${f}")"
     done
     printf '\n'

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,price,notes
 001,2026-07-01,"001-cicada.jpg","Cicada","Discraft","Z","pink","not stamped","171","9","11","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent"
 002,2026-07-01,"002-fd.jpg","FD","Discmania","C-Line","red/yellow","175","176.6","9","13","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; no ink"
@@ -17,3 +18,16 @@ id,date,photo,mold,brand,plastic,color,stamped_weight,scale_weight,condition,pri
 016,2026-07-05,"016-mako3.jpg","Mako3","Innova","Star","yellow","unknown","unknown","8","12","colorful oriental stamp with temple cranes blossoms and orange marlin - looks like a special edition or tour series - stamp ink intact and bright - no obvious wear visible on flight plate"
 017,2026-07-05,"017-unknown.jpg","unknown","unknown","swirl translucent","multicolor splatter dye over cream/translucent base","unknown","unknown","8","10","translucent base plastic with heavy pink red orange yellow teal splatter or shatter dye; putter/midrange shape with shallow dome and small bead; stamp faint and unreadable in photo; edges look clean and glossy near-new"
 018,2026-07-05,"018-cicada.jpg","Cicada","Discraft","ESP Swirl","purple pink swirl","unknown","unknown","9","15","gold foil portrait stamp of woman with pixelating hair dispersing right rim looks clean near-new no ink"
+=======
+"id","date","photo","mold","brand","plastic","color","stamped_weight","scale_weight","condition","price","status","notes"
+"001","2026-07-01","001-cicada.jpg","Cicada","Discraft","Z","pink","not stamped","171","9","11","available","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent"
+"002","2026-07-01","002-fd.jpg","FD","Discmania","C-Line","red/yellow","175","176.6","9","13","available","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; no ink"
+"003","2026-07-06","","unknown","Innova","unknown","unknown","168","168.4","8","8","available","Team Innova stamp; ink on back; mold TBD from photo"
+"004","2026-07-06","","Buzzz","Discraft","unknown","unknown","177","178","9","11","available","Custom donut stamp; no ink"
+"005","2026-07-06","","Buzzz","Discraft","ESP","pink","not stamped","180","8.5","13","available","Paul McBeth 6X stamp; ink on back"
+"006","2026-07-06","","Mako3","Innova","unknown","yellow","171","172","9","10","available","Custom shark design stamp; no ink"
+"007","2026-07-06","","Buzzz","Discraft","Z FLX","unknown","not stamped","178.6","9","15","available","Chris Dickerson 2024 Tour Series; no ink"
+"008","2026-07-06","","Cicada","Discraft","unknown","purple","not stamped","170","9","15","available","Missy Gannon 2026 Tour Series; no ink"
+"009","2026-07-06","","Valkyrie","Innova","Champion","unknown","not stamped","171.5","8","10","available","Distance driver; custom dye job; no ink; scale weight garbled in dictation - confirm 171.5 vs 171"
+"010","2026-07-06","","Raptor","Discraft","unknown","orange","not stamped","173","8","12","available","Adam Hammes limited edition; flight 9/4/0/3; no ink"
+>>>>>>> 567391756621660a664840e9440107c79b1ac716

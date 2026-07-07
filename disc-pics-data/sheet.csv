@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,price_usd,notes
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/001-cicada.jpg",001,"Cicada","Discraft","Z","pink","not stamped","171","9","11","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent"
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/002-fd.jpg",002,"FD","Discmania","C-Line","red/yellow","175","176.6","9","13","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; no ink"
@@ -17,3 +18,16 @@ photo_url,id,mold,brand,plastic,color,stamped_weight_g,scale_weight_g,condition,
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/016-mako3.jpg",016,"Mako3","Innova","Star","yellow","unknown","unknown","8","12","colorful oriental stamp with temple cranes blossoms and orange marlin - looks like a special edition or tour series - stamp ink intact and bright - no obvious wear visible on flight plate"
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/017-unknown.jpg",017,"unknown","unknown","swirl translucent","multicolor splatter dye over cream/translucent base","unknown","unknown","8","10","translucent base plastic with heavy pink red orange yellow teal splatter or shatter dye; putter/midrange shape with shallow dome and small bead; stamp faint and unreadable in photo; edges look clean and glossy near-new"
 "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/018-cicada.jpg",018,"Cicada","Discraft","ESP Swirl","purple pink swirl","unknown","unknown","9","15","gold foil portrait stamp of woman with pixelating hair dispersing right rim looks clean near-new no ink"
+=======
+"photo_url","id","mold","brand","plastic","color","stamped_weight_g","scale_weight_g","condition","price_usd","status","notes"
+"https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/001-cicada.jpg","001","Cicada","Discraft","Z","pink","not stamped","171","9","11","available","Z Line; flight 7/6/-1/1; no ink; rainbow holographic foil stamp; translucent"
+"https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/photos/002-fd.jpg","002","FD","Discmania","C-Line","red/yellow","175","176.6","9","13","available","C-Line fairway driver; flight 7/6/0/1; two-tone red over yellow dye; Reinvent Your Game stamp; no ink"
+"","003","unknown","Innova","unknown","unknown","168","168.4","8","8","available","Team Innova stamp; ink on back; mold TBD from photo"
+"","004","Buzzz","Discraft","unknown","unknown","177","178","9","11","available","Custom donut stamp; no ink"
+"","005","Buzzz","Discraft","ESP","pink","not stamped","180","8.5","13","available","Paul McBeth 6X stamp; ink on back"
+"","006","Mako3","Innova","unknown","yellow","171","172","9","10","available","Custom shark design stamp; no ink"
+"","007","Buzzz","Discraft","Z FLX","unknown","not stamped","178.6","9","15","available","Chris Dickerson 2024 Tour Series; no ink"
+"","008","Cicada","Discraft","unknown","purple","not stamped","170","9","15","available","Missy Gannon 2026 Tour Series; no ink"
+"","009","Valkyrie","Innova","Champion","unknown","not stamped","171.5","8","10","available","Distance driver; custom dye job; no ink"
+"","010","Raptor","Discraft","unknown","orange","not stamped","173","8","12","available","Adam Hammes limited edition; flight 9/4/0/3; no ink"
+>>>>>>> 567391756621660a664840e9440107c79b1ac716

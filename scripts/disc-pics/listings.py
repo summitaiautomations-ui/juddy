@@ -30,7 +30,7 @@ def load_discs():
         rows = list(csv.reader(f))
     header = [h.strip().lower() for h in rows[0]]
     fields = ["photo_url", "id", "mold", "brand", "plastic", "color",
-              "stamped_weight_g", "scale_weight_g", "condition", "price_usd", "notes"]
+              "stamped_weight_g", "scale_weight_g", "condition", "price_usd", "status", "notes"]
     try:
         idx = {name: header.index(name) for name in fields}
     except ValueError as e:
@@ -44,7 +44,8 @@ def load_discs():
         d = {keys.get(name, name): row[i].strip() for name, i in idx.items()}
         # Scale weight is the truth; stamped weight is the fallback
         d["weight"] = d["scale"] if d["scale"].isdigit() else d["stamped"]
-        if d["photo_url"]:  # no photo, no listing
+        # Only list discs that are still for sale and have a photo
+        if d["photo_url"] and d["status"].lower() in ("", "available"):
             discs.append(d)
     return discs
 

@@ -13,6 +13,7 @@
 - Recruits (loan officers Justin is recruiting to Summit) go to the Notion **Recruiting Pipeline** database (under the Recruiting Dashboard page) instead.
 - On each sync: update Last Contact (as UTC datetime), Notes, Next Action, Next Follow-Up, and Status/Priority for existing leads; create new pipeline rows and Quo contacts for unknown numbers.
 - Justin runs ALL client conversations on the Quo line (calls + texts). Each scan must pull text threads, voicemail transcripts, AND call transcripts (fetch-call-transcripts — requires Quo Business plan with transcription enabled; keep trying each scan) and write the substance into the lead's Notion record: conversation summary + key facts (addresses, price ranges, timelines, decisions) into Notes/fields, not just timestamps.
+- **Recap rule:** whenever Justin wraps a substantive lead/recruit conversation (he says so, or a scan detects a discovery-style thread that concluded), ALWAYS hand him a ready-to-send recap text in the chat report — friendly, screenshot-able, bullet emojis, restating what was discussed: their goal, the program/numbers mentioned (corrected if anything was misquoted live), their plan/timeline, and a no-pressure keep-in-touch close signed "- Justin". He copies/pastes it to the lead from Quo.
 - Justin works primarily from his cell via Quo — an hourly scheduled scan (7am–9pm CT) keeps these records updated automatically; it stays quiet when there's nothing new.
 
 ## Nurture sending mode

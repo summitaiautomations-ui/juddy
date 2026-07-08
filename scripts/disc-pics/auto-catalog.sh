@@ -16,7 +16,10 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] photo booth changed, running import + catal
 sleep 3
 
 bash "${SCRIPT_DIR}/import.sh"
-bash "${SCRIPT_DIR}/catalog.sh"
-bash "${SCRIPT_DIR}/sync.sh"
-# When the inventory looks good, generate eBay/Shopify import files with:
+bash "${SCRIPT_DIR}/catalog.sh"   # stages discs into disc-pics-data/incoming/
+bash "${SCRIPT_DIR}/sync.sh"      # pushes them (additive-only, never conflicts)
+# The mini stops here. Fold staged discs into the spreadsheet from one place
+# (assigns ids, cleans photos, reconciles with dictated details) with:
+#   python3 merge-incoming.py
+# then generate eBay/Shopify import files when the inventory looks good:
 #   python3 listings.py

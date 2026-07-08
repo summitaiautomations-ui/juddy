@@ -109,6 +109,16 @@
   .claim:hover{filter:brightness(1.08);transform:translateY(-1px);}
   .claim svg{width:16px;height:16px;}
   .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 20px;}
+  /* ---------- TESTIMONIALS ---------- */
+  .testi{max-width:1180px;margin:44px auto 8px;padding:0 20px;}
+  .testi-head{text-align:center;margin-bottom:22px;}
+  .testi-head h2{margin:0 0 6px;font-size:clamp(22px,3.6vw,30px);font-weight:800;letter-spacing:-.02em;}
+  .testi-head p{margin:0;color:var(--muted);font-size:14.5px;}
+  .testi-grid{columns:3 270px;column-gap:16px;}
+  .tcard{break-inside:avoid;margin:0 0 16px;background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.25);}
+  .tcard img{width:100%;display:block;}
+  .tcard figcaption{padding:9px 13px;color:var(--foam);font-size:13px;font-weight:600;}
   /* ---------- SUBSCRIBE CTA ---------- */
   .cta{position:relative;margin-top:20px;padding:70px 20px 84px;text-align:center;overflow:hidden;
     background:radial-gradient(100% 120% at 50% 120%, #0d4a5a 0%, #072a34 55%, #061e26 100%);border-top:1px solid var(--line);}
@@ -149,6 +159,14 @@
 <p class="shipnote">📦 <b>Free local pickup in Coon Rapids, MN</b> &middot; $8.50 shipping for a single disc anywhere else &mdash; grabbing more? I’ll work out a discounted combined rate.</p>
 <div class="filters" id="filters"></div>
 <main id="grid"></main>
+
+<section class="testi" id="testi" hidden>
+  <div class="testi-head">
+    <h2>Reunited &amp; it feels so good</h2>
+    <p>Kind words from folks I've gotten lost discs back to.</p>
+  </div>
+  <div class="testi-grid" id="testiGrid"></div>
+</section>
 
 <section class="cta">
   <h2>See a disc get pulled from the deep</h2>
@@ -230,6 +248,17 @@ async function load(){try{
 document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
 document.getElementById("typeSel").addEventListener("change",e=>{TYPE=e.target.value;draw(document.getElementById("q").value);});
 load();setInterval(load,120000);
+async function loadTesti(){try{
+ const r=await fetch("testimonials/list.json?t="+Date.now());if(!r.ok)return;
+ const items=await r.json();if(!Array.isArray(items)||!items.length)return;
+ document.getElementById("testiGrid").innerHTML=items.map(it=>{
+  const o=typeof it==="string"?{img:it}:it;
+  return '<figure class="tcard"><img loading="lazy" src="testimonials/'+o.img+'" alt="'+(o.name||"disc return testimonial")+'">'+(o.name?'<figcaption>&ldquo; '+o.name+'</figcaption>':"")+'</figure>';
+ }).join("");
+ document.getElementById("testi").hidden=false;
+}catch(e){}}
+loadTesti();
+
 (function(){const c=document.getElementById("bubbles"),x=c.getContext("2d");
  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;
  let w,h,bs=[];function mk(){return{x:Math.random()*w,y:h+Math.random()*h,r:1+Math.random()*3.5,s:.3+Math.random()*1.1,a:.08+Math.random()*.22,drift:(Math.random()-.5)*.4};}

@@ -124,6 +124,14 @@
   .tquote blockquote:before{content:"\201C";color:var(--aqua);font-size:40px;line-height:0;
     vertical-align:-14px;margin-right:2px;font-weight:800;}
   .tquote figcaption{padding:12px 0 0;color:var(--muted);font-size:12.5px;font-weight:600;}
+  .tthread{padding:16px 16px 14px;background:linear-gradient(160deg,#0e2731,#0a1a22);}
+  .tthread .thd{text-align:center;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--aqua);font-weight:700;margin-bottom:12px;}
+  .msg{display:flex;margin:6px 0;}
+  .msg.me{justify-content:flex-end;}
+  .bub{max-width:82%;padding:8px 13px;border-radius:17px;font-size:14px;line-height:1.4;}
+  .msg.them .bub{background:#26333b;color:#eaf6f6;border-bottom-left-radius:5px;}
+  .msg.me .bub{background:#1a8f9a;color:#fff;border-bottom-right-radius:5px;}
   /* ---------- SUBSCRIBE CTA ---------- */
   .cta{position:relative;margin-top:20px;padding:70px 20px 84px;text-align:center;overflow:hidden;
     background:radial-gradient(100% 120% at 50% 120%, #0d4a5a 0%, #072a34 55%, #061e26 100%);border-top:1px solid var(--line);}
@@ -259,6 +267,7 @@ async function loadTesti(){try{
  document.getElementById("testiGrid").innerHTML=items.map(it=>{
   const o=typeof it==="string"?{img:it}:it;
   const cap=o.name?'<figcaption>'+o.name+'</figcaption>':"";
+  if(o.thread) return '<figure class="tcard tthread"><div class="thd">'+(o.name||"Reunited a lost disc")+'</div>'+o.thread.map(m=>'<div class="msg '+(m.me?"me":"them")+'"><span class="bub">'+m.t+'</span></div>').join("")+'</figure>';
   if(o.quote) return '<figure class="tcard tquote"><blockquote>'+o.quote+'</blockquote>'+cap+'</figure>';
   return '<figure class="tcard"><img loading="lazy" src="testimonials/'+o.img+'" alt="'+(o.name||"disc return testimonial")+'">'+cap+'</figure>';
  }).join("");

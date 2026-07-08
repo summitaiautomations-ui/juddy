@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Commits and pushes disc-pics-data/ (photos + inventory + sheet.csv) so the
-# shared Google Sheet -- which reads sheet.csv and the photos over raw
-# GitHub URLs -- picks up new discs automatically.
+# Commits new disc-pics-data files (staged photos + sidecars) and pushes them.
+# The mini only ever ADDS files under incoming/, so a rebase onto the latest
+# remote is always clean -- this is what makes pushes conflict-proof.
 
 set -euo pipefail
 
@@ -16,31 +16,32 @@ fi
 
 cd "${REPO_ROOT}"
 branch="$(git rev-parse --abbrev-ref HEAD)"
-git add disc-pics-data
 
-discs=$(( $(wc -l < "${DATA_DIR}/inventory.csv") - 1 ))
-
-if git diff --cached --quiet; then
-  # Nothing new to commit -- but a previous run may have committed and then
-  # failed to push (e.g. missing credentials). Push those before giving up.
-  ahead="$(git rev-list --count "origin/${branch}..HEAD" 2>/dev/null || echo 0)"
-  if [[ "${ahead}" == "0" ]]; then
-    echo "==> nothing new to sync"
-    exit 0
-  fi
-  echo "==> ${ahead} unpushed commit(s) from a previous run, pushing"
-else
-  # Use a fallback identity only if none is configured on this machine.
-  GIT_ID=()
-  if ! git config user.email >/dev/null 2>&1; then
-    GIT_ID=(-c user.name="juddy disc-pics" -c user.email="juddy@localhost")
-  fi
-  git "${GIT_ID[@]}" commit -m "disc-pics: sync inventory (${discs} discs)"
+# Fallback identity only if none is configured on this machine.
+GIT_ID=()
+if ! git config user.email >/dev/null 2>&1; then
+  GIT_ID=(-c user.name="juddy disc-pics" -c user.email="juddy@localhost")
 fi
+
+git add disc-pics-data
+if ! git diff --cached --quiet; then
+  git "${GIT_ID[@]}" commit -m "disc-pics: stage $(ls "${DATA_DIR}/incoming"/*.sidecar 2>/dev/null | wc -l | tr -d ' ') incoming disc(s)"
+fi
+
+# Nothing to push?
+if [[ "$(git rev-list --count "origin/${branch}..HEAD" 2>/dev/null || echo 0)" == "0" ]]; then
+  echo "==> nothing new to sync"
+  exit 0
+fi
+
 for delay in 0 2 4 8 16; do
   sleep "${delay}"
-  if git push -u origin "${branch}"; then
-    echo "==> synced ${discs} disc(s) to origin/${branch}"
+  # Always rebase onto the latest remote first. Our commits only add files, so
+  # this never conflicts; it just avoids "rejected -- fetch first" failures.
+  git fetch origin "${branch}" --quiet 2>/dev/null || true
+  git "${GIT_ID[@]}" rebase "origin/${branch}" --quiet 2>/dev/null || git rebase --abort 2>/dev/null || true
+  if git push origin "${branch}"; then
+    echo "==> synced to origin/${branch}"
     exit 0
   fi
   echo "==> push failed, retrying..." >&2

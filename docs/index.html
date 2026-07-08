@@ -48,6 +48,11 @@
   .stats{display:flex;gap:22px;align-items:baseline;}
   .stat .n{font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
   .stat .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-left:6px;}
+  #typeSel{padding:11px 34px 11px 15px;border-radius:11px;border:1px solid var(--line);
+    background:var(--panel) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239fc0c2' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 12px center;
+    color:var(--ink);font-size:14.5px;font-family:inherit;font-weight:600;cursor:pointer;
+    -webkit-appearance:none;appearance:none;}
+  #typeSel:focus{outline:2px solid var(--aqua);outline-offset:1px;}
   #q{flex:1;min-width:180px;padding:11px 15px;border-radius:11px;border:1px solid var(--line);
     background:var(--panel);color:var(--ink);font-size:14.5px;font-family:inherit;}
   #q::placeholder{color:var(--faint);}
@@ -130,6 +135,13 @@
 <div class="shopbar" id="shop">
   <div class="shopbar-in">
     <div class="stats" id="stats"></div>
+    <select id="typeSel" aria-label="Filter by disc type">
+      <option value="all">All types</option>
+      <option value="Distance Drivers">Distance Drivers</option>
+      <option value="Fairway Drivers">Fairway Drivers</option>
+      <option value="Midranges">Midranges</option>
+      <option value="Putters &amp; Approach">Putters &amp; Approach</option>
+    </select>
     <input id="q" type="search" placeholder="Search mold, brand, plastic, color, stamp&hellip;" autocomplete="off" aria-label="Search discs">
   </div>
 </div>
@@ -158,7 +170,7 @@ const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
 const num=s=>s&&/^\d+(\.\d+)?$/.test(s);
 const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weight_g)?d.stamped_weight_g+"g":"";
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
-let NORM=[], BRAND="all";
+let NORM=[], BRAND="all", TYPE="all";
 function stats(){const av=NORM.filter(d=>d.status==="available");
  document.getElementById("stats").innerHTML=
   '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>';}
@@ -202,7 +214,7 @@ function drawFilters(){const bs=["all"].concat(Array.from(new Set(NORM.map(d=>d.
   '<button class="chip '+(b===BRAND?"active":"")+'" data-b="'+b+'">'+(b==="all"?"All brands":b)+'</button>').join("");
  document.querySelectorAll(".chip").forEach(c=>c.onclick=function(){BRAND=this.dataset.b;drawFilters();draw(document.getElementById("q").value);});}
 function draw(f){const q=(f||"").toLowerCase();
- const list=NORM.filter(d=>(BRAND==="all"||d.brand===BRAND)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes].join(" ").toLowerCase().includes(q)));
+ const list=NORM.filter(d=>(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes].join(" ").toLowerCase().includes(q)));
  const order=CATS.map(c=>c[0]).concat("Other"),groups={};
  for(const d of list)(groups[catOf(d)]=groups[catOf(d)]||[]).push(d);
  let html="";
@@ -216,6 +228,7 @@ async function load(){try{
  stats();drawFilters();draw(document.getElementById("q").value);
 }catch(e){document.getElementById("grid").innerHTML='<div class="empty">Could not load discs ('+e.message+'). Refresh to retry.</div>';}}
 document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
+document.getElementById("typeSel").addEventListener("change",e=>{TYPE=e.target.value;draw(document.getElementById("q").value);});
 load();setInterval(load,120000);
 (function(){const c=document.getElementById("bubbles"),x=c.getContext("2d");
  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;

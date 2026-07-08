@@ -54,9 +54,19 @@
   #q:focus{outline:2px solid var(--aqua);outline-offset:1px;}
   .shipnote{max-width:1180px;margin:16px auto -4px;padding:0 20px;text-align:center;color:var(--muted);font-size:13.5px;}
   .shipnote b{color:var(--foam);}
-  /* ---------- GRID ---------- */
-  main{max-width:1180px;margin:26px auto 40px;padding:0 20px;display:grid;gap:18px;
-    grid-template-columns:repeat(auto-fill,minmax(244px,1fr));}
+  /* ---------- FILTERS ---------- */
+  .filters{max-width:1180px;margin:16px auto 0;padding:0 20px;display:flex;gap:8px;flex-wrap:wrap;}
+  .chip{padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--panel);
+    color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s ease;}
+  .chip:hover{color:var(--ink);border-color:var(--aqua-deep);}
+  .chip.active{background:var(--aqua);border-color:var(--aqua);color:#04231b;}
+  /* ---------- GRID / SECTIONS ---------- */
+  main{margin:10px 0 50px;padding:0;}
+  .catsec{max-width:1180px;margin:0 auto;padding:0 20px;}
+  .cathead{display:flex;align-items:baseline;gap:10px;margin:34px 0 16px;padding-bottom:10px;border-bottom:1px solid var(--line);}
+  .cathead h2{margin:0;font-size:19px;font-weight:800;letter-spacing:-.02em;}
+  .cathead .ct{font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;}
+  .catgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(244px,1fr));}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
     display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
   .card:hover{transform:translateY(-4px);border-color:var(--aqua-deep);box-shadow:0 16px 40px rgba(0,0,0,.4);}
@@ -115,6 +125,7 @@
   </div>
 </div>
 <p class="shipnote">📦 Local pickup free &middot; <b>$8.50</b> shipping for a single disc &mdash; grabbing more? I’ll work out a discounted combined rate.</p>
+<div class="filters" id="filters"></div>
 <main id="grid"></main>
 
 <section class="cta">
@@ -137,7 +148,7 @@ const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
 const num=s=>s&&/^\d+(\.\d+)?$/.test(s);
 const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weight_g)?d.stamped_weight_g+"g":"";
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
-let NORM=[];
+let NORM=[], BRAND="all";
 function stats(){const av=NORM.filter(d=>d.status==="available");
  const tot=av.reduce((s,d)=>s+(parseFloat(d.price_usd)||0),0);
  document.getElementById("stats").innerHTML=
@@ -153,14 +164,32 @@ function card(d){const gone=d.status==="sold"||d.status==="claimed";
   '<div class="title">'+titleOf(d)+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+
   '<div class="priceRow"><span class="price">$'+(d.price_usd||"?")+'</span>'+(w?'<span class="wt">'+w+'</span>':"")+'</div>'+
   (d.notes?'<div class="notes">'+d.notes+'</div>':"")+'</div></article>';}
+// category from the disc's speed (parsed from notes flight, else mold lookup)
+const MOLD_SPEED={buzzz:5,mako3:5,cicada:7,fd:7,teebird:7,leopard:6,leopard3:7,valkyrie:9,raptor:9,
+ sidewinder:9,firebird:9,wraith:11,mamba:11,boss:13,destroyer:12,beast:10,defender:13,inertia:9};
+function speedOf(d){const m=(d.notes||"").match(/flight\s+(\d+)/i);if(m)return +m[1];
+ return MOLD_SPEED[(d.mold||"").toLowerCase()]||null;}
+const CATS=[["Distance Drivers",s=>s>=9],["Fairway Drivers",s=>s>=6&&s<9],
+ ["Midranges",s=>s>=4&&s<6],["Putters & Approach",s=>s>=1&&s<4]];
+function catOf(d){const s=speedOf(d);if(s==null)return "Other";
+ for(const[k,t]of CATS)if(t(s))return k;return "Other";}
+function drawFilters(){const bs=["all"].concat(Array.from(new Set(NORM.map(d=>d.brand).filter(b=>b&&b!=="unknown"))));
+ document.getElementById("filters").innerHTML=bs.map(b=>
+  '<button class="chip '+(b===BRAND?"active":"")+'" data-b="'+b+'">'+(b==="all"?"All brands":b)+'</button>').join("");
+ document.querySelectorAll(".chip").forEach(c=>c.onclick=function(){BRAND=this.dataset.b;drawFilters();draw(document.getElementById("q").value);});}
 function draw(f){const q=(f||"").toLowerCase();
- const list=NORM.filter(d=>!q||[d.brand,d.mold,d.plastic,d.color,d.notes].join(" ").toLowerCase().includes(q));
- document.getElementById("grid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No discs match “'+f+'”.</div>';}
+ const list=NORM.filter(d=>(BRAND==="all"||d.brand===BRAND)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes].join(" ").toLowerCase().includes(q)));
+ const order=CATS.map(c=>c[0]).concat("Other"),groups={};
+ for(const d of list)(groups[catOf(d)]=groups[catOf(d)]||[]).push(d);
+ let html="";
+ for(const cat of order){const g=groups[cat];if(!g||!g.length)continue;
+  g.sort((a,b)=>{const gg=x=>x.status==="available"?0:1;return gg(a)-gg(b)||(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);});
+  html+='<section class="catsec"><div class="cathead"><h2>'+cat+'</h2><span class="ct">'+g.length+' disc'+(g.length>1?"s":"")+'</span></div><div class="catgrid">'+g.map(card).join("")+'</div></section>';}
+ document.getElementById("grid").innerHTML=html||'<div class="empty">No discs match.</div>';}
 async function load(){try{
  const r=await fetch(CSV_URL+"?t="+Date.now());if(!r.ok)throw new Error("HTTP "+r.status);
- NORM=objs(parseCSV(await r.text())).map(d=>({...d,status:(d.status||"available").toLowerCase()}))
-  .sort((a,b)=>{const g=x=>x.status==="available"?0:1;return g(a)-g(b)||(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);});
- stats();draw(document.getElementById("q").value);
+ NORM=objs(parseCSV(await r.text())).map(d=>({...d,status:(d.status||"available").toLowerCase()}));
+ stats();drawFilters();draw(document.getElementById("q").value);
 }catch(e){document.getElementById("grid").innerHTML='<div class="empty">Could not load discs ('+e.message+'). Refresh to retry.</div>';}}
 document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
 load();setInterval(load,120000);
@@ -172,8 +201,5 @@ load();setInterval(load,120000);
   x.beginPath();x.arc(b.x,b.y,b.r,0,7);x.fillStyle="rgba(180,240,240,"+b.a+")";x.fill();}requestAnimationFrame(tick);}
  size();tick();addEventListener("resize",size);})();
 </script>
-</body>
-</html>
-
 </body>
 </html>

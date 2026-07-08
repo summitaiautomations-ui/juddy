@@ -36,7 +36,7 @@ function refreshDiscs() {
   var out = [["Pic"].concat(data[0])];
   for (var i = 1; i < data.length; i++) {
     var url = data[i][0];
-    var pic = url ? '=IMAGE("' + url + '", 3)' : "";  // mode 3 = original size, respects row height
+    var pic = url ? '=IMAGE("' + url + '", 1)' : "";  // mode 1 = fit to cell, keep aspect ratio
     out.push([pic].concat(data[i]));
   }
 

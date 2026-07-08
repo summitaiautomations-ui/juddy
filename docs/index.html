@@ -150,10 +150,8 @@ const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weigh
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
 let NORM=[], BRAND="all";
 function stats(){const av=NORM.filter(d=>d.status==="available");
- const tot=av.reduce((s,d)=>s+(parseFloat(d.price_usd)||0),0);
  document.getElementById("stats").innerHTML=
-  '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>'+
-  '<span class="stat"><span class="n">$'+tot+'</span><span class="l">Up for grabs</span></span>';}
+  '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>';}
 function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const stamp=gone?'<div class="stamp '+d.status+'"><span>'+d.status+'</span></div>':"";
  const img=d.photo_url?'<img loading="lazy" src="'+d.photo_url+'" alt="'+titleOf(d)+'">':'<span class="noimg">photo coming soon</span>';

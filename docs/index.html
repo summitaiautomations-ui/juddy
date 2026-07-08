@@ -3,195 +3,171 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Disc Finds</title>
+<title>Disc Diver</title>
 <style>
-  :root {
-    --bg: #0f1115; --card: #181b22; --line: #262b36; --text: #e8eaed;
-    --muted: #9aa3b2; --accent: #4ade80; --accent-ink: #052e16;
-    --badge-sold: #f87171; --badge-claimed: #fbbf24;
+  :root{
+    --ink:#eaf6f6; --muted:#9fc0c2; --faint:#6f9497;
+    --panel:#0e2129; --panel2:#122a33; --line:#1d3b44;
+    --aqua:#3ad6d6; --aqua-deep:#1a8f9a; --foam:#c8f2ee;
+    --yt:#ff2f46;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   }
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #f6f7f9; --card: #ffffff; --line: #e5e8ec; --text: #1a1d23;
-      --muted: #6b7280; --accent: #16a34a; --accent-ink: #ffffff;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  }
-  header {
-    padding: 28px 20px 16px; text-align: center;
-    border-bottom: 1px solid var(--line);
-  }
-  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.02em; }
-  .tagline { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
-  .stats {
-    display: inline-flex; gap: 18px; flex-wrap: wrap; justify-content: center;
-    color: var(--muted); font-size: 14px;
-  }
-  .stats b { color: var(--text); }
-  .controls { max-width: 1200px; margin: 16px auto 0; padding: 0 20px; }
-  #search {
-    width: 100%; padding: 11px 14px; border-radius: 10px;
-    border: 1px solid var(--line); background: var(--card); color: var(--text);
-    font-size: 15px;
-  }
-  #search::placeholder { color: var(--muted); }
-  main {
-    max-width: 1200px; margin: 18px auto 60px; padding: 0 20px;
-    display: grid; gap: 16px;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  }
-  .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-    overflow: hidden; display: flex; flex-direction: column;
-  }
-  .card.sold { opacity: 0.55; }
-  .imgwrap {
-    position: relative; aspect-ratio: 1 / 1; background: #fff;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .imgwrap img { width: 100%; height: 100%; object-fit: contain; }
-  .imgwrap .noimg { color: #9aa3b2; font-size: 13px; }
-  .badge {
-    position: absolute; top: 10px; left: 10px; padding: 4px 10px;
-    border-radius: 999px; font-size: 12px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.04em; color: #1a1d23;
-  }
-  .badge.sold { background: var(--badge-sold); }
-  .badge.claimed { background: var(--badge-claimed); }
-  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
-  .title { font-weight: 650; font-size: 15px; line-height: 1.25; }
-  .sub { color: var(--muted); font-size: 13px; text-transform: capitalize; }
-  .priceRow { display: flex; align-items: baseline; justify-content: space-between; margin-top: 2px; }
-  .price { color: var(--accent); font-weight: 800; font-size: 20px; }
-  @media (prefers-color-scheme: light) { .price { color: var(--accent); } }
-  .meta { color: var(--muted); font-size: 12.5px; }
-  .notes { color: var(--muted); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 2px; }
-  .empty, .loading { text-align: center; color: var(--muted); padding: 60px 20px; grid-column: 1/-1; }
-  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 20px 40px; }
-  .refresh { color: var(--muted); font-size: 12px; }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:#081820;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;}
+  a{color:inherit;}
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+    align-items:center;text-align:center;padding:70px 20px 90px;overflow:hidden;
+    background:radial-gradient(120% 90% at 50% -10%, #0d4a5a 0%, #093642 38%, #06222c 70%, #04161d 100%);}
+  #bubbles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
+  .rays{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:screen;
+    background:repeating-linear-gradient(103deg, transparent 0 60px, rgba(120,220,225,.05) 60px 62px, transparent 62px 150px);}
+  .hero-in{position:relative;z-index:2;max-width:760px;display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .eyebrow{margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--aqua);font-weight:700;}
+  h1{margin:0;font-size:clamp(46px,11vw,104px);font-weight:800;letter-spacing:-.04em;line-height:.9;
+    background:linear-gradient(180deg,#eafcfb 0%, #7fd9dd 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 2px 40px rgba(58,214,214,.25);}
+  .lede{margin:0;font-size:clamp(17px,2.4vw,21px);color:var(--foam);max-width:34ch;opacity:.92;}
+  .socials{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:8px;}
+  .soc{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;
+    font-size:14px;font-weight:650;text-decoration:none;border:1px solid rgba(200,242,238,.22);
+    color:var(--foam);background:rgba(255,255,255,.05);backdrop-filter:blur(6px);transition:transform .15s ease,background .15s ease,border-color .15s ease;}
+  .soc:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);border-color:rgba(200,242,238,.5);}
+  .soc.primary{background:var(--yt);border-color:var(--yt);color:#fff;box-shadow:0 8px 26px rgba(255,47,70,.35);}
+  .soc.primary:hover{background:#ff1733;}
+  .soc:focus-visible{outline:2px solid var(--aqua);outline-offset:2px;}
+  .scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;color:var(--faint);
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .scroll svg{animation:bob 1.8s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  /* ---------- SHOP BAR ---------- */
+  .shopbar{position:sticky;top:0;z-index:10;background:rgba(8,24,32,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);}
+  .shopbar-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;}
+  .stats{display:flex;gap:22px;align-items:baseline;}
+  .stat .n{font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+  .stat .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-left:6px;}
+  #q{flex:1;min-width:180px;padding:11px 15px;border-radius:11px;border:1px solid var(--line);
+    background:var(--panel);color:var(--ink);font-size:14.5px;font-family:inherit;}
+  #q::placeholder{color:var(--faint);}
+  #q:focus{outline:2px solid var(--aqua);outline-offset:1px;}
+  /* ---------- GRID ---------- */
+  main{max-width:1180px;margin:26px auto 40px;padding:0 20px;display:grid;gap:18px;
+    grid-template-columns:repeat(auto-fill,minmax(244px,1fr));}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;}
+  .card:hover{transform:translateY(-4px);border-color:var(--aqua-deep);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+  .imgwrap{position:relative;aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;padding:10px;}
+  .imgwrap img{width:100%;height:100%;object-fit:contain;}
+  .noimg{color:#9aa3b2;font-size:13px;}
+  .stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+  .stamp span{font-size:34px;font-weight:800;letter-spacing:.06em;transform:rotate(-11deg);
+    padding:6px 16px;border:3px solid;border-radius:8px;text-transform:uppercase;opacity:.92;}
+  .stamp.sold span{color:#f2766b;border-color:#f2766b;}
+  .stamp.claimed span{color:#f4c250;border-color:#f4c250;}
+  .card.gone .imgwrap img{filter:grayscale(.5) opacity(.62);}
+  .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:9px;flex:1;}
+  .title{font-weight:700;font-size:15.5px;letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:12.5px;text-transform:capitalize;margin-top:-4px;}
+  .cond{display:flex;align-items:center;gap:8px;}
+  .cond .lab{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);}
+  .meter{flex:1;height:5px;border-radius:3px;background:var(--line);overflow:hidden;}
+  .meter i{display:block;height:100%;background:var(--aqua);}
+  .cval{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
+  .priceRow{display:flex;align-items:baseline;justify-content:space-between;margin-top:auto;}
+  .price{color:var(--aqua);font-weight:800;font-size:22px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+  .wt{color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums;}
+  .notes{color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:9px;}
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:60px 20px;}
+  /* ---------- SUBSCRIBE CTA ---------- */
+  .cta{position:relative;margin-top:20px;padding:70px 20px 84px;text-align:center;overflow:hidden;
+    background:radial-gradient(100% 120% at 50% 120%, #0d4a5a 0%, #072a34 55%, #061e26 100%);border-top:1px solid var(--line);}
+  .cta h2{margin:0 0 12px;font-size:clamp(26px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;}
+  .cta p{margin:0 auto 22px;color:var(--foam);max-width:44ch;font-size:16px;opacity:.9;}
+  footer{padding:26px 20px 46px;text-align:center;color:var(--faint);font-size:12.5px;}
+  @media (prefers-reduced-motion:reduce){*{animation:none !important;} html{scroll-behavior:auto;}}
 </style>
 </head>
 <body>
-<header>
-  <h1>🥏 Disc Finds</h1>
-  <p class="tagline">Recovered &amp; cleaned disc golf discs — DM to claim yours</p>
-  <div class="stats" id="stats"></div>
-</header>
-<div class="controls">
-  <input id="search" type="search" placeholder="Search mold, brand, plastic, color, stamp…" autocomplete="off">
+
+
+<section class="hero">
+  <canvas id="bubbles"></canvas>
+  <div class="rays"></div>
+  <div class="hero-in">
+    <p class="eyebrow">Lost &middot; Recovered &middot; Reborn</p>
+    <h1>Disc Diver</h1>
+    <p class="lede">I dive lakes for discs the water swallowed, clean them up, and give them a second flight. Grab one below &mdash; or come watch the dives.</p>
+    <div class="socials"><a class="soc youtube primary" href="https://youtube.com/@discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg><span>Subscribe</span></a><a class="soc tiktok " href="https://tiktok.com/@discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8a4.3 4.3 0 0 1-2.5-3.8h-3.2v13.1a2.5 2.5 0 1 1-2.5-2.5c.26 0 .5.04.74.11V9.5a5.9 5.9 0 0 0-.74-.05 5.7 5.7 0 1 0 5.7 5.7V8.9a7.4 7.4 0 0 0 4.3 1.38V7.06a4.3 4.3 0 0 1-1.8-1.26z"/></svg><span>TikTok</span></a><a class="soc instagram " href="https://instagram.com/discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.06 3.5c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.84-1.3 3.5 3.5 0 0 0-1.3-.84c-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg><span>Instagram</span></a><a class="soc facebook " href="https://facebook.com/discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg><span>Facebook</span></a></div>
+  </div>
+  <a class="scroll" href="#shop">Browse the finds
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<div class="shopbar" id="shop">
+  <div class="shopbar-in">
+    <div class="stats" id="stats"></div>
+    <input id="q" type="search" placeholder="Search mold, brand, plastic, color, stamp&hellip;" autocomplete="off" aria-label="Search discs">
+  </div>
 </div>
-<main id="grid"><div class="loading">Loading discs…</div></main>
-<footer>
-  <span class="refresh" id="refresh"></span>
-</footer>
+<main id="grid"></main>
+
+<section class="cta">
+  <h2>See a disc get pulled from the deep</h2>
+  <p>Every disc here has a dive behind it. Subscribe and watch where your next disc came from.</p>
+  <div class="socials" style="justify-content:center"><a class="soc youtube primary" href="https://youtube.com/@discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg><span>Subscribe</span></a><a class="soc tiktok " href="https://tiktok.com/@discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8a4.3 4.3 0 0 1-2.5-3.8h-3.2v13.1a2.5 2.5 0 1 1-2.5-2.5c.26 0 .5.04.74.11V9.5a5.9 5.9 0 0 0-.74-.05 5.7 5.7 0 1 0 5.7 5.7V8.9a7.4 7.4 0 0 0 4.3 1.38V7.06a4.3 4.3 0 0 1-1.8-1.26z"/></svg><span>TikTok</span></a><a class="soc instagram " href="https://instagram.com/discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.06 3.5c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.84-1.3 3.5 3.5 0 0 0-1.3-.84c-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg><span>Instagram</span></a><a class="soc facebook " href="https://facebook.com/discdiver" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg><span>Facebook</span></a></div>
+</section>
+<footer>Prices in USD &middot; weights verified on a scale &middot; condition on the 1&ndash;10 sleepy scale &middot; message to claim.</footer>
 
 <script>
 const CSV_URL = "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/sheet.csv";
-
-// Minimal RFC-4180 CSV parser (handles quotes, commas, escaped quotes).
-function parseCSV(text) {
-  const rows = []; let row = [], field = "", i = 0, inQ = false;
-  while (i < text.length) {
-    const c = text[i];
-    if (inQ) {
-      if (c === '"' && text[i+1] === '"') { field += '"'; i += 2; continue; }
-      if (c === '"') { inQ = false; i++; continue; }
-      field += c; i++; continue;
-    }
-    if (c === '"') { inQ = true; i++; continue; }
-    if (c === ',') { row.push(field); field = ""; i++; continue; }
-    if (c === '\r') { i++; continue; }
-    if (c === '\n') { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
-    field += c; i++;
-  }
-  if (field.length || row.length) { row.push(field); rows.push(row); }
-  return rows;
-}
-
-function toObjects(rows) {
-  const head = rows[0].map(h => h.trim());
-  return rows.slice(1).filter(r => r.some(c => c.trim() !== "")).map(r => {
-    const o = {}; head.forEach((h, i) => o[h] = (r[i] || "").trim()); return o;
-  });
-}
-
-const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
-const isNum = s => s && /^\d+(\.\d+)?$/.test(s);
-
-function weightOf(d) {
-  if (isNum(d.scale_weight_g)) return d.scale_weight_g + "g";
-  if (isNum(d.stamped_weight_g)) return d.stamped_weight_g + "g";
-  return "";
-}
-function titleOf(d) {
-  const parts = [d.brand, d.plastic !== "unknown" ? d.plastic : "", d.mold !== "unknown" ? d.mold : "Disc"];
-  return parts.filter(Boolean).join(" ");
-}
-
-let ALL = [];
-function render(filter) {
-  const grid = document.getElementById("grid");
-  const f = (filter || "").toLowerCase();
-  const list = ALL.filter(d => !f || Object.values(d).join(" ").toLowerCase().includes(f));
-  if (!list.length) { grid.innerHTML = '<div class="empty">No discs match “' + filter + '”.</div>'; return; }
-  grid.innerHTML = list.map(d => {
-    const status = (d.status || "available").toLowerCase();
-    const sold = status === "sold" || status === "claimed";
-    const badge = sold ? '<span class="badge ' + status + '">' + status + '</span>' : "";
-    const img = d.photo_url
-      ? '<img loading="lazy" src="' + d.photo_url + '" alt="' + titleOf(d) + '">'
-      : '<span class="noimg">photo coming soon</span>';
-    const w = weightOf(d);
-    const cond = isNum(d.condition) || /^\d+(\.\d+)?$/.test(d.condition) ? d.condition + "/10" : "";
-    const meta = [w, cond].filter(Boolean).join(" · ");
-    return '<div class="card ' + (sold ? "sold" : "") + '">' +
-      '<div class="imgwrap">' + badge + img + '</div>' +
-      '<div class="body">' +
-        '<div class="title">' + titleOf(d) + '</div>' +
-        '<div class="sub">' + [cap(d.color), d.plastic !== "unknown" ? cap(d.plastic) : ""].filter(Boolean).join(" · ") + '</div>' +
-        '<div class="priceRow"><span class="price">$' + (d.price_usd || "?") + '</span><span class="meta">' + meta + '</span></div>' +
-        (d.notes ? '<div class="notes">' + d.notes + '</div>' : "") +
-      '</div></div>';
-  }).join("");
-}
-
-function updateStats() {
-  const avail = ALL.filter(d => (d.status || "available").toLowerCase() === "available");
-  const total = avail.reduce((s, d) => s + (parseFloat(d.price_usd) || 0), 0);
-  document.getElementById("stats").innerHTML =
-    '<span><b>' + avail.length + '</b> available</span>' +
-    '<span><b>' + ALL.length + '</b> total discs</span>' +
-    '<span><b>$' + total + '</b> up for grabs</span>';
-}
-
-async function load() {
-  try {
-    const resp = await fetch(CSV_URL + "?t=" + Date.now());
-    if (!resp.ok) throw new Error("HTTP " + resp.status);
-    ALL = toObjects(parseCSV(await resp.text()));
-    // available first, then by price desc
-    ALL.sort((a, b) => {
-      const av = (a.status || "available").toLowerCase() === "available" ? 0 : 1;
-      const bv = (b.status || "available").toLowerCase() === "available" ? 0 : 1;
-      if (av !== bv) return av - bv;
-      return (parseFloat(b.price_usd) || 0) - (parseFloat(a.price_usd) || 0);
-    });
-    updateStats();
-    render(document.getElementById("search").value);
-    document.getElementById("refresh").textContent = "Updated " + new Date().toLocaleTimeString();
-  } catch (e) {
-    document.getElementById("grid").innerHTML =
-      '<div class="empty">Could not load discs (' + e.message + '). Refresh to retry.</div>';
-  }
-}
-
-document.getElementById("search").addEventListener("input", e => render(e.target.value));
-load();
-setInterval(load, 120000); // refresh every 2 minutes
+function parseCSV(t){const R=[];let row=[],f="",i=0,q=false;while(i<t.length){const c=t[i];
+ if(q){if(c=='"'&&t[i+1]=='"'){f+='"';i+=2;continue;}if(c=='"'){q=false;i++;continue;}f+=c;i++;continue;}
+ if(c=='"'){q=true;i++;continue;}if(c==','){row.push(f);f="";i++;continue;}
+ if(c=='\r'){i++;continue;}if(c=='\n'){row.push(f);R.push(row);row=[];f="";i++;continue;}f+=c;i++;}
+ if(f.length||row.length){row.push(f);R.push(row);}return R;}
+function objs(rows){const h=rows[0].map(x=>x.trim());return rows.slice(1)
+ .filter(r=>r.some(c=>c.trim())).map(r=>{const o={};h.forEach((k,i)=>o[k]=(r[i]||"").trim());return o;});}
+const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
+const num=s=>s&&/^\d+(\.\d+)?$/.test(s);
+const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weight_g)?d.stamped_weight_g+"g":"";
+const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
+let NORM=[];
+function stats(){const av=NORM.filter(d=>d.status==="available");
+ const tot=av.reduce((s,d)=>s+(parseFloat(d.price_usd)||0),0);
+ document.getElementById("stats").innerHTML=
+  '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>'+
+  '<span class="stat"><span class="n">$'+tot+'</span><span class="l">Up for grabs</span></span>';}
+function card(d){const gone=d.status==="sold"||d.status==="claimed";
+ const stamp=gone?'<div class="stamp '+d.status+'"><span>'+d.status+'</span></div>':"";
+ const img=d.photo_url?'<img loading="lazy" src="'+d.photo_url+'" alt="'+titleOf(d)+'">':'<span class="noimg">photo coming soon</span>';
+ const w=weightOf(d);const c=parseFloat(d.condition);
+ const meter=num(d.condition)?'<div class="cond"><span class="lab">Cond</span><span class="meter"><i style="width:'+(c*10)+'%"></i></span><span class="cval">'+d.condition+'/10</span></div>':"";
+ const sub=[cap(d.color),d.plastic!=="unknown"?cap(d.plastic):""].filter(Boolean).join(" &middot; ");
+ return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+stamp+img+'</div><div class="body">'+
+  '<div class="title">'+titleOf(d)+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+
+  '<div class="priceRow"><span class="price">$'+(d.price_usd||"?")+'</span>'+(w?'<span class="wt">'+w+'</span>':"")+'</div>'+
+  (d.notes?'<div class="notes">'+d.notes+'</div>':"")+'</div></article>';}
+function draw(f){const q=(f||"").toLowerCase();
+ const list=NORM.filter(d=>!q||[d.brand,d.mold,d.plastic,d.color,d.notes].join(" ").toLowerCase().includes(q));
+ document.getElementById("grid").innerHTML=list.length?list.map(card).join(""):'<div class="empty">No discs match “'+f+'”.</div>';}
+async function load(){try{
+ const r=await fetch(CSV_URL+"?t="+Date.now());if(!r.ok)throw new Error("HTTP "+r.status);
+ NORM=objs(parseCSV(await r.text())).map(d=>({...d,status:(d.status||"available").toLowerCase()}))
+  .sort((a,b)=>{const g=x=>x.status==="available"?0:1;return g(a)-g(b)||(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);});
+ stats();draw(document.getElementById("q").value);
+}catch(e){document.getElementById("grid").innerHTML='<div class="empty">Could not load discs ('+e.message+'). Refresh to retry.</div>';}}
+document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
+load();setInterval(load,120000);
+(function(){const c=document.getElementById("bubbles"),x=c.getContext("2d");
+ if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+ let w,h,bs=[];function mk(){return{x:Math.random()*w,y:h+Math.random()*h,r:1+Math.random()*3.5,s:.3+Math.random()*1.1,a:.08+Math.random()*.22,drift:(Math.random()-.5)*.4};}
+ function size(){w=c.width=c.offsetWidth;h=c.height=c.offsetHeight;bs=Array.from({length:Math.min(46,Math.floor(w/22))},mk);}
+ function tick(){x.clearRect(0,0,w,h);for(const b of bs){b.y-=b.s;b.x+=b.drift;if(b.y<-10)Object.assign(b,mk(),{y:h+10});
+  x.beginPath();x.arc(b.x,b.y,b.r,0,7);x.fillStyle="rgba(180,240,240,"+b.a+")";x.fill();}requestAnimationFrame(tick);}
+ size();tick();addEventListener("resize",size);})();
 </script>
 </body>
 </html>

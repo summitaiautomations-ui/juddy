@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disc Finds</title>
+<style>
+  :root {
+    --bg: #0f1115; --card: #181b22; --line: #262b36; --text: #e8eaed;
+    --muted: #9aa3b2; --accent: #4ade80; --accent-ink: #052e16;
+    --badge-sold: #f87171; --badge-claimed: #fbbf24;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f7f9; --card: #ffffff; --line: #e5e8ec; --text: #1a1d23;
+      --muted: #6b7280; --accent: #16a34a; --accent-ink: #ffffff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  header {
+    padding: 28px 20px 16px; text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+  h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -0.02em; }
+  .tagline { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
+  .stats {
+    display: inline-flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+    color: var(--muted); font-size: 14px;
+  }
+  .stats b { color: var(--text); }
+  .controls { max-width: 1200px; margin: 16px auto 0; padding: 0 20px; }
+  #search {
+    width: 100%; padding: 11px 14px; border-radius: 10px;
+    border: 1px solid var(--line); background: var(--card); color: var(--text);
+    font-size: 15px;
+  }
+  #search::placeholder { color: var(--muted); }
+  main {
+    max-width: 1200px; margin: 18px auto 60px; padding: 0 20px;
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .card.sold { opacity: 0.55; }
+  .imgwrap {
+    position: relative; aspect-ratio: 1 / 1; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .imgwrap img { width: 100%; height: 100%; object-fit: contain; }
+  .imgwrap .noimg { color: #9aa3b2; font-size: 13px; }
+  .badge {
+    position: absolute; top: 10px; left: 10px; padding: 4px 10px;
+    border-radius: 999px; font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.04em; color: #1a1d23;
+  }
+  .badge.sold { background: var(--badge-sold); }
+  .badge.claimed { background: var(--badge-claimed); }
+  .body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; }
+  .title { font-weight: 650; font-size: 15px; line-height: 1.25; }
+  .sub { color: var(--muted); font-size: 13px; text-transform: capitalize; }
+  .priceRow { display: flex; align-items: baseline; justify-content: space-between; margin-top: 2px; }
+  .price { color: var(--accent); font-weight: 800; font-size: 20px; }
+  @media (prefers-color-scheme: light) { .price { color: var(--accent); } }
+  .meta { color: var(--muted); font-size: 12.5px; }
+  .notes { color: var(--muted); font-size: 12.5px; border-top: 1px solid var(--line); padding-top: 8px; margin-top: 2px; }
+  .empty, .loading { text-align: center; color: var(--muted); padding: 60px 20px; grid-column: 1/-1; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 0 20px 40px; }
+  .refresh { color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🥏 Disc Finds</h1>
+  <p class="tagline">Recovered &amp; cleaned disc golf discs — DM to claim yours</p>
+  <div class="stats" id="stats"></div>
+</header>
+<div class="controls">
+  <input id="search" type="search" placeholder="Search mold, brand, plastic, color, stamp…" autocomplete="off">
+</div>
+<main id="grid"><div class="loading">Loading discs…</div></main>
+<footer>
+  <span class="refresh" id="refresh"></span>
+</footer>
+
+<script>
+const CSV_URL = "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/sheet.csv";
+
+// Minimal RFC-4180 CSV parser (handles quotes, commas, escaped quotes).
+function parseCSV(text) {
+  const rows = []; let row = [], field = "", i = 0, inQ = false;
+  while (i < text.length) {
+    const c = text[i];
+    if (inQ) {
+      if (c === '"' && text[i+1] === '"') { field += '"'; i += 2; continue; }
+      if (c === '"') { inQ = false; i++; continue; }
+      field += c; i++; continue;
+    }
+    if (c === '"') { inQ = true; i++; continue; }
+    if (c === ',') { row.push(field); field = ""; i++; continue; }
+    if (c === '\r') { i++; continue; }
+    if (c === '\n') { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
+    field += c; i++;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function toObjects(rows) {
+  const head = rows[0].map(h => h.trim());
+  return rows.slice(1).filter(r => r.some(c => c.trim() !== "")).map(r => {
+    const o = {}; head.forEach((h, i) => o[h] = (r[i] || "").trim()); return o;
+  });
+}
+
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+const isNum = s => s && /^\d+(\.\d+)?$/.test(s);
+
+function weightOf(d) {
+  if (isNum(d.scale_weight_g)) return d.scale_weight_g + "g";
+  if (isNum(d.stamped_weight_g)) return d.stamped_weight_g + "g";
+  return "";
+}
+function titleOf(d) {
+  const parts = [d.brand, d.plastic !== "unknown" ? d.plastic : "", d.mold !== "unknown" ? d.mold : "Disc"];
+  return parts.filter(Boolean).join(" ");
+}
+
+let ALL = [];
+function render(filter) {
+  const grid = document.getElementById("grid");
+  const f = (filter || "").toLowerCase();
+  const list = ALL.filter(d => !f || Object.values(d).join(" ").toLowerCase().includes(f));
+  if (!list.length) { grid.innerHTML = '<div class="empty">No discs match “' + filter + '”.</div>'; return; }
+  grid.innerHTML = list.map(d => {
+    const status = (d.status || "available").toLowerCase();
+    const sold = status === "sold" || status === "claimed";
+    const badge = sold ? '<span class="badge ' + status + '">' + status + '</span>' : "";
+    const img = d.photo_url
+      ? '<img loading="lazy" src="' + d.photo_url + '" alt="' + titleOf(d) + '">'
+      : '<span class="noimg">photo coming soon</span>';
+    const w = weightOf(d);
+    const cond = isNum(d.condition) || /^\d+(\.\d+)?$/.test(d.condition) ? d.condition + "/10" : "";
+    const meta = [w, cond].filter(Boolean).join(" · ");
+    return '<div class="card ' + (sold ? "sold" : "") + '">' +
+      '<div class="imgwrap">' + badge + img + '</div>' +
+      '<div class="body">' +
+        '<div class="title">' + titleOf(d) + '</div>' +
+        '<div class="sub">' + [cap(d.color), d.plastic !== "unknown" ? cap(d.plastic) : ""].filter(Boolean).join(" · ") + '</div>' +
+        '<div class="priceRow"><span class="price">$' + (d.price_usd || "?") + '</span><span class="meta">' + meta + '</span></div>' +
+        (d.notes ? '<div class="notes">' + d.notes + '</div>' : "") +
+      '</div></div>';
+  }).join("");
+}
+
+function updateStats() {
+  const avail = ALL.filter(d => (d.status || "available").toLowerCase() === "available");
+  const total = avail.reduce((s, d) => s + (parseFloat(d.price_usd) || 0), 0);
+  document.getElementById("stats").innerHTML =
+    '<span><b>' + avail.length + '</b> available</span>' +
+    '<span><b>' + ALL.length + '</b> total discs</span>' +
+    '<span><b>$' + total + '</b> in finds</span>';
+}
+
+async function load() {
+  try {
+    const resp = await fetch(CSV_URL + "?t=" + Date.now());
+    if (!resp.ok) throw new Error("HTTP " + resp.status);
+    ALL = toObjects(parseCSV(await resp.text()));
+    // available first, then by price desc
+    ALL.sort((a, b) => {
+      const av = (a.status || "available").toLowerCase() === "available" ? 0 : 1;
+      const bv = (b.status || "available").toLowerCase() === "available" ? 0 : 1;
+      if (av !== bv) return av - bv;
+      return (parseFloat(b.price_usd) || 0) - (parseFloat(a.price_usd) || 0);
+    });
+    updateStats();
+    render(document.getElementById("search").value);
+    document.getElementById("refresh").textContent = "Updated " + new Date().toLocaleTimeString();
+  } catch (e) {
+    document.getElementById("grid").innerHTML =
+      '<div class="empty">Could not load discs (' + e.message + '). Refresh to retry.</div>';
+  }
+}
+
+document.getElementById("search").addEventListener("input", e => render(e.target.value));
+load();
+setInterval(load, 120000); // refresh every 2 minutes
+</script>
+</body>
+</html>

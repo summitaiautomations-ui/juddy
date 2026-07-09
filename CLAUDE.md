@@ -3,7 +3,7 @@
 Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, and resells.
 
 ## Key facts (remember these)
-- **Storefront "text me to buy" line: 612-203-9883 (Juddy's cell)** — used on the storefront's "I want this disc!" buttons, shipnote, and footer. (Quo/OpenPhone business line is 763-495-4851, no longer on the site.)
+- **Storefront "text me to buy" line: 612-203-9883 (Juddy's cell)** — used on the storefront's "I want this disc!" buttons, shipnote, and footer. (Quo/OpenPhone line 763-495-4851 is NOT working / abandoned — do not use it anywhere.)
 - **Storefront:** discdiver.com (GitHub Pages, served from `docs/index.html`).
 - **Brand:** "Disc Diver". Socials — YouTube @funny_juddy, TikTok @funny_juddy, Instagram @disc_diver, Facebook /juddy.
 - **Location / pickup:** Free local pickup in Coon Rapids, MN.

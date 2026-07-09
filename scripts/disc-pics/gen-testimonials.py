@@ -1,25 +1,22 @@
 #!/usr/bin/env python3
-"""Rebuild docs/testimonials/list.json from the images in that folder,
-keeping any manual text-quote entries already in list.json.
+"""Rebuild docs/testimonials/list.json from images in that folder, keeping any
+manual entries already in list.json (text quotes AND chat threads).
 
-Drop cropped screenshot images (jpg/png/webp) into docs/testimonials/,
-run this, and the storefront's "Reunited" section shows them. The section
-stays hidden while there is nothing to show.
-
-Optional caption for an image: a same-named .txt (mike.jpg + mike.txt).
+Screenshots (jpg/png/webp) in docs/testimonials/ become image cards. Optional
+caption: a same-named .txt (mike.jpg + mike.txt).
 """
 import json, os, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 D = os.path.join(ROOT, "docs", "testimonials")
 LIST = os.path.join(D, "list.json")
 
-# keep existing text-quote testimonials
-quotes = []
+# keep manual entries (anything that isn't a plain image reference)
+manual = []
 if os.path.exists(LIST):
     try:
         for it in json.load(open(LIST)):
-            if isinstance(it, dict) and it.get("quote"):
-                quotes.append(it)
+            if isinstance(it, dict) and ("quote" in it or "thread" in it):
+                manual.append(it)
     except Exception:
         pass
 
@@ -30,6 +27,6 @@ for ext in ("jpg", "jpeg", "png", "webp"):
         cap = os.path.splitext(p)[0] + ".txt"
         imgs.append({"img": name, "name": open(cap).read().strip()} if os.path.exists(cap) else name)
 
-items = imgs + quotes            # real screenshots first, then text quotes
+items = imgs + manual            # real screenshots first, then text/threads
 json.dump(items, open(LIST, "w"), indent=0, ensure_ascii=False)
-print(f"wrote {len(imgs)} image + {len(quotes)} quote testimonial(s)")
+print(f"wrote {len(imgs)} image + {len(manual)} text/thread testimonial(s)")

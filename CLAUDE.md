@@ -17,6 +17,7 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 
 ## Pricing anchors
 - $3 local-shop buyback is the floor; ~$9 is the average disc. Premium/signature/first-run/collectible discs priced higher.
+- **Going forward: check eBay listings + sold comps before pricing, to get Juddy top dollar** — especially signature/tour-series/first-run/collectible discs. Note the comp range in the disc's notes and price toward the high end of realistic sold prices (used-disc condition adjusted).
 
 ## Working branch
 - `claude/photobooth-disc-pics-vueawx`

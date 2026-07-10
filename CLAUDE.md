@@ -19,5 +19,11 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - $3 local-shop buyback is the floor; ~$9 is the average disc. Premium/signature/first-run/collectible discs priced higher.
 - **Going forward: check eBay listings + sold comps before pricing, to get Juddy top dollar** — especially signature/tour-series/first-run/collectible discs. Note the comp range in the disc's notes and price toward the high end of realistic sold prices (used-disc condition adjusted).
 
+## "DISC FOUND" video overlay cards (POND DISC HUNTER style)
+- Branded transparent PNG overlay for TikTok/Reels/Shorts footage. Right-side dark rounded panel + top-left POND / DISC HUNTER logo, orange "DISC FOUND:" header, disc name, series, flight numbers box, teal desc, orange "AVAILABLE AT DISCDIVER.COM" CTA.
+- **The TURN/FADE indicator arrows must ALWAYS point up** (green up-left for TURN, red up-right for FADE). Never point them down.
+- **Always state "✓ NO NAME ON BACK — AVAILABLE FOR PURCHASE"** on the card (per Juddy's sample).
+- Built from `discfound.html` in scratchpad, rendered to a transparent 1920×1080 PNG via headless chromium (`omitBackground:true`).
+
 ## Working branch
 - `claude/photobooth-disc-pics-vueawx`

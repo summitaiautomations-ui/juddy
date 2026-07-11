@@ -25,7 +25,7 @@ import csv, os, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ORDERS = os.path.join(ROOT, "disc-pics-data", "orders.csv")
 FIELDS = ["id", "buyer", "sold_date", "paid", "shipped", "tracking",
-          "order_notes", "desc", "amount"]
+          "order_notes", "desc", "amount", "paid_via"]
 
 
 def load():
@@ -64,6 +64,10 @@ def main(argv):
 
     if cmd == "paid":
         r["paid"] = "yes"
+        if "--via" in argv:
+            r["paid_via"] = argv[argv.index("--via") + 1]
+    elif cmd == "via":
+        r["paid_via"] = argv[2] if len(argv) > 2 else ""
     elif cmd == "unpaid":
         r["paid"] = "no"
     elif cmd == "shipped":

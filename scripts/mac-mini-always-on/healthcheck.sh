@@ -36,6 +36,18 @@ STATE="$(job_state)"
 
 echo "[$(ts)] uptime=${UPTIME} | disk=${DISK} | mem=${MEM} | claude-code=${STATE}"
 
+# External Toshiba drive + Time Machine status (best-effort; only reports if set up
+# via external-drive-setup.sh). Override the volume name with JUDDY_DATA_VOL.
+DATA_VOL="${JUDDY_DATA_VOL:-Juddy Data}"
+if [[ -d "/Volumes/${DATA_VOL}" ]]; then
+  EXT="$(df -h "/Volumes/${DATA_VOL}" | awk 'NR==2 {print $4" free of "$2}')"
+else
+  EXT="not-mounted"
+fi
+LAST_BACKUP="$(tmutil latestbackup 2>/dev/null)"
+[[ -z "${LAST_BACKUP}" ]] && LAST_BACKUP="none"
+echo "[$(ts)] ext-drive=${EXT} | last-backup=${LAST_BACKUP}"
+
 # Optional: ping a heartbeat URL if HEALTHCHECK_URL is set in the env
 if [[ -n "${HEALTHCHECK_URL:-}" ]]; then
   curl -fsS --max-time 10 "${HEALTHCHECK_URL}" >/dev/null \

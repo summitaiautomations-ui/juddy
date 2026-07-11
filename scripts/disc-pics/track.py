@@ -24,7 +24,8 @@ import csv, os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ORDERS = os.path.join(ROOT, "disc-pics-data", "orders.csv")
-FIELDS = ["id", "buyer", "sold_date", "paid", "shipped", "tracking", "order_notes"]
+FIELDS = ["id", "buyer", "sold_date", "paid", "shipped", "tracking",
+          "order_notes", "desc", "amount"]
 
 
 def load():

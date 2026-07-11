@@ -97,7 +97,11 @@ def main():
         r += 1
         d = inv.get(i, {})
         o = orders.get(i, {})
-        p = price_num(d)
+        # off-website sales carry their own description + amount in the order
+        amt = (o.get("amount", "") or "").strip()
+        p = float(amt) if amt else price_num(d)
+        name = (o.get("desc", "") or "").strip() or (
+            disc_name(d) if d else "(disc " + i + ")")
         total += p
         paid = (o.get("paid", "no") or "no").lower() == "yes"
         shipped = (o.get("shipped", "no") or "no").lower() == "yes"
@@ -107,7 +111,7 @@ def main():
             to_ship += 1
         vals = [
             "#" + i,
-            disc_name(d) if d else "(disc " + i + ")",
+            name,
             d.get("color", ""),
             weight(d),
             p,

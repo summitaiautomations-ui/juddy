@@ -148,6 +148,16 @@
     background:radial-gradient(100% 120% at 50% 120%, #0d4a5a 0%, #072a34 55%, #061e26 100%);border-top:1px solid var(--line);}
   .cta h2{margin:0 0 12px;font-size:clamp(26px,4.4vw,40px);font-weight:800;letter-spacing:-.03em;}
   .cta p{margin:0 auto 22px;color:var(--foam);max-width:44ch;font-size:16px;opacity:.9;}
+  /* impact counters (social proof) */
+  .impact{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 30px;margin-top:6px;
+    padding:16px 20px;border-radius:16px;border:1px solid rgba(120,220,225,.16);
+    background:rgba(10,50,60,.28);backdrop-filter:blur(3px);}
+  .istat{display:flex;flex-direction:column;align-items:center;min-width:118px;}
+  .iico{font-size:22px;line-height:1;margin-bottom:5px;}
+  .inum{font-size:clamp(30px,5.4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;
+    font-variant-numeric:tabular-nums;background:linear-gradient(180deg,#eafcfb,#7fd9dd);
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .ilab{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--foam);opacity:.82;margin-top:5px;text-align:center;}
   footer{padding:26px 20px 46px;text-align:center;color:var(--faint);font-size:12.5px;}
   @media (prefers-reduced-motion:reduce){*{animation:none !important;} html{scroll-behavior:auto;}}
 </style>
@@ -163,6 +173,7 @@
     <h1>Disc Diver</h1>
     <p class="lede">I dive lakes for discs the water swallowed, clean them up, and give them a second flight. Grab one below &mdash; or come watch the dives.</p>
     <div class="socials"><a class="soc youtube primary" href="https://youtube.com/@funny_juddy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg><span>Subscribe</span></a><a class="soc tiktok " href="https://tiktok.com/@funny_juddy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M16.6 5.8a4.3 4.3 0 0 1-2.5-3.8h-3.2v13.1a2.5 2.5 0 1 1-2.5-2.5c.26 0 .5.04.74.11V9.5a5.9 5.9 0 0 0-.74-.05 5.7 5.7 0 1 0 5.7 5.7V8.9a7.4 7.4 0 0 0 4.3 1.38V7.06a4.3 4.3 0 0 1-1.8-1.26z"/></svg><span>TikTok</span></a><a class="soc instagram " href="https://instagram.com/funny_juddy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 1.8.25 2.2.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.4.36 1 .42 2.2.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 1.8-.42 2.2-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.4.17-1 .36-2.2.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-1.8-.25-2.2-.42a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.17-.4-.36-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-1.8.42-2.2.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.4-.17 1-.36 2.2-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.07-1.1.05-1.7.24-2.1.4-.5.2-.9.44-1.3.84-.4.4-.64.8-.84 1.3-.16.4-.35 1-.4 2.1C2.6 9.7 2.6 10.1 2.6 12s0 2.3.06 3.5c.05 1.1.24 1.7.4 2.1.2.5.44.9.84 1.3.4.4.8.64 1.3.84.4.16 1 .35 2.1.4 1.2.06 1.6.07 4.7.07s3.5 0 4.7-.07c1.1-.05 1.7-.24 2.1-.4.5-.2.9-.44 1.3-.84.4-.4.64-.8.84-1.3.16-.4.35-1 .4-2.1.06-1.2.07-1.6.07-3.5s0-2.3-.07-3.5c-.05-1.1-.24-1.7-.4-2.1a3.5 3.5 0 0 0-.84-1.3 3.5 3.5 0 0 0-1.3-.84c-.4-.16-1-.35-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.8a3.1 3.1 0 1 0 0 6.2 3.1 3.1 0 0 0 0-6.2zm5.1-.3a1.15 1.15 0 1 1-2.3 0 1.15 1.15 0 0 1 2.3 0z"/></svg><span>Instagram</span></a><a class="soc facebook " href="https://facebook.com/juddy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.5-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg><span>Facebook</span></a></div>
+    <div class="impact" id="impact" hidden></div>
     <a class="hero-testi" id="heroTesti" href="#testi" hidden>💬 Real disc‑return stories from happy owners →</a>
   </div>
 </section>
@@ -294,6 +305,30 @@ async function loadTesti(){try{
  const ht=document.getElementById("heroTesti");if(ht)ht.hidden=false;
 }catch(e){}}
 loadTesti();
+
+/* ── Impact counters ─────────────────────────────────────────────
+   Juddy's real, all-time totals. Update these numbers here and they
+   animate up on load. Set a value to null to hide that one; if all
+   are null the whole strip stays hidden. */
+const STATS={recovered:null, contacted:null, returned:null, shipped:null};
+const STAT_META=[
+ {k:"recovered",icon:"🥏",label:"Discs recovered"},
+ {k:"contacted",icon:"📱",label:"Owners contacted"},
+ {k:"returned",icon:"❤️",label:"Discs returned"},
+ {k:"shipped",icon:"📦",label:"Discs shipped"}];
+function renderImpact(){const el=document.getElementById("impact");if(!el)return;
+ const items=STAT_META.filter(m=>STATS[m.k]!=null);
+ if(!items.length){el.hidden=true;return;}
+ el.innerHTML=items.map(m=>'<div class="istat"><span class="iico">'+m.icon+'</span><span class="inum" data-to="'+STATS[m.k]+'">0</span><span class="ilab">'+m.label+'</span></div>').join("");
+ el.hidden=false;
+ const reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+ el.querySelectorAll(".inum").forEach(n=>{const to=+n.dataset.to;
+  if(reduce){n.textContent=to.toLocaleString();return;}
+  const dur=1500,t0=performance.now();
+  (function step(t){const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);
+   n.textContent=Math.round(to*e).toLocaleString();
+   if(p<1)requestAnimationFrame(step);})(t0);});}
+renderImpact();
 
 (function(){const c=document.getElementById("bubbles"),x=c.getContext("2d");
  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches)return;

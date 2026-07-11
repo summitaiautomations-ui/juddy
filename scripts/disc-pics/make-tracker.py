@@ -164,9 +164,17 @@ def main():
     yesno_green(ws, "G", head_row + 1, last)   # Paid?
     yesno_green(ws, "I", head_row + 1, last)    # Shipped?
 
-    ws.cell(summ_row, 1, f"{len(sold_ids)} sold  •  ${total:,.0f} total  •  "
-            f"${collected:,.0f} collected  •  {int(to_ship)} still to ship"
-            ).font = Font(bold=True, size=12, color=GREY)
+    # LIVE summary: recalculates as you tick Paid?/Shipped? in Google Sheets
+    if last >= head_row + 1:
+        L = last
+        summ = (
+            f'=COUNTA(A5:A{L})&" sold  •  $"&TEXT(SUM(E5:E{L}),"#,##0")'
+            f'&" total  •  $"&TEXT(SUMIF(G5:G{L},"Yes",E5:E{L}),"#,##0")'
+            f'&" collected  •  "&COUNTIF(I5:I{L},"No")&" to fulfill"'
+        )
+    else:
+        summ = "0 sold"
+    ws.cell(summ_row, 1, summ).font = Font(bold=True, size=12, color=GREY)
 
     for c, w in enumerate([7, 30, 14, 9, 8, 18, 9, 13, 10, 20, 12, 30], 1):
         ws.column_dimensions[get_column_letter(c)].width = w
@@ -179,9 +187,6 @@ def main():
 
     # union of everyone who has bought + anyone pre-seeded in customers.csv
     names = sorted(set(agg) | set(customers))
-    wc.cell(2, 1, f"{len(names)} buyers  •  "
-            f"${sum(a['spent'] for a in agg.values()):,.0f} lifetime sales"
-            ).font = Font(bold=True, size=12, color=GREY)
 
     ch = ["Customer", "Cell", "Shipping Address", "Pays With",
           "Likes (molds / brands)", "# Orders", "Total Spent",
@@ -196,9 +201,12 @@ def main():
         a = agg.get(nm, {"count": 0, "spent": 0.0, "pay": set(), "discs": []})
         cust = customers.get(nm, {})
         pays = cust.get("pays_with", "") or " / ".join(sorted(a["pay"]))
-        repeat = "Yes" if a["count"] >= 2 else "No"
+        # LIVE formulas keyed on the name cell -> recalc when you add orders
+        n_orders = f"=COUNTIF(Orders!$F:$F,$A{r})"
+        spent = f"=SUMIF(Orders!$F:$F,$A{r},Orders!$E:$E)"
+        repeat = f'=IF(COUNTIF(Orders!$F:$F,$A{r})>=2,"Yes","No")'
         vals = [nm, cust.get("cell", ""), cust.get("address", ""), pays,
-                cust.get("likes", ""), a["count"], a["spent"],
+                cust.get("likes", ""), n_orders, spent,
                 repeat, cust.get("cust_notes", "")]
         for c, v in enumerate(vals, 1):
             cell = wc.cell(r, c, v)
@@ -208,6 +216,14 @@ def main():
                 vertical="center")
         wc.cell(r, 7).number_format = '"$"#,##0'
     clast = r
+
+    # LIVE lifetime-sales summary
+    if clast >= chr_ + 1:
+        csum = (f'="{len(names)} buyers  •  $"&'
+                f'TEXT(SUM(G{chr_+1}:G{clast}),"#,##0")&" lifetime sales"')
+    else:
+        csum = f"{len(names)} buyers"
+    wc.cell(2, 1, csum).font = Font(bold=True, size=12, color=GREY)
     if clast >= chr_ + 1:
         wc.conditional_formatting.add(
             f"H{chr_+1}:H{clast}",

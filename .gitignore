@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Private sales/fulfillment data — lives in Juddy's Google Sheet, never the public repo
+disc-pics-data/orders.csv
+disc-pics-data/*.xlsx

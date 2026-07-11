@@ -25,5 +25,11 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - **Always state "✓ NO NAME ON BACK — AVAILABLE FOR PURCHASE"** on the card (per Juddy's sample).
 - Built from `discfound.html` in scratchpad, rendered to a transparent 1920×1080 PNG via headless chromium (`omitBackground:true`).
 
+## Sales / order tracking (Notion — the private home)
+- **Sales, buyers, paid/shipped tracking live in Notion, NOT the public repo.** Managed directly via the Notion MCP. Page: "Disc Diver — Sales Tracker" (`39a5ba8c-d26f-81b3-a0ff-cbaad82d4a56`) with an **Orders** database (data source `d9ecc30a-e988-45c3-a464-03539281e747`) and a **Customers** database (data source `ddfd0212-57b0-4864-8335-cd81208d1f3d`).
+- When Juddy texts a sale/payment/shipment ("Joe paid", "shipped Nolan", "sold #14 to Sarah, Venmo"): update Notion directly (Orders: Paid/Shipped checkboxes, Paid Via, Fulfillment, Buyer; add Customer rows as needed) AND mark the disc `sold` in `disc-pics-data/*.csv` for the storefront.
+- Dashboard on the Notion page has live charts + view tabs (Ship Monday / To Collect / Pickups / Board / Repeat Buyers). Refresh the static KPI header numbers when they drift.
+- Legacy (still present, gitignored/private): `disc-pics-data/orders.csv`, `customers.csv`, and `scripts/disc-pics/{track.py,make-tracker.py}` that built an xlsx. Notion supersedes these.
+
 ## Working branch
 - `claude/photobooth-disc-pics-vueawx`

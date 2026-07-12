@@ -230,6 +230,9 @@ const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?
 let NORM=[], BRAND="all", TYPE="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
 const NEW_ARRIVAL=new Set(["126","127","128","129","130","131","132","133","134","135","136","137","138","139"]);
+// Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
+// (for unknown-mold discs it would drop into "Other", or 4-speed approach discs it reads as midranges).
+const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139"]);
 function stats(){const av=NORM.filter(d=>d.status==="available");
  document.getElementById("stats").innerHTML=
   '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>';}
@@ -269,7 +272,8 @@ function speedOf(d){const m=(d.notes||"").match(/flight\s+(\d+)/i);if(m)return +
  return MOLD_SPEED[(d.mold||"").toLowerCase()]||null;}
 const CATS=[["Distance Drivers",s=>s>=9],["Fairway Drivers",s=>s>=6&&s<9],
  ["Midranges",s=>s>=4&&s<6],["Putters & Approach",s=>s>=1&&s<4]];
-function catOf(d){const s=speedOf(d);if(s==null)return "Other";
+function catOf(d){if(PUTTER_APPROACH.has(d.id))return "Putters & Approach";
+ const s=speedOf(d);if(s==null)return "Other";
  for(const[k,t]of CATS)if(t(s))return k;return "Other";}
 function drawFilters(){const bs=["all"].concat(Array.from(new Set(NORM.map(d=>d.brand).filter(b=>b&&b!=="unknown"))));
  document.getElementById("filters").innerHTML=bs.map(b=>

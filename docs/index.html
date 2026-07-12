@@ -229,10 +229,10 @@ const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weigh
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
 let NORM=[], BRAND="all", TYPE="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
-const NEW_ARRIVAL=new Set(["126","127","128","129","130","131","132","133","134","135","136","137","138","139"]);
+const NEW_ARRIVAL=new Set(["126","127","128","129","130","131","132","133","134","135","136","137","138","139","140"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
 // (for unknown-mold discs it would drop into "Other", or 4-speed approach discs it reads as midranges).
-const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139"]);
+const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139","140"]);
 function stats(){const av=NORM.filter(d=>d.status==="available");
  document.getElementById("stats").innerHTML=
   '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>';}

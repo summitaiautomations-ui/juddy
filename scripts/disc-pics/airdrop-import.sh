@@ -20,6 +20,7 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AIRDROP_DIR="${AIRDROP_DIR:-${HOME}/Downloads}"
 DISC_PICS_DIR="${DISC_PICS_DIR:-${HOME}/Pictures/disc-pics}"
 INBOX="${DISC_PICS_DIR}/inbox"
@@ -64,6 +65,14 @@ enhance() {
   fi
 }
 
+# Auto-crop to a tight, centered square (matches the storefront's 900x900 look).
+# Needs python3 + pillow/numpy/scipy; skips quietly otherwise. DISC_CROP=0 disables.
+crop_disc() {
+  [[ "${DISC_CROP:-1}" == "0" ]] && return 0
+  command -v python3 >/dev/null 2>&1 || return 0
+  python3 "${SCRIPT_DIR}/crop-disc.py" "$1" 2>/dev/null || true
+}
+
 # unique destination path in the inbox so two "IMG_1234" never clobber
 dest_for() {
   local base="$1" ext="$2" n=0 cand="${INBOX}/${1}.${2}"
@@ -99,6 +108,7 @@ while IFS= read -r -d '' src; do
 
   clean_background "${dst}"
   enhance "${dst}"
+  crop_disc "${dst}"
   echo "==> imported from AirDrop: $(basename "${dst}")"
   count=$((count + 1))
 done < <(find "${AIRDROP_DIR}" -maxdepth 1 -type f \

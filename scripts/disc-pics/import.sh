@@ -19,6 +19,7 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PHOTO_BOOTH_DIR="${PHOTO_BOOTH_DIR:-${HOME}/Pictures/Photo Booth Library/Pictures}"
 DISC_PICS_DIR="${DISC_PICS_DIR:-${HOME}/Pictures/disc-pics}"
 INBOX="${DISC_PICS_DIR}/inbox"
@@ -78,6 +79,14 @@ enhance() {
   else
     sips --resampleHeightWidthMax 1600 "${f}" >/dev/null 2>&1 || true
   fi
+}
+
+# Auto-crop to a tight, centered square (matches the storefront's 900x900 look).
+# Needs python3 + pillow/numpy/scipy; skips quietly otherwise. DISC_CROP=0 disables.
+crop_disc() {
+  [[ "${DISC_CROP:-1}" == "0" ]] && return 0
+  command -v python3 >/dev/null 2>&1 || return 0
+  python3 "${SCRIPT_DIR}/crop-disc.py" "$1" 2>/dev/null || true
 }
 
 count=0

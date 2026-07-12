@@ -88,6 +88,9 @@
   .idtag{position:absolute;top:8px;left:8px;z-index:2;background:rgba(6,30,38,.82);color:var(--foam);
     font-size:11.5px;font-weight:700;letter-spacing:.02em;font-variant-numeric:tabular-nums;
     padding:3px 9px;border-radius:999px;border:1px solid rgba(200,242,238,.18);backdrop-filter:blur(2px);}
+  .newbadge{position:absolute;top:8px;right:8px;z-index:2;background:linear-gradient(180deg,#5fe6e6,#1a8f9a);
+    color:#04161d;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 10px;border-radius:999px;box-shadow:0 4px 14px rgba(58,214,214,.42);}
   .stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
   .stamp span{font-size:34px;font-weight:800;letter-spacing:.06em;transform:rotate(-11deg);
     padding:6px 16px;border:3px solid;border-radius:8px;text-transform:uppercase;opacity:.92;}
@@ -225,6 +228,8 @@ const num=s=>s&&/^\d+(\.\d+)?$/.test(s);
 const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weight_g)?d.stamped_weight_g+"g":"";
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
 let NORM=[], BRAND="all", TYPE="all";
+// Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
+const NEW_ARRIVAL=new Set(["126","127","128","129","130","131","132","133","134","135","136","137","138","139"]);
 function stats(){const av=NORM.filter(d=>d.status==="available");
  document.getElementById("stats").innerHTML=
   '<span class="stat"><span class="n">'+av.length+'</span><span class="l">Available</span></span>';}
@@ -251,7 +256,8 @@ function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const meter=num(d.condition)?'<div class="cond"><span class="lab">Cond</span><span class="meter"><i style="width:'+(c*10)+'%"></i></span><span class="cval">'+d.condition+'/10</span></div>':"";
  const sub=d.plastic!=="unknown"?cap(d.plastic):"";
  const idtag=d.id?'<span class="idtag">#'+d.id+'</span>':"";
- return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+stamp+img+'</div><div class="body">'+
+ const newb=(!gone&&NEW_ARRIVAL.has(d.id))?'<span class="newbadge">New</span>':"";
+ return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+newb+stamp+img+'</div><div class="body">'+
   '<div class="title">'+titleOf(d)+(d.id?' <span class="tid">#'+d.id+'</span>':"")+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+flightBox(d)+
   '<div class="priceRow"><span class="price">$'+(d.price_usd||"?")+'</span>'+(w?'<span class="wt">'+w+'</span>':"")+'</div>'+
   (d.notes?'<div class="notes">'+d.notes+'</div>':"")+

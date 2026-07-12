@@ -29,6 +29,26 @@ photo. Snap a disc, and ~30 seconds later it's identified, priced, filed,
 pushed to GitHub, and on its way into the shared Google Sheet.
 Log: `~/Library/Logs/juddy/disc-pics.log`.
 
+### AirDrop mode (snap on your phone, AirDrop to the mini)
+
+```bash
+./install-airdrop.sh
+```
+
+Prefer shooting discs on your phone? Install this second LaunchAgent
+(`com.juddy.disc-airdrop`) and just **AirDrop the photos to the Mac mini**.
+It watches `~/Downloads` (where AirDrop saves), sweeps in new image files,
+converts iPhone HEIC to JPG, runs the same cleanup + identify + push, and
+leaves Downloads tidy. ~30 seconds after the AirDrop lands, the discs are
+live. Same log as above.
+
+- Only image files (jpg/jpeg/png/heic) are swept; everything else in
+  Downloads is left alone.
+- If you also save non-disc images to Downloads, point it at a dedicated
+  folder with `AIRDROP_DIR` in the plist's `EnvironmentVariables`.
+- Both watchers can run at once (Photo Booth *and* AirDrop) -- they share the
+  same inbox and log.
+
 ## Shared Google Sheet (one-time setup)
 
 The Mac mini pushes `disc-pics-data/` to GitHub; a Google Sheet reads it

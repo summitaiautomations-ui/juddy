@@ -31,5 +31,13 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - Dashboard on the Notion page has live charts + view tabs (Ship Monday / To Collect / Pickups / Board / Repeat Buyers). Refresh the static KPI header numbers when they drift.
 - Legacy (still present, gitignored/private): `disc-pics-data/orders.csv`, `customers.csv`, and `scripts/disc-pics/{track.py,make-tracker.py}` that built an xlsx. Notion supersedes these.
 
+## Marking a disc sold (the most common request) — quick ref
+1. Be on `claude/photobooth-disc-pics-vueawx` (this is what GitHub Pages serves).
+2. In `disc-pics-data/sheet.csv`, find the row by **id** (e.g. `"062"`) and change
+   the `status` column from `"available"` to `"sold"`. (Reverse to un-sell.)
+3. Commit + push to `claude/photobooth-disc-pics-vueawx`. Live in ~1–2 min.
+4. Also record the sale in the Notion Sales Tracker (see above).
+Edits on any OTHER branch do NOT change the live site.
+
 ## Working branch
-- `claude/photobooth-disc-pics-vueawx`
+- `claude/photobooth-disc-pics-vueawx` (also the branch GitHub Pages publishes from)

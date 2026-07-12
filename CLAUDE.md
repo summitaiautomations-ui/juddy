@@ -10,6 +10,11 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - **Shipping:** $8.50 for a single disc; discounted combined rate for multiples (worked out over text).
 - **Sales flow:** buyer taps "I want this disc!" → texts 612-203-9883 → payment & shipping handled offline (no cart/checkout).
 
+## How Juddy works with you (durable preferences — honor these)
+- **Juddy runs terminal commands by copy-paste ONLY.** Every command you hand him must be complete and foolproof: NO placeholders to substitute (`<your-path>`, `<branch>`, etc.), no "edit this line first" steps. If a value is unknown (e.g. a path on his Mac), make the command discover it itself (`find`, `$(…)`) so it works pasted verbatim. Prefer one copy-paste block.
+- **Be proactive.** Offer useful automations/improvements on your own initiative — don't wait to be asked.
+- Juddy is non-technical about git/shell — explain in plain terms and keep steps to a minimum.
+
 ## Data & pipeline
 - Inventory lives in `disc-pics-data/inventory.csv` and `disc-pics-data/sheet.csv` (the storefront live-fetches `sheet.csv`).
 - Photos in `disc-pics-data/photos/<id>-<mold>.jpg`, composited on light gray (#eef0f2 / BGR 242,240,238).

@@ -33,9 +33,13 @@
   .soc{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:999px;
     font-size:14px;font-weight:650;text-decoration:none;border:1px solid rgba(200,242,238,.22);
     color:var(--foam);background:rgba(255,255,255,.05);backdrop-filter:blur(6px);transition:transform .15s ease,background .15s ease,border-color .15s ease;}
-  .soc:hover{transform:translateY(-2px);background:rgba(255,255,255,.12);border-color:rgba(200,242,238,.5);}
-  .soc.primary{background:var(--yt);border-color:var(--yt);color:#fff;box-shadow:0 8px 26px rgba(255,47,70,.35);}
-  .soc.primary:hover{background:#ff1733;}
+  .soc:hover{transform:translateY(-2px);filter:brightness(1.08);}
+  /* each platform in its own brand color so they all pop and invite a follow */
+  .soc.youtube{background:var(--yt);border-color:var(--yt);color:#fff;box-shadow:0 6px 20px rgba(255,47,70,.32);}
+  .soc.tiktok{background:#111;border-color:#111;color:#fff;box-shadow:0 6px 20px rgba(0,0,0,.45);}
+  .soc.instagram{background:linear-gradient(45deg,#f09433,#dc2743 48%,#bc1888);border-color:transparent;color:#fff;box-shadow:0 6px 20px rgba(220,39,67,.32);}
+  .soc.facebook{background:#1877f2;border-color:#1877f2;color:#fff;box-shadow:0 6px 20px rgba(24,119,242,.32);}
+  .soc.primary{color:#fff;}
   .soc:focus-visible{outline:2px solid var(--aqua);outline-offset:2px;}
   .hero-testi{display:inline-block;margin-top:2px;padding:8px 16px;border-radius:999px;
     font-size:13.5px;font-weight:700;text-decoration:none;color:var(--aqua);

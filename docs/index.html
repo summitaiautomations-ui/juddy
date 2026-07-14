@@ -285,11 +285,12 @@ function drawFilters(){const bs=["all"].concat(Array.from(new Set(NORM.map(d=>d.
   '<button class="chip '+(b===BRAND?"active":"")+'" data-b="'+b+'">'+(b==="all"?"All brands":b)+'</button>').join("");
  document.querySelectorAll(".chip").forEach(c=>c.onclick=function(){BRAND=this.dataset.b;drawFilters();draw(document.getElementById("q").value);});}
 function draw(f){const q=(f||"").toLowerCase().replace(/^#/,"");
- const list=NORM.filter(d=>(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q)));
- const gone=d=>d.status==="sold"||d.status==="claimed";
+ // sold discs are hidden from the storefront entirely; claimed ones show as "On hold"
+ const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q)));
+ const held=d=>d.status==="claimed";
  const byPrice=(a,b)=>(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);
  const order=CATS.map(c=>c[0]).concat("Other"),groups={},sold=[];
- for(const d of list){if(gone(d)){sold.push(d);continue;}(groups[catOf(d)]=groups[catOf(d)]||[]).push(d);}
+ for(const d of list){if(held(d)){sold.push(d);continue;}(groups[catOf(d)]=groups[catOf(d)]||[]).push(d);}
  let html="";
  for(const cat of order){const g=groups[cat];if(!g||!g.length)continue;
   // New arrivals float to the top of each category, then by price.
@@ -298,7 +299,7 @@ function draw(f){const q=(f||"").toLowerCase().replace(/^#/,"");
   html+='<section class="catsec"><div class="cathead"><h2>'+cat+'</h2><span class="ct">'+g.length+' disc'+(g.length>1?"s":"")+'</span></div><div class="catgrid">'+g.map(card).join("")+'</div></section>';}
  // all sold/claimed discs collect at the very bottom as social proof
  if(sold.length){sold.sort(byPrice);
-  html+='<section class="catsec soldsec"><div class="cathead"><h2>Recently sold</h2><span class="ct">'+sold.length+' gone</span></div><div class="catgrid">'+sold.map(card).join("")+'</div></section>';}
+  html+='<section class="catsec soldsec"><div class="cathead"><h2>On hold</h2><span class="ct">'+sold.length+' reserved</span></div><div class="catgrid">'+sold.map(card).join("")+'</div></section>';}
  document.getElementById("grid").innerHTML=html||'<div class="empty">No discs match.</div>';}
 async function load(){try{
  const r=await fetch(CSV_URL+"?t="+Date.now());if(!r.ok)throw new Error("HTTP "+r.status);

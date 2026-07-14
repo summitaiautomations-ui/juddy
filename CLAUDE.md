@@ -5,6 +5,7 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 ## Key facts (remember these)
 - **Storefront "text me to buy" line: 612-203-9883 (Juddy's cell)** — used on the storefront's "I want this disc!" buttons, shipnote, and footer. (Quo/OpenPhone line 763-495-4851 is NOT working / abandoned — do not use it anywhere.)
 - **Storefront:** discdiver.com (GitHub Pages, served from `docs/index.html`).
+- **Juddy's personal email (on storefront + contact options): juddyneal@gmail.com** (note the spelling — juddy, not juddi). Each disc card has an "or email me" button that auto-fills the same disc inquiry as the text button. There is also a contact bar (Text + Or email me; no Call button).
 - **Brand:** "Disc Diver". Socials — YouTube @funny_juddy, TikTok @disc_diver, Instagram @funny_juddy, Facebook /juddy.
 - **Location / pickup:** Free local pickup in Coon Rapids, MN.
 - **Shipping:** flat **~$8.50 for a single disc** (safe + profitable — a single disc is always ~$5 domestic, so never hand-calc singles). **Multiple discs & international are quoted per-order** (compare rates in Pirate Ship — UPS Ground often wins on 2+ disc boxes, USPS Ground Advantage on singles under 1 lb). All shipping is finalized over text, so the site number is just a starting anchor. Standard single-disc pack: 9.5×11 bubble mailer, ~8 oz. International (e.g. Canada) needs a customs form + HS code **9506.99** and runs 3–4× domestic — always quote the buyer first.

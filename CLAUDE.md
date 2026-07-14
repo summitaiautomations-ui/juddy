@@ -15,6 +15,10 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - **Be proactive.** Offer useful automations/improvements on your own initiative — don't wait to be asked.
 - Juddy is non-technical about git/shell — explain in plain terms and keep steps to a minimum.
 
+## Sales recap — show it proactively (durable preference)
+- **Juddy likes to SEE the running totals. After logging ANY sale / payment / shipment, ALWAYS run `python3 scripts/disc-pics/sales-summary.py` and show him the recap** (discs sold, cash collected, still-owed, to-ship, available). Don't wait to be asked.
+- The script reads `inventory.csv` + `orders.csv` and prints a compact per-buyer spreadsheet; it only reads (never writes) and stays local.
+
 ## Data & pipeline
 - Inventory lives in `disc-pics-data/inventory.csv` and `disc-pics-data/sheet.csv` (the storefront live-fetches `sheet.csv`).
 - Photos in `disc-pics-data/photos/<id>-<mold>.jpg`, composited on light gray (#eef0f2 / BGR 242,240,238).

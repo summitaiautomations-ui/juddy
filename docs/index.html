@@ -49,6 +49,16 @@
     font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;}
   .scroll svg{animation:bob 1.8s ease-in-out infinite;}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  /* ---------- VIDEO ---------- */
+  .vidsec{max-width:820px;margin:36px auto 8px;padding:0 20px;text-align:center;}
+  .vidsec h2{margin:0 0 6px;font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.02em;color:var(--foam);}
+  .vidsec p{margin:0 auto 16px;max-width:52ch;color:var(--muted);font-size:14.5px;}
+  .vidwrap{position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 16px 44px rgba(0,0,0,.5);background:#000;}
+  .vidwrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  .vidmore{display:inline-block;margin-top:14px;font-size:14px;font-weight:700;color:var(--aqua);
+    text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s ease;}
+  .vidmore:hover{border-color:var(--aqua);}
   /* ---------- SHOP BAR ---------- */
   .shopbar{position:sticky;top:0;z-index:10;background:rgba(8,24,32,.86);backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);}
@@ -202,6 +212,17 @@
     <div class="impact" id="impact" hidden></div>
     <a class="hero-testi" id="heroTesti" href="#testi" hidden>💬 Real disc‑return stories from happy owners →</a>
   </div>
+</section>
+
+<section class="vidsec">
+  <h2>Watch a dive 🤿</h2>
+  <p>Every disc here was pulled from the bottom of a lake, cleaned up, and given a second life. Here's how it happens.</p>
+  <div class="vidwrap">
+    <iframe src="https://www.youtube-nocookie.com/embed/T11HPUI5IfA" title="Disc Diver — a dive"
+      loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+  <a class="vidmore" href="https://youtube.com/@funny_juddy" target="_blank" rel="noopener">More dives on YouTube →</a>
 </section>
 
 <div class="shopbar" id="shop">

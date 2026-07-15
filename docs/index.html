@@ -77,6 +77,11 @@
   #q:focus{outline:2px solid var(--aqua);outline-offset:1px;}
   .shipnote{max-width:1180px;margin:16px auto -4px;padding:0 20px;text-align:center;color:var(--muted);font-size:13.5px;}
   .shipnote b{color:var(--foam);}
+  .bundlebar{max-width:1180px;margin:14px auto 2px;padding:0 20px;}
+  .bundlebar .inner{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+    background:linear-gradient(90deg,var(--aqua),var(--foam));color:#04231b;border-radius:14px;
+    padding:13px 20px;font-weight:800;font-size:15.5px;letter-spacing:.01em;box-shadow:0 8px 24px rgba(58,214,214,.28);}
+  .bundlebar .sub{font-weight:600;font-size:13px;opacity:.78;}
   .contactbar{max-width:640px;margin:20px auto 4px;padding:0 20px;text-align:center;}
   .contactbar .cbtitle{color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.02em;margin-bottom:10px;}
   .contactbar .cbrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
@@ -238,6 +243,7 @@
     <input id="q" type="search" placeholder="Search mold, brand, plastic, color, stamp&hellip;" autocomplete="off" aria-label="Search discs">
   </div>
 </div>
+<div class="bundlebar"><div class="inner">🥏 Buy 3 or more &mdash; shipping&rsquo;s on me <span class="sub">&middot; mix &amp; match any discs</span></div></div>
 <p class="shipnote">👋 Tap <b>I want this disc!</b> on any card to text me (<b>612-203-9883</b>) &mdash; no checkout, no account.</p>
 <div class="filters" id="filters"></div>
 <main id="grid"></main>

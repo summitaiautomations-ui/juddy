@@ -102,3 +102,11 @@ For Mortgage Pipeline leads with Status **Connected** or **Connected Live** whos
 - Skips leads Justin has explicitly paused (e.g. Michael Dumonceaux) and anyone marked Dead.
 - Leads whose engagement is older than 30 days stay on Justin's manual call list — do not auto-text them.
 - Composed texts must stick to facts already in the lead's record: no rates, no approval promises, no commitments. If the right message is unclear, flag Justin instead of sending.
+
+## USDA eligibility rule (automatic — added 7/15/26)
+
+Whenever USDA comes up for any lead or property — zero-down question, rural address, lead email showing USDA loan type, or Justin asking for payments on a specific house — ALWAYS run the eligibility check automatically, without being asked:
+
+1. **Property side:** attempt the USDA map/GIS lookup (eligibility.sc.egov.usda.gov / rdgdwe.sc.egov.usda.gov ArcGIS layer 4 = SFH ineligible areas). If the network blocks it, fall back to town population + urbanized-area analysis via web search (ineligible = urbanized areas & towns ~35k+, some 10k+ near metros) and state the confidence level plainly. Always give Justin the official map link for the 30-second on-phone confirmation when the check wasn't the literal official map.
+2. **Income side:** check household income vs the county USDA limit (Minneapolis-area & most MN counties ≈ $121,900 for 1-4 person households — verify per county). Remember: ALL adult household members' income counts toward the limit, even non-borrowers; and USDA does NOT allow non-occupant co-borrowers — anyone on the loan must occupy.
+3. **Log the result** in the lead's Notion row (Notes + Next Action) and include it in the chat report with the payment math.

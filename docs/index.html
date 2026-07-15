@@ -66,11 +66,11 @@
   .stats{display:flex;gap:22px;align-items:baseline;}
   .stat .n{font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
   .stat .l{font-size:13px;letter-spacing:.01em;color:var(--muted);margin-left:6px;font-weight:600;}
-  #typeSel{padding:11px 34px 11px 15px;border-radius:11px;border:1px solid var(--line);
+  #typeSel,#brandSel{padding:11px 34px 11px 15px;border-radius:11px;border:1px solid var(--line);
     background:var(--panel) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239fc0c2' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 12px center;
     color:var(--ink);font-size:14.5px;font-family:inherit;font-weight:600;cursor:pointer;
     -webkit-appearance:none;appearance:none;}
-  #typeSel:focus{outline:2px solid var(--aqua);outline-offset:1px;}
+  #typeSel:focus,#brandSel:focus{outline:2px solid var(--aqua);outline-offset:1px;}
   #q{flex:1;min-width:180px;padding:11px 15px;border-radius:11px;border:1px solid var(--line);
     background:var(--panel);color:var(--ink);font-size:14.5px;font-family:inherit;}
   #q::placeholder{color:var(--faint);}
@@ -233,6 +233,9 @@
 <div class="shopbar" id="shop">
   <div class="shopbar-in">
     <div class="stats" id="stats"></div>
+    <select id="brandSel" aria-label="Filter by brand">
+      <option value="all">All brands</option>
+    </select>
     <select id="typeSel" aria-label="Filter by disc type">
       <option value="all">All types</option>
       <option value="Distance Drivers">Distance Drivers</option>
@@ -245,7 +248,6 @@
 </div>
 <div class="bundlebar"><div class="inner">🥏 Buy 3 or more &mdash; shipping&rsquo;s on me <span class="sub">&middot; mix &amp; match any discs</span></div></div>
 <p class="shipnote">👋 Tap <b>I want this disc!</b> on any card to text me (<b>612-203-9883</b>) &mdash; no checkout, no account.</p>
-<div class="filters" id="filters"></div>
 <main id="grid"></main>
 
 <div class="contactbar">
@@ -343,10 +345,12 @@ const CATS=[["Distance Drivers",s=>s>=9],["Fairway Drivers",s=>s>=6&&s<9],
 function catOf(d){if(PUTTER_APPROACH.has(d.id))return "Putters & Approach";
  const s=speedOf(d);if(s==null)return "Other";
  for(const[k,t]of CATS)if(t(s))return k;return "Other";}
-function drawFilters(){const bs=["all"].concat(Array.from(new Set(NORM.map(d=>d.brand).filter(b=>b&&b!=="unknown"))));
- document.getElementById("filters").innerHTML=bs.map(b=>
-  '<button class="chip '+(b===BRAND?"active":"")+'" data-b="'+b+'">'+(b==="all"?"All brands":b)+'</button>').join("");
- document.querySelectorAll(".chip").forEach(c=>c.onclick=function(){BRAND=this.dataset.b;drawFilters();draw(document.getElementById("q").value);});}
+function drawFilters(){
+ // brands present on still-available discs, alphabetized, filled into the Brand dropdown
+ const bs=Array.from(new Set(NORM.filter(d=>d.status!=="sold").map(d=>d.brand).filter(b=>b&&b!=="unknown"))).sort((a,b)=>a.localeCompare(b));
+ if(!bs.includes(BRAND))BRAND="all";
+ document.getElementById("brandSel").innerHTML='<option value="all">All brands</option>'+
+  bs.map(b=>'<option value="'+b+'"'+(b===BRAND?" selected":"")+'>'+b+'</option>').join("");}
 function draw(f){const q=(f||"").toLowerCase().replace(/^#/,"");
  // sold discs are hidden from the storefront entirely; claimed ones show as "On hold"
  const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q)));
@@ -371,6 +375,7 @@ async function load(){try{
 }catch(e){document.getElementById("grid").innerHTML='<div class="empty">Could not load discs ('+e.message+'). Refresh to retry.</div>';}}
 document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
 document.getElementById("typeSel").addEventListener("change",e=>{TYPE=e.target.value;draw(document.getElementById("q").value);});
+document.getElementById("brandSel").addEventListener("change",e=>{BRAND=e.target.value;draw(document.getElementById("q").value);});
 load();setInterval(load,120000);
 async function loadTesti(){try{
  const r=await fetch("testimonials/list.json?t="+Date.now());if(!r.ok)return;

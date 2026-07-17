@@ -304,7 +304,7 @@ const PHONE="+16122039883", PHONE_DISP="612-203-9883", EMAIL="juddyneal@gmail.co
 function claimBtn(d){
  const price=d.price_usd?" ($"+d.price_usd+")":"";
  const idp=d.id?"#"+d.id+" ":"";
- const msg="Hi Disc Diver! I'd like "+idp+"the "+titleOf(d)+price+".\n\nQuick info so I can get it to you fast:\n• Ship or local pickup? \n• If shipping, your address: \n• Your name: ";
+ const msg="Hi Disc Diver! I'd like to buy "+idp+"the "+titleOf(d)+price+". Please ship it to me!\n\nMy name is: \nMy shipping address is: ";
  const body=encodeURIComponent(msg);
  const subj=encodeURIComponent("Disc Diver — "+idp+titleOf(d));
  return '<a class="claim" href="sms:'+PHONE+'?&body='+body+'" '+

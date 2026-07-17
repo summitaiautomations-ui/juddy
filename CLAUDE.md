@@ -28,7 +28,10 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 
 ## Pricing anchors
 - $3 local-shop buyback is the floor; ~$9 is the average disc. Premium/signature/first-run/collectible discs priced higher.
-- **ALWAYS run eBay sold comps before pricing ANY disc (durable rule — Juddy, non-negotiable).** Every disc, every time — not just premium ones. Search eBay SOLD/completed listings (`LH_Sold=1&LH_Complete=1`) for the mold+plastic (and stamp/signature if notable), note the sold range in the disc's notes, and price toward the HIGH end of realistic used-disc sold comps (condition-adjusted). Never price from memory/gut when comps are gettable. Get Juddy top dollar — signature/tour-series/first-run/collectible especially, but budget molds too so we don't underprice.
+- **ALWAYS run comps before pricing ANY disc (durable rule — Juddy, non-negotiable).** Every disc, every time — not just premium ones. Check BOTH sources:
+  1. **eBay SOLD/completed listings** (`LH_Sold=1&LH_Complete=1`) for mold+plastic (and stamp/signature if notable). NOTE: eBay blocks direct WebFetch (403) — use WebSearch instead (`"<mold> <plastic> used disc golf ebay sold price"`).
+  2. **Gotta Go Gotta Throw used inventory** (`gottagogottathrow.com`, e.g. `/collections/used-<brand>-discs` or WebSearch `"GGGT used <mold> <plastic>"`) — used discs graded on the SAME 1–10 sleepy scale Juddy uses, so it's often the cleanest condition-matched comp.
+  **Then UNDERCUT them (durable rule — Juddy wants to WIN on price).** Price ~15–20% BELOW the cheapest condition-matched used comp (GGGT especially) so Disc Diver is always the better deal — buyers should see our price and not bother with eBay/GGGT. Discs are lake-found (~$0 cost), so we keep strong margin even below retail. Guardrails: never below the **$3 floor**, and don't fire-sale genuinely collectible/signature discs into the ground (undercut, but keep them premium vs their own comps). Note the comp range AND our undercut in the disc's notes.
 
 ## "DISC FOUND" video overlay cards (POND DISC HUNTER style)
 - Branded transparent PNG overlay for TikTok/Reels/Shorts footage. Right-side dark rounded panel + top-left POND / DISC HUNTER logo, orange "DISC FOUND:" header, disc name, series, flight numbers box, teal desc, orange "AVAILABLE AT DISCDIVER.COM" CTA.

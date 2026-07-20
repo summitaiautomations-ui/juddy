@@ -351,9 +351,9 @@ function drawFilters(){
  if(!bs.includes(BRAND))BRAND="all";
  document.getElementById("brandSel").innerHTML='<option value="all">All brands</option>'+
   bs.map(b=>'<option value="'+b+'"'+(b===BRAND?" selected":"")+'>'+b+'</option>').join("");}
-function draw(f){const q=(f||"").toLowerCase().replace(/^#/,"");
+function draw(f){const q=(f||"").trim().toLowerCase().replace(/^#/,"");const qNum=(q&&[...q].every(c=>c>='0'&&c<='9'))?String(parseInt(q,10)):null;const match=d=>!q?true:(qNum!==null?String(parseInt(d.id,10))===qNum:[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q));
  // sold discs are hidden from the storefront entirely; claimed ones show as "On hold"
- const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(!q||[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q)));
+ const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&match(d));
  const held=d=>d.status==="claimed";
  const byPrice=(a,b)=>(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);
  const order=CATS.map(c=>c[0]).concat("Other"),groups={},sold=[];

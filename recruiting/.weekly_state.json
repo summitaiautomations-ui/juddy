@@ -1,0 +1,617 @@
+{
+  "snapshot_date": "2026-06-30",
+  "candidates": {
+    "38a5ba8c-d26f-80d4-868a-fe82e49854d3": {
+      "stage": null,
+      "name": "\ud83d\uddd1 ARCHIVED \u2014 misfiled Plaud transcript (recruiting + Sara King call, 6/2026)"
+    },
+    "3895ba8c-d26f-807c-99a1-eaad0163cdfb": {
+      "stage": null,
+      "name": "\ud83d\uddd1 ARCHIVED \u2014 Steven Seifert offer-signed note (see Steven Seiffert)"
+    },
+    "3895ba8c-d26f-8087-9a42-e57f96c09a80": {
+      "stage": null,
+      "name": "\ud83d\uddd1 ARCHIVED \u2014 note: texted Morgan Sawyer (see Morgan Sawyer)"
+    },
+    "3885ba8c-d26f-81cf-af18-d8c88c5f47b0": {
+      "stage": "Hired",
+      "name": "Steven Seiffert"
+    },
+    "3755ba8c-d26f-81d9-928a-e51e730ec277": {
+      "stage": "Initial Outreach",
+      "name": "James Lew"
+    },
+    "3755ba8c-d26f-81e4-a165-e48126d10cd2": {
+      "stage": "Initial Outreach",
+      "name": "Annie Gladden"
+    },
+    "36e5ba8c-d26f-8148-a953-c513656ca992": {
+      "stage": "Passed",
+      "name": "Scott Wudarcki"
+    },
+    "36e5ba8c-d26f-8103-87b3-c958ce1c87f6": {
+      "stage": "Initial Outreach",
+      "name": "Kim Stone"
+    },
+    "36e5ba8c-d26f-811d-8702-e7145df64f1f": {
+      "stage": "Initial Outreach",
+      "name": "Nick Haley"
+    },
+    "36e5ba8c-d26f-814f-8611-ceb3ecff17a4": {
+      "stage": "Initial Outreach",
+      "name": "Jason Stone"
+    },
+    "36e5ba8c-d26f-8130-8efe-c40eecda4b75": {
+      "stage": "Initial Outreach",
+      "name": "Ken Reif"
+    },
+    "3675ba8c-d26f-8152-8d79-c4787da91922": {
+      "stage": "Initial Outreach",
+      "name": "Angela Bousey"
+    },
+    "3675ba8c-d26f-818b-8a08-ef50c33e71d4": {
+      "stage": "Initial Outreach",
+      "name": "Steve Brand"
+    },
+    "3675ba8c-d26f-81c5-9698-fc63b1232a72": {
+      "stage": "Initial Outreach",
+      "name": "Steve Dickey"
+    },
+    "3675ba8c-d26f-811a-a222-c9e0b4d385ba": {
+      "stage": "Initial Outreach",
+      "name": "Brandy Afuvai"
+    },
+    "3675ba8c-d26f-8121-b58c-d0df2c75ede0": {
+      "stage": "Initial Outreach",
+      "name": "Heather Adams"
+    },
+    "3675ba8c-d26f-8127-924f-d2cba5444d94": {
+      "stage": "Initial Outreach",
+      "name": "Jamie Adyman"
+    },
+    "3675ba8c-d26f-8158-bfd4-e4f02477f223": {
+      "stage": "Initial Outreach",
+      "name": "Diwas Hikari"
+    },
+    "3675ba8c-d26f-817e-abeb-e188e825097b": {
+      "stage": "Initial Outreach",
+      "name": "Jessica Adame"
+    },
+    "3675ba8c-d26f-81bf-a290-e211cb185395": {
+      "stage": "Initial Outreach",
+      "name": "Sergio Abud"
+    },
+    "3675ba8c-d26f-81ed-a151-df6d19b2166d": {
+      "stage": "Initial Outreach",
+      "name": "Kyle Abbot"
+    },
+    "3675ba8c-d26f-81ee-96b8-f0ae016e95d7": {
+      "stage": "Initial Outreach",
+      "name": "Matthew Adams"
+    },
+    "3665ba8c-d26f-8175-86b2-d9c3bbb33406": {
+      "stage": "Conversation",
+      "name": "Ernest Page"
+    },
+    "3655ba8c-d26f-8135-9bb7-e03ef4fbba06": {
+      "stage": "Conversation",
+      "name": "Rita Jarlekian"
+    },
+    "3655ba8c-d26f-8165-8dcb-dba1ba545502": {
+      "stage": "Initial Outreach",
+      "name": "Dave Miller"
+    },
+    "3655ba8c-d26f-81a4-b5bb-d5a3d402d9a0": {
+      "stage": "Conversation",
+      "name": "Nirmal Mann"
+    },
+    "3605ba8c-d26f-8109-a846-f2f3c5ea4216": {
+      "stage": "Offer",
+      "name": "Chad Faur"
+    },
+    "3585ba8c-d26f-81a0-a256-d07e3e46af5b": {
+      "stage": "Conversation",
+      "name": "Jeff Wilson"
+    },
+    "3515ba8c-d26f-818b-a3c9-dcec7b74c7ff": {
+      "stage": "Initial Outreach",
+      "name": "DUPLICATE - merged into Chris Sims (delete)"
+    },
+    "34a5ba8c-d26f-807a-a44c-f1ee1b53782e": {
+      "stage": null,
+      "name": "\ud83d\uddd1 ARCHIVED \u2014 blank row"
+    },
+    "34a5ba8c-d26f-8106-81d4-e2d392d1003e": {
+      "stage": "Conversation",
+      "name": "Rick Salerno"
+    },
+    "34a5ba8c-d26f-810f-9eed-cf414632481d": {
+      "stage": "Conversation",
+      "name": "Jamal Mack"
+    },
+    "34a5ba8c-d26f-8143-90c3-ca798ee4beae": {
+      "stage": "Interview",
+      "name": "Matt Chimel"
+    },
+    "34a5ba8c-d26f-817a-aeea-fd9e0581f8e9": {
+      "stage": "Interview",
+      "name": "Christopher Sims"
+    },
+    "3435ba8c-d26f-8198-b941-d087ce25e961": {
+      "stage": "Conversation",
+      "name": "Tanishia Bean"
+    },
+    "3435ba8c-d26f-81ad-ba2b-dcab595768a7": {
+      "stage": "Initial Outreach",
+      "name": "Anders Johnson"
+    },
+    "3425ba8c-d26f-812d-a46e-d5211b1e955e": {
+      "stage": "Initial Outreach",
+      "name": "Marc Brown"
+    },
+    "3425ba8c-d26f-81c2-91d3-f50331fdebad": {
+      "stage": "Hired",
+      "name": "Jacqueline Ramirez"
+    },
+    "3405ba8c-d26f-8116-97e2-fa3a4609665a": {
+      "stage": "Initial Outreach",
+      "name": "Nathan Reich"
+    },
+    "3405ba8c-d26f-8117-83b8-f77ad4d5efaa": {
+      "stage": "Initial Outreach",
+      "name": "Lynne Owenby"
+    },
+    "3405ba8c-d26f-8157-a8fd-f3c55032f070": {
+      "stage": "Initial Outreach",
+      "name": "Brian Emerson"
+    },
+    "3405ba8c-d26f-817b-a857-c150db660c07": {
+      "stage": "Initial Outreach",
+      "name": "Ellen Sinkey"
+    },
+    "3405ba8c-d26f-817c-8464-fa11b2be3fc0": {
+      "stage": "Initial Outreach",
+      "name": "Scott Miller"
+    },
+    "3405ba8c-d26f-8196-8f42-f08699d1a380": {
+      "stage": "Passed",
+      "name": "Jason Grubba"
+    },
+    "3405ba8c-d26f-8102-b0db-c290f0ed9c62": {
+      "stage": "Conversation",
+      "name": "Diana De Leon"
+    },
+    "3405ba8c-d26f-812f-9775-cb289a0a38b4": {
+      "stage": "Initial Outreach",
+      "name": "Mary Katsiroubas"
+    },
+    "3405ba8c-d26f-8134-97aa-deac8ba305e0": {
+      "stage": "Conversation",
+      "name": "Melissa Langdale"
+    },
+    "3405ba8c-d26f-813e-8368-d0c7ec0acdf6": {
+      "stage": "Conversation",
+      "name": "Nate Hanson"
+    },
+    "3405ba8c-d26f-8142-b4a1-f7026c6ee557": {
+      "stage": "Initial Outreach",
+      "name": "Joe Metzler"
+    },
+    "3405ba8c-d26f-8150-944b-cfc8c96b251e": {
+      "stage": "Initial Outreach",
+      "name": "Corey Luckow"
+    },
+    "3405ba8c-d26f-816f-b48d-d581e0ea184f": {
+      "stage": "Hired",
+      "name": "Toshe Metzger"
+    },
+    "3405ba8c-d26f-8173-a2cb-e5bd66b88a76": {
+      "stage": "Conversation",
+      "name": "Kelly Straka Brendy"
+    },
+    "3405ba8c-d26f-817a-9c83-d5b507e49b59": {
+      "stage": "Conversation",
+      "name": "Amanda Hassan"
+    },
+    "3405ba8c-d26f-817b-af53-fbb7b89226fc": {
+      "stage": "Conversation",
+      "name": "Brent Verleger"
+    },
+    "3405ba8c-d26f-8180-9492-fe34463db449": {
+      "stage": "Conversation",
+      "name": "Sarah Zaruba"
+    },
+    "3405ba8c-d26f-81a5-8b71-e30610089753": {
+      "stage": "Initial Outreach",
+      "name": "Bill Frierson"
+    },
+    "3405ba8c-d26f-81ab-a3db-cf8e0fc15be0": {
+      "stage": "Initial Outreach",
+      "name": "Jennifer Plath Dierkhising"
+    },
+    "3405ba8c-d26f-81bf-ac5f-fbfc6009c045": {
+      "stage": "Conversation",
+      "name": "James Revord"
+    },
+    "3405ba8c-d26f-81c5-b9b2-f44cd21c48dd": {
+      "stage": "Conversation",
+      "name": "Robert Klein"
+    },
+    "3405ba8c-d26f-81d8-bfd4-ec0b3cbdb907": {
+      "stage": "Conversation",
+      "name": "Jessi Brickner Sonson"
+    },
+    "3405ba8c-d26f-81e2-89a8-c59ef6fd9ec5": {
+      "stage": "Conversation",
+      "name": "Jacob Gregory"
+    },
+    "3405ba8c-d26f-81ef-a858-ef6effddf140": {
+      "stage": "Interview",
+      "name": "Bryan Kuhn"
+    },
+    "3405ba8c-d26f-81f4-8995-e0b180177243": {
+      "stage": "Passed",
+      "name": "Darren Yassen"
+    },
+    "3405ba8c-d26f-81ff-bf15-d89a3fb09eeb": {
+      "stage": "Initial Outreach",
+      "name": "Erin Leck"
+    },
+    "3405ba8c-d26f-8100-a49d-dc54b69f49a3": {
+      "stage": "Hired",
+      "name": "Greg Rios"
+    },
+    "3405ba8c-d26f-8112-98c8-fb1793c478c8": {
+      "stage": "Hired",
+      "name": "Quiyn Nguyen"
+    },
+    "3405ba8c-d26f-8128-94d8-e2d18dd99fc9": {
+      "stage": "Hired",
+      "name": "Dan Haglund"
+    },
+    "3405ba8c-d26f-814f-a1d8-ca8c2318c3a1": {
+      "stage": "Passed",
+      "name": "Joe Tursi"
+    },
+    "3405ba8c-d26f-815c-ab4c-c7ddb938f173": {
+      "stage": "Initial Outreach",
+      "name": "Norman Phillips"
+    },
+    "3405ba8c-d26f-817b-9943-ccb71ed93994": {
+      "stage": "Hired",
+      "name": "Anne Meikle"
+    },
+    "3405ba8c-d26f-8187-a5eb-e7686a5b310e": {
+      "stage": "Conversation",
+      "name": "Kelly Cordero"
+    },
+    "3405ba8c-d26f-81b0-a561-de865ebbeb54": {
+      "stage": "Initial Outreach",
+      "name": "Kyle Morrissey"
+    },
+    "3405ba8c-d26f-81b7-9c28-d34701785b17": {
+      "stage": "Initial Outreach",
+      "name": "Drew Messner"
+    },
+    "3405ba8c-d26f-81ba-8852-fafb76bf53fe": {
+      "stage": "Initial Outreach",
+      "name": "Peter Shrake"
+    },
+    "3405ba8c-d26f-81bd-8254-d7edda5643fc": {
+      "stage": "Initial Outreach",
+      "name": "Drew Peterson"
+    },
+    "3405ba8c-d26f-81c5-8851-c63f6e0581a8": {
+      "stage": "Initial Outreach",
+      "name": "Jacob Mueller"
+    },
+    "3405ba8c-d26f-81c7-a699-dad7a155bab8": {
+      "stage": "Initial Outreach",
+      "name": "Steve Brand"
+    },
+    "3405ba8c-d26f-81ea-aaef-d56c903628f6": {
+      "stage": "Initial Outreach",
+      "name": "Fong Fang"
+    },
+    "3405ba8c-d26f-81f3-8c59-e1270552d1c6": {
+      "stage": "Hired",
+      "name": "Tim Day"
+    },
+    "3405ba8c-d26f-81fe-b101-dcb668492cda": {
+      "stage": "Initial Outreach",
+      "name": "Christian Disney"
+    },
+    "3405ba8c-d26f-81ff-820e-deaf967b5485": {
+      "stage": "Passed",
+      "name": "Alyssa Csiki"
+    },
+    "3405ba8c-d26f-8101-b102-ede16ac4907b": {
+      "stage": "Initial Outreach",
+      "name": "Preston Schmidt"
+    },
+    "3405ba8c-d26f-810e-8c12-d8d532418335": {
+      "stage": "Conversation",
+      "name": "Monty Kinseth"
+    },
+    "3405ba8c-d26f-8112-8ec1-e753e2d2891a": {
+      "stage": "Initial Outreach",
+      "name": "Ryan Petersen"
+    },
+    "3405ba8c-d26f-8117-b2e6-f3d919a56b73": {
+      "stage": "Initial Outreach",
+      "name": "Robert Clausen"
+    },
+    "3405ba8c-d26f-8139-9154-d791a4e9ac06": {
+      "stage": "Passed",
+      "name": "Belinda Price"
+    },
+    "3405ba8c-d26f-8185-9149-d5f8b1db91be": {
+      "stage": "Passed",
+      "name": "Michael Benson"
+    },
+    "3405ba8c-d26f-818d-9cc0-cf68a3cd3fdb": {
+      "stage": "Passed",
+      "name": "Brett Toyne"
+    },
+    "3405ba8c-d26f-8199-8880-d6dba0bd6ba7": {
+      "stage": "Interview",
+      "name": "Jack Minnig"
+    },
+    "3405ba8c-d26f-81a6-9ede-d839df05db47": {
+      "stage": "Conversation",
+      "name": "Peter Boyle"
+    },
+    "3405ba8c-d26f-81b4-aee4-fedadc500926": {
+      "stage": "Passed",
+      "name": "Kyle Spitzer"
+    },
+    "3405ba8c-d26f-81c0-a3b2-fa36a6fd91fa": {
+      "stage": "Interview",
+      "name": "Lisa Sozio"
+    },
+    "3405ba8c-d26f-81d4-8294-e97eece49deb": {
+      "stage": "Interview",
+      "name": "Nancy Gehrke"
+    },
+    "3405ba8c-d26f-81da-9888-c40e6b41b177": {
+      "stage": "Initial Outreach",
+      "name": "Betsy Lowther"
+    },
+    "3405ba8c-d26f-81dc-ba4f-dcb5d5f18dbe": {
+      "stage": "Interview",
+      "name": "Jorge Sandoval"
+    },
+    "3405ba8c-d26f-81de-9ba3-eac82a16f2f0": {
+      "stage": "Conversation",
+      "name": "Tabatha De Leon"
+    },
+    "3405ba8c-d26f-81ed-82ac-e188ccc7b550": {
+      "stage": "Interview",
+      "name": "Morgan Sawyer"
+    },
+    "3405ba8c-d26f-81f3-9d8e-d44f2a6baf87": {
+      "stage": "Conversation",
+      "name": "Marlen Maddux"
+    },
+    "3405ba8c-d26f-81f7-bbfb-e469ca46fc7e": {
+      "stage": "Passed",
+      "name": "Brady Mergenthal"
+    },
+    "3405ba8c-d26f-8125-86aa-c6aee8be988a": {
+      "stage": "Initial Outreach",
+      "name": "Eileen Theisen"
+    },
+    "3405ba8c-d26f-8126-a4ce-c7558bd0e739": {
+      "stage": "Initial Outreach",
+      "name": "Jeff Scherber"
+    },
+    "3405ba8c-d26f-812c-9e79-c4d9a67e4b5c": {
+      "stage": "Offer",
+      "name": "Jeremy Thompson"
+    },
+    "3405ba8c-d26f-8151-a916-e01b6504c99c": {
+      "stage": "Initial Outreach",
+      "name": "Alissa Csiki"
+    },
+    "3405ba8c-d26f-817e-899a-eead506f87f5": {
+      "stage": "Initial Outreach",
+      "name": "Jeffrey Winship"
+    },
+    "3405ba8c-d26f-8187-b080-e0c46107ca9a": {
+      "stage": "Initial Outreach",
+      "name": "Raymond Reinhardt"
+    },
+    "3405ba8c-d26f-81a5-a4e1-d11035c9e243": {
+      "stage": "Initial Outreach",
+      "name": "Jeffrey Stephens"
+    },
+    "3405ba8c-d26f-81a6-b9f3-de3590c17e2a": {
+      "stage": "Initial Outreach",
+      "name": "Elton Twitchell"
+    },
+    "3405ba8c-d26f-81b7-b1a3-c2a8cc71ef53": {
+      "stage": "Initial Outreach",
+      "name": "Brian St. Mary"
+    },
+    "3405ba8c-d26f-81be-a99d-cd0d9d092d2d": {
+      "stage": "Initial Outreach",
+      "name": "John Skoglund"
+    },
+    "3405ba8c-d26f-81c4-b135-fb71a68fd7ea": {
+      "stage": "Initial Outreach",
+      "name": "Marla Butler"
+    },
+    "3405ba8c-d26f-81c6-bcbf-ec2fe7f54fb6": {
+      "stage": "Conversation",
+      "name": "Amy Statz"
+    },
+    "3405ba8c-d26f-81d8-85f7-e78e19ed11ea": {
+      "stage": "Initial Outreach",
+      "name": "Michael Sunnarborg"
+    },
+    "3405ba8c-d26f-81da-9005-c2d14ef5909b": {
+      "stage": "Initial Outreach",
+      "name": "J. Alfredo Robles"
+    },
+    "3405ba8c-d26f-81e0-a3b2-cb566e9408f9": {
+      "stage": "Conversation",
+      "name": "John Richter"
+    },
+    "3405ba8c-d26f-81ea-8687-f2cfb61f42f3": {
+      "stage": "Hired",
+      "name": "Mark Kurth"
+    },
+    "3405ba8c-d26f-81ea-8b59-d51bed100287": {
+      "stage": "Initial Outreach",
+      "name": "Chris Leerar"
+    },
+    "3405ba8c-d26f-81f0-a2be-d3c1434b222c": {
+      "stage": "Passed",
+      "name": "Robert Mangiaracina"
+    },
+    "3405ba8c-d26f-812a-a8b0-c5e2e1a36e31": {
+      "stage": "Initial Outreach",
+      "name": "William Frierson III"
+    },
+    "3405ba8c-d26f-812d-9217-fc01e6aee5ef": {
+      "stage": "Initial Outreach",
+      "name": "Tony Burns"
+    },
+    "3405ba8c-d26f-8147-aef9-dd77be30b8e2": {
+      "stage": "Initial Outreach",
+      "name": "Corri Klebaum"
+    },
+    "3405ba8c-d26f-8153-8a0a-e5cfc299b620": {
+      "stage": "Hired",
+      "name": "Tim Steinbrecher"
+    },
+    "3405ba8c-d26f-8184-9ac5-e963525f61e7": {
+      "stage": "Initial Outreach",
+      "name": "Rich Postlethwait"
+    },
+    "3405ba8c-d26f-8189-a487-f157c53e6ed0": {
+      "stage": "Initial Outreach",
+      "name": "Steven Dickie"
+    },
+    "3405ba8c-d26f-8198-86ad-f925a51f9e08": {
+      "stage": "Initial Outreach",
+      "name": "Cole Thimsen"
+    },
+    "3405ba8c-d26f-8199-9567-ee56fabb64b6": {
+      "stage": "Initial Outreach",
+      "name": "Chris Baird"
+    },
+    "3405ba8c-d26f-819e-a589-cd240a8bb3fe": {
+      "stage": "Conversation",
+      "name": "John Hudson"
+    },
+    "3405ba8c-d26f-81b1-bbe5-c7dd1f39174c": {
+      "stage": "Initial Outreach",
+      "name": "Dana Lucas"
+    },
+    "3405ba8c-d26f-81b7-b55f-d282f8507a89": {
+      "stage": "Initial Outreach",
+      "name": "Angela Bouse"
+    },
+    "3405ba8c-d26f-81ba-a21f-e31f48fd8e56": {
+      "stage": "Initial Outreach",
+      "name": "Paul Melby"
+    },
+    "3405ba8c-d26f-81bb-8bc7-c828fd531208": {
+      "stage": "Initial Outreach",
+      "name": "Kevin Lawson"
+    },
+    "3405ba8c-d26f-81d1-a254-e6ebe5e522b2": {
+      "stage": "Initial Outreach",
+      "name": "Lynne Violett"
+    },
+    "3405ba8c-d26f-81df-beeb-cac59c7bfab0": {
+      "stage": "Initial Outreach",
+      "name": "Ralph McCarthy"
+    },
+    "3405ba8c-d26f-81e0-ba97-f695cccbeb03": {
+      "stage": "Initial Outreach",
+      "name": "Chris Marr"
+    },
+    "3405ba8c-d26f-81e1-a8c5-d7ca593d2fc8": {
+      "stage": "Conversation",
+      "name": "Kevin Nachreiner"
+    },
+    "3405ba8c-d26f-81f7-91b6-f528b46adfc4": {
+      "stage": "Initial Outreach",
+      "name": "Eric Roering"
+    },
+    "3405ba8c-d26f-810c-8a44-de556120b713": {
+      "stage": "Initial Outreach",
+      "name": "David Craig"
+    },
+    "3405ba8c-d26f-810d-95fb-c066818b3531": {
+      "stage": "Initial Outreach",
+      "name": "Titus Mhiripiri"
+    },
+    "3405ba8c-d26f-810e-9b26-e3f9c5e5d404": {
+      "stage": "Initial Outreach",
+      "name": "Justin Haley"
+    },
+    "3405ba8c-d26f-8113-aa38-edffd31f52eb": {
+      "stage": "Initial Outreach",
+      "name": "Jaime Wambach"
+    },
+    "3405ba8c-d26f-8114-8a79-c5675374be04": {
+      "stage": "Initial Outreach",
+      "name": "John Ludwig"
+    },
+    "3405ba8c-d26f-8116-9165-cb91ca58b7c6": {
+      "stage": "Initial Outreach",
+      "name": "Adam Long"
+    },
+    "3405ba8c-d26f-8119-91cc-cc115496fcac": {
+      "stage": "Initial Outreach",
+      "name": "Shelley Young"
+    },
+    "3405ba8c-d26f-812a-8081-e8f56d2d80ca": {
+      "stage": "Initial Outreach",
+      "name": "Jessica Duren"
+    },
+    "3405ba8c-d26f-812e-aa35-ec603f381986": {
+      "stage": "Initial Outreach",
+      "name": "Steve Rice"
+    },
+    "3405ba8c-d26f-8130-b41e-fa7d6959bb83": {
+      "stage": "Initial Outreach",
+      "name": "Jeff Engum"
+    },
+    "3405ba8c-d26f-813a-943a-c28e2c71cfd7": {
+      "stage": "Initial Outreach",
+      "name": "Jenie Jones"
+    },
+    "3405ba8c-d26f-813c-86ad-d20795004d6e": {
+      "stage": "Initial Outreach",
+      "name": "Joe Pannkuk"
+    },
+    "3405ba8c-d26f-8154-bad8-f5d02eaf79de": {
+      "stage": "Initial Outreach",
+      "name": "Kochul Thao"
+    },
+    "3405ba8c-d26f-8159-80ca-eb97a95170df": {
+      "stage": "Initial Outreach",
+      "name": "Amanda Campeau"
+    },
+    "3405ba8c-d26f-815a-8507-e391e92d9a2d": {
+      "stage": "Initial Outreach",
+      "name": "Enda Moore"
+    },
+    "3405ba8c-d26f-815e-a5d8-f069cdd93ca3": {
+      "stage": "Initial Outreach",
+      "name": "Mark Svihel"
+    },
+    "3405ba8c-d26f-818f-9f05-fa404712fc3f": {
+      "stage": "Initial Outreach",
+      "name": "Joni Pruitt"
+    },
+    "3405ba8c-d26f-81b7-affd-c78d28d50cce": {
+      "stage": "Offer",
+      "name": "Tim Peterson"
+    }
+  }
+}

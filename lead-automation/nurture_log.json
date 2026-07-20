@@ -1,0 +1,1460 @@
+[
+  {
+    "timestamp": "2026-04-30T14:06:20.166909+00:00",
+    "contact_name": "Jacob Wheeler",
+    "contact_phone": "5074026474",
+    "track": "cold",
+    "step": "welcome",
+    "status": 409,
+    "response": "{\"status\":\"CONFLICT\",\"errorCode\":\"LOCAL_OPT_OUT\",\"code\":\"LOCAL_OPT_OUT\",\"message\":\"Phone number has done local unsubscribe\",\"errorDetails\":[],\"path\":\"/v2\",\"timestamp\":\"2026-04-30T14:06:20.155338744Z\"}"
+  },
+  {
+    "timestamp": "2026-04-30T15:49:13.929250+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f379f9b2d34c17218c23ba\",\"credits\":1006}"
+  },
+  {
+    "timestamp": "2026-05-01T15:31:25.273945+00:00",
+    "contact_name": "Haleigh Benson",
+    "contact_phone": "6087972399",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f4c74d1e302364c604369b\",\"credits\":904}"
+  },
+  {
+    "timestamp": "2026-05-01T15:35:27.079186+00:00",
+    "contact_name": "Haleigh Benson",
+    "contact_phone": "6087972399",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69f4c83ee889dd2eb178ef89\",\"credits\":902}"
+  },
+  {
+    "timestamp": "2026-05-01T15:50:33.627561+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69f4cbc9e889dd2eb179bb50\",\"credits\":899}"
+  },
+  {
+    "timestamp": "2026-05-02T05:08:48.209715+00:00",
+    "contact_name": "Cheyenne Ironheart",
+    "contact_phone": "6056465836",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f586df1e302364c6661913\",\"credits\":892}"
+  },
+  {
+    "timestamp": "2026-05-02T05:12:49.990717+00:00",
+    "contact_name": "Cheyenne Ironheart",
+    "contact_phone": "6056465836",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69f587d1b2d34c17211e28a7\",\"credits\":890}"
+  },
+  {
+    "timestamp": "2026-05-04T16:12:06.895706+00:00",
+    "contact_name": "Haleigh Benson",
+    "contact_phone": "6087972399",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69f8c5561e302364c6fba184\",\"credits\":887}"
+  },
+  {
+    "timestamp": "2026-05-04T16:12:07.914929+00:00",
+    "contact_name": "Cheyenne Ironheart",
+    "contact_phone": "6056465836",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69f8c5572c7c824da9651159\",\"credits\":887}"
+  },
+  {
+    "timestamp": "2026-05-04T16:18:20.608929+00:00",
+    "contact_name": "Katey Witt",
+    "contact_phone": "5073278659",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f8c6ccb2d34c17219c1489\",\"credits\":877}"
+  },
+  {
+    "timestamp": "2026-05-04T16:22:25.580169+00:00",
+    "contact_name": "Katey Witt",
+    "contact_phone": "5073278659",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69f8c7c1e889dd2eb150ae4d\",\"credits\":875}"
+  },
+  {
+    "timestamp": "2026-05-04T17:19:57.303484+00:00",
+    "contact_name": "david miller",
+    "contact_phone": "9729987887",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f8d53de889dd2eb1646d66\",\"credits\":863}"
+  },
+  {
+    "timestamp": "2026-05-04T17:23:59.282384+00:00",
+    "contact_name": "david miller",
+    "contact_phone": "9729987887",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69f8d62ee889dd2eb164daff\",\"credits\":861}"
+  },
+  {
+    "timestamp": "2026-05-05T05:46:34.604038+00:00",
+    "contact_name": "Emma Hanson",
+    "contact_phone": "5073818420",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69f9843ae889dd2eb18b8f6b\",\"credits\":848}"
+  },
+  {
+    "timestamp": "2026-05-05T05:50:36.744555+00:00",
+    "contact_name": "Emma Hanson",
+    "contact_phone": "5073818420",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69f9852ce889dd2eb18babbb\",\"credits\":846}"
+  },
+  {
+    "timestamp": "2026-05-05T15:50:23.694040+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"69fa11bf2c7c824da9c7f61a\",\"credits\":842}"
+  },
+  {
+    "timestamp": "2026-05-05T16:17:36.901768+00:00",
+    "contact_name": "Katey Witt",
+    "contact_phone": "5073278659",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69fa181fe889dd2eb1a9ee88\",\"credits\":839}"
+  },
+  {
+    "timestamp": "2026-05-05T18:37:49.905751+00:00",
+    "contact_name": "david miller",
+    "contact_phone": "9729987887",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69fa38fd1e302364c6907925\",\"credits\":836}"
+  },
+  {
+    "timestamp": "2026-05-06T05:45:50.900351+00:00",
+    "contact_name": "Emma Hanson",
+    "contact_phone": "5073818420",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69fad58e2c7c824da90f0610\",\"credits\":827}"
+  },
+  {
+    "timestamp": "2026-05-06T14:19:51.303399+00:00",
+    "contact_name": "Bee Her",
+    "contact_phone": "6519555554",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69fb4e07910f6c5c4c1311d2\",\"credits\":822}"
+  },
+  {
+    "timestamp": "2026-05-06T14:23:58.626321+00:00",
+    "contact_name": "Bee Her",
+    "contact_phone": "6519555554",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69fb4efe5708974658e51fba\",\"credits\":821}"
+  },
+  {
+    "timestamp": "2026-05-07T14:18:07.183916+00:00",
+    "contact_name": "Bee Her",
+    "contact_phone": "6519555554",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69fc9f1eae7d8a2cd066bbf4\",\"credits\":818}"
+  },
+  {
+    "timestamp": "2026-05-07T15:11:26.527209+00:00",
+    "contact_name": "Michael Dumonceaux",
+    "contact_phone": "9522100920",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69fcab9e0c4c641bf8d2a167\",\"credits\":810}"
+  },
+  {
+    "timestamp": "2026-05-08T15:29:44.931376+00:00",
+    "contact_name": "Haleigh Benson",
+    "contact_phone": "6087972399",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"69fe01684a63284f3ebdde89\",\"credits\":807}"
+  },
+  {
+    "timestamp": "2026-05-08T17:30:50.180151+00:00",
+    "contact_name": "Madelyn Krueger",
+    "contact_phone": "7634385274",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69fe1dcacf27ad47ad4127a5\",\"credits\":803}"
+  },
+  {
+    "timestamp": "2026-05-08T17:34:56.824735+00:00",
+    "contact_name": "Madelyn Krueger",
+    "contact_phone": "7634385274",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"69fe1ec04a63284f3eec6192\",\"credits\":801}"
+  },
+  {
+    "timestamp": "2026-05-09T05:07:39.405208+00:00",
+    "contact_name": "Cheyenne Ironheart",
+    "contact_phone": "6056465836",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"69fec11bcf27ad47ad6b9bbe\",\"credits\":798}"
+  },
+  {
+    "timestamp": "2026-05-09T10:19:21.559841+00:00",
+    "contact_name": "Michael Grijalva",
+    "contact_phone": "5077225659",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"69ff0a294a63284f3e23d5b6\",\"credits\":791}"
+  },
+  {
+    "timestamp": "2026-05-09T17:29:39.870789+00:00",
+    "contact_name": "Madelyn Krueger",
+    "contact_phone": "7634385274",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"69ff6f03b205ce1f909edefc\",\"credits\":787}"
+  },
+  {
+    "timestamp": "2026-05-10T15:36:57.904283+00:00",
+    "contact_name": "Troy Rosengren",
+    "contact_phone": "2182325460",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a00a6194a63284f3e63615c\",\"credits\":774}"
+  },
+  {
+    "timestamp": "2026-05-10T15:40:03.382336+00:00",
+    "contact_name": "Troy Rosengren",
+    "contact_phone": "2182325460",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a00a6d34a63284f3e6379e4\",\"credits\":773}"
+  },
+  {
+    "timestamp": "2026-05-10T15:51:10.931648+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "warm",
+    "step": "day10_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a00a96ecf27ad47adb1833c\",\"credits\":770}"
+  },
+  {
+    "timestamp": "2026-05-11T06:04:32.653040+00:00",
+    "contact_name": "Franklin Durgin-Hanson",
+    "contact_phone": "5075359720",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a017170b205ce1f90ea6731\",\"credits\":766}"
+  },
+  {
+    "timestamp": "2026-05-11T06:08:40.854029+00:00",
+    "contact_name": "Franklin Durgin-Hanson",
+    "contact_phone": "5075359720",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0172684a63284f3e7fdf24\",\"credits\":765}"
+  },
+  {
+    "timestamp": "2026-05-11T15:35:38.125060+00:00",
+    "contact_name": "Troy Rosengren",
+    "contact_phone": "2182325460",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a01f749b205ce1f9001077d\",\"credits\":762}"
+  },
+  {
+    "timestamp": "2026-05-11T16:18:11.903938+00:00",
+    "contact_name": "Katey Witt",
+    "contact_phone": "5073278659",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0201424a63284f3e9dd01e\",\"credits\":759}"
+  },
+  {
+    "timestamp": "2026-05-12T05:45:04.962125+00:00",
+    "contact_name": "Emma Hanson",
+    "contact_phone": "5073818420",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a02be607a610751dd8c5e32\",\"credits\":757}"
+  },
+  {
+    "timestamp": "2026-05-12T06:04:29.172149+00:00",
+    "contact_name": "Franklin Durgin-Hanson",
+    "contact_phone": "5075359720",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a02c2eccf27ad47ad28aa28\",\"credits\":756}"
+  },
+  {
+    "timestamp": "2026-05-12T15:20:25.855290+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0345393bdeca65fc75a635\",\"credits\":750}"
+  },
+  {
+    "timestamp": "2026-05-12T15:23:38.846141+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0345facb1b1a64e6d333e8\",\"credits\":747}"
+  },
+  {
+    "timestamp": "2026-05-13T16:32:56.839492+00:00",
+    "contact_name": "Bee Her",
+    "contact_phone": "6519555554",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a04a7b1fe2154aff089eb8d\",\"credits\":742}"
+  },
+  {
+    "timestamp": "2026-05-13T16:33:02.401903+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a04a7bd849474e1f9ce44bc\",\"credits\":741}"
+  },
+  {
+    "timestamp": "2026-05-13T16:40:23.819376+00:00",
+    "contact_name": "Shem Makori",
+    "contact_phone": "7633290253",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a04a977a6cb3b7494bb18a7\",\"credits\":735}"
+  },
+  {
+    "timestamp": "2026-05-13T16:44:34.237860+00:00",
+    "contact_name": "Shem Makori",
+    "contact_phone": "7633290253",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a04aa71849474e1f9d26728\",\"credits\":733}"
+  },
+  {
+    "timestamp": "2026-05-18T14:26:36.944570+00:00",
+    "contact_name": "Madelyn Krueger",
+    "contact_phone": "7634385274",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b219c55b7b7f94ca3214c\",\"credits\":730}"
+  },
+  {
+    "timestamp": "2026-05-18T14:26:39.791098+00:00",
+    "contact_name": "Troy Rosengren",
+    "contact_phone": "2182325460",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b219fa6cb3b74941aa895\",\"credits\":728}"
+  },
+  {
+    "timestamp": "2026-05-18T14:26:43.417785+00:00",
+    "contact_name": "Franklin Durgin-Hanson",
+    "contact_phone": "5075359720",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b21a3fe2154aff0f55ba7\",\"credits\":727}"
+  },
+  {
+    "timestamp": "2026-05-18T14:26:48.480511+00:00",
+    "contact_name": "Shem Makori",
+    "contact_phone": "7633290253",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0b21a755b7b7f94ca3238e\",\"credits\":726}"
+  },
+  {
+    "timestamp": "2026-05-18T14:34:52.223158+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0b238ca6cb3b74941affb4\",\"credits\":718}"
+  },
+  {
+    "timestamp": "2026-05-18T14:38:56.093806+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b2480a6cb3b74941b22c7\",\"credits\":717}"
+  },
+  {
+    "timestamp": "2026-05-18T14:39:57.052998+00:00",
+    "contact_name": "Tyler Searle",
+    "contact_phone": "3208157802",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0b24bdfe2154aff0f5d19c\",\"credits\":713}"
+  },
+  {
+    "timestamp": "2026-05-18T14:44:01.324093+00:00",
+    "contact_name": "Tyler Searle",
+    "contact_phone": "3208157802",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b25b1fe2154aff0f5f59a\",\"credits\":711}"
+  },
+  {
+    "timestamp": "2026-05-18T14:45:02.314660+00:00",
+    "contact_name": "Brittany Kubricky",
+    "contact_phone": "6124123008",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0b25ee849474e1f93ffd90\",\"credits\":707}"
+  },
+  {
+    "timestamp": "2026-05-18T14:49:07.555778+00:00",
+    "contact_name": "Brittany Kubricky",
+    "contact_phone": "6124123008",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b26e3a6cb3b74941b7ac3\",\"credits\":703}"
+  },
+  {
+    "timestamp": "2026-05-18T14:50:08.367748+00:00",
+    "contact_name": "Jacob Maddaus",
+    "contact_phone": "6123236643",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0b2720fe2154aff0f62696\",\"credits\":699}"
+  },
+  {
+    "timestamp": "2026-05-18T14:54:13.116544+00:00",
+    "contact_name": "Jacob Maddaus",
+    "contact_phone": "6123236643",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b2814849474e1f9404a7d\",\"credits\":695}"
+  },
+  {
+    "timestamp": "2026-05-18T14:55:13.707934+00:00",
+    "contact_name": "Brevon Jackson",
+    "contact_phone": "2185426578",
+    "track": "cold",
+    "step": "welcome",
+    "status": 409,
+    "response": "{\"status\":\"CONFLICT\",\"errorCode\":\"LOCAL_OPT_OUT\",\"code\":\"LOCAL_OPT_OUT\",\"message\":\"Phone number has done local unsubscribe\",\"errorDetails\":[],\"path\":\"/v2\",\"timestamp\":\"2026-05-18T14:55:13.701749929Z\"}"
+  },
+  {
+    "timestamp": "2026-05-18T14:59:19.559396+00:00",
+    "contact_name": "Brevon Jackson",
+    "contact_phone": "2185426578",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0b2947fe2154aff0f6694c\",\"credits\":689}"
+  },
+  {
+    "timestamp": "2026-05-19T12:59:26.189041+00:00",
+    "contact_name": "Briley Highfield",
+    "contact_phone": "5072131046",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0c5eae849474e1f991dfe8\",\"credits\":683}"
+  },
+  {
+    "timestamp": "2026-05-19T13:03:34.849236+00:00",
+    "contact_name": "Briley Highfield",
+    "contact_phone": "5072131046",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0c5fa655b7b7f94cf24849\",\"credits\":682}"
+  },
+  {
+    "timestamp": "2026-05-19T14:33:27.707243+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0c74b7a6cb3b7494729330\",\"credits\":679}"
+  },
+  {
+    "timestamp": "2026-05-19T14:38:35.254721+00:00",
+    "contact_name": "Tyler Searle",
+    "contact_phone": "3208157802",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0c75ebfe2154aff0442b0c\",\"credits\":678}"
+  },
+  {
+    "timestamp": "2026-05-19T14:43:42.428940+00:00",
+    "contact_name": "Brittany Kubricky",
+    "contact_phone": "6124123008",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0c771ea6cb3b7494731cc7\",\"credits\":675}"
+  },
+  {
+    "timestamp": "2026-05-19T14:48:51.663771+00:00",
+    "contact_name": "Jacob Maddaus",
+    "contact_phone": "6123236643",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0c7853849474e1f996830c\",\"credits\":672}"
+  },
+  {
+    "timestamp": "2026-05-19T14:53:59.100709+00:00",
+    "contact_name": "Brevon Jackson",
+    "contact_phone": "2185426578",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 409,
+    "response": "{\"status\":\"CONFLICT\",\"errorCode\":\"LOCAL_OPT_OUT\",\"code\":\"LOCAL_OPT_OUT\",\"message\":\"Phone number has done local unsubscribe\",\"errorDetails\":[],\"path\":\"/v2\",\"timestamp\":\"2026-05-19T14:53:59.090486435Z\"}"
+  },
+  {
+    "timestamp": "2026-05-19T15:19:18.907771+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0c7f76a6cb3b749475730f\",\"credits\":669}"
+  },
+  {
+    "timestamp": "2026-05-20T15:31:24.210400+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0dd3cc95ab4c0abe4bea4c\",\"credits\":666}"
+  },
+  {
+    "timestamp": "2026-05-20T15:31:25.363093+00:00",
+    "contact_name": "Briley Highfield",
+    "contact_phone": "5072131046",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0dd3cd95ab4c0abe4bead2\",\"credits\":663}"
+  },
+  {
+    "timestamp": "2026-05-20T16:16:20.812698+00:00",
+    "contact_name": "Augusta Maloney",
+    "contact_phone": "3204361878",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0dde543141786637e6b52e\",\"credits\":657}"
+  },
+  {
+    "timestamp": "2026-05-20T16:41:37.597119+00:00",
+    "contact_name": "Shem Makori",
+    "contact_phone": "7633290253",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a0de44195ab4c0abe634918\",\"credits\":650}"
+  },
+  {
+    "timestamp": "2026-05-21T06:12:56.648128+00:00",
+    "contact_name": "Brandon Turcotte",
+    "contact_phone": "5077579110",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0ea268aa1b7b13b0bfb7a2\",\"credits\":643}"
+  },
+  {
+    "timestamp": "2026-05-21T06:17:03.626646+00:00",
+    "contact_name": "Brandon Turcotte",
+    "contact_phone": "5077579110",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0ea35f314178663730f3af\",\"credits\":642}"
+  },
+  {
+    "timestamp": "2026-05-21T15:50:50.421751+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "warm",
+    "step": "day21_market",
+    "status": 201,
+    "response": "{\"id\":\"6a0f29da94c90ad5aa94758a\",\"credits\":639}"
+  },
+  {
+    "timestamp": "2026-05-22T05:33:44.201382+00:00",
+    "contact_name": "Sharron Becker",
+    "contact_phone": "3204963292",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a0feab8bb64a1fc36fd3edb\",\"credits\":634}"
+  },
+  {
+    "timestamp": "2026-05-22T05:37:49.789517+00:00",
+    "contact_name": "Sharron Becker",
+    "contact_phone": "3204963292",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a0febad7494f472983c1321\",\"credits\":632}"
+  },
+  {
+    "timestamp": "2026-05-22T06:12:15.594159+00:00",
+    "contact_name": "Brandon Turcotte",
+    "contact_phone": "5077579110",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a0ff3be7494f472983cf17c\",\"credits\":629}"
+  },
+  {
+    "timestamp": "2026-05-23T21:37:36.929395+00:00",
+    "contact_name": "Sharron Becker",
+    "contact_phone": "3204963292",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a121e207494f47298bd2256\",\"credits\":626}"
+  },
+  {
+    "timestamp": "2026-05-23T21:44:39.857451+00:00",
+    "contact_name": "Alexander Johnson",
+    "contact_phone": "6302548802",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a121fc7bb64a1fc368ada1b\",\"credits\":620}"
+  },
+  {
+    "timestamp": "2026-05-23T21:48:46.758180+00:00",
+    "contact_name": "Alexander Johnson",
+    "contact_phone": "6302548802",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1220be94c90ad5aa3cec88\",\"credits\":619}"
+  },
+  {
+    "timestamp": "2026-05-24T15:18:56.505312+00:00",
+    "contact_name": "Erin Foley",
+    "contact_phone": "7013676751",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1316e094c90ad5aa5c36f1\",\"credits\":613}"
+  },
+  {
+    "timestamp": "2026-05-24T15:20:59.845893+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"6a13175b7494f47298ddf679\",\"credits\":612}"
+  },
+  {
+    "timestamp": "2026-05-24T15:23:03.062509+00:00",
+    "contact_name": "Erin Foley",
+    "contact_phone": "7013676751",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1317d67494f47298de05be\",\"credits\":609}"
+  },
+  {
+    "timestamp": "2026-05-24T21:43:13.461119+00:00",
+    "contact_name": "Alexander Johnson",
+    "contact_phone": "6302548802",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1370f17494f47298ec40ff\",\"credits\":606}"
+  },
+  {
+    "timestamp": "2026-05-25T14:33:17.450800+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a145dad7494f472980b2771\",\"credits\":603}"
+  },
+  {
+    "timestamp": "2026-05-25T14:38:22.236590+00:00",
+    "contact_name": "Tyler Searle",
+    "contact_phone": "3208157802",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a145edebb64a1fc36dd34b8\",\"credits\":599}"
+  },
+  {
+    "timestamp": "2026-05-25T14:43:27.168965+00:00",
+    "contact_name": "Brittany Kubricky",
+    "contact_phone": "6124123008",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a14600f7494f472980b8b0f\",\"credits\":598}"
+  },
+  {
+    "timestamp": "2026-05-25T14:48:32.358205+00:00",
+    "contact_name": "Jacob Maddaus",
+    "contact_phone": "6123236643",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a146140bb64a1fc36dd9f27\",\"credits\":597}"
+  },
+  {
+    "timestamp": "2026-05-25T14:53:37.554906+00:00",
+    "contact_name": "Brevon Jackson",
+    "contact_phone": "2185426578",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 409,
+    "response": "{\"status\":\"CONFLICT\",\"errorCode\":\"LOCAL_OPT_OUT\",\"code\":\"LOCAL_OPT_OUT\",\"message\":\"Phone number has done local unsubscribe\",\"errorDetails\":[],\"path\":\"/v2\",\"timestamp\":\"2026-05-25T14:53:37.552196965Z\"}"
+  },
+  {
+    "timestamp": "2026-05-25T15:18:51.793840+00:00",
+    "contact_name": "Erin Foley",
+    "contact_phone": "7013676751",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a14685b065f7be3f165e76e\",\"credits\":596}"
+  },
+  {
+    "timestamp": "2026-05-25T19:18:22.589016+00:00",
+    "contact_name": "Dianne Lashinski",
+    "contact_phone": "3202328243",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a14a07eecffd0d56a7dbc8e\",\"credits\":590}"
+  },
+  {
+    "timestamp": "2026-05-25T19:22:29.371351+00:00",
+    "contact_name": "Dianne Lashinski",
+    "contact_phone": "3202328243",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a14a175efce6bb4db7dbb5a\",\"credits\":589}"
+  },
+  {
+    "timestamp": "2026-05-27T20:19:02.569258+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1751b5092e614218c2808e\",\"credits\":1556}"
+  },
+  {
+    "timestamp": "2026-05-27T20:19:20.547011+00:00",
+    "contact_name": "Briley Highfield",
+    "contact_phone": "5072131046",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a1751c8092e614218c284d2\",\"credits\":1555}"
+  },
+  {
+    "timestamp": "2026-05-27T20:19:26.521038+00:00",
+    "contact_name": "Dianne Lashinski",
+    "contact_phone": "3202328243",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1751cdfad90a9ab929d483\",\"credits\":1553}"
+  },
+  {
+    "timestamp": "2026-05-27T20:27:33.385509+00:00",
+    "contact_name": "Beniyam Asfeha",
+    "contact_phone": "6122273749",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1753b575735d5c990a163b\",\"credits\":1545}"
+  },
+  {
+    "timestamp": "2026-05-27T20:31:38.099916+00:00",
+    "contact_name": "Beniyam Asfeha",
+    "contact_phone": "6122273749",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1754aa42b85cae97ac823a\",\"credits\":1542}"
+  },
+  {
+    "timestamp": "2026-05-27T20:32:38.854025+00:00",
+    "contact_name": "Hunter Harren",
+    "contact_phone": "2182326621",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1754e6fad90a9ab92a8e74\",\"credits\":1540}"
+  },
+  {
+    "timestamp": "2026-05-27T20:36:47.035147+00:00",
+    "contact_name": "Hunter Harren",
+    "contact_phone": "2182326621",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1755defad90a9ab92ab8c6\",\"credits\":1538}"
+  },
+  {
+    "timestamp": "2026-05-28T06:11:52.083750+00:00",
+    "contact_name": "Brandon Turcotte",
+    "contact_phone": "5077579110",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a17dca742b85cae97c26633\",\"credits\":1535}"
+  },
+  {
+    "timestamp": "2026-05-28T12:19:49.028046+00:00",
+    "contact_name": "Emily Stadler",
+    "contact_phone": "2184430037",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1832e4af17023203e78c88\",\"credits\":1527}"
+  },
+  {
+    "timestamp": "2026-05-28T12:23:56.449739+00:00",
+    "contact_name": "Emily Stadler",
+    "contact_phone": "2184430037",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1833dcaf17023203e7b0a3\",\"credits\":1525}"
+  },
+  {
+    "timestamp": "2026-05-28T20:26:35.872374+00:00",
+    "contact_name": "Beniyam Asfeha",
+    "contact_phone": "6122273749",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a18a4fbd9c2733bad73fb86\",\"credits\":1522}"
+  },
+  {
+    "timestamp": "2026-05-28T20:31:42.991094+00:00",
+    "contact_name": "Hunter Harren",
+    "contact_phone": "2182326621",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a18a62eaf170232031d2ba9\",\"credits\":1519}"
+  },
+  {
+    "timestamp": "2026-05-29T05:33:01.843528+00:00",
+    "contact_name": "Sharron Becker",
+    "contact_phone": "3204963292",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a19250d42b561969cac3262\",\"credits\":1515}"
+  },
+  {
+    "timestamp": "2026-05-29T14:45:22.756409+00:00",
+    "contact_name": "Emily Stadler",
+    "contact_phone": "2184430037",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a19a682d9c2733bad9e07e3\",\"credits\":1514}"
+  },
+  {
+    "timestamp": "2026-05-29T14:53:26.654656+00:00",
+    "contact_name": "Angela Salzwedel",
+    "contact_phone": "3204798484",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a19a866d9c2733bad9e80ce\",\"credits\":1507}"
+  },
+  {
+    "timestamp": "2026-05-29T14:57:34.952916+00:00",
+    "contact_name": "Angela Salzwedel",
+    "contact_phone": "3204798484",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a19a95eaf17023203486b06\",\"credits\":1504}"
+  },
+  {
+    "timestamp": "2026-05-29T15:20:54.344854+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "warm",
+    "step": "day10_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a19aed68844d39ef4a10f62\",\"credits\":1500}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:17.724348+00:00",
+    "contact_name": "Maria Basurto",
+    "contact_phone": "6128064260",
+    "track": "warm",
+    "step": "day30_preapproval",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92c917362930ddbde379\",\"credits\":1498}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:19.967469+00:00",
+    "contact_name": "Haleigh Benson",
+    "contact_phone": "6087972399",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92cc15b62eab30a5bd34\",\"credits\":1495}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:22.286538+00:00",
+    "contact_name": "Cheyenne Ironheart",
+    "contact_phone": "6056465836",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92ce17362930ddbde722\",\"credits\":1494}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:24.970377+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92d13097da630417cfb9\",\"credits\":1492}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:26.455481+00:00",
+    "contact_name": "Alexander Johnson",
+    "contact_phone": "6302548802",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92d217362930ddbdeae4\",\"credits\":1489}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:28.237170+00:00",
+    "contact_name": "Erin Foley",
+    "contact_phone": "7013676751",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92d417362930ddbdeca9\",\"credits\":1488}"
+  },
+  {
+    "timestamp": "2026-06-01T14:10:31.976000+00:00",
+    "contact_name": "Angela Salzwedel",
+    "contact_phone": "3204798484",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1d92d717362930ddbdf036\",\"credits\":1486}"
+  },
+  {
+    "timestamp": "2026-06-01T14:17:36.209910+00:00",
+    "contact_name": "Jamie Bartz",
+    "contact_phone": "3203107676",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1d948017362930ddbe4376\",\"credits\":1479}"
+  },
+  {
+    "timestamp": "2026-06-01T14:21:40.440468+00:00",
+    "contact_name": "Jamie Bartz",
+    "contact_phone": "3203107676",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1d95743097da6304184e71\",\"credits\":1477}"
+  },
+  {
+    "timestamp": "2026-06-01T14:22:41.422789+00:00",
+    "contact_name": "Ryan Frey",
+    "contact_phone": "3205104334",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1d95b117362930ddbe7b31\",\"credits\":1474}"
+  },
+  {
+    "timestamp": "2026-06-01T14:26:48.264392+00:00",
+    "contact_name": "Ryan Frey",
+    "contact_phone": "3205104334",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1d96a83097da630418a7aa\",\"credits\":1473}"
+  },
+  {
+    "timestamp": "2026-06-01T15:20:25.640772+00:00",
+    "contact_name": "Eric Lunde",
+    "contact_phone": "6126955618",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1da33915b62eab30a95863\",\"credits\":1466}"
+  },
+  {
+    "timestamp": "2026-06-01T15:24:32.979769+00:00",
+    "contact_name": "Eric Lunde",
+    "contact_phone": "6126955618",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1da43017362930ddc30b18\",\"credits\":1464}"
+  },
+  {
+    "timestamp": "2026-06-01T19:17:12.853398+00:00",
+    "contact_name": "Dianne Lashinski",
+    "contact_phone": "3202328243",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a1ddab83097da630455668b\",\"credits\":1459}"
+  },
+  {
+    "timestamp": "2026-06-02T14:16:03.227649+00:00",
+    "contact_name": "Jamie Bartz",
+    "contact_phone": "3203107676",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1ee5a30516e3d98fe765b1\",\"credits\":1458}"
+  },
+  {
+    "timestamp": "2026-06-02T16:26:27.098469+00:00",
+    "contact_name": "Eric Lunde",
+    "contact_phone": "6126955618",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1f04325c09161183db6df6\",\"credits\":1455}"
+  },
+  {
+    "timestamp": "2026-06-02T17:23:02.135401+00:00",
+    "contact_name": "Ryan Frey",
+    "contact_phone": "3205104334",
+    "track": "warm",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a1f11760516e3d98fffda11\",\"credits\":1452}"
+  },
+  {
+    "timestamp": "2026-06-02T21:06:05.555067+00:00",
+    "contact_name": "Cade Casey",
+    "contact_phone": "7632026722",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a1f45bdfaed479d7894f419\",\"credits\":1446}"
+  },
+  {
+    "timestamp": "2026-06-02T21:10:11.966908+00:00",
+    "contact_name": "Cade Casey",
+    "contact_phone": "7632026722",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a1f46b30516e3d98f1c34e7\",\"credits\":1445}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:24.078584+00:00",
+    "contact_name": "Katey Witt",
+    "contact_phone": "5073278659",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a216e7706eeaf3c07b9149e\",\"credits\":1444}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:28.602638+00:00",
+    "contact_name": "Emma Hanson",
+    "contact_phone": "5073818420",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a216e7bfaed479d78245183\",\"credits\":1441}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:37.926360+00:00",
+    "contact_name": "Beniyam Asfeha",
+    "contact_phone": "6122273749",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a216e855c09161183b0eae6\",\"credits\":1438}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:40.683002+00:00",
+    "contact_name": "Hunter Harren",
+    "contact_phone": "2182326621",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a216e880516e3d98fc22dfb\",\"credits\":1437}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:43.670632+00:00",
+    "contact_name": "Emily Stadler",
+    "contact_phone": "2184430037",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a216e8b5c09161183b0ed02\",\"credits\":1436}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:46.816224+00:00",
+    "contact_name": "Angela Salzwedel",
+    "contact_phone": "3204798484",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"6a216e8e5c09161183b0edca\",\"credits\":1434}"
+  },
+  {
+    "timestamp": "2026-06-04T12:24:51.082358+00:00",
+    "contact_name": "Cade Casey",
+    "contact_phone": "7632026722",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a216e925c09161183b0ee6e\",\"credits\":1431}"
+  },
+  {
+    "timestamp": "2026-06-04T12:33:00.798139+00:00",
+    "contact_name": "Emily Matzdorff",
+    "contact_phone": "2184643765",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a21707c5c09161183b14a5c\",\"credits\":1426}"
+  },
+  {
+    "timestamp": "2026-06-04T12:36:08.924469+00:00",
+    "contact_name": "Emily Matzdorff",
+    "contact_phone": "2184643765",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a2171380516e3d98fc2bba6\",\"credits\":1425}"
+  },
+  {
+    "timestamp": "2026-06-04T12:38:11.111161+00:00",
+    "contact_name": "Kal Zol",
+    "contact_phone": "5078293822",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a2171b25c09161183b1b678\",\"credits\":1420}"
+  },
+  {
+    "timestamp": "2026-06-04T12:41:17.620450+00:00",
+    "contact_name": "Kal Zol",
+    "contact_phone": "5078293822",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a21726d0516e3d98fc2eee7\",\"credits\":1419}"
+  },
+  {
+    "timestamp": "2026-06-04T14:37:43.552396+00:00",
+    "contact_name": "Danielle Barg",
+    "contact_phone": "2185530680",
+    "track": "warm",
+    "step": "day10_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a218db7faed479d782bd8bc\",\"credits\":1415}"
+  },
+  {
+    "timestamp": "2026-06-05T12:31:52.350122+00:00",
+    "contact_name": "Emily Matzdorff",
+    "contact_phone": "2184643765",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a22c1b70516e3d98f1bc8bd\",\"credits\":1413}"
+  },
+  {
+    "timestamp": "2026-06-05T12:37:11.276584+00:00",
+    "contact_name": "Kal Zol",
+    "contact_phone": "5078293822",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a22c2f70516e3d98f1c00d2\",\"credits\":1410}"
+  },
+  {
+    "timestamp": "2026-06-05T14:18:05.633244+00:00",
+    "contact_name": "Bee Her",
+    "contact_phone": "6519555554",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a22da9dfaed479d7878e896\",\"credits\":1407}"
+  },
+  {
+    "timestamp": "2026-06-05T23:35:58.848326+00:00",
+    "contact_name": "Abigail Behl",
+    "contact_phone": "3208946113",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a235d5d06eeaf3c074f9d73\",\"credits\":1400}"
+  },
+  {
+    "timestamp": "2026-06-05T23:39:05.800916+00:00",
+    "contact_name": "Abigail Behl",
+    "contact_phone": "3208946113",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a235e19faed479d78aa3664\",\"credits\":1399}"
+  },
+  {
+    "timestamp": "2026-06-08T23:08:38.059167+00:00",
+    "contact_name": "Madelyn Krueger",
+    "contact_phone": "7634385274",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a274b758b0f5928ec993fd9\",\"credits\":1396}"
+  },
+  {
+    "timestamp": "2026-06-08T23:08:43.482232+00:00",
+    "contact_name": "Angela Salzwedel",
+    "contact_phone": "3204798484",
+    "track": "warm",
+    "step": "day10_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a274b7b606686c3fc4af7fd\",\"credits\":1393}"
+  },
+  {
+    "timestamp": "2026-06-08T23:08:51.985670+00:00",
+    "contact_name": "Jamie Bartz",
+    "contact_phone": "3203107676",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a274b838b0f5928ec9940e6\",\"credits\":1392}"
+  },
+  {
+    "timestamp": "2026-06-08T23:09:02.303696+00:00",
+    "contact_name": "Ryan Frey",
+    "contact_phone": "3205104334",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"6a274b8a8b0f5928ec994111\",\"credits\":1390}"
+  },
+  {
+    "timestamp": "2026-06-08T23:09:09.296849+00:00",
+    "contact_name": "Eric Lunde",
+    "contact_phone": "6126955618",
+    "track": "warm",
+    "step": "day5_rates",
+    "status": 201,
+    "response": "{\"id\":\"6a274b95422e3308be3527c2\",\"credits\":1387}"
+  },
+  {
+    "timestamp": "2026-06-08T23:09:14.511839+00:00",
+    "contact_name": "Abigail Behl",
+    "contact_phone": "3208946113",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a274b9a606686c3fc4afbc2\",\"credits\":1386}"
+  },
+  {
+    "timestamp": "2026-06-08T23:19:24.526631+00:00",
+    "contact_name": "Katrina Arriaga",
+    "contact_phone": "5075141050",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a274dfc8b0f5928ec999550\",\"credits\":1379}"
+  },
+  {
+    "timestamp": "2026-06-08T23:23:33.439731+00:00",
+    "contact_name": "Katrina Arriaga",
+    "contact_phone": "5075141050",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a274ef510647968360b4a4b\",\"credits\":1374}"
+  },
+  {
+    "timestamp": "2026-06-08T23:29:40.823879+00:00",
+    "contact_name": "Melany Hasbargen",
+    "contact_phone": "2185564855",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a2750648b0f5928ec99ea1b\",\"credits\":1359}"
+  },
+  {
+    "timestamp": "2026-06-10T12:24:36.849257+00:00",
+    "contact_name": "Troy Rosengren",
+    "contact_phone": "2182325460",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a29578410647968367e92bc\",\"credits\":1341}"
+  },
+  {
+    "timestamp": "2026-06-10T12:24:39.925735+00:00",
+    "contact_name": "Franklin Durgin-Hanson",
+    "contact_phone": "5075359720",
+    "track": "cold",
+    "step": "day30_market",
+    "status": 201,
+    "response": "{\"id\":\"6a2957878b0f5928ec049d47\",\"credits\":1340}"
+  },
+  {
+    "timestamp": "2026-06-10T12:24:43.281866+00:00",
+    "contact_name": "Jenna Laughlin",
+    "contact_phone": "7635683372",
+    "track": "warm",
+    "step": "day21_market",
+    "status": 201,
+    "response": "{\"id\":\"6a29578a606686c3fcc29c7b\",\"credits\":1339}"
+  },
+  {
+    "timestamp": "2026-06-10T12:24:49.362990+00:00",
+    "contact_name": "Cade Casey",
+    "contact_phone": "7632026722",
+    "track": "cold",
+    "step": "day7_checkin",
+    "status": 201,
+    "response": "{\"id\":\"6a295790422e3308beaf0678\",\"credits\":1338}"
+  },
+  {
+    "timestamp": "2026-06-10T12:24:52.891523+00:00",
+    "contact_name": "Katrina Arriaga",
+    "contact_phone": "5075141050",
+    "track": "cold",
+    "step": "day2_linktree",
+    "status": 201,
+    "response": "{\"id\":\"6a29579410647968367e9472\",\"credits\":1336}"
+  },
+  {
+    "timestamp": "2026-06-10T12:32:56.934204+00:00",
+    "contact_name": "David Knutson",
+    "contact_phone": "3209803695",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a2959788b0f5928ec04c495\",\"credits\":1326}"
+  },
+  {
+    "timestamp": "2026-06-10T12:37:02.629763+00:00",
+    "contact_name": "David Knutson",
+    "contact_phone": "3209803695",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a295a6e422e3308beaf5874\",\"credits\":1322}"
+  },
+  {
+    "timestamp": "2026-06-10T12:38:04.955679+00:00",
+    "contact_name": "Biftu Sharif",
+    "contact_phone": "9522170529",
+    "track": "cold",
+    "step": "welcome",
+    "status": 201,
+    "response": "{\"id\":\"6a295aac8b0f5928ec04eb83\",\"credits\":1319}"
+  },
+  {
+    "timestamp": "2026-06-10T12:42:13.898920+00:00",
+    "contact_name": "Biftu Sharif",
+    "contact_phone": "9522170529",
+    "track": "cold",
+    "step": "nudge_justin",
+    "status": 201,
+    "response": "{\"id\":\"6a295ba5422e3308beaf7a39\",\"credits\":1317}"
+  }
+]

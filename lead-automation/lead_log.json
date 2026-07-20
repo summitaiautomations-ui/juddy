@@ -1,0 +1,1894 @@
+[
+  {
+    "timestamp": "2026-04-30T14:05:00.681736+00:00",
+    "lead": {
+      "lead_id": "DTYQ2SBN",
+      "lead_date": "2026-03-17 00:51:10",
+      "name": "Jacob Wheeler",
+      "phone": "5074026474",
+      "email": "jacobwheeler1989@gmail.com",
+      "credit": "Good",
+      "county_state": "Mille lacs, MN",
+      "zip": "55371",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "self",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "30000",
+      "city": "Princeton",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5074026474",
+        "status": 409,
+        "response": "{\"status\":\"CONFLICT\",\"errorCode\":\"LOCAL_OPT_OUT\",\"code\":\"LOCAL_OPT_OUT\",\"message\":\"Phone number has done local unsubscribe\",\"errorDetails\":[],\"path\":\"/v2\",\"timestamp\":\"2026-04-30T14:00:59.047530261Z\"}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f3618cb2d34c172186f3ab\",\"credits\":1021}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-04-30T15:47:55.402291+00:00",
+    "lead": {
+      "lead_id": "FV0XMQ4W",
+      "lead_date": "2026-04-30 10:41:53",
+      "name": "Maria Basurto",
+      "phone": "6128064260",
+      "email": "basurtomaria107@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Hennepin, MN",
+      "zip": "55427",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Investment",
+      "loan_product": "Conventional",
+      "employment": "self",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "FoundHome",
+      "down_payment": "50000",
+      "city": "Minneapolis",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6128064260",
+        "status": 201,
+        "response": "{\"id\":\"69f378bae889dd2eb12bd678\",\"credits\":1017}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f379ab1e302364c6a5f706\",\"credits\":1014}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-01T15:29:30.833840+00:00",
+    "lead": {
+      "lead_id": "YP52IS6M",
+      "lead_date": "2026-05-01 10:23:40",
+      "name": "Haleigh Benson",
+      "phone": "6087972399",
+      "email": "hales05210@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Houston, MN",
+      "zip": "55947",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "12",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "N",
+      "living_situation": "other",
+      "purchase_status": "Over3Months",
+      "down_payment": "30000",
+      "city": "La Crescent",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6087972399",
+        "status": 201,
+        "response": "{\"id\":\"69f4c5ea1e302364c603e4e4\",\"credits\":908}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f4c6dab2d34c1721d6f9eb\",\"credits\":906}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-02T05:07:07.959174+00:00",
+    "lead": {
+      "lead_id": "0RJM1SU7",
+      "lead_date": "2026-05-02 00:01:18",
+      "name": "Cheyenne Ironheart",
+      "phone": "6056465836",
+      "email": "cheyenne.ironheart@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Traverse, MN",
+      "zip": "56296",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "5",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "FoundHome",
+      "down_payment": "12500",
+      "city": "Wheaton",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6056465836",
+        "status": 201,
+        "response": "{\"id\":\"69f5858bb2d34c17211dea83\",\"credits\":896}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f5867bb2d34c17211e039e\",\"credits\":894}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-04T16:17:18.447772+00:00",
+    "lead": {
+      "lead_id": "X5PTSOD0",
+      "lead_date": "2026-05-03 07:18:57",
+      "name": "Katey Witt",
+      "phone": "5073278659",
+      "email": "kwitt0485@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Waseca, MN",
+      "zip": "56072",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "70000",
+      "city": "New Richland",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5073278659",
+        "status": 201,
+        "response": "{\"id\":\"69f8c59c1e302364c6fc3032\",\"credits\":881}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f8c68e1e302364c6fe4c68\",\"credits\":879}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-04T17:18:21.780137+00:00",
+    "lead": {
+      "lead_id": "EZDFQ3VJ",
+      "lead_date": "2026-05-04 12:12:31",
+      "name": "david miller",
+      "phone": "9729987887",
+      "email": "thegreatpb@yahoo.com",
+      "credit": "Excellent",
+      "county_state": "Dakota, MN",
+      "zip": "55068",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "Over3Months",
+      "down_payment": "0",
+      "city": "Rosemount",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "9729987887",
+        "status": 201,
+        "response": "{\"id\":\"69f8d3ec2c7c824da97ee7b3\",\"credits\":872}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f8d4dde889dd2eb163f305\",\"credits\":868}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-05T05:44:50.321724+00:00",
+    "lead": {
+      "lead_id": "TJKY8Z6Q",
+      "lead_date": "2026-05-05 00:38:36",
+      "name": "Emma Hanson",
+      "phone": "5073818420",
+      "email": "elhanson06@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Nicollet, MN",
+      "zip": "56021",
+      "property_value": "170000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "30000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "Over6Months",
+      "down_payment": "34000",
+      "city": "Courtland",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5073818420",
+        "status": 201,
+        "response": "{\"id\":\"69f982e1b2d34c1721d47835\",\"credits\":852}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69f983d21e302364c649bd1c\",\"credits\":850}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-06T14:17:57.816307+00:00",
+    "lead": {
+      "lead_id": "6IXZ2JWU",
+      "lead_date": "2026-05-06 09:12:23",
+      "name": "Bee Her",
+      "phone": "6519555554",
+      "email": "beeher91@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Ramsey, MN",
+      "zip": "55110",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "3",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "10500",
+      "city": "St. Paul",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6519555554",
+        "status": 201,
+        "response": "{\"id\":\"69fb4ca2910f6c5c4c12c35d\",\"credits\":824}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69fb4d950a7db745564de82f\",\"credits\":823}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-07T15:09:49.892161+00:00",
+    "lead": {
+      "lead_id": "3DGSLQCO",
+      "lead_date": "2026-05-07 10:04:07",
+      "name": "Michael Dumonceaux",
+      "phone": "9522100920",
+      "email": "mikepetepersonal22@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Ramsey, MN",
+      "zip": "55125",
+      "property_value": "200000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "2",
+      "property_type": "townhome",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "Over6Months",
+      "down_payment": "5000",
+      "city": "St. Paul",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "9522100920",
+        "status": 201,
+        "response": "{\"id\":\"69fcaa4b2c61ea152c1ee624\",\"credits\":815}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69fcab3dae7d8a2cd069dc21\",\"credits\":814}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-08T17:29:29.390033+00:00",
+    "lead": {
+      "lead_id": "6701LSIR",
+      "lead_date": "2026-05-08 12:23:45",
+      "name": "Madelyn Krueger",
+      "phone": "7634385274",
+      "email": "kruegermadelyn@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Sherburne, MN",
+      "zip": "55330",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "2",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "1Month",
+      "down_payment": "8750",
+      "city": "Elk River",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "7634385274",
+        "status": 201,
+        "response": "{\"id\":\"69fe1c864a63284f3ee7c553\",\"credits\":806}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69fe1d794a63284f3ee9b5f1\",\"credits\":804}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-09T10:17:39.620022+00:00",
+    "lead": {
+      "lead_id": "AQU97GF8",
+      "lead_date": "2026-05-09 05:11:23",
+      "name": "Michael Grijalva",
+      "phone": "5077225659",
+      "email": "redskinapache@hotmail.com",
+      "credit": "Good",
+      "county_state": "Fillmore, MN",
+      "zip": "55923",
+      "property_value": "400000",
+      "military": "N",
+      "bankruptcy": "Y",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "2",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "N",
+      "living_situation": "rent",
+      "purchase_status": "Over6Months",
+      "down_payment": "10000",
+      "city": "Chatfield",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5077225659",
+        "status": 201,
+        "response": "{\"id\":\"69ff08d07a610751ddbc6e42\",\"credits\":797}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"69ff09c3b205ce1f908d18f1\",\"credits\":794}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-10T15:34:57.578817+00:00",
+    "lead": {
+      "lead_id": "0WHI2KM1",
+      "lead_date": "2026-05-10 10:13:25",
+      "name": "Troy Rosengren",
+      "phone": "2182325460",
+      "email": "troyrosengren@gmail.com",
+      "credit": "Good",
+      "county_state": "Stearns, MN",
+      "zip": "56368",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "usda",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "FoundHome",
+      "down_payment": "0",
+      "city": "Richmond",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2182325460",
+        "status": 201,
+        "response": "{\"id\":\"6a00a4aeb205ce1f90cd48f2\",\"credits\":776}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a00a5a1b205ce1f90cd789a\",\"credits\":775}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-11T06:03:27.736527+00:00",
+    "lead": {
+      "lead_id": "FL54VG2R",
+      "lead_date": "2026-05-11 00:56:43",
+      "name": "Franklin Durgin-Hanson",
+      "phone": "5075359720",
+      "email": "nwleader.fd@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Goodhue, MN",
+      "zip": "55066",
+      "property_value": "1500000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "FoundHome",
+      "down_payment": "0",
+      "city": "Red Wing",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5075359720",
+        "status": 201,
+        "response": "{\"id\":\"6a01703a7a610751dd1a1b43\",\"credits\":769}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a01712f7a610751dd1a3213\",\"credits\":768}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-12T15:18:25.222711+00:00",
+    "lead": {
+      "lead_id": "Y03IUBEV",
+      "lead_date": "2026-05-12 10:12:06",
+      "name": "Jenna Laughlin",
+      "phone": "7635683372",
+      "email": "Laughlinjenna1005@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Aitkin, MN",
+      "zip": "55760",
+      "property_value": "160000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "manufactured",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "50000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "1Month",
+      "down_payment": "16000",
+      "city": "McGregor",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "7635683372",
+        "status": 201,
+        "response": "{\"id\":\"6a0343cd6a03fe25f58060e1\",\"credits\":753}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0344c16a03fe25f580952b\",\"credits\":750}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-13T16:38:51.601240+00:00",
+    "lead": {
+      "lead_id": "RPM7C6EV",
+      "lead_date": "2026-05-13 04:54:21",
+      "name": "Shem Makori",
+      "phone": "7633290253",
+      "email": "shemmark2@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Sherburne, MN",
+      "zip": "55330",
+      "property_value": "450000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "90000",
+      "city": "Elk River",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "7633290253",
+        "status": 201,
+        "response": "{\"id\":\"6a04a82755b7b7f94c445579\",\"credits\":738}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a04a91bfe2154aff08c4726\",\"credits\":736}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-18T14:32:59.941126+00:00",
+    "lead": {
+      "lead_id": "DPO6CMJV",
+      "lead_date": "2026-05-14 04:59:14",
+      "name": "Danielle Barg",
+      "phone": "2185530680",
+      "email": "daniellenistler@hotmail.com",
+      "credit": "Excellent",
+      "county_state": "Crow wing, MN",
+      "zip": "56472",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "16",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "1Month",
+      "down_payment": "48000",
+      "city": "Pequot Lakes",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2185530680",
+        "status": 201,
+        "response": "{\"id\":\"6a0b2228a6cb3b74941ac25c\",\"credits\":723}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0b231b849474e1f93f94e8\",\"credits\":721}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-18T14:38:05.090621+00:00",
+    "lead": {
+      "lead_id": "U9DHR0ZK",
+      "lead_date": "2026-05-15 08:28:02",
+      "name": "Tyler Searle",
+      "phone": "3208157802",
+      "email": "searle457@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Stevens, MN",
+      "zip": "56235",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "2",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "FoundHome",
+      "down_payment": "6250",
+      "city": "Donnelly",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3208157802",
+        "status": 201,
+        "response": "{\"id\":\"6a0b235955b7b7f94ca3661a\",\"credits\":719}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0b244d849474e1f93fc0f4\",\"credits\":717}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-18T14:43:09.893416+00:00",
+    "lead": {
+      "lead_id": "FQA0IN24",
+      "lead_date": "2026-05-16 11:13:56",
+      "name": "Brittany Kubricky",
+      "phone": "6124123008",
+      "email": "brittanykubricky@gmail.com",
+      "credit": "Good",
+      "county_state": "Dakota, MN",
+      "zip": "55075",
+      "property_value": "400000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "15",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "N",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "60000",
+      "city": "South St. Paul",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6124123008",
+        "status": 201,
+        "response": "{\"id\":\"6a0b248bfe2154aff0f5caa6\",\"credits\":715}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0b257d55b7b7f94ca3c57b\",\"credits\":712}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-18T14:48:15.935729+00:00",
+    "lead": {
+      "lead_id": "6TJ5KIZ4",
+      "lead_date": "2026-05-17 07:53:28",
+      "name": "Jacob Maddaus",
+      "phone": "6123236643",
+      "email": "jakemaddaus@outlook.com",
+      "credit": "Excellent",
+      "county_state": "Scott, MN",
+      "zip": "55352",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "usda",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "0",
+      "city": "Jordan",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6123236643",
+        "status": 201,
+        "response": "{\"id\":\"6a0b25bca6cb3b74941b4d5b\",\"credits\":709}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0b26af849474e1f9401cdf\",\"credits\":705}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-18T14:53:22.037371+00:00",
+    "lead": {
+      "lead_id": "R5N1WTDE",
+      "lead_date": "2026-05-18 00:12:25",
+      "name": "Brevon Jackson",
+      "phone": "2185426578",
+      "email": "brevonjackson18@gmail.com",
+      "credit": "Good",
+      "county_state": "Itasca, MN",
+      "zip": "55744",
+      "property_value": "180000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "5",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "50000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "9000",
+      "city": "Grand Rapids",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2185426578",
+        "status": 201,
+        "response": "{\"id\":\"6a0b26ee849474e1f9402277\",\"credits\":700}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0b27e1a6cb3b74941b95a9\",\"credits\":697}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-19T12:58:06.595735+00:00",
+    "lead": {
+      "lead_id": "XJA1TZWF",
+      "lead_date": "2026-05-19 06:12:12",
+      "name": "Briley Highfield",
+      "phone": "5072131046",
+      "email": "bhighfield18@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Renville, MN",
+      "zip": "55314",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "3",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "fha",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "Over6Months",
+      "down_payment": "10500",
+      "city": "Buffalo Lake",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5072131046",
+        "status": 201,
+        "response": "{\"id\":\"6a0c5d6ba6cb3b74946deadd\",\"credits\":686}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0c5e5e849474e1f991d926\",\"credits\":685}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-20T16:15:09.629889+00:00",
+    "lead": {
+      "lead_id": "MJYULK7R",
+      "lead_date": "2026-05-20 10:27:27",
+      "name": "Augusta Maloney",
+      "phone": "3204361878",
+      "email": "palm.pound1h@icloud.com",
+      "credit": "Good",
+      "county_state": "Mille lacs, MN",
+      "zip": "56353",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "3",
+      "property_type": "manufactured",
+      "property_use": "Primary",
+      "loan_product": "fha",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "Over6Months",
+      "down_payment": "8750",
+      "city": "Milaca",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3204361878",
+        "status": 201,
+        "response": "{\"id\":\"6a0ddd191285f1c3e51502ae\",\"credits\":660}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0dde0d3141786637e6298c\",\"credits\":658}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-21T06:11:19.684361+00:00",
+    "lead": {
+      "lead_id": "KVH1E2T5",
+      "lead_date": "2026-05-21 01:04:51",
+      "name": "Brandon Turcotte",
+      "phone": "5077579110",
+      "email": "brandonturcotte04@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Goodhue, MN",
+      "zip": "55066",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "12",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "Over3Months",
+      "down_payment": "30000",
+      "city": "Red Wing",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5077579110",
+        "status": 201,
+        "response": "{\"id\":\"6a0ea1131285f1c3e56a29c5\",\"credits\":646}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0ea2071285f1c3e56a424c\",\"credits\":645}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-22T05:32:41.939012+00:00",
+    "lead": {
+      "lead_id": "FZ9RTSVE",
+      "lead_date": "2026-05-22 00:26:25",
+      "name": "Sharron Becker",
+      "phone": "3204963292",
+      "email": "Sharronstarlet@yahoo.com",
+      "credit": "Good",
+      "county_state": "Kanabec, MN",
+      "zip": "55051",
+      "property_value": "200000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "2",
+      "property_type": "manufactured",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "retired",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "FoundHome",
+      "down_payment": "4000",
+      "city": "Mora",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3204963292",
+        "status": 201,
+        "response": "{\"id\":\"6a0fe98694c90ad5aad02b5c\",\"credits\":638}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a0fea79bb64a1fc36fd37ae\",\"credits\":636}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-23T21:42:52.089567+00:00",
+    "lead": {
+      "lead_id": "NYUFRZD0",
+      "lead_date": "2026-05-23 08:45:54",
+      "name": "Alexander Johnson",
+      "phone": "6302548802",
+      "email": "Steaksaucejohnson6@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Pine, MN",
+      "zip": "55063",
+      "property_value": "200000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "20000",
+      "city": "Pine City",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6302548802",
+        "status": 201,
+        "response": "{\"id\":\"6a121e68bb64a1fc368aa378\",\"credits\":623}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a121f5b94c90ad5aa3cb2d2\",\"credits\":622}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-24T15:17:53.428813+00:00",
+    "lead": {
+      "lead_id": "0NPSW8IB",
+      "lead_date": "2026-05-24 10:11:55",
+      "name": "Erin Foley",
+      "phone": "7013676751",
+      "email": "gtgirl0121@gmail.com",
+      "credit": "Good",
+      "county_state": "Becker, MN",
+      "zip": "56501",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "usda",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "0",
+      "city": "Detroit Lakes",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "7013676751",
+        "status": 201,
+        "response": "{\"id\":\"6a1315ad94c90ad5aa5c07b0\",\"credits\":616}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a1316a1225ea2dd3adbb312\",\"credits\":615}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-25T19:17:06.135819+00:00",
+    "lead": {
+      "lead_id": "2345YBPO",
+      "lead_date": "2026-05-25 14:10:53",
+      "name": "Dianne Lashinski",
+      "phone": "3202328243",
+      "email": "duanestrucking@yahoo.com",
+      "credit": "Good",
+      "county_state": "Morrison, MN",
+      "zip": "56345",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "retired",
+      "income": "50000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "Over3Months",
+      "down_payment": "60000",
+      "city": "Little Falls",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3202328243",
+        "status": 201,
+        "response": "{\"id\":\"6a149f3e2c74c879ac2b0d46\",\"credits\":593}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a14a032ecffd0d56a7dad5f\",\"credits\":592}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-27T20:25:52.210901+00:00",
+    "lead": {
+      "lead_id": "FEDGUN6B",
+      "lead_date": "2026-05-26 07:21:16",
+      "name": "Beniyam Asfeha",
+      "phone": "6122273749",
+      "email": "b8204543@gmail.com",
+      "credit": "Good",
+      "county_state": "Hennepin, MN",
+      "zip": "55426",
+      "property_value": "200000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "3",
+      "property_type": "townhome",
+      "property_use": "Primary",
+      "loan_product": "fha",
+      "employment": "self",
+      "income": "30000",
+      "first_time": "N",
+      "living_situation": "rent",
+      "purchase_status": "Over3Months",
+      "down_payment": "7000",
+      "city": "Saint Louis Park",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6122273749",
+        "status": 201,
+        "response": "{\"id\":\"6a17525d092e614218c2a014\",\"credits\":1550}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a17535042b85cae97ac44de\",\"credits\":1548}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-27T20:30:56.953754+00:00",
+    "lead": {
+      "lead_id": "8JBV3QT0",
+      "lead_date": "2026-05-27 00:22:07",
+      "name": "Hunter Harren",
+      "phone": "2182326621",
+      "email": "hunterharren37@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Crow wing, MN",
+      "zip": "56472",
+      "property_value": "400000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "single",
+      "property_use": "Investment",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "Over3Months",
+      "down_payment": "40000",
+      "city": "Pequot Lakes",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2182326621",
+        "status": 201,
+        "response": "{\"id\":\"6a17538e092e614218c2e430\",\"credits\":1547}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a175480092e614218c31a55\",\"credits\":1543}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-28T12:18:15.019214+00:00",
+    "lead": {
+      "lead_id": "QWJ8ETRU",
+      "lead_date": "2026-05-28 06:49:33",
+      "name": "Emily Stadler",
+      "phone": "2184430037",
+      "email": "emilytjaden13@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Steele, MN",
+      "zip": "55917",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "5",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "Over6Months",
+      "down_payment": "17500",
+      "city": "Blooming Prairie",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2184430037",
+        "status": 201,
+        "response": "{\"id\":\"6a18318b8844d39ef44b6493\",\"credits\":1531}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a183286d9c2733bad3fb872\",\"credits\":1529}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-05-29T14:51:37.269927+00:00",
+    "lead": {
+      "lead_id": "GNOWYAPR",
+      "lead_date": "2026-05-29 07:22:15",
+      "name": "Angela Salzwedel",
+      "phone": "3204798484",
+      "email": "angsalz@icloud.com",
+      "credit": "Excellent",
+      "county_state": "Hennepin, MN",
+      "zip": "55407",
+      "property_value": "160000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "*Refinance",
+      "down_payment_pct": "100",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "*Purchase",
+      "purchase_status": "1To3Months",
+      "down_payment": "160000",
+      "city": "Minneapolis",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3204798484",
+        "status": 201,
+        "response": "{\"id\":\"6a19a706d9c2733bad9e2b12\",\"credits\":1511}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a19a7f9af170232034803c7\",\"credits\":1508}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-01T14:15:42.705164+00:00",
+    "lead": {
+      "lead_id": "JIZD94W8",
+      "lead_date": "2026-05-30 07:28:23",
+      "name": "Jamie Bartz",
+      "phone": "3203107676",
+      "email": "jamiebartz77@yahoo.com",
+      "credit": "Excellent",
+      "county_state": "Stearns, MN",
+      "zip": "56301",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "34",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "102000",
+      "city": "St. Cloud",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3203107676",
+        "status": 201,
+        "response": "{\"id\":\"6a1d931b2baf6e4637734c86\",\"credits\":1483}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a1d940e17362930ddbe33b4\",\"credits\":1482}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-01T14:20:46.967566+00:00",
+    "lead": {
+      "lead_id": "HE9CSVDA",
+      "lead_date": "2026-05-31 09:37:02",
+      "name": "Ryan Frey",
+      "phone": "3205104334",
+      "email": "ryanfrey45@gmail.com",
+      "credit": "Good",
+      "county_state": "Meeker, MN",
+      "zip": "55355",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "1To3Months",
+      "down_payment": "0",
+      "city": "Litchfield",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3205104334",
+        "status": 201,
+        "response": "{\"id\":\"6a1d944c3097da6304181616\",\"credits\":1480}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a1d953f17362930ddbe6539\",\"credits\":1478}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-01T15:19:19.463474+00:00",
+    "lead": {
+      "lead_id": "ORQP48NA",
+      "lead_date": "2026-06-01 10:11:52",
+      "name": "Eric Lunde",
+      "phone": "6126955618",
+      "email": "erlunde60@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Hennepin, MN",
+      "zip": "55345",
+      "property_value": "650000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "47",
+      "property_type": "townhome",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "retired",
+      "income": "100001",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "Over3Months",
+      "down_payment": "305500",
+      "city": "Minnetonka",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "6126955618",
+        "status": 201,
+        "response": "{\"id\":\"6a1da2033097da63041c6a7f\",\"credits\":1470}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a1da2f715b62eab30a94d75\",\"credits\":1468}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-02T21:04:41.609229+00:00",
+    "lead": {
+      "lead_id": "P6YQALEX",
+      "lead_date": "2026-06-02 15:57:43",
+      "name": "Cade Casey",
+      "phone": "7632026722",
+      "email": "cadecasey99@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Wright, MN",
+      "zip": "55362",
+      "property_value": "300000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "50000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "1Month",
+      "down_payment": "30000",
+      "city": "Monticello",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "7632026722",
+        "status": 201,
+        "response": "{\"id\":\"6a1f44755c0916118304e43d\",\"credits\":1449}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a1f45695c091611830534c5\",\"credits\":1448}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-04T12:31:03.575962+00:00",
+    "lead": {
+      "lead_id": "BFURX78N",
+      "lead_date": "2026-06-03 16:50:57",
+      "name": "Emily Matzdorff",
+      "phone": "2184643765",
+      "email": "Ematzdorff@gmail.com",
+      "credit": "Good",
+      "county_state": "Saint louis, MN",
+      "zip": "55602",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "manufactured",
+      "property_use": "Primary",
+      "loan_product": "usda",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "Over6Months",
+      "down_payment": "0",
+      "city": "Brimson",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2184643765",
+        "status": 201,
+        "response": "{\"id\":\"6a216f1406eeaf3c07b92d3d\",\"credits\":1428}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a2170070516e3d98fc2677d\",\"credits\":1427}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-04T12:36:10.857185+00:00",
+    "lead": {
+      "lead_id": "FKXQI1EG",
+      "lead_date": "2026-06-04 00:26:59",
+      "name": "Kal Zol",
+      "phone": "5078293822",
+      "email": "kazollner@outlook.com",
+      "credit": "Excellent",
+      "county_state": "Watonwan, MN",
+      "zip": "56062",
+      "property_value": "500000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "15",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "N",
+      "living_situation": "other",
+      "purchase_status": "FoundHome",
+      "down_payment": "75000",
+      "city": "Madelia",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5078293822",
+        "status": 201,
+        "response": "{\"id\":\"6a21704506eeaf3c07b95737\",\"credits\":1427}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a21713a0516e3d98fc2bca6\",\"credits\":1422}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-05T23:33:32.632976+00:00",
+    "lead": {
+      "lead_id": "8KC1BH3F",
+      "lead_date": "2026-06-05 18:20:45",
+      "name": "Abigail Behl",
+      "phone": "3208946113",
+      "email": "abbybehl9@gmail.com",
+      "credit": "Good",
+      "county_state": "Stearns, MN",
+      "zip": "56362",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "10",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "other",
+      "purchase_status": "Over3Months",
+      "down_payment": "35000",
+      "city": "Paynesville",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3208946113",
+        "status": 201,
+        "response": "{\"id\":\"6a235bd906eeaf3c074f64e2\",\"credits\":1404}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a235ccc5c0916118350a598\",\"credits\":1402}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-08T23:17:44.307802+00:00",
+    "lead": {
+      "lead_id": "ZDUFI4VQ",
+      "lead_date": "2026-06-06 06:10:54",
+      "name": "Katrina Arriaga",
+      "phone": "5075141050",
+      "email": "katrinaarriaga@gmail.com",
+      "credit": "Good",
+      "county_state": "Nicollet, MN",
+      "zip": "56082",
+      "property_value": "400000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "0",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "usda",
+      "employment": "employed",
+      "income": "100001",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "0",
+      "city": "St. Peter",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "5075141050",
+        "status": 201,
+        "response": "{\"id\":\"6a274ca510647968360af2fe\",\"credits\":1383}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a274d98606686c3fc4b579b\",\"credits\":1382}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-08T23:22:49.562368+00:00",
+    "lead": {
+      "lead_id": "ITW0E2MK",
+      "lead_date": "2026-06-07 12:24:19",
+      "name": "luke wattenhofer",
+      "phone": "2182551019",
+      "email": "wattenhofer.luke@gmail.com",
+      "credit": "Good",
+      "county_state": "Hubbard, MN",
+      "zip": "56470",
+      "property_value": "250000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "11",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "N",
+      "living_situation": "other",
+      "purchase_status": "1To3Months",
+      "down_payment": "27500",
+      "city": "Park Rapids",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2182551019",
+        "status": 201,
+        "response": "{\"id\":\"6a274dd610647968360b211f\",\"credits\":1380}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a274ec98b0f5928ec99b3ea\",\"credits\":1376}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-08T23:27:55.742545+00:00",
+    "lead": {
+      "lead_id": "UMD6KWC2",
+      "lead_date": "2026-06-08 16:11:04",
+      "name": "Melany Hasbargen",
+      "phone": "2185564855",
+      "email": "melhasbargen@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Koochiching, MN",
+      "zip": "56649",
+      "property_value": "200000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "75",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "50000",
+      "first_time": "N",
+      "living_situation": "other",
+      "purchase_status": "1To3Months",
+      "down_payment": "150000",
+      "city": "International Falls",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "2185564855",
+        "status": 201,
+        "response": "{\"id\":\"6a274f07422e3308be35cd2e\",\"credits\":1370}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a274ffb422e3308be35f9ba\",\"credits\":1367}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-10T12:31:42.066133+00:00",
+    "lead": {
+      "lead_id": "6Z79HCLE",
+      "lead_date": "2026-06-09 14:48:35",
+      "name": "David Knutson",
+      "phone": "3209803695",
+      "email": "daveknutson60@gmail.com",
+      "credit": "Excellent",
+      "county_state": "Meeker, MN",
+      "zip": "55355",
+      "property_value": "500000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "Y",
+      "down_payment_pct": "20",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "Conventional",
+      "employment": "employed",
+      "income": "100000",
+      "first_time": "*Living",
+      "living_situation": "own",
+      "purchase_status": "Over6Months",
+      "down_payment": "100000",
+      "city": "Litchfield",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "3209803695",
+        "status": 201,
+        "response": "{\"id\":\"6a29583a10647968367ea9a8\",\"credits\":1333}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a29592e422e3308beaf2e72\",\"credits\":1330}"
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-10T12:36:47.521045+00:00",
+    "lead": {
+      "lead_id": "H1W6N53I",
+      "lead_date": "2026-06-10 00:50:35",
+      "name": "Biftu Sharif",
+      "phone": "9522170529",
+      "email": "biftu.sharif@yahoo.com",
+      "credit": "Excellent",
+      "county_state": "Anoka, MN",
+      "zip": "55304",
+      "property_value": "350000",
+      "military": "N",
+      "bankruptcy": "N",
+      "loan_type": "P",
+      "has_agent": "N",
+      "down_payment_pct": "28",
+      "property_type": "single",
+      "property_use": "Primary",
+      "loan_product": "fha",
+      "employment": "employed",
+      "income": "75000",
+      "first_time": "Y",
+      "living_situation": "rent",
+      "purchase_status": "1To3Months",
+      "down_payment": "98000",
+      "city": "Andover",
+      "state": "MN"
+    },
+    "actions": [
+      {
+        "type": "welcome_text",
+        "to": "9522170529",
+        "status": 201,
+        "response": "{\"id\":\"6a29596c10647968367ec6fc\",\"credits\":1328}"
+      },
+      {
+        "type": "nudge_text",
+        "to": "6122039883",
+        "status": 201,
+        "response": "{\"id\":\"6a295a5f422e3308beaf56d8\",\"credits\":1323}"
+      }
+    ]
+  }
+]

@@ -5,3 +5,7 @@ __pycache__/
 disc-pics-data/orders.csv
 disc-pics-data/*.xlsx
 disc-pics-data/customers.csv
+
+.env
+.env.*
+.env.save

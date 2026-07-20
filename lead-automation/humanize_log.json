@@ -1,0 +1,2407 @@
+[
+  {
+    "at": "2026-05-05T21:59:06.224068+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6964,
+    "in": "Quick one for you Isiah, just wanted to circle back on the rate quote we ran last week.",
+    "out": "Hey Isiah! Just checking in on that rate quote from last week."
+  },
+  {
+    "at": "2026-05-06T14:13:54.570727+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7946,
+    "in": "Hey Bee! It's Justin \u2014 saw you were looking at homes in St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Bee, just looked up your search history - still browsing St Paul homes or thinking of making a move?"
+  },
+  {
+    "at": "2026-05-06T14:17:57.424073+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2307,
+    "in": "New lead: Bee - 6519555554 - beeher91@gmail.com\nLooking in St. Paul, MN - $350000\nCredit: Excellent | Income: $75000+ | Down: $10500\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Bee, just wanted to follow up on your lead. You're looking at homes in St. Paul around $350k. What's the plan for getting pre-approved?"
+  },
+  {
+    "at": "2026-05-06T14:19:49.976216+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Bee! It's Justin \u2014 saw you were looking at homes in St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Bee, just looked up your search history - still browsing St Paul homes or thinking of making a move?"
+  },
+  {
+    "at": "2026-05-06T14:23:58.220272+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5249,
+    "in": "\ud83e\uddca COLD LEAD: Bee - 6519555554 - beeher91@gmail.com\nLooking in St. Paul, MN - $350000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Bee! \ud83d\udc4b Just saw your profile and I'm reaching out about a property in St. Paul that caught my eye. It's listed for $350,000. You mentioned you're looking to buy for the first time - would love to chat more about it if you're interested. What do you think?"
+  },
+  {
+    "at": "2026-05-07T14:18:06.498090+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8008,
+    "in": "Hey Bee \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-07T15:05:46.851014+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5202,
+    "in": "Hey Michael! It's Justin \u2014 saw you were looking at homes in St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Michael - just saw your St. Paul search online. Where are things at with that?"
+  },
+  {
+    "at": "2026-05-07T15:09:49.528004+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2179,
+    "in": "New lead: Michael - 9522100920 - mikepetepersonal22@gmail.com\nLooking in St. Paul, MN - $200000\nCredit: Excellent | Income: $75000+ | Down: $5000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Michael, just got your info. You're looking to buy a place in St. Paul for around 200k. What's the timeline look like?"
+  },
+  {
+    "at": "2026-05-07T15:10:53.000075+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2640,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Dumonceaux (9522100920)\nMessage: I'm sorry can you elaborate the question \n\nReply in SimpleTexting or call 9522100920",
+    "out": "Hey Michael! No worries, happy to clarify what's on my mind. Can you take a look at the conversation in SimpleTexting? Or we can jump on a quick call if that works for you - 9522100920"
+  },
+  {
+    "at": "2026-05-07T15:11:26.064319+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Michael! It's Justin \u2014 saw you were looking at homes in St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Michael - just saw your St. Paul search online. Where are things at with that?"
+  },
+  {
+    "at": "2026-05-07T15:13:16.453946+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2215,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Dumonceaux (9522100920)\nMessage: Ahh yes as of now I am just searching but I'm curious what I'm able to afford \n\nReply in SimpleTexting or call 9522100920",
+    "out": "Hey Michael, lead replied! They're just browsing for now and wondering what they can afford. You can respond in SimpleTexting or give 'em a call at 9522100920"
+  },
+  {
+    "at": "2026-05-07T15:13:28.883884+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1599,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Michael Dumonceaux (9522100920)\nMessage: Ahh yes as of now I am just searching but I'm curious what I'm able to afford \n\nMoved Cold \u2192 Warm.",
+    "out": "Hey Mike, lead got promoted to warm! Now that it's warmed up a bit, what's your budget looking like?"
+  },
+  {
+    "at": "2026-05-08T15:29:44.515506+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7275,
+    "in": "Hey Haleigh \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Haleigh! Just wanted to follow up on that - did I send everything over okay?"
+  },
+  {
+    "at": "2026-05-08T17:25:26.180116+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3292,
+    "in": "Hey Madelyn! It's Justin \u2014 saw you were looking at homes in Elk River online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Madelyn! Saw you browsing Elk River homes online - where are you at with your search now? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-08T17:29:28.914757+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2211,
+    "in": "New lead: Madelyn - 7634385274 - kruegermadelyn@gmail.com\nLooking in Elk River, MN - $350000\nCredit: Excellent | Income: $75000+ | Down: $8750\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Madelyn, just checking in on your home search. You're looking at a place in Elk River for 350k. What's the plan moving forward?"
+  },
+  {
+    "at": "2026-05-08T17:30:49.633731+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Madelyn! It's Justin \u2014 saw you were looking at homes in Elk River online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Madelyn! Saw you browsing Elk River homes online - where are you at with your search now? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-08T17:34:56.110490+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4375,
+    "in": "\ud83e\uddca COLD LEAD: Madelyn - 7634385274 - kruegermadelyn@gmail.com\nLooking in Elk River, MN - $350000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Madelyn! \ud83d\udc4b Just saw your profile. You're looking for a place in Elk River, right? I've got some listings around that price point ($350k) if you'd like to take a look."
+  },
+  {
+    "at": "2026-05-09T05:07:39.004121+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7425,
+    "in": "Hey Cheyenne \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got my details okay?"
+  },
+  {
+    "at": "2026-05-09T10:13:35.773167+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6326,
+    "in": "Hey Michael! It's Justin \u2014 saw you were looking at homes in Chatfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Michael, just saw you're browsing homes in Chatfield - still checking out options or getting close to making a decision? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-09T10:17:39.042454+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2604,
+    "in": "New lead: Michael - 5077225659 - redskinapache@hotmail.com\nLooking in Chatfield, MN - $400000\nCredit: Good | Income: $100001+ | Down: $10000\nFirst-time buyer: N | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Michael! Just wanted to follow up on your search for a home in Chatfield. You're looking at a price point of $400,000 and have good credit. What's the plan for getting started?"
+  },
+  {
+    "at": "2026-05-09T10:18:41.951880+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1799,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Grijalva (5077225659)\nMessage: This one\n\n\nReply in SimpleTexting or call 5077225659",
+    "out": "Hey Michael! Lead replied. Check your account for this one in SimpleTexting or give me a call at 5077225659"
+  },
+  {
+    "at": "2026-05-09T10:19:21.116578+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Michael! It's Justin \u2014 saw you were looking at homes in Chatfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Michael, just saw you're browsing homes in Chatfield - still checking out options or getting close to making a decision? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-09T10:22:25.410685+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2419,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Michael Grijalva (5077225659)\nMessage: 31763 Magnum Rd Chatfiled MN 55923\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey {name}! Just wanted to let you know that I moved your lead from cold to warm. Here's the updated address: 31763 Magnum Rd, Chatfield, MN 55923."
+  },
+  {
+    "at": "2026-05-09T10:23:22.257350+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1418,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Grijalva (5077225659)\nMessage: 31763 Magnum Rd Chatfiled MN 55923\n\nReply in SimpleTexting or call 5077225659",
+    "out": "Hey Michael! Just got your lead reply. What's the status on 31763 Magnum Rd?"
+  },
+  {
+    "at": "2026-05-09T17:29:39.466088+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8006,
+    "in": "Hey Madelyn \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-09T22:30:39.919410+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7630,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Grijalva (5077225659)\nMessage: OK thanks \n\n\u2705 Auto-stopped nurture.",
+    "out": "Hey Michael! \ud83d\udc4b Lead replied, so we auto-stopped the nurture sequence."
+  },
+  {
+    "at": "2026-05-09T22:31:33.412863+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2591,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Grijalva (5077225659)\nMessage: OK thanks \n\nReply in SimpleTexting or call 5077225659",
+    "out": "Hey Michael! \ud83d\udcac Lead replied! From me, actually - just wanted to confirm you're good with the response. Reply back here in SimpleTexting or hit me at 507-722-5659 if you'd rather talk."
+  },
+  {
+    "at": "2026-05-10T11:54:05.009760+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6958,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Michael Grijalva (5077225659)\nMessage: OK I was having dinner \n\nReply in SimpleTexting or call 5077225659",
+    "out": "Hey Michael! \ud83d\udc4b Lead replied. What's the story?"
+  },
+  {
+    "at": "2026-05-10T15:30:54.657178+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7411,
+    "in": "Hey Troy! It's Justin \u2014 saw you were looking at homes in Richmond online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Troy -- still got your eyes on Richmond? What's the plan now? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-10T15:34:57.291526+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2162,
+    "in": "New lead: Troy - 2182325460 - troyrosengren@gmail.com\nLooking in Richmond, MN - $350000\nCredit: Good | Income: $100000+ | Down: $0\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Troy, just wanted to follow up on your search. You're looking at homes around 350k in Richmond, MN. What's the plan for today?"
+  },
+  {
+    "at": "2026-05-10T15:36:57.579129+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Troy! It's Justin \u2014 saw you were looking at homes in Richmond online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Troy -- still got your eyes on Richmond? What's the plan now? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-10T15:40:03.044248+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4077,
+    "in": "\ud83e\uddca COLD LEAD: Troy - 2182325460 - troyrosengren@gmail.com\nLooking in Richmond, MN - $350000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Troy! \ud83e\uddca Just saw your profile and wanted to reach out. You're looking at homes in Richmond, MN for around $350k. What's caught your eye so far?"
+  },
+  {
+    "at": "2026-05-10T15:51:10.599727+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3554,
+    "in": "Hey Maria \u2014 just wanted to check in. No pressure at all, just making sure you have a friend in the mortgage business in your corner \ud83c\udfe1",
+    "out": "Hey Maria! Just checking in to make sure everything's good on your end. I'm here if you need anything with the mortgage process."
+  },
+  {
+    "at": "2026-05-11T05:59:22.383454+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7152,
+    "in": "Hey Franklin! It's Justin \u2014 saw you were looking at homes in Red Wing online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Franklin, just saw your browsing history - what's going on with Red Wing?"
+  },
+  {
+    "at": "2026-05-11T06:03:26.873114+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3840,
+    "in": "New lead: Franklin - 5075359720 - nwleader.fd@gmail.com\nLooking in Red Wing, MN - $1500000\nCredit: Excellent | Income: $100001+ | Down: $0\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Franklin, just saw your profile and I think we might have a great fit for you in Red Wing. You're looking at a $1.5M property with excellent credit, high income, and no down payment needed. First-time buyer with an agent already on board - sounds like a smooth process! Want to chat about it?"
+  },
+  {
+    "at": "2026-05-11T06:04:31.931106+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Franklin! It's Justin \u2014 saw you were looking at homes in Red Wing online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Franklin, just saw your browsing history - what's going on with Red Wing?"
+  },
+  {
+    "at": "2026-05-11T06:08:39.856475+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4664,
+    "in": "\ud83e\uddca COLD LEAD: Franklin - 5075359720 - nwleader.fd@gmail.com\nLooking in Red Wing, MN - $1500000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Franklin! \ud83e\uddca Found a place in Red Wing that fits your budget of $1.5M. You've got excellent credit and are looking to buy for the first time, which is awesome. Want me to send over some details? - Justin"
+  },
+  {
+    "at": "2026-05-11T15:35:37.606244+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8016,
+    "in": "Hey Troy \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-11T16:18:09.545578+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7154,
+    "in": "Hey Katey \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got that house number I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-12T05:45:04.467648+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6620,
+    "in": "Hey Emma \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got the details okay?"
+  },
+  {
+    "at": "2026-05-12T06:04:28.585353+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4240,
+    "in": "Hey Franklin \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Franklin, check out my link for more info on me - https://linktr.ee/welcometosummit. Take your time, I'm here as a resource when you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-12T15:14:02.088676+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 8002,
+    "in": "Hey Jenna! It's Justin \u2014 saw you were looking at homes in McGregor online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Jenna -- just checked your browsing history and saw you're eyeing some places in McGregor. Serious about making a move or still window shopping? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-12T15:18:24.699287+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2733,
+    "in": "New lead: Jenna - 7635683372 - Laughlinjenna1005@gmail.com\nLooking in McGregor, MN - $160000\nCredit: Excellent | Income: $50000+ | Down: $16000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Jenna, I've got your loan pre-approval info ready. You're looking at a $160k home in McGregor with 20% down and a credit score of Excellent. What's the plan for today?"
+  },
+  {
+    "at": "2026-05-12T15:20:25.429893+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna! It's Justin \u2014 saw you were looking at homes in McGregor online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Jenna -- just checked your browsing history and saw you're eyeing some places in McGregor. Serious about making a move or still window shopping? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-12T15:23:38.164168+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5498,
+    "in": "\ud83e\uddca COLD LEAD: Jenna - 7635683372 - Laughlinjenna1005@gmail.com\nLooking in McGregor, MN - $160000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Jenna! \ud83d\udc4b Just saw your profile and wanted to reach out. You're looking for a place in McGregor, MN? I've got some listings around that price point ($160k) if you'd like to take a look. Your credit's excellent, so financing shouldn't be an issue. Are you working with an agent already?"
+  },
+  {
+    "at": "2026-05-13T16:31:25.138311+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7653,
+    "in": "Hey Bee \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Bee - just wanted to make sure you got that house info okay?"
+  },
+  {
+    "at": "2026-05-13T16:32:30.605029+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Bee \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Bee - just wanted to make sure you got that house info okay?"
+  },
+  {
+    "at": "2026-05-13T16:32:59.355586+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2511,
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-13T16:34:46.131512+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1393,
+    "in": "Hey Shem! It's Justin \u2014 saw you were looking at homes in Elk River online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Shem, I saw you browsing Elk River homes online - still checking out options or making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-13T16:38:50.206070+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2171,
+    "in": "New lead: Shem - 7633290253 - shemmark2@gmail.com\nLooking in Elk River, MN - $450000\nCredit: Excellent | Income: $75000+ | Down: $90000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Shem, just saw your profile. You're looking at a place in Elk River for $450k. What made you think of that area?"
+  },
+  {
+    "at": "2026-05-13T16:40:22.583754+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Shem! It's Justin \u2014 saw you were looking at homes in Elk River online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Shem, I saw you browsing Elk River homes online - still checking out options or making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-13T16:44:33.264359+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4355,
+    "in": "\ud83e\uddca COLD LEAD: Shem - 7633290253 - shemmark2@gmail.com\nLooking in Elk River, MN - $450000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Shem! \ud83d\udc4b Looking for a place in Elk River, MN. $450k is the budget. Excellent credit too. First time buying and don't have an agent yet. \ud83d\udcf2 7633290253"
+  },
+  {
+    "at": "2026-05-18T14:26:34.196149+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8004,
+    "in": "Hey Madelyn \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-18T14:26:38.347288+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1397,
+    "in": "Hey Troy \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Troy! Just wanted to make sure you got the details I sent over. No rush though!"
+  },
+  {
+    "at": "2026-05-18T14:26:41.104614+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1311,
+    "in": "Hey Franklin \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Franklin -- just wanted to follow up on that stuff I sent over. You good?"
+  },
+  {
+    "at": "2026-05-18T14:26:46.908289+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3487,
+    "in": "Hey Shem \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Shem! Just wanted to share my link with you, so you know who I am - https://linktr.ee/welcometosummit. No pressure, just here if you need me when you're getting into a new mortgage \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-18T14:28:56.512623+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1227,
+    "in": "Hey Danielle! It's Justin \u2014 saw you were looking at homes in Pequot Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Danielle - saw you checking out some places in Pequot Lakes. What's the plan now?"
+  },
+  {
+    "at": "2026-05-18T14:32:59.565418+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2677,
+    "in": "New lead: Danielle - 2185530680 - daniellenistler@hotmail.com\nLooking in Pequot Lakes, MN - $300000\nCredit: Excellent | Income: $100000+ | Down: $48000\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Danielle, just wanted to follow up on your search for a home in Pequot Lakes. You're looking at around $300k, excellent credit, and 20% down - sounds like you've got this!"
+  },
+  {
+    "at": "2026-05-18T14:34:01.308566+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1304,
+    "in": "Hey Tyler! It's Justin \u2014 saw you were looking at homes in Donnelly online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Tyler - saw your search history for Donnelly. Getting close to making a decision or still just browsing?"
+  },
+  {
+    "at": "2026-05-18T14:34:51.818664+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Danielle! It's Justin \u2014 saw you were looking at homes in Pequot Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Danielle - saw you checking out some places in Pequot Lakes. What's the plan now?"
+  },
+  {
+    "at": "2026-05-18T14:38:04.751014+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3002,
+    "in": "New lead: Tyler - 3208157802 - searle457@gmail.com\nLooking in Donnelly, MN - $250000\nCredit: Excellent | Income: $100000+ | Down: $6250\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Tyler, I've got a new lead for you. Looking to buy in Donnelly, MN for $250k. Great credit, 6-figure income, and putting down $6,250. First time buyer with an agent already on board."
+  },
+  {
+    "at": "2026-05-18T14:38:55.730002+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1910,
+    "in": "\ud83e\uddca COLD LEAD: Danielle - 2185530680 - daniellenistler@hotmail.com\nLooking in Pequot Lakes, MN - $300000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Danielle! \ud83d\udc4b Just saw your profile. You're looking at homes in Pequot Lakes for around 300k. What made you choose that area?"
+  },
+  {
+    "at": "2026-05-18T14:39:06.840264+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1620,
+    "in": "Hey Brittany! It's Justin \u2014 saw you were looking at homes in South St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brittany -- just checked out your South St. Paul search history, still browsing or getting close to making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-18T14:39:56.546866+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Tyler! It's Justin \u2014 saw you were looking at homes in Donnelly online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Tyler - saw your search history for Donnelly. Getting close to making a decision or still just browsing?"
+  },
+  {
+    "at": "2026-05-18T14:43:09.539976+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2137,
+    "in": "New lead: Brittany - 6124123008 - brittanykubricky@gmail.com\nLooking in South St. Paul, MN - $400000\nCredit: Good | Income: $100001+ | Down: $60000\nFirst-time buyer: N | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Brittany - just saw your profile and wanted to reach out. You're looking in South St Paul, right? What's bringing you to that area?"
+  },
+  {
+    "at": "2026-05-18T14:44:00.967630+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2048,
+    "in": "\ud83e\uddca COLD LEAD: Tyler - 3208157802 - searle457@gmail.com\nLooking in Donnelly, MN - $250000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Tyler! \ud83d\udc4b Just saw your profile. You're looking at houses in Donnelly, MN for around $250k. How's the search going so far?"
+  },
+  {
+    "at": "2026-05-18T14:44:11.315097+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1278,
+    "in": "Hey Jacob! It's Justin \u2014 saw you were looking at homes in Jordan online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Jacob - saw you browsing Jordan properties. Thinking of making an offer or just window shopping? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-18T14:45:01.906062+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Brittany! It's Justin \u2014 saw you were looking at homes in South St. Paul online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brittany -- just checked out your South St. Paul search history, still browsing or getting close to making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-18T14:48:15.538020+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2717,
+    "in": "New lead: Jacob - 6123236643 - jakemaddaus@outlook.com\nLooking in Jordan, MN - $350000\nCredit: Excellent | Income: $100001+ | Down: $0\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Jacob - just checking in on your search for a home in Jordan. You've got some great credit and income to work with, but we should talk about the down payment options available to you as a first-time buyer."
+  },
+  {
+    "at": "2026-05-18T14:49:07.120238+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3125,
+    "in": "\ud83e\uddca COLD LEAD: Brittany - 6124123008 - brittanykubricky@gmail.com\nLooking in South St. Paul, MN - $400000\nCredit: Good\nFirst-time buyer: N | Has agent: Y",
+    "out": "Hey Brittany! \ud83e\udd17 I've got a home that just came on the market in South St. Paul for $400,000. You'd be pre-approved with your good credit and no first-time buyer fees since you're working with an agent already. Want to take a look?"
+  },
+  {
+    "at": "2026-05-18T14:49:17.593704+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1528,
+    "in": "Hey Brevon! It's Justin \u2014 saw you were looking at homes in Grand Rapids online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brevon, just saw you're browsing GR homes - still shopping around or getting close to making a move?"
+  },
+  {
+    "at": "2026-05-18T14:50:08.004825+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jacob! It's Justin \u2014 saw you were looking at homes in Jordan online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Jacob - saw you browsing Jordan properties. Thinking of making an offer or just window shopping? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-18T14:53:21.680012+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2670,
+    "in": "New lead: Brevon - 2185426578 - brevonjackson18@gmail.com\nLooking in Grand Rapids, MN - $180000\nCredit: Good | Income: $50000+ | Down: $9000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Brevon, morning! We've got a great opportunity for you in Grand Rapids. You're looking at a $180k home with good credit and a decent down payment. What's your timeline like? - Justin"
+  },
+  {
+    "at": "2026-05-18T14:54:12.574463+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2765,
+    "in": "\ud83e\uddca COLD LEAD: Jacob - 6123236643 - jakemaddaus@outlook.com\nLooking in Jordan, MN - $350000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Jacob! \ud83d\udc4b Just saw your profile and I'm working with buyers in the Jordan area. You're looking at a $350k home with excellent credit. First-time buyer, no agent yet? Let's chat about options. - Justin"
+  },
+  {
+    "at": "2026-05-18T14:54:24.071687+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1673,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Brevon Jackson (2185426578)\nMessage: Stop\n\nReply in SimpleTexting or call 2185426578",
+    "out": "Hey Brevon, just got your lead's reply. Want me to respond in SimpleTexting or give them a call?"
+  },
+  {
+    "at": "2026-05-18T14:55:13.458109+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Brevon! It's Justin \u2014 saw you were looking at homes in Grand Rapids online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brevon, just saw you're browsing GR homes - still shopping around or getting close to making a move?"
+  },
+  {
+    "at": "2026-05-18T14:59:19.166263+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "length mismatch in=146 out=295",
+    "elapsed_ms": 4175,
+    "in": "\ud83e\uddca COLD LEAD: Brevon - 2185426578 - brevonjackson18@gmail.com\nLooking in Grand Rapids, MN - $180000\nCredit: Good\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Brevon! \ud83d\udc4b Just saw your profile and wanted to reach out. You're looking for a place in Grand Rapids, MN, right? We've got some listings around that price point ($180,000) - would you like me to send some over? Your credit looks good, but I just want to confirm: are you a first-time buyer? \ud83d\udcca"
+  },
+  {
+    "at": "2026-05-19T12:54:02.698662+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6955,
+    "in": "Hey Briley! It's Justin \u2014 saw you were looking at homes in Buffalo Lake online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Briley, just saw your search history for Buffalo Lake - where are you at with that?"
+  },
+  {
+    "at": "2026-05-19T12:58:06.147804+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2577,
+    "in": "New lead: Briley - 5072131046 - bhighfield18@gmail.com\nLooking in Buffalo Lake, MN - $300000\nCredit: Excellent | Income: $100001+ | Down: $10500\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Briley, just wanted to follow up on your search for a home in Buffalo Lake. You're looking at a $300k place there. Can you tell me more about what you're thinking?"
+  },
+  {
+    "at": "2026-05-19T12:59:25.724102+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley! It's Justin \u2014 saw you were looking at homes in Buffalo Lake online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Briley, just saw your search history for Buffalo Lake - where are you at with that?"
+  },
+  {
+    "at": "2026-05-19T13:03:34.407097+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4646,
+    "in": "\ud83e\uddca COLD LEAD: Briley - 5072131046 - bhighfield18@gmail.com\nLooking in Buffalo Lake, MN - $300000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Briley! \ud83e\uddca Just got your info for a house hunt in Buffalo Lake. You're looking at around $300k, and you've got excellent credit. First time buying? No agent yet. Want to chat more about it? - Justin"
+  },
+  {
+    "at": "2026-05-19T14:33:27.296296+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4284,
+    "in": "Hey Danielle \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Danielle, check out my link for more info on what I do - https://linktr.ee/welcometosummit. No pressure, just here if you need help with a mortgage anytime"
+  },
+  {
+    "at": "2026-05-19T14:38:34.836834+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4712,
+    "in": "Hey Tyler \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Tyler, just wanted to share my link so you know who I am - https://linktr.ee/welcometosummit. No pressure, but it's good to have a mortgage guy on speed dial when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-19T14:43:41.967968+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4407,
+    "in": "Hey Brittany \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Brittany, check out my linktree for more info on me - https://linktr.ee/welcometosummit. No pressure, just wanna be your go-to mortgage guy when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-19T14:48:50.246237+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4360,
+    "in": "Hey Jacob \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jacob, check out my link for more info - https://linktr.ee/welcometosummit. No pressure, I just wanna be your go-to guy for mortgages when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-19T14:53:58.764312+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4882,
+    "in": "Hey Brevon \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Brevon, check out my linktree for some info on me - https://linktr.ee/welcometosummit. No need to rush, just good to have someone like me in your corner when mortgage time comes around \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-19T15:19:18.524810+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3004,
+    "in": "Hey Jenna \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Jenna! Just wanted to make sure you got that info I sent over."
+  },
+  {
+    "at": "2026-05-19T15:20:21.701878+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1316,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Jenna Laughlin (7635683372)\nMessage: Liked \u201cHey Jenna! Just wanted to make sure you got that info I sent over.\u201d\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey {name}!, just a heads up - your lead status changed to warm!"
+  },
+  {
+    "at": "2026-05-19T15:20:47.932536+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1743,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Jenna Laughlin (7635683372)\nMessage: Liked \u201cHey Jenna! Just wanted to make sure you got that info I sent over.\u201d\n\nReply in SimpleTexting or call 7635683372",
+    "out": "Hey Jenna, just checked and saw your lead replied. Need a response ASAP - hit reply in ST or give me a call."
+  },
+  {
+    "at": "2026-05-20T15:01:56.109700+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8006,
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:03:06.600621+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2193,
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:04:14.829802+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:08:15.626989+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:09:19.749417+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:10:27.865775+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:11:36.014548+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:12:44.203059+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:13:52.389021+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:15:01.537919+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:16:09.911914+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:17:17.990154+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:18:26.216913+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:19:34.320328+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:20:42.474464+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:21:50.518902+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:22:58.784102+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:24:06.868424+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:25:15.018204+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:26:23.292811+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:27:31.486782+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:28:39.759054+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:29:47.983010+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:31:21.855074+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jenna \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Jenna, just wanted to share my link with you - https://linktr.ee/welcometosummit. You've got a buddy in me for any mortgage stuff whenever you need it \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T15:31:24.213446+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Briley \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Briley, check out my link - https://linktr.ee/welcometosummit. No need to rush, I'm here for you whenever you're ready with any mortgage stuff \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-20T16:11:05.310582+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7296,
+    "in": "Hey Augusta! It's Justin \u2014 saw you were looking at homes in Milaca online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Augusta -- still checking out options in Milaca or thinking of making a move there? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-20T16:15:08.533660+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2411,
+    "in": "New lead: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good | Income: $75000+ | Down: $8750\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Augusta! Just saw your profile and wanted to reach out. You're looking at homes in Milaca for around 250k, right? What's bringing you to that area?"
+  },
+  {
+    "at": "2026-05-20T16:16:19.562454+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Augusta! It's Justin \u2014 saw you were looking at homes in Milaca online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Augusta -- still checking out options in Milaca or thinking of making a move there? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-20T16:20:26.483988+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5370,
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:21:26.502617+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:22:26.589695+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:23:26.648257+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:24:26.673901+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:25:26.707161+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:26:26.791928+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:27:26.938925+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:28:27.073442+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:29:27.096625+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:30:27.125160+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:31:27.155126+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:32:27.190896+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:33:27.279926+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:34:27.353572+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:35:27.420200+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:36:27.461340+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:37:27.517088+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:38:27.681715+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83e\uddca COLD LEAD: Augusta - 3204361878 - palm.pound1h@icloud.com\nLooking in Milaca, MN - $250000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Augusta! \ud83d\udc4b Just saw your listing for the house in Milaca. You're looking at a $250k property with good credit as a first-time buyer. Your agent's on board, and you've got a decent living situation lined up. Let me know if we can discuss options further. - Justin"
+  },
+  {
+    "at": "2026-05-20T16:39:31.147061+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3301,
+    "in": "Hey Shem \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got the details about your place \ud83c\udfe1 - no rush, though."
+  },
+  {
+    "at": "2026-05-20T16:40:31.265413+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Shem \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got the details about your place \ud83c\udfe1 - no rush, though."
+  },
+  {
+    "at": "2026-05-20T16:41:32.038741+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2549,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Augusta Maloney (3204361878)\nMessage: Exploring options at this time. My mother will be moving in with my family and I am looking into possibly purchasing a home or building at my current location a larger home. We are planning for something to start early 2027.\n\nReply in SimpleTexting or call 3204361878",
+    "out": "\"Hey Augusta, lead replied! So you're exploring options for your current spot since your mom is moving in. You thinking of buying or building a bigger place? What's the plan looking like?\" - Justin"
+  },
+  {
+    "at": "2026-05-20T16:41:34.613497+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2800,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Augusta Maloney (3204361878)\nMessage: Exploring options at this time. My mother will be moving in with my family and I am looking into possibly purchasing a home or building at my current location a larger home. We are planning for something to start early 2027.\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey Augusta, just wanted to let you know that your lead has been moved to the warm list! You mentioned exploring options and potentially buying or building a new place by early '27 - sounds like some exciting plans ahead!"
+  },
+  {
+    "at": "2026-05-20T16:41:36.516714+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Shem \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got the details about your place \ud83c\udfe1 - no rush, though."
+  },
+  {
+    "at": "2026-05-20T17:11:02.861683+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6213,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Augusta Maloney (3204361878)\nMessage: Sorry, today I will not be available due to work and planned activities.\n\n\u2705 Auto-stopped nurture.",
+    "out": "Hey Augusta! Just got word that you're busy with work and other stuff today, so we'll stop the nurture campaign for now."
+  },
+  {
+    "at": "2026-05-20T17:11:43.979958+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1576,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Augusta Maloney (3204361878)\nMessage: Sorry, today I will not be available due to work and planned activities.\n\nReply in SimpleTexting or call 3204361878",
+    "out": "Hey Augusta! Just got your lead reply. Sorry to hear you're busy today - we can catch up tomorrow instead?"
+  },
+  {
+    "at": "2026-05-21T06:07:15.647593+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7893,
+    "in": "Hey Brandon! It's Justin \u2014 saw you were looking at homes in Red Wing online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brandon -- still checking out options in Red Wing or getting close to making a decision?"
+  },
+  {
+    "at": "2026-05-21T06:11:19.166170+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3063,
+    "in": "New lead: Brandon - 5077579110 - brandonturcotte04@gmail.com\nLooking in Red Wing, MN - $250000\nCredit: Excellent | Income: $100001+ | Down: $30000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Brandon - we got a lead on a place in Red Wing that fits your budget. $250k, excellent credit, and you're pre-approved for a 30k down payment. First-time buyer, no agent involved yet. Let's chat!"
+  },
+  {
+    "at": "2026-05-21T06:12:56.224711+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Brandon! It's Justin \u2014 saw you were looking at homes in Red Wing online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Brandon -- still checking out options in Red Wing or getting close to making a decision?"
+  },
+  {
+    "at": "2026-05-21T06:17:02.916378+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4454,
+    "in": "\ud83e\uddca COLD LEAD: Brandon - 5077579110 - brandonturcotte04@gmail.com\nLooking in Red Wing, MN - $250000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Brandon \ud83d\ude4b\u200d\u2642\ufe0f, just saw your profile. Looking for a place in Red Wing, huh? You've got great credit and it's your first time buying a home. What made you choose that area?"
+  },
+  {
+    "at": "2026-05-21T15:50:49.989849+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7432,
+    "in": "Hey Maria \u2014 been keeping an eye on the Minneapolis market. Some interesting stuff coming up. Want me to send you a quick snapshot?",
+    "out": "Hey Maria, just checked out the Minneapolis market - some cool developments happening. You up for a quick rundown?"
+  },
+  {
+    "at": "2026-05-22T05:28:38.252069+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8007,
+    "in": "Hey Sharron! It's Justin \u2014 saw you were looking at homes in Mora online. Still exploring or getting serious? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-22T05:32:41.500075+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2593,
+    "in": "New lead: Sharron - 3204963292 - Sharronstarlet@yahoo.com\nLooking in Mora, MN - $200000\nCredit: Good | Income: $75000+ | Down: $4000\nFirst-time buyer: Y | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Sharron, just wanted to follow up on your mortgage application. You're looking at a $200k home in Mora with good credit and a decent income. What's the plan for today?"
+  },
+  {
+    "at": "2026-05-22T05:33:43.750295+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1687,
+    "in": "Hey Sharron! It's Justin \u2014 saw you were looking at homes in Mora online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Sharron - just saw your browsing history for Mora homes online. Getting serious about a place or still checking out options?"
+  },
+  {
+    "at": "2026-05-22T05:33:45.421396+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3149,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Sharron Becker (3204963292)\nMessage: Serious\n\nReply in SimpleTexting or call 3204963292",
+    "out": "Hey Sharron! Just got your lead reply - looks like they're serious about moving forward. Hit me back when you've responded."
+  },
+  {
+    "at": "2026-05-22T05:37:49.344842+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3670,
+    "in": "\ud83e\uddca COLD LEAD: Sharron - 3204963292 - Sharronstarlet@yahoo.com\nLooking in Mora, MN - $200000\nCredit: Good\nFirst-time buyer: Y | Has agent: Y",
+    "out": "Hey Sharron! \ud83c\udf1e I've got a home in Mora that just came on the market for $200k. You mentioned you're looking in the area and have good credit, which is a plus. First-time buyer, huh? Do you already have an agent working with you or would you like some recommendations? - Justin"
+  },
+  {
+    "at": "2026-05-22T06:12:12.978668+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4742,
+    "in": "Hey Brandon \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Morning! Hey Brandon, no rush at all - I just wanted to introduce myself as a friendly mortgage guy who's here when you need me. Check out my link if you'd like: https://linktr.ee/welcometosummit \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-23T21:37:36.339588+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8003,
+    "in": "Hey Sharron \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-23T21:38:48.238767+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1232,
+    "in": "Hey Alexander! It's Justin \u2014 saw you were looking at homes in Pine City online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Alexander -- just saw your search history for Pine City homes. Where are you at with that?"
+  },
+  {
+    "at": "2026-05-23T21:42:51.717722+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2997,
+    "in": "New lead: Alexander - 6302548802 - Steaksaucejohnson6@gmail.com\nLooking in Pine City, MN - $200000\nCredit: Excellent | Income: $100000+ | Down: $20000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Alexander, just checking in on your Pine City search. You're looking at a 200k spot, excellent credit and a decent down payment already lined up. First-time buyer, no agent yet - what's the holdup?"
+  },
+  {
+    "at": "2026-05-23T21:44:39.514988+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Alexander! It's Justin \u2014 saw you were looking at homes in Pine City online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Alexander -- just saw your search history for Pine City homes. Where are you at with that?"
+  },
+  {
+    "at": "2026-05-23T21:48:46.308592+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5283,
+    "in": "\ud83e\uddca COLD LEAD: Alexander - 6302548802 - Steaksaucejohnson6@gmail.com\nLooking in Pine City, MN - $200000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Alexander! \ud83e\uddca Just checking in on that Pine City search. You're looking at a $200,000 place, right? Your credit's excellent and you're new to the game as a first-time buyer. No agent involved yet. What's your timeline like for making a move?"
+  },
+  {
+    "at": "2026-05-24T15:13:48.964528+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7411,
+    "in": "Hey Erin! It's Justin \u2014 saw you were looking at homes in Detroit Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Erin -- still checking out Detroit Lakes options I see. Getting closer to making a decision?"
+  },
+  {
+    "at": "2026-05-24T15:17:52.962594+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3445,
+    "in": "New lead: Erin - 7013676751 - gtgirl0121@gmail.com\nLooking in Detroit Lakes, MN - $250000\nCredit: Good | Income: $75000+ | Down: $0\nFirst-time buyer: Y | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Erin - just wanted to follow up on your search for a home in Detroit Lakes. You're looking at around 250k, good credit and income to qualify for a mortgage. First-time buyer, so we can explore some first-time buyer programs together. What's the plan for today?"
+  },
+  {
+    "at": "2026-05-24T15:18:56.103384+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Erin! It's Justin \u2014 saw you were looking at homes in Detroit Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Erin -- still checking out Detroit Lakes options I see. Getting closer to making a decision?"
+  },
+  {
+    "at": "2026-05-24T15:20:59.415696+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2259,
+    "in": "Hey Jenna \u2014 rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment \ud83d\ude0a",
+    "out": "Morning! Rates have been all over the place lately. If you start thinking about making a move, let me know and I'll crunch some numbers for you - no charge or strings attached \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-24T15:23:02.642098+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2217,
+    "in": "\ud83e\uddca COLD LEAD: Erin - 7013676751 - gtgirl0121@gmail.com\nLooking in Detroit Lakes, MN - $250000\nCredit: Good\nFirst-time buyer: Y | Has agent: Y",
+    "out": "Hey Erin! \ud83e\uddca Found a lead looking for homes around $250k in Detroit Lakes. Good credit, first-time buyer with an agent already on board. Want to follow up?"
+  },
+  {
+    "at": "2026-05-24T21:43:13.103784+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6122,
+    "in": "Hey Alexander \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Alex, no pressure at all - just thought I'd share my link with you so you know who to reach out to when you need help with mortgages \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-25T14:33:17.114442+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3612,
+    "in": "Hey Danielle \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Danielle! Just wanted to confirm I sent over everything okay?"
+  },
+  {
+    "at": "2026-05-25T14:37:20.231103+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1310,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Danielle Barg (2185530680)\nMessage: I'm sorry I don't have this number saved. Who is this?\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey Danielle! Just a heads up, your lead was moved from cold to warm."
+  },
+  {
+    "at": "2026-05-25T14:37:46.087400+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1684,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Danielle Barg (2185530680)\nMessage: I'm sorry I don't have this number saved. Who is this?\n\nReply in SimpleTexting or call 2185530680",
+    "out": "Hey Danielle - it's me, Justin. We chatted about your lead last week. Can you check the app for our convo?"
+  },
+  {
+    "at": "2026-05-25T14:38:21.911038+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 987,
+    "in": "Hey Tyler \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got that stuff I sent over."
+  },
+  {
+    "at": "2026-05-25T14:43:26.867034+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2828,
+    "in": "Hey Brittany \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got that address okay?"
+  },
+  {
+    "at": "2026-05-25T14:48:32.002095+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2861,
+    "in": "Hey Jacob \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Jacob! Just wanted to make sure you got my details okay?"
+  },
+  {
+    "at": "2026-05-25T14:53:37.302181+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3188,
+    "in": "Hey Brevon \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got that last message with the details about the property \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-25T15:18:51.296736+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4622,
+    "in": "Hey Erin \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Erin, just wanted to share my link so you know who I am - https://linktr.ee/welcometosummit. No pressure, but it's good to have a friendly face in the industry when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-25T19:13:02.564715+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4609,
+    "in": "Hey Dianne! It's Justin \u2014 saw you were looking at homes in Little Falls online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Dianne - just saw your browsing history and was wondering if you're still checking out Little Falls homes or thinking of making a move there?"
+  },
+  {
+    "at": "2026-05-25T19:17:05.801759+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2728,
+    "in": "New lead: Dianne - 3202328243 - duanestrucking@yahoo.com\nLooking in Little Falls, MN - $300000\nCredit: Good | Income: $50000+ | Down: $60000\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Dianne, just wanted to follow up on your search for a home in Little Falls. You're looking at a $300k property with good credit and a decent down payment - sounds like you're getting close!"
+  },
+  {
+    "at": "2026-05-25T19:18:22.198983+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Dianne! It's Justin \u2014 saw you were looking at homes in Little Falls online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Dianne - just saw your browsing history and was wondering if you're still checking out Little Falls homes or thinking of making a move there?"
+  },
+  {
+    "at": "2026-05-25T19:22:28.989317+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4820,
+    "in": "\ud83e\uddca COLD LEAD: Dianne - 3202328243 - duanestrucking@yahoo.com\nLooking in Little Falls, MN - $300000\nCredit: Good\nFirst-time buyer: *Living | Has agent: N",
+    "out": "\"Hey Dianne! Just saw your profile looking at homes in Little Falls. You've got a good credit score and are a first-time buyer. What's caught your eye in that price range ($300,000)?\" \ud83d\udcf2 320-232-8243"
+  },
+  {
+    "at": "2026-05-27T20:17:55.814733+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Danielle \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Danielle, check out my link for more info on what I do - https://linktr.ee/welcometosummit. No pressure, just here if you need help with a mortgage anytime"
+  },
+  {
+    "at": "2026-05-27T20:18:58.582473+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Danielle \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Danielle, check out my link for more info on what I do - https://linktr.ee/welcometosummit. No pressure, just here if you need help with a mortgage anytime"
+  },
+  {
+    "at": "2026-05-27T20:19:09.412112+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 6837,
+    "in": "Hey Briley \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got that info about your place \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-27T20:19:22.918988+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2369,
+    "in": "Hey Dianne \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Dianne, check out my link for more info: https://linktr.ee/welcometosummit. I'd be your go-to guy for mortgages whenever you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-27T20:21:48.966232+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1712,
+    "in": "Hey Beniyam! It's Justin \u2014 saw you were looking at homes in Saint Louis Park online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Beniyam - saw you browsing Saint Louis Park homes online. You still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-27T20:25:51.732448+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2017,
+    "in": "New lead: Beniyam - 6122273749 - b8204543@gmail.com\nLooking in Saint Louis Park, MN - $200000\nCredit: Good | Income: $30000+ | Down: $7000\nFirst-time buyer: N | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Beniyam, Morning! I saw you're looking for a place in Saint Louis Park. What's got you interested in that area?"
+  },
+  {
+    "at": "2026-05-27T20:26:53.822434+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1553,
+    "in": "Hey Hunter! It's Justin \u2014 saw you were looking at homes in Pequot Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Hunter, what's up with Pequot Lakes? You still checking out options or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-27T20:27:32.928845+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Beniyam! It's Justin \u2014 saw you were looking at homes in Saint Louis Park online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Beniyam - saw you browsing Saint Louis Park homes online. You still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-27T20:30:56.530423+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2208,
+    "in": "New lead: Hunter - 2182326621 - hunterharren37@gmail.com\nLooking in Pequot Lakes, MN - $400000\nCredit: Excellent | Income: $100001+ | Down: $40000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Hunter, just saw your profile. You're looking at some homes in Pequot Lakes for around $400k? What's got you interested in that area?"
+  },
+  {
+    "at": "2026-05-27T20:31:37.674625+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2710,
+    "in": "\ud83e\uddca COLD LEAD: Beniyam - 6122273749 - b8204543@gmail.com\nLooking in Saint Louis Park, MN - $200000\nCredit: Good\nFirst-time buyer: N | Has agent: N",
+    "out": "Hey Beniyam, found a lead on your search for a place in Saint Louis Park. Looks like it's around 200k. Credit is good and you're a first-time buyer, right? No agent involved yet. - Justin"
+  },
+  {
+    "at": "2026-05-27T20:32:38.517164+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Hunter! It's Justin \u2014 saw you were looking at homes in Pequot Lakes online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Hunter, what's up with Pequot Lakes? You still checking out options or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-27T20:36:45.139570+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4059,
+    "in": "\ud83e\uddca COLD LEAD: Hunter - 2182326621 - hunterharren37@gmail.com\nLooking in Pequot Lakes, MN - $400000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Hunter! \ud83e\uddca Just saw your profile and wanted to reach out. You're looking at places in Pequot Lakes for around $400k? What made you start searching there?"
+  },
+  {
+    "at": "2026-05-28T06:11:51.700792+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3089,
+    "in": "Hey Brandon \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got my details - no rush or anything \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-28T11:51:41.881170+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5268,
+    "in": "Hey Emily! It's Justin \u2014 saw you were looking at homes in Blooming Prairie online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Emily - saw your search history for BP homes. Getting serious with a place to call home yet? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-28T12:14:03.347998+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Emily! It's Justin \u2014 saw you were looking at homes in Blooming Prairie online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Emily - saw your search history for BP homes. Getting serious with a place to call home yet? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-28T12:18:11.812169+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8006,
+    "in": "New lead: Emily - 2184430037 - emilytjaden13@gmail.com\nLooking in Blooming Prairie, MN - $350000\nCredit: Excellent | Income: $100001+ | Down: $17500\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!"
+  },
+  {
+    "at": "2026-05-28T12:19:48.666112+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Emily! It's Justin \u2014 saw you were looking at homes in Blooming Prairie online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Emily - saw your search history for BP homes. Getting serious with a place to call home yet? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-28T12:23:54.770686+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4210,
+    "in": "\ud83e\uddca COLD LEAD: Emily - 2184430037 - emilytjaden13@gmail.com\nLooking in Blooming Prairie, MN - $350000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Emily! \ud83e\udd17 Just saw your profile and thought I'd reach out. You're looking for a place in Blooming Prairie, right? What's the story with that $350k budget?"
+  },
+  {
+    "at": "2026-05-28T20:26:35.306509+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8005,
+    "in": "Hey Beniyam \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-28T20:31:42.393169+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4316,
+    "in": "Hey Hunter \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Hunter, check out my link for more info on me - https://linktr.ee/welcometosummit. No need to act fast, I'm here whenever you need a mortgage pro \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-29T05:33:01.442505+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5552,
+    "in": "Hey Sharron \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to confirm you got the details I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-05-29T14:45:21.651552+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8003,
+    "in": "Hey Emily \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-05-29T14:47:34.099217+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2079,
+    "in": "Hey Angela! It's Justin \u2014 saw you were looking at homes in Minneapolis online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Angela -- just checked out your browsing history and I see you've been looking at some Minneapolis properties. What's the plan, still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-29T14:51:36.915613+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2362,
+    "in": "New lead: Angela - 3204798484 - angsalz@icloud.com\nLooking in Minneapolis, MN - $160000\nCredit: Excellent | Income: $100000+ | Down: $160000\nFirst-time buyer: *Living | Has agent: *Refinance\n\nCall them NOW!",
+    "out": "Hey Angela, just wanted to follow up on your search for a home in Minneapolis. You're looking at around $160k - is that still the budget you're thinking?"
+  },
+  {
+    "at": "2026-05-29T14:53:26.148080+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Angela! It's Justin \u2014 saw you were looking at homes in Minneapolis online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Angela -- just checked out your browsing history and I see you've been looking at some Minneapolis properties. What's the plan, still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-05-29T14:57:34.417030+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5558,
+    "in": "\ud83e\uddca COLD LEAD: Angela - 3204798484 - angsalz@icloud.com\nLooking in Minneapolis, MN - $160000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: *Refinance",
+    "out": "Hey Angela! \ud83d\ude4b\u200d\u2640\ufe0f I've got a lead for you. Client is looking to buy in Minneapolis, MN and has excellent credit. First-time buyer, wants to live there, and already has an agent lined up. Budget is around $160000. Let me know if you'd like more info on this one!"
+  },
+  {
+    "at": "2026-05-29T15:19:51.280967+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4056,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Angela Salzwedel (3204798484)\nMessage: Wanting to look at the property on 7th as soon as possible \n\nMoved Cold \u2192 Warm.",
+    "out": "Hey {name}! Just wanted to let you know that your lead has been moved to warm - we're excited to move forward with showing you the property on 7th ASAP!"
+  },
+  {
+    "at": "2026-05-29T15:20:53.760424+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1660,
+    "in": "Hey Jenna \u2014 just wanted to check in. No pressure at all, just making sure you have a friend in the mortgage business in your corner \ud83c\udfe1",
+    "out": "Hey Jenna! Just checking in to make sure everything's good on your end. I'm here if you need anything mortgage-related."
+  },
+  {
+    "at": "2026-05-29T15:21:06.801969+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2248,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Angela Salzwedel (3204798484)\nMessage: Wanting to look at the property on 7th as soon as possible \n\nReply in SimpleTexting or call 3204798484",
+    "out": "Hey Angela! Lead replied and wants to see the 7th St property ASAP. Can you reply in SimpleTexting or give me a call at 320-479-8484?"
+  },
+  {
+    "at": "2026-06-01T14:09:15.352853+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8003,
+    "in": "Hey Maria \u2014 pro tip: getting pre-approved early gives you a head start when you're ready to make a move. Happy to get that going whenever you want \ud83d\udcaa"
+  },
+  {
+    "at": "2026-06-01T14:10:17.325162+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1753,
+    "in": "Hey Maria \u2014 pro tip: getting pre-approved early gives you a head start when you're ready to make a move. Happy to get that going whenever you want \ud83d\udcaa",
+    "out": "Hey Maria! Getting pre-approved early can give you a leg up when you're ready to buy. I'd be happy to help with that whenever you're ready \ud83d\udcaa"
+  },
+  {
+    "at": "2026-06-01T14:10:19.598187+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1869,
+    "in": "Hey Haleigh \u2014 quick market update: some good stuff in La Crescent right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Morning! Hey Haleigh -- got a quick update on La Crescent - there's some decent opportunities popping up. Want to know what you'd qualify for?"
+  },
+  {
+    "at": "2026-06-01T14:10:21.840277+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1867,
+    "in": "Hey Cheyenne \u2014 quick market update: some good stuff in Wheaton right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Hey Cheyenne - just checked out the Wheaton market and saw some promising listings. You should check 'em out if you're interested! \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-01T14:10:24.401783+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2109,
+    "in": "Hey Danielle \u2014 rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment \ud83d\ude0a",
+    "out": "Hey Danielle -- rates are all over the place right now. Let me know when you're serious about making a move and we'll crunch some numbers together, no charge! \ud83d\ude0a"
+  },
+  {
+    "at": "2026-06-01T14:10:25.955136+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 981,
+    "in": "Hey Alexander \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got my {info}."
+  },
+  {
+    "at": "2026-06-01T14:10:27.630841+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1171,
+    "in": "Hey Erin \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Erin! Just wanted to make sure you got that info I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-01T14:10:31.027239+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2783,
+    "in": "Hey Angela \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Angela, check out my link for more info on what I do - https://linktr.ee/welcometosummit. No pressure, just wanted to be your go-to guy for mortgages when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-01T14:11:38.767891+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1281,
+    "in": "Hey Jamie! It's Justin \u2014 saw you were looking at homes in St. Cloud online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Jamie - saw your browsing history for St. Cloud homes. Where are you at with that search?"
+  },
+  {
+    "at": "2026-06-01T14:15:42.251031+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3033,
+    "in": "New lead: Jamie - 3203107676 - jamiebartz77@yahoo.com\nLooking in St. Cloud, MN - $300000\nCredit: Excellent | Income: $75000+ | Down: $102000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Jamie, I've got your pre-approval info ready to go for that St. Cloud house you're eyeing - $300k in your budget, excellent credit, and a decent down payment already lined up. Let's get the ball rolling!"
+  },
+  {
+    "at": "2026-06-01T14:16:44.109936+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1325,
+    "in": "Hey Ryan! It's Justin \u2014 saw you were looking at homes in Litchfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Ryan - just saw your browsing history for Litchfield homes. Where are you at with that search?"
+  },
+  {
+    "at": "2026-06-01T14:17:35.774781+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Jamie! It's Justin \u2014 saw you were looking at homes in St. Cloud online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Jamie - saw your browsing history for St. Cloud homes. Where are you at with that search?"
+  },
+  {
+    "at": "2026-06-01T14:20:46.648056+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2095,
+    "in": "New lead: Ryan - 3205104334 - ryanfrey45@gmail.com\nLooking in Litchfield, MN - $250000\nCredit: Good | Income: $75000+ | Down: $0\nFirst-time buyer: Y | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Ryan, just got your info. You're looking to buy a house in Litchfield for around 250k. What's the plan so far?"
+  },
+  {
+    "at": "2026-06-01T14:21:40.069523+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2420,
+    "in": "\ud83e\uddca COLD LEAD: Jamie - 3203107676 - jamiebartz77@yahoo.com\nLooking in St. Cloud, MN - $300000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Jamie! \ud83d\udc4b Looking at homes in St. Cloud for $300k. You've got excellent credit and it's your first time buying a place. No agent yet? What's the plan? - Justin"
+  },
+  {
+    "at": "2026-06-01T14:22:40.942689+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Ryan! It's Justin \u2014 saw you were looking at homes in Litchfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Ryan - just saw your browsing history for Litchfield homes. Where are you at with that search?"
+  },
+  {
+    "at": "2026-06-01T14:26:47.790930+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4089,
+    "in": "\ud83e\uddca COLD LEAD: Ryan - 3205104334 - ryanfrey45@gmail.com\nLooking in Litchfield, MN - $250000\nCredit: Good\nFirst-time buyer: Y | Has agent: Y",
+    "out": "Hey Ryan \ud83e\uddca! Checking out homes in Litchfield for a quarter mil. You're good to go on credit and this'll be your first purchase. Got an agent lined up already?"
+  },
+  {
+    "at": "2026-06-01T15:15:14.620068+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5357,
+    "in": "Hey Eric! It's Justin \u2014 saw you were looking at homes in Minnetonka online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Eric - just saw your browsing history on our site and noticed you're checking out some Minnetonka listings. What's the plan, still shopping around or thinking of making an offer?"
+  },
+  {
+    "at": "2026-06-01T15:19:18.831041+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3500,
+    "in": "New lead: Eric - 6126955618 - erlunde60@gmail.com\nLooking in Minnetonka, MN - $650000\nCredit: Excellent | Income: $100001+ | Down: $305500\nFirst-time buyer: *Living | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Eric, just wanted to follow up on your search for a home in Minnetonka. You're looking at around $650k, excellent credit, and enough income to qualify for that price point. First-time buyer with an agent already on board - sounds like you've got this!"
+  },
+  {
+    "at": "2026-06-01T15:20:24.986167+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Eric! It's Justin \u2014 saw you were looking at homes in Minnetonka online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Eric - just saw your browsing history on our site and noticed you're checking out some Minnetonka listings. What's the plan, still shopping around or thinking of making an offer?"
+  },
+  {
+    "at": "2026-06-01T15:24:32.599475+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3535,
+    "in": "\ud83e\uddca COLD LEAD: Eric - 6126955618 - erlunde60@gmail.com\nLooking in Minnetonka, MN - $650000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: N",
+    "out": "Hey Eric, found a place in Minnetonka for $650k. You good with excellent credit and first-time buyer?"
+  },
+  {
+    "at": "2026-06-01T16:26:25.526520+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3097,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Eric Lunde (6126955618)\nMessage: Just looking \n\nMoved Cold \u2192 Warm.",
+    "out": "\"Hey Eric, just got you moved from cold to warm! \ud83d\udc4d\" - Justin"
+  },
+  {
+    "at": "2026-06-01T16:26:47.181673+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2008,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Eric Lunde (6126955618)\nMessage: Just looking \n\nReply in SimpleTexting or call 6126955618",
+    "out": "Hey Eric! Lead replied - just said they're interested. Check your SimpleTexting inbox or give me a call at 612-695-5618"
+  },
+  {
+    "at": "2026-06-01T17:21:29.965540+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3970,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Ryan Frey (3205104334)\nMessage: Hello, Who is this?\n\nReply in SimpleTexting or call 3205104334",
+    "out": "Hey Ryan! This is Justin. I'm reaching out about your lead from yesterday. Can we chat in SimpleTexting or give me a call at 3205104334?"
+  },
+  {
+    "at": "2026-06-01T17:22:03.316167+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1668,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Ryan Frey (3205104334)\nMessage: Hello, Who is this?\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey {name}! Just got you moved from cold to warm - we're one step closer to getting you set up!"
+  },
+  {
+    "at": "2026-06-01T19:17:12.442390+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2938,
+    "in": "Hey Dianne \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got everything I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-02T14:16:02.306743+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8004,
+    "in": "Hey Jamie \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-02T16:26:26.521552+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4046,
+    "in": "Hey Eric \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Eric, morning! Just wanted to share my link with you - https://linktr.ee/welcometosummit. I'm here whenever you need help with mortgages \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-02T17:23:01.703521+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4374,
+    "in": "Hey Ryan \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Ryan, check out my link if you want to know more about me - https://linktr.ee/welcometosummit. Just wanted to be your go-to guy for mortgages whenever you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-02T21:00:37.548305+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3379,
+    "in": "Hey Cade! It's Justin \u2014 saw you were looking at homes in Monticello online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Cade, what's up with Monticello? You still checking out options or getting close to making a move?"
+  },
+  {
+    "at": "2026-06-02T21:04:41.120064+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3058,
+    "in": "New lead: Cade - 7632026722 - cadecasey99@gmail.com\nLooking in Monticello, MN - $300000\nCredit: Excellent | Income: $50000+ | Down: $30000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "\"Hey Cade, just wanted to touch base about your Monticello search. You're looking at a $300k place with excellent credit and a decent down payment. First time buying, right? I'd love to discuss some options with you.\" - Justin"
+  },
+  {
+    "at": "2026-06-02T21:06:05.062015+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Cade! It's Justin \u2014 saw you were looking at homes in Monticello online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Cade, what's up with Monticello? You still checking out options or getting close to making a move?"
+  },
+  {
+    "at": "2026-06-02T21:10:11.577834+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4003,
+    "in": "\ud83e\uddca COLD LEAD: Cade - 7632026722 - cadecasey99@gmail.com\nLooking in Monticello, MN - $300000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Cade, just saw your profile and you're looking to buy a place in Monticello for 300k. Your credit's good, first time buying, no agent yet?"
+  },
+  {
+    "at": "2026-06-04T12:23:18.870099+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8006,
+    "in": "Hey Katey \u2014 quick market update: some good stuff in New Richland right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-04T12:24:22.822936+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2327,
+    "in": "Hey Katey \u2014 quick market update: some good stuff in New Richland right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Morning Katey! Just checked on the market in New Richland and there are some decent opportunities popping up. You might be interested to see what you'd qualify for - hit me back whenever you have a chance. \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-04T12:24:26.453613+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2372,
+    "in": "Hey Emma \u2014 quick market update: some good stuff in Courtland right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Morning! Hey Emma \u2014 just got some updates on Courtland - looks like there's some promising opportunities out there. Want to know more about what you'd be eligible for? \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-04T12:24:29.927306+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1318,
+    "in": "Hey Beniyam \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Beniyam! Just wanted to follow up on that stuff I sent over - did you get everything?"
+  },
+  {
+    "at": "2026-06-04T12:24:39.030418+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1099,
+    "in": "Hey Hunter \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning! Just wanted to make sure you got the details I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-04T12:24:41.823956+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1135,
+    "in": "Hey Emily \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Emily! Just wanted to make sure you got the details I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-04T12:24:45.767117+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2090,
+    "in": "Hey Angela \u2014 rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment \ud83d\ude0a",
+    "out": "Morning! Rates are moving around - when you're ready to start looking seriously, let me know and we can crunch some numbers together. No charge, no strings attached \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-04T12:24:49.986601+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3167,
+    "in": "Hey Cade \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Cade -- check out my link if you want to know more about me: https://linktr.ee/welcometosummit. No pressure, I just wanna be your go-to guy for mortgages when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-04T12:26:59.971989+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1236,
+    "in": "Hey Emily! It's Justin \u2014 saw you were looking at homes in Brimson online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Emily, just saw your browsing history on Brimson homes - where are you at now?"
+  },
+  {
+    "at": "2026-06-04T12:31:02.396395+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1953,
+    "in": "New lead: Emily - 2184643765 - Ematzdorff@gmail.com\nLooking in Brimson, MN - $350000\nCredit: Good | Income: $100000+ | Down: $0\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Emily! Just got your info. You're looking to buy in Brimson for $350k. What's your timeline like?"
+  },
+  {
+    "at": "2026-06-04T12:32:04.961535+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1363,
+    "in": "Hey Kal! It's Justin \u2014 saw you were looking at homes in Madelia online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Kal -- still checking out options in Madelia, huh? What's got you interested there so far?"
+  },
+  {
+    "at": "2026-06-04T12:33:00.148121+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Emily! It's Justin \u2014 saw you were looking at homes in Brimson online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Emily, just saw your browsing history on Brimson homes - where are you at now?"
+  },
+  {
+    "at": "2026-06-04T12:36:07.285838+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2912,
+    "in": "\ud83e\uddca COLD LEAD: Emily - 2184643765 - Ematzdorff@gmail.com\nLooking in Brimson, MN - $350000\nCredit: Good\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Emily! \ud83e\udd17 We've got a new listing in Brimson that might interest you. It's priced at $350k and has good credit. First time buyer, no agent yet? I'd love to send over some details. - Justin"
+  },
+  {
+    "at": "2026-06-04T12:36:09.796458+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3456,
+    "in": "New lead: Kal - 5078293822 - kazollner@outlook.com\nLooking in Madelia, MN - $500000\nCredit: Excellent | Income: $100001+ | Down: $75000\nFirst-time buyer: N | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Kal, just checking in on that house search in Madelia. You're looking at a 500k place, excellent credit, and a decent down payment already lined up. What's the holdup?"
+  },
+  {
+    "at": "2026-06-04T12:38:09.729140+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Kal! It's Justin \u2014 saw you were looking at homes in Madelia online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Kal -- still checking out options in Madelia, huh? What's got you interested there so far?"
+  },
+  {
+    "at": "2026-06-04T12:41:17.192000+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4256,
+    "in": "\ud83e\uddca COLD LEAD: Kal - 5078293822 - kazollner@outlook.com\nLooking in Madelia, MN - $500000\nCredit: Excellent\nFirst-time buyer: N | Has agent: N",
+    "out": "Hey Kal! \ud83e\uddca Just checking in on the house search in Madelia. You're looking at a $500,000 place with excellent credit and you've never bought before. No agent involved yet?"
+  },
+  {
+    "at": "2026-06-04T14:37:42.772227+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7810,
+    "in": "Hey Danielle \u2014 just wanted to check in. No pressure at all, just making sure you have a friend in the mortgage business in your corner \ud83c\udfe1",
+    "out": "Morning! Just checking in on you - no rush or anything. We're here for you if you need any mortgage help \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-05T12:31:51.053054+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8007,
+    "in": "Hey Emily \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-05T12:37:10.560097+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 5183,
+    "in": "Hey Kal \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Morning Kal! Just wanted to share my link with you - https://linktr.ee/welcometosummit - so you know who I am and what I do. No pressure, but it's good to have a friendly face in the mortgage world when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-05T14:18:04.875040+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 4871,
+    "in": "Hey Bee \u2014 quick market update: some good stuff in St. Paul right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Morning! Hey Bee -- I've got a market update from St. Paul that's worth checking out. If you're interested, let me know and we can go over your options \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-05T23:29:28.119073+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 7011,
+    "in": "Hey Abigail! It's Justin \u2014 saw you were looking at homes in Paynesville online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Abigail -- just saw you browsing homes in Paynesville. What's your plan there?"
+  },
+  {
+    "at": "2026-06-05T23:33:31.814718+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2157,
+    "in": "New lead: Abigail - 3208946113 - abbybehl9@gmail.com\nLooking in Paynesville, MN - $350000\nCredit: Good | Income: $75000+ | Down: $35000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Abigail, just got your info. You're looking to buy a place in Paynesville for around 350k. What's the timeline looking like?"
+  },
+  {
+    "at": "2026-06-05T23:34:35.892634+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2537,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Abigail Behl (3208946113)\nMessage: Just beginning looking for a home. \n\nReply in SimpleTexting or call 3208946113",
+    "out": "Hey Abigail! Great to hear you're starting your home search. I'll send you a reply in SimpleTexting, but it's also cool if we chat on the phone - 320-894-6113."
+  },
+  {
+    "at": "2026-06-05T23:35:43.916204+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Abigail! It's Justin \u2014 saw you were looking at homes in Paynesville online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Abigail -- just saw you browsing homes in Paynesville. What's your plan there?"
+  },
+  {
+    "at": "2026-06-05T23:39:05.067244+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3015,
+    "in": "\ud83e\uddca COLD LEAD: Abigail - 3208946113 - abbybehl9@gmail.com\nLooking in Paynesville, MN - $350000\nCredit: Good\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Abby! \ud83d\udc4b Just saw your search for a home in Paynesville. You're looking at around $350k. Your credit is good and you're a first-time buyer. Want to discuss some options? \ud83d\udcf2 320-894-6113"
+  },
+  {
+    "at": "2026-06-08T23:08:32.659140+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8004,
+    "in": "Hey Madelyn \u2014 quick market update: some good stuff in Elk River right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-08T23:08:39.667444+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1604,
+    "in": "Hey Angela \u2014 just wanted to check in. No pressure at all, just making sure you have a friend in the mortgage business in your corner \ud83c\udfe1",
+    "out": "Hey Angela -- just wanted to touch base and make sure I'm still in the picture for your mortgage needs."
+  },
+  {
+    "at": "2026-06-08T23:08:44.785697+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1298,
+    "in": "Hey Jamie \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Morning Jamie! Just wanted to make sure you got that contact info I sent over \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-08T23:08:54.265546+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2274,
+    "in": "Hey Ryan \u2014 rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment \ud83d\ude0a",
+    "out": "Morning! Rates are moving around, so let me know when you're serious about making a move and I'll crunch some numbers for you - no charge or strings attached \ud83d\ude43"
+  },
+  {
+    "at": "2026-06-08T23:09:04.422625+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2114,
+    "in": "Hey Eric \u2014 rates have been shifting lately. When you're getting closer to buying, I can run numbers for you anytime. No cost or commitment \ud83d\ude0a",
+    "out": "Morning! Rates are moving around - if you're getting close to making a move, just let me know and I'll crunch some numbers for you whenever you need."
+  },
+  {
+    "at": "2026-06-08T23:09:12.826107+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3523,
+    "in": "Hey Abigail \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Abigail, wanted to share my link with you so you know who I am - https://linktr.ee/welcometosummit. No pressure, but it's good to have a friendly face in the mortgage world when you need one \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-08T23:13:40.062818+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1152,
+    "in": "Hey Katrina! It's Justin \u2014 saw you were looking at homes in St. Peter online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Katrina -- still checking out St. Peter options I see. Where are things at?"
+  },
+  {
+    "at": "2026-06-08T23:17:43.603501+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2460,
+    "in": "New lead: Katrina - 5075141050 - katrinaarriaga@gmail.com\nLooking in St. Peter, MN - $400000\nCredit: Good | Income: $100001+ | Down: $0\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Katrina - we've got a home in St. Peter that fits your budget of $400k. First-time buyer, good credit, and no down payment required. Want to discuss further?"
+  },
+  {
+    "at": "2026-06-08T23:18:45.645434+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1270,
+    "in": "Hey luke! It's Justin \u2014 saw you were looking at homes in Park Rapids online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Luke - just saw you were checking out some Park Rapids listings. What's your current plan there?"
+  },
+  {
+    "at": "2026-06-08T23:19:24.084472+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Katrina! It's Justin \u2014 saw you were looking at homes in St. Peter online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Katrina -- still checking out St. Peter options I see. Where are things at?"
+  },
+  {
+    "at": "2026-06-08T23:22:49.138369+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2447,
+    "in": "New lead: luke - 2182551019 - wattenhofer.luke@gmail.com\nLooking in Park Rapids, MN - $250000\nCredit: Good | Income: $100000+ | Down: $27500\nFirst-time buyer: N | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Luke, just got your info. You're looking for a place in Park Rapids around $250k? Can you tell me a bit more about what you're looking for?"
+  },
+  {
+    "at": "2026-06-08T23:23:28.620515+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1914,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: luke wattenhofer (2182551019)\nMessage: I'm at a ball game at the moment for my son can I reach out tomorrow afternoon\n\nMoved Cold \u2192 Warm.",
+    "out": "Hey Luke, just got your lead promoted to warm! Can catch up with you tomorrow afternoon when I'm back from the ball game with my kid? - Justin"
+  },
+  {
+    "at": "2026-06-08T23:23:32.864303+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3660,
+    "in": "\ud83e\uddca COLD LEAD: Katrina - 5075141050 - katrinaarriaga@gmail.com\nLooking in St. Peter, MN - $400000\nCredit: Good\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Katrina! \ud83e\udd17 I've got a property in mind for you in St. Peter that fits your budget of $400,000. Your credit is good, and since you're a first-time buyer, we can explore some great options together. No agent yet? Let's chat about how I can help you find the perfect home!"
+  },
+  {
+    "at": "2026-06-08T23:23:50.794853+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1183,
+    "in": "Hey Melany! It's Justin \u2014 saw you were looking at homes in International Falls online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Melany -- what's the plan with those International Falls places you've been checking out?"
+  },
+  {
+    "at": "2026-06-08T23:24:36.280509+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1961,
+    "in": "\ud83d\udcac Lead replied!\nFrom: luke wattenhofer (2182551019)\nMessage: Ok \n\n\u2705 Auto-stopped nurture.",
+    "out": "Hey Luke! \ud83d\udcac Lead replied! From: luke wattenhofer (2182551019) Message: Ok \u2705 Auto-stopped nurture."
+  },
+  {
+    "at": "2026-06-08T23:27:55.085226+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3004,
+    "in": "New lead: Melany - 2185564855 - melhasbargen@gmail.com\nLooking in International Falls, MN - $200000\nCredit: Excellent | Income: $50000+ | Down: $150000\nFirst-time buyer: N | Has agent: Y\n\nCall them NOW!",
+    "out": "Hey Melany - we've got a property in International Falls that might interest you. It's priced at 200k, and since you're not a first-time buyer, I think it could be a good fit for you. Can we discuss further?"
+  },
+  {
+    "at": "2026-06-08T23:28:59.127752+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2429,
+    "in": "\ud83d\udcac Lead replied!\nFrom: luke wattenhofer (2182551019)\nMessage: Who is this \n\nReply in SimpleTexting or call 2182551019",
+    "out": "Hey Luke! That's me, Justin. I'm reaching out about your lead from yesterday. Can you reply to this thread in SimpleTexting or give me a call at 218-255-1019?"
+  },
+  {
+    "at": "2026-06-08T23:29:01.800114+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1880,
+    "in": "\ud83d\udcac Lead replied!\nFrom: luke wattenhofer (2182551019)\nMessage: Ok I just got divorced trying to rebuild \n\nReply in SimpleTexting or call 2182551019",
+    "out": "Hey Luke, sorry to hear about the divorce. That's a tough spot to be in. We're here to help with rebuilding - what do you need from us?"
+  },
+  {
+    "at": "2026-06-08T23:29:04.405709+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1916,
+    "in": "\ud83d\udcac Lead replied!\nFrom: luke wattenhofer (2182551019)\nMessage: I'm at a ball game at the moment for my son can I reach out tomorrow afternoon\n\nReply in SimpleTexting or call 2182551019",
+    "out": "Hey Luke, just got your lead reply. Can you hit me back tomorrow afternoon? Reply in ST or give me a ring at 2182551019."
+  },
+  {
+    "at": "2026-06-08T23:29:07.319884+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2127,
+    "in": "\ud83d\udcac Lead replied!\nFrom: luke wattenhofer (2182551019)\nMessage: Ok \n\nReply in SimpleTexting or call 2182551019",
+    "out": "Hey Luke! \ud83d\udcac Lead replied! From: luke wattenhofer (2182551019) Message: Ok Reply in SimpleTexting or call 2182551019"
+  },
+  {
+    "at": "2026-06-08T23:29:09.310674+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1356,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: Questioned \u201cHey Melany -- what's the plan with those International Falls places you've been checking out?\u201d\n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany, just got your message. What's going on with those International Falls spots?"
+  },
+  {
+    "at": "2026-06-08T23:29:40.072544+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Melany! It's Justin \u2014 saw you were looking at homes in International Falls online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey Melany -- what's the plan with those International Falls places you've been checking out?"
+  },
+  {
+    "at": "2026-06-08T23:30:42.585503+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1341,
+    "in": "\u2b06\ufe0f Lead PROMOTED to Warm!\nFrom: Melany Hasbargen (2185564855)\nMessage: Who wants to know \n\nMoved Cold \u2192 Warm.",
+    "out": "Hey Melany! Just a heads up, {lead name} got promoted to warm"
+  },
+  {
+    "at": "2026-06-08T23:30:55.129333+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2082,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: Who wants to know \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Lead replied - \"Who wants to know\". You can respond in SimpleTexting or give me a call at 218-556-4855."
+  },
+  {
+    "at": "2026-06-08T23:33:45.359941+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1368,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: I'm trying to assess what my buying power will be. \n\n\u2705 Auto-stopped nurture.",
+    "out": "Hey Melany! \ud83d\udc4b Just got your lead reply - let's get you assessed on that buying power \ud83d\udca1"
+  },
+  {
+    "at": "2026-06-08T23:34:30.927016+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1229,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: I'm trying to assess what my buying power will be. \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany, just got your lead! What's the plan for assessing your buying power?"
+  },
+  {
+    "at": "2026-06-08T23:34:32.863537+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1596,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: I received information from rocket mortgage\n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Rocket Mortgage got back to you. Can we chat about it in SimpleTexting or catch up on the phone?"
+  },
+  {
+    "at": "2026-06-08T23:34:35.249040+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2019,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: Thank you \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Just got your lead's response - thanks for letting us know! Reply back in SimpleTexting or give me a call at 218-556-4855."
+  },
+  {
+    "at": "2026-06-08T23:37:49.316632+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2875,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: Okay I'll reach out in about 3 months when my divorce goes through \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Just got your lead reply. Will wait to hear from you after the divorce is finalized, sounds like around 3 months? You can hit me back on SimpleTexting or give me a ring at 218-556-4855"
+  },
+  {
+    "at": "2026-06-08T23:37:51.459469+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1724,
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: I'll save your contact details \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Lead replied and saved my contact info - reply in SimpleTexting or give me a shout at 2185564855"
+  },
+  {
+    "at": "2026-06-08T23:39:30.088767+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "\ud83d\udcac Lead replied!\nFrom: Melany Hasbargen (2185564855)\nMessage: Thank you \n\nReply in SimpleTexting or call 2185564855",
+    "out": "Hey Melany! Just got your lead's response - thanks for letting us know! Reply back in SimpleTexting or give me a call at 218-556-4855."
+  },
+  {
+    "at": "2026-06-10T12:20:16.958406+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "ReadTimeout: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=8.0)",
+    "elapsed_ms": 8004,
+    "in": "Hey Troy \u2014 quick market update: some good stuff in Richmond right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-10T12:21:22.255403+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1172,
+    "in": "Hey Troy \u2014 quick market update: some good stuff in Richmond right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Hey Troy -- just saw some sweet deals popping up in Richmond. Want to know more about your options?"
+  },
+  {
+    "at": "2026-06-10T12:22:30.350476+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Troy \u2014 quick market update: some good stuff in Richmond right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Hey Troy -- just saw some sweet deals popping up in Richmond. Want to know more about your options?"
+  },
+  {
+    "at": "2026-06-10T12:23:34.464347+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Troy \u2014 quick market update: some good stuff in Richmond right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Hey Troy -- just saw some sweet deals popping up in Richmond. Want to know more about your options?"
+  },
+  {
+    "at": "2026-06-10T12:24:35.887902+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Troy \u2014 quick market update: some good stuff in Richmond right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Hey Troy -- just saw some sweet deals popping up in Richmond. Want to know more about your options?"
+  },
+  {
+    "at": "2026-06-10T12:24:38.913106+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2059,
+    "in": "Hey Franklin \u2014 quick market update: some good stuff in Red Wing right now. Let me know if you're ever curious what you could qualify for \ud83d\udc4d",
+    "out": "Morning Franklin! Just got word that there's some solid opportunities popping up in Red Wing - I'd be happy to give you the lowdown if you're interested."
+  },
+  {
+    "at": "2026-06-10T12:24:41.257776+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1322,
+    "in": "Hey Jenna \u2014 been keeping an eye on the McGregor market. Some interesting stuff coming up. Want me to send you a quick snapshot?",
+    "out": "Morning! Just checked out the McGregor market - some cool things happening. You want that snapshot I mentioned earlier?"
+  },
+  {
+    "at": "2026-06-10T12:24:44.762180+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1476,
+    "in": "Hey Cade \u2014 just checking in. No pressure at all, just making sure you got my info \ud83c\udfe1",
+    "out": "Hey Cade - just wanted to make sure you saw that last message I sent with some details about our project \ud83c\udfe1"
+  },
+  {
+    "at": "2026-06-10T12:24:52.093044+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2726,
+    "in": "Hey Katrina \u2014 here's a little about me if it helps: https://linktr.ee/welcometosummit. No rush at all \u2014 just want you to have a friend in the mortgage business when you're ready \ud83d\udc4d",
+    "out": "Hey Katrina, wanted to share my link with you - https://linktr.ee/welcometosummit. No pressure, just thought it'd be good to know me if you need anything mortgage-related later \ud83d\udc4d"
+  },
+  {
+    "at": "2026-06-10T12:27:37.689680+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2109,
+    "in": "Hey David! It's Justin \u2014 saw you were looking at homes in Litchfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey David -- just checked your browsing history and saw you've been eyeing some places in Litchfield. What's the plan, still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-06-10T12:31:41.623759+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3437,
+    "in": "New lead: David - 3209803695 - daveknutson60@gmail.com\nLooking in Litchfield, MN - $500000\nCredit: Excellent | Income: $100000+ | Down: $100000\nFirst-time buyer: *Living | Has agent: Y\n\nCall them NOW!",
+    "out": "\"Hey David, just wanted to follow up on your search for a home in Litchfield. You're looking at around $500k and have excellent credit, income over $100k, and 20% down. First-time buyer too. What's the holdup?\" - Justin"
+  },
+  {
+    "at": "2026-06-10T12:32:43.856940+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 1763,
+    "in": "Hey Biftu! It's Justin \u2014 saw you were looking at homes in Andover online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Biftu - saw you browsing Andover listings. Getting close to making a move or still just checking out options? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-06-10T12:32:56.526347+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey David! It's Justin \u2014 saw you were looking at homes in Litchfield online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Hey David -- just checked your browsing history and saw you've been eyeing some places in Litchfield. What's the plan, still shopping around or thinking of making a move? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-06-10T12:36:47.120404+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 2373,
+    "in": "New lead: Biftu - 9522170529 - biftu.sharif@yahoo.com\nLooking in Andover, MN - $350000\nCredit: Excellent | Income: $75000+ | Down: $98000\nFirst-time buyer: Y | Has agent: N\n\nCall them NOW!",
+    "out": "Hey Biftu, I got your info. You're looking at places in Andover for around $350k. Can you tell me a bit more about what you're thinking?"
+  },
+  {
+    "at": "2026-06-10T12:37:02.163631+00:00",
+    "status": "miss",
+    "model": "llama3.1:8b",
+    "elapsed_ms": 3481,
+    "in": "\ud83e\uddca COLD LEAD: David - 3209803695 - daveknutson60@gmail.com\nLooking in Litchfield, MN - $500000\nCredit: Excellent\nFirst-time buyer: *Living | Has agent: Y",
+    "out": "Hey Dave! \ud83e\uddca Just wanted to follow up on your search for a home in Litchfield. You're looking at around $500k, credit's excellent, and you're a first-time buyer. Your agent is already working with you, right? Let me know if I can help with anything else."
+  },
+  {
+    "at": "2026-06-10T12:38:03.271739+00:00",
+    "status": "hit",
+    "model": "llama3.1:8b",
+    "in": "Hey Biftu! It's Justin \u2014 saw you were looking at homes in Andover online. Still exploring or getting serious? \ud83d\ude0a",
+    "out": "Morning Biftu - saw you browsing Andover listings. Getting close to making a move or still just checking out options? \ud83d\ude0a"
+  },
+  {
+    "at": "2026-06-10T12:42:13.287149+00:00",
+    "status": "fallback",
+    "model": "llama3.1:8b",
+    "error": "length mismatch in=142 out=285",
+    "elapsed_ms": 6137,
+    "in": "\ud83e\uddca COLD LEAD: Biftu - 9522170529 - biftu.sharif@yahoo.com\nLooking in Andover, MN - $350000\nCredit: Excellent\nFirst-time buyer: Y | Has agent: N",
+    "out": "Hey Biftu! \ud83d\ude4b\u200d\u2642\ufe0f Just saw your profile and noticed you're looking for a place in Andover. That price point is around $350k, correct? You've got excellent credit which will help with the mortgage. First-time buyer, no agent yet - I can give you a rundown of what to expect if you'd like."
+  }
+]

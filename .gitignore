@@ -9,3 +9,7 @@ disc-pics-data/customers.csv
 .env
 .env.*
 .env.save
+
+.env
+.env.*
+.env.save

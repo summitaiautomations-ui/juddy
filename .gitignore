@@ -16,3 +16,10 @@ disc-pics-data/customers.csv
 
 # Photos staged but not yet published
 disc-pics-data/photos/_hold/
+
+# Private sales tracking - keep OUT of public repo
+disc-pics-data/sales-log.csv
+disc-pics-data/compute-sales.py
+disc-pics-data/build-dashboard.py
+disc-pics-data/.logo_b64.txt
+disc-pics-data/discdiver-dashboard.html

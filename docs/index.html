@@ -123,6 +123,11 @@
     color:#04161d;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
     padding:6px 14px;border-radius:999px;box-shadow:0 5px 16px rgba(58,214,214,.5);
     border:1px solid rgba(255,255,255,.35);text-shadow:0 1px 0 rgba(255,255,255,.25);}
+  .vintagebadge{position:absolute;top:10px;right:10px;z-index:2;background:linear-gradient(180deg,#ffd873,#c8912a);
+    color:#2a1a00;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;box-shadow:0 5px 16px rgba(200,145,42,.55);
+    border:1px solid rgba(255,255,255,.45);text-shadow:0 1px 0 rgba(255,255,255,.3);}
+  .vintagebadge::before{content:"\2726 ";}
   .stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
   .stamp span{font-size:34px;font-weight:800;letter-spacing:.06em;transform:rotate(-11deg);
     padding:6px 16px;border:3px solid;border-radius:8px;text-transform:uppercase;opacity:.92;}
@@ -295,6 +300,8 @@ const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?
 let NORM=[], BRAND="all", TYPE="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
 const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267"]);
+// Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
+const VINTAGE=new Set(["263"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
 // (for unknown-mold discs it would drop into "Other", or 4-speed approach discs it reads as midranges).
 const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139","140","203","204","210"]);
@@ -330,7 +337,8 @@ function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const meter=num(d.condition)?'<div class="cond"><span class="lab">Cond</span><span class="meter"><i style="width:'+(c*10)+'%"></i></span><span class="cval">'+d.condition+'/10</span></div>':"";
  const sub=d.plastic!=="unknown"?cap(d.plastic):"";
  const idtag=d.id?'<span class="idtag">#'+d.id+'</span>':"";
- const newb=(!gone&&NEW_ARRIVAL.has(d.id))?'<span class="newbadge">New Arrival</span>':"";
+ const newb=(!gone&&VINTAGE.has(d.id))?'<span class="vintagebadge">Vintage</span>':
+   (!gone&&NEW_ARRIVAL.has(d.id))?'<span class="newbadge">New Arrival</span>':"";
  return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+newb+stamp+img+'</div><div class="body">'+
   '<div class="title">'+titleOf(d)+(d.id?' <span class="tid">#'+d.id+'</span>':"")+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+flightBox(d)+
   '<div class="priceRow"><span class="price">$'+(d.price_usd||"?")+'</span>'+(w?'<span class="wt">'+w+'</span>':"")+'</div>'+

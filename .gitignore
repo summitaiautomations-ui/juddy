@@ -13,3 +13,6 @@ disc-pics-data/customers.csv
 .env
 .env.*
 .env.save
+
+# Photos staged but not yet published
+disc-pics-data/photos/_hold/

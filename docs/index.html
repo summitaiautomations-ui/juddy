@@ -292,6 +292,7 @@
 
 <script>
 const CSV_URL = "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/sheet.csv";
+const TRACK_URL = "https://script.google.com/macros/s/AKfycbzpz6FC3K2PyxZk_zMfUHKX-JCPUb_q6_yvbca8zmSaOtFczVAy-FKS9DV90owZ1M5_PA/exec";
 function parseCSV(t){const R=[];let row=[],f="",i=0,q=false;while(i<t.length){const c=t[i];
  if(q){if(c=='"'&&t[i+1]=='"'){f+='"';i+=2;continue;}if(c=='"'){q=false;i++;continue;}f+=c;i++;continue;}
  if(c=='"'){q=true;i++;continue;}if(c==','){row.push(f);f="";i++;continue;}
@@ -305,7 +306,7 @@ const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weigh
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
 let NORM=[], BRAND="all", TYPE="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
-const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308"]);
+const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317"]);
 // Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
 const VINTAGE=new Set(["263"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
@@ -338,7 +339,7 @@ function flightBox(d){const f=parseFlight(d);if(!f)return "";
   '<span class="fn"><span class="fv">'+v+'</span><span class="fl">'+L[i]+'</span></span>').join("")+'</div>';}
 function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const stamp=gone?'<div class="stamp '+d.status+'"><span>'+d.status+'</span></div>':"";
- const img=d.photo_url?'<img loading="lazy" src="'+d.photo_url+'" alt="'+titleOf(d)+'">':'<span class="noimg">photo coming soon</span>';
+ const img=d.photo_url?'<img loading="lazy" data-id="'+d.id+'" src="'+d.photo_url+'" alt="'+titleOf(d)+'">':'<span class="noimg">photo coming soon</span>';
  const w=weightOf(d);const c=parseFloat(d.condition);
  const meter=num(d.condition)?'<div class="cond"><span class="lab">Cond</span><span class="meter"><i style="width:'+(c*10)+'%"></i></span><span class="cval">'+d.condition+'/10</span></div>':"";
  const sub=d.plastic!=="unknown"?cap(d.plastic):"";
@@ -393,7 +394,7 @@ document.getElementById("typeSel").addEventListener("change",e=>{TYPE=e.target.v
 document.getElementById("brandSel").addEventListener("change",e=>{BRAND=e.target.value;draw(document.getElementById("q").value);});
 // --- Lightbox: click a disc photo to enlarge ---
 (function(){var lb=document.getElementById("lightbox");if(!lb)return;var lbimg=lb.querySelector("img");
- document.getElementById("grid").addEventListener("click",function(e){var img=e.target.closest(".imgwrap img");if(!img)return;lbimg.src=img.src;lbimg.alt=img.alt||"disc";lb.classList.add("open");});
+ document.getElementById("grid").addEventListener("click",function(e){var img=e.target.closest(".imgwrap img");if(!img)return;lbimg.src=img.src;lbimg.alt=img.alt||"disc";lb.classList.add("open");if(img.dataset.id&&TRACK_URL){try{fetch(TRACK_URL+"?id="+encodeURIComponent(img.dataset.id),{mode:"no-cors"});}catch(_){}}});
  lb.addEventListener("click",function(){lb.classList.remove("open");});
  document.addEventListener("keydown",function(e){if(e.key==="Escape")lb.classList.remove("open");});
 })();

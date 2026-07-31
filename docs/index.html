@@ -299,7 +299,7 @@ const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weigh
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
 let NORM=[], BRAND="all", TYPE="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
-const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301"]);
+const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308"]);
 // Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
 const VINTAGE=new Set(["263"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer

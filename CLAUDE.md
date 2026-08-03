@@ -22,6 +22,17 @@
 
 If Justin says to go back to drafts, switch to DRAFT mode: instead of sending, create a Quo task per due step ("SEND → <name>: <step>", exact text in the description, linked to the lead's conversation or the inbox) and text him the full draft to copy/paste; advance cadence timing off his actual sends in the thread.
 
+## Who-needs-me ping to Justin's cell (every 2 hours — added 8/3/26)
+
+Justin asked (8/3/26) for a recurring text from the Quo line (+1 763-496-4851) to his personal cell (+1 612-203-9883): every 2 hours during 8am–8pm CT (8a, 10a, 12p, 2p, 4p, 6p, 8p — send at the first scan at/after each mark), one text with the SINGLE task/lead who needs him most right now. This is an explicit exception to the no-texts-to-Justin's-cell credit rule (~7 credits/day).
+
+- **Priority order for picking the task:** (1) live/replied leads awaiting Justin, (2) hot uncontacted new leads (highest value/urgency first), (3) due day-1/day-2 calls + VMs and overdue follow-ups, (4) recruiting actions.
+- **Format (one text, short):** "📋 Who needs you: <Name> — <why now, one line> — <phone>. Reply 'completed' when done."
+- **Completion loop:** every scan checks the Quo thread with +16122039883. If Justin replied "completed"/"done" (any phrasing), log the completion in that lead's Notion row ([auto] note + Next Action update + Last Contact if he contacted them) and the next ping features the next-highest task. Any other reply = instruction/context for that task; act on it or flag back in chat.
+- **State tracking:** when a ping goes out, stamp the featured lead's Next Action with "PINGED Justin <date/time CT> — awaiting completed" and log the ping [auto] in their Notes. If the task is still open at the next mark and still #1 priority, re-ping with the same task (vary wording); otherwise move on and leave the stamp for the report.
+- If Quo messaging credits are out (402), pings are blocked like all sends — resume at the first 2-hour mark after credits are restored.
+- If a ping comes due while nothing needs Justin, skip that ping (no filler texts).
+
 ## Auto-nurture text cadence (new Realtor.com leads)
 
 When a new lead email arrives from `Leads@mortgageresearchcenter.com`: create the Mortgage Pipeline row + Quo contact, then run this text cadence from +1 763-496-4851. Justin calls and leaves VMs on day 1 and day 2 himself — the texts complement his calls, they don't replace them.

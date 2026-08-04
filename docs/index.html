@@ -133,6 +133,11 @@
     padding:6px 14px;border-radius:999px;box-shadow:0 5px 16px rgba(200,145,42,.55);
     border:1px solid rgba(255,255,255,.45);text-shadow:0 1px 0 rgba(255,255,255,.3);}
   .vintagebadge::before{content:"\2726 ";}
+  .collectorbadge{position:absolute;top:10px;right:10px;z-index:2;background:linear-gradient(180deg,#c77dff,#7b2cbf);
+    color:#fff;font-size:13px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;
+    padding:6px 14px;border-radius:999px;box-shadow:0 5px 18px rgba(123,44,191,.6);
+    border:1px solid rgba(255,255,255,.45);text-shadow:0 1px 2px rgba(0,0,0,.35);}
+  .collectorbadge::before{content:"\25C6 ";}
   .stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
   .stamp span{font-size:34px;font-weight:800;letter-spacing:.06em;transform:rotate(-11deg);
     padding:6px 16px;border:3px solid;border-radius:8px;text-transform:uppercase;opacity:.92;}
@@ -309,6 +314,7 @@ let NORM=[], BRAND="all", TYPE="all";
 const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","335","336"]);
 // Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
 const VINTAGE=new Set(["263"]);
+const COLLECTOR=new Set(["334"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
 // (for unknown-mold discs it would drop into "Other", or 4-speed approach discs it reads as midranges).
 const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139","140","203","204","210"]);
@@ -344,7 +350,8 @@ function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const meter=num(d.condition)?'<div class="cond"><span class="lab">Cond</span><span class="meter"><i style="width:'+(c*10)+'%"></i></span><span class="cval">'+d.condition+'/10</span></div>':"";
  const sub=d.plastic!=="unknown"?cap(d.plastic):"";
  const idtag=d.id?'<span class="idtag">#'+d.id+'</span>':"";
- const newb=(!gone&&VINTAGE.has(d.id))?'<span class="vintagebadge">Vintage</span>':
+ const newb=(!gone&&COLLECTOR.has(d.id))?'<span class="collectorbadge">Collector</span>':
+   (!gone&&VINTAGE.has(d.id))?'<span class="vintagebadge">Vintage</span>':
    (!gone&&NEW_ARRIVAL.has(d.id))?'<span class="newbadge">New Arrival</span>':"";
  return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+newb+stamp+img+'</div><div class="body">'+
   '<div class="title">'+titleOf(d)+(d.id?' <span class="tid">#'+d.id+'</span>':"")+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+flightBox(d)+

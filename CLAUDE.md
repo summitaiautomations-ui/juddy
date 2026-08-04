@@ -53,6 +53,12 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - **Always log the shipping Label Cost (durable habit).** When an order ships, record the actual label cost in the Orders DB "Label Cost" field so the "Net" column reflects true profit (Net = revenue − COGS($0) − label). One label per box: record it once on one row of a multi-disc order.
 - **Collector badge (storefront):** genuine collectibles/special editions get a purple "◆ COLLECTOR" badge via the `COLLECTOR` set in `docs/index.html` (PFN/patent, signature-glow, first runs, Ledgestone/team-collab limiteds). Vintage patent discs keep the gold "Vintage" badge instead. Don't badge common current-production signature discs — it dilutes the badge.
 - Dashboard on the Notion page has live charts + view tabs (Ship Monday / To Collect / Pickups / Board / Repeat Buyers). Refresh the static KPI header numbers when they drift.
+
+## Disc-return / league cross-reference (Notion — private; goodwill/community engine)
+- Juddy dives Blue Ribbon Pines (BRP) most; discs often have a name/number on the back. He wants to return discs to **regulars/pros** to build goodwill. Two private Notion DBs on the Sales Tracker page:
+  - **League Regulars** (data source `c6880302-1e7a-4b32-92d3-7a360344954b`): Player, Tier (Pro/Regular/Casual), Home Course, Phone, Discs Returned, Notes. **Built from Juddy's league standings/roster screenshots — he sends them, I read the names off and populate this**, tagging Pro/Regular/Casual.
+  - **Found Discs / Owners** (data source `c0107352-5919-4854-9c44-f7501cd696e0`): Owner (title), Phone, Disc, Date Found, Status (Unclaimed/Contacted/Returned/Kept-Resold), Tier, **League Match** (relation → League Regulars, synced as "Discs Found"), Notes.
+- **Workflow:** when Juddy rattles off a name/number found on a disc → log it in Found Discs AND cross-reference against League Regulars → tell him the tier ("that's a BRP regular/pro — prioritize returning it"). Link the relation when there's a match. Names/phones are personal data → PRIVATE (Notion only, never the public repo).
 - Legacy (still present, gitignored/private): `disc-pics-data/orders.csv`, `customers.csv`, and `scripts/disc-pics/{track.py,make-tracker.py}` that built an xlsx. Notion supersedes these.
 
 ## Marking a disc sold (the most common request) — quick ref

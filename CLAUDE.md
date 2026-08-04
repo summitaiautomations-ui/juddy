@@ -16,6 +16,10 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 - **Juddy runs terminal commands by copy-paste ONLY.** Every command you hand him must be complete and foolproof: NO placeholders to substitute (`<your-path>`, `<branch>`, etc.), no "edit this line first" steps. If a value is unknown (e.g. a path on his Mac), make the command discover it itself (`find`, `$(…)`) so it works pasted verbatim. Prefer one copy-paste block.
 - **Be proactive.** Offer useful automations/improvements on your own initiative — don't wait to be asked.
 - Juddy is non-technical about git/shell — explain in plain terms and keep steps to a minimum.
+- **I nudge HIM for missing disc details — never the other way around (durable rule).** When cataloging or reviewing discs, BEFORE Juddy puts them away I must proactively call out anything missing so he can grab it while the disc is still in hand. Specifically, every disc listing should have: **flight numbers, weight, and condition.**
+  - **Flight numbers:** always include them. If I don't know them, look them up (web). If I still can't find them, ASK Juddy and he'll check the disc.
+  - **Weight & condition:** if either is missing, tell Juddy up front and ask for it — don't quietly leave it blank or guess silently. If I do estimate a condition from the photo, say so and ask him to confirm.
+  - Surface ALL gaps for a batch in one go, before he shelves it — so he only has to pull the discs out once.
 
 ## Sales recap — show it proactively (durable preference)
 - **Juddy likes to SEE the running totals. After logging ANY sale / payment / shipment, ALWAYS run `python3 scripts/disc-pics/sales-summary.py` and show him the recap** (discs sold, cash collected, still-owed, to-ship, available). Don't wait to be asked.

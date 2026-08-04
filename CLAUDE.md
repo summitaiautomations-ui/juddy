@@ -24,6 +24,7 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
 ## Data & pipeline
 - Inventory lives in `disc-pics-data/inventory.csv` and `disc-pics-data/sheet.csv` (the storefront live-fetches `sheet.csv`).
 - Photos in `disc-pics-data/photos/<id>-<mold>.jpg`, composited on light gray (#eef0f2 / BGR 242,240,238).
+- **Juddy's disc photos land on the Mac at `~/Pictures/disc-pics/inbox/` (files named `IMG_####.jpg`).** This is THE folder to pull from when he says "pics sent/pushed/in" — always check here (and the repo's `disc-pics-data/inbox-raw/` after push). Do NOT ask him where they are. If a `find` for new photos comes up empty, it's almost always because the search didn't go deep enough — this path is 3 levels under `~/Pictures`, so any depth-limited `find` will miss it (use `~/Pictures/disc-pics/inbox` directly).
 - Mac mini pipeline: `import.sh` (Photo Booth → inbox) → `catalog.sh` (identify → stage to `incoming/`) → `sync.sh` (rebase + push). Photos staged to `incoming/` are additive; sync rebases before push to stay conflict-free.
 
 ## Pricing anchors

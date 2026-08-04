@@ -297,7 +297,7 @@
 
 <script>
 const CSV_URL = "https://raw.githubusercontent.com/summitaiautomations-ui/juddy/claude/photobooth-disc-pics-vueawx/disc-pics-data/sheet.csv";
-const TRACK_URL = "https://script.google.com/macros/s/AKfycbzpz6FC3K2PyxZk_zMfUHKX-JCPUb_q6_yvbca8zmSaOtFczVAy-FKS9DV90owZ1M5_PA/exec";
+const TRACK_URL = "https://script.google.com/macros/s/AKfycbw-TQOb3KFhb6g5MN2-6cBUapnEnpl8y6he0uGhYmQ9sjFSz5AtoTL1I2KitTM8Ho-imw/exec";
 function parseCSV(t){const R=[];let row=[],f="",i=0,q=false;while(i<t.length){const c=t[i];
  if(q){if(c=='"'&&t[i+1]=='"'){f+='"';i+=2;continue;}if(c=='"'){q=false;i++;continue;}f+=c;i++;continue;}
  if(c=='"'){q=true;i++;continue;}if(c==','){row.push(f);f="";i++;continue;}

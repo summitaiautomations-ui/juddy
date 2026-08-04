@@ -21,6 +21,9 @@ Disc golf reselling operation. Juddy dives lakes for lost discs, cleans them, an
   - **Weight & condition:** if either is missing, tell Juddy up front and ask for it — don't quietly leave it blank or guess silently. If I do estimate a condition from the photo, say so and ask him to confirm.
   - Surface ALL gaps for a batch in one go, before he shelves it — so he only has to pull the discs out once.
 
+## NEVER show "DX" plastic on the storefront (durable rule)
+- Nobody likes DX plastic, so it hurts listings. Even if a disc IS DX: leave the **plastic field blank** in the listing (don't write "DX") and strip "DX" from the notes. Keep the disc listed — just remove the DX label. Juddy fields any plastic questions over text. Applies to every new disc AND any existing listing that shows DX.
+
 ## Sales recap — show it proactively (durable preference)
 - **Juddy likes to SEE the running totals. After logging ANY sale / payment / shipment, ALWAYS run `python3 scripts/disc-pics/sales-summary.py` and show him the recap** (discs sold, cash collected, still-owed, to-ship, available). Don't wait to be asked.
 - The script reads `inventory.csv` + `orders.csv` and prints a compact per-buyer spreadsheet; it only reads (never writes) and stays local.

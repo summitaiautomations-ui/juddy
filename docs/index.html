@@ -66,11 +66,11 @@
   .stats{display:flex;gap:22px;align-items:baseline;}
   .stat .n{font-size:20px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
   .stat .l{font-size:13px;letter-spacing:.01em;color:var(--muted);margin-left:6px;font-weight:600;}
-  #typeSel,#brandSel{padding:11px 34px 11px 15px;border-radius:11px;border:1px solid var(--line);
+  #typeSel,#brandSel,#showSel{padding:11px 34px 11px 15px;border-radius:11px;border:1px solid var(--line);
     background:var(--panel) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239fc0c2' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>") no-repeat right 12px center;
     color:var(--ink);font-size:14.5px;font-family:inherit;font-weight:600;cursor:pointer;
     -webkit-appearance:none;appearance:none;}
-  #typeSel:focus,#brandSel:focus{outline:2px solid var(--aqua);outline-offset:1px;}
+  #typeSel:focus,#brandSel:focus,#showSel:focus{outline:2px solid var(--aqua);outline-offset:1px;}
   #q{flex:1;min-width:180px;padding:11px 15px;border-radius:11px;border:1px solid var(--line);
     background:var(--panel);color:var(--ink);font-size:14.5px;font-family:inherit;}
   #q::placeholder{color:var(--faint);}
@@ -259,6 +259,10 @@
       <option value="Midranges">Midranges</option>
       <option value="Putters &amp; Approach">Putters &amp; Approach</option>
     </select>
+    <select id="showSel" aria-label="Show new arrivals only">
+      <option value="all">Show: All discs</option>
+      <option value="new">✨ New Arrivals only</option>
+    </select>
     <select id="sortSel" aria-label="Sort discs">
       <option value="featured">Sort: Featured</option>
       <option value="priceAsc">Price: Low to High</option>
@@ -315,7 +319,7 @@ const cap=s=>s?s.charAt(0).toUpperCase()+s.slice(1):s;
 const num=s=>s&&/^\d+(\.\d+)?$/.test(s);
 const weightOf=d=>num(d.scale_weight_g)?d.scale_weight_g+"g":num(d.stamped_weight_g)?d.stamped_weight_g+"g":"";
 const titleOf=d=>[d.brand,d.plastic!=="unknown"?d.plastic:"",d.mold!=="unknown"?d.mold:"Disc"].filter(Boolean).join(" ");
-let NORM=[], BRAND="all", TYPE="all", SORT="featured";
+let NORM=[], BRAND="all", TYPE="all", SORT="featured", SHOW="all";
 // Discs flagged as fresh finds — shows a "New" badge on the card. Remove an id once it's no longer a new arrival.
 const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237","238","239","240","241","242","243","244","245","246","247","248","250","251","252","254","255","256","258","260","261","262","263","264","265","266","267","268","269","270","271","272","273","274","276","277","278","279","280","281","282","283","284","285","286","287","288","289","290","291","292","293","294","295","296","297","298","299","300","301","302","303","304","305","306","307","308","309","310","311","312","313","314","315","316","317","318","319","320","321","322","323","324","325","326","327","328","329","330","331","332","333","335","336"]);
 // Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
@@ -382,7 +386,7 @@ function drawFilters(){
   bs.map(b=>'<option value="'+b+'"'+(b===BRAND?" selected":"")+'>'+b+'</option>').join("");}
 function draw(f){const q=(f||"").trim().toLowerCase().replace(/^#/,"");const qNum=(q&&[...q].every(c=>c>='0'&&c<='9'))?String(parseInt(q,10)):null;const match=d=>!q?true:(qNum!==null?String(parseInt(d.id,10))===qNum:[d.brand,d.mold,d.plastic,d.color,d.notes,d.id].join(" ").toLowerCase().includes(q));
  // sold discs are hidden from the storefront entirely; claimed ones show as "On hold"
- const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&match(d));
+ const list=NORM.filter(d=>d.status!=="sold"&&(BRAND==="all"||d.brand===BRAND)&&(TYPE==="all"||catOf(d)===TYPE)&&(SHOW==="all"||NEW_ARRIVAL.has(d.id))&&match(d));
  const held=d=>d.status==="claimed";
  const byPrice=(a,b)=>(parseFloat(b.price_usd)||0)-(parseFloat(a.price_usd)||0);
  const order=CATS.map(c=>c[0]).concat("Other"),groups={},sold=[];
@@ -409,6 +413,7 @@ document.getElementById("q").addEventListener("input",e=>draw(e.target.value));
 document.getElementById("typeSel").addEventListener("change",e=>{TYPE=e.target.value;draw(document.getElementById("q").value);});
 document.getElementById("brandSel").addEventListener("change",e=>{BRAND=e.target.value;draw(document.getElementById("q").value);});
 document.getElementById("sortSel").addEventListener("change",e=>{SORT=e.target.value;draw(document.getElementById("q").value);});
+document.getElementById("showSel").addEventListener("change",e=>{SHOW=e.target.value;draw(document.getElementById("q").value);});
 // --- Lightbox: click a disc photo to enlarge ---
 (function(){var lb=document.getElementById("lightbox");if(!lb)return;var lbimg=lb.querySelector("img");
  document.getElementById("grid").addEventListener("click",function(e){var img=e.target.closest(".imgwrap img");if(!img)return;lbimg.src=img.src;lbimg.alt=img.alt||"disc";lb.classList.add("open");if(img.dataset.id&&TRACK_URL){try{fetch(TRACK_URL+"?id="+encodeURIComponent(img.dataset.id),{mode:"no-cors"});}catch(_){}}});

@@ -138,6 +138,10 @@
     padding:6px 14px;border-radius:999px;box-shadow:0 5px 18px rgba(123,44,191,.6);
     border:1px solid rgba(255,255,255,.45);text-shadow:0 1px 2px rgba(0,0,0,.35);}
   .collectorbadge::before{content:"\25C6 ";}
+  .autographbanner{position:absolute;left:0;right:0;bottom:0;z-index:2;background:linear-gradient(90deg,#ffd873,#f2b705);
+    color:#2a1a00;font-size:10.5px;font-weight:900;letter-spacing:.03em;text-transform:uppercase;
+    text-align:center;padding:5px 6px;box-shadow:0 -2px 10px rgba(0,0,0,.25);
+    border-top:1px solid rgba(255,255,255,.4);}
   .stamp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
   .stamp span{font-size:34px;font-weight:800;letter-spacing:.06em;transform:rotate(-11deg);
     padding:6px 16px;border:3px solid;border-radius:8px;text-transform:uppercase;opacity:.92;}
@@ -366,7 +370,8 @@ function card(d){const gone=d.status==="sold"||d.status==="claimed";
  const newb=(!gone&&COLLECTOR.has(d.id))?'<span class="collectorbadge">Collector</span>':
    (!gone&&VINTAGE.has(d.id))?'<span class="vintagebadge">Vintage</span>':
    (!gone&&NEW_ARRIVAL.has(d.id))?'<span class="newbadge">New Arrival</span>':"";
- return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+newb+stamp+img+'</div><div class="body">'+
+ const autoband=(!gone&&AUTOGRAPHED.has(d.id))?'<div class="autographbanner">Brand New &middot; Never Thrown &middot; Autographed</div>':"";
+ return '<article class="card '+(gone?"gone":"")+'"><div class="imgwrap">'+idtag+newb+stamp+img+autoband+'</div><div class="body">'+
   '<div class="title">'+titleOf(d)+(d.id?' <span class="tid">#'+d.id+'</span>':"")+'</div>'+(sub?'<div class="sub">'+sub+'</div>':"")+meter+flightBox(d)+
   '<div class="priceRow"><span class="price">$'+(d.price_usd||"?")+'</span>'+(w?'<span class="wt">'+w+'</span>':"")+'</div>'+
   (d.notes?'<div class="notes">'+d.notes+'</div>':"")+

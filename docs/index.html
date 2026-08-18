@@ -332,10 +332,10 @@ const NEW_ARRIVAL=new Set(["229","230","231","232","233","234","235","236","237"
 const AUTOGRAPHED=new Set(["356","357","358","359","360","361","362","363","364","365","368","369"]);
 // Vintage/collectible discs — shows a gold "Vintage" badge (takes priority over New Arrival).
 const VINTAGE=new Set(["263"]);
-const COLLECTOR=new Set(["334","326","284","286","219","296"]);
+const COLLECTOR=new Set(["334","326","284","286","219","296","378"]);
 // Discs explicitly slotted into "Putters & Approach" — overrides the speed-based bucketer
 // (for unknown-mold discs it would drop into "Other", or 4-speed approach discs it reads as midranges).
-const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139","140","203","204","210"]);
+const PUTTER_APPROACH=new Set(["126","127","129","131","132","133","134","135","136","137","138","139","140","203","204","210","377","378"]);
 function stats(){const av=NORM.filter(d=>d.status==="available");
  document.getElementById("stats").innerHTML=
   '<span class="stat"><span class="n">'+av.length+'</span> <span class="l">discs available for purchase</span></span>';}

@@ -389,7 +389,7 @@ function catOf(d){if(PUTTER_APPROACH.has(d.id))return "Putters & Approach";
  for(const[k,t]of CATS)if(t(s))return k;return "Other";}
 function drawFilters(){
  // brands present on still-available discs, alphabetized, filled into the Brand dropdown
- const bs=Array.from(new Set(NORM.filter(d=>d.status!=="sold").map(d=>d.brand).filter(b=>b&&b!=="unknown"))).sort((a,b)=>a.localeCompare(b));
+ const bs=Array.from(new Set(NORM.filter(d=>!HIDE.has(d.status)).map(d=>d.brand).filter(b=>b&&b!=="unknown"))).sort((a,b)=>a.localeCompare(b));
  if(!bs.includes(BRAND))BRAND="all";
  document.getElementById("brandSel").innerHTML='<option value="all">All brands</option>'+
   bs.map(b=>'<option value="'+b+'"'+(b===BRAND?" selected":"")+'>'+b+'</option>').join("");}

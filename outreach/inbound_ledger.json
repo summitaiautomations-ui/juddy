@@ -1,5 +1,5 @@
 {
-  "last_uid": "2496",
+  "last_uid": "2501",
   "digest_queue": [
     {
       "received_at": "2026-06-29 08:07",
@@ -7658,6 +7658,34 @@
     },
     {
       "received_at": "2026-09-13",
+      "kind": "realtor_lead_malformed",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-13 18:34",
+      "from": "racerm3@gmail.com",
+      "name": null,
+      "subject": "Disc Diver",
+      "body": "<!DOCTYPE html>\n<html>\n  <head>\n\n    <meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">\n  </head>\n  <body>\n    <p>Hi Disc Diver! I'd like to buy #497 the Discraft ESP Nuke ($10).\n      Please ship it to me!</p>\n    <p>Hi Disc Diver! I'd like to buy #490 the Latitude 64 Opto Ballista\n      Pro ($13). Please ship it to me!</p>\n    <p>Hi Disc Diver! I'd like to buy #518 the Innova Halo Star Valkyrie\n      ($12). Please ship it to me!</p>\n    <br>\n    My name is: Brian Liau<br>\n    ",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-13",
+      "kind": "realtor_lead_malformed",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-13",
+      "kind": "realtor_lead_malformed",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-14",
+      "kind": "realtor_lead_malformed",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-14",
       "kind": "realtor_lead_malformed",
       "matched": false
     }

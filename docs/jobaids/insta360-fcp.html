@@ -1,0 +1,158 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Insta360 → FCP Job Aid</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700&family=Instrument+Sans:wght@400;700&family=Geist+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14201c;--mute:#5c6a64;--line:#cfd6d1;--paper:#f6f4ee;--pine:#1f5a45;--pine2:#2e7a5e;--amber:#d99a2b;--amber2:#f2c05c;--card:#ffffff}
+@page{size:8.5in 11in;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:8.5in;height:11in;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;padding:.42in .48in .38in;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.hdr{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:9px}
+.kicker{font-family:"Geist Mono";font-size:8.5px;letter-spacing:2.2px;color:var(--pine);text-transform:uppercase}
+h1{font-family:"Big Shoulders Display";font-weight:700;font-size:38px;line-height:.92;letter-spacing:.5px;margin-top:5px}
+h1 span{color:var(--pine)}
+.hdr .right{text-align:right;font-family:"Geist Mono";font-size:8.5px;color:var(--mute);line-height:1.7}
+.flow{display:flex;align-items:center;gap:0;margin:12px 0 10px}
+.flow .node{font-family:"Big Shoulders Display";font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;padding:6px 11px;border:1.5px solid var(--ink);border-radius:999px;background:var(--card)}
+.flow .node.hi{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.flow .arrow{flex:1;height:1.5px;background:var(--ink);position:relative;margin:0 4px}
+.flow .arrow:after{content:"";position:absolute;right:-1px;top:-4px;border:5px solid transparent;border-left:7px solid var(--ink);border-right:0}
+.flow .fork{display:flex;flex-direction:column;gap:4px}
+.flow .fork .node{font-size:11px;padding:4px 9px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;min-height:0}
+.step{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px 10px;position:relative;display:flex;flex-direction:column;gap:6px}
+.step .num{position:absolute;top:-9px;left:10px;font-family:"Big Shoulders Display";font-weight:700;font-size:13px;letter-spacing:1px;background:var(--pine);color:#fff;padding:2px 8px;border-radius:999px}
+.step h2{font-family:"Big Shoulders Display";font-weight:700;font-size:19px;letter-spacing:.4px;margin-top:5px;line-height:1}
+.step h2 small{font-family:"Geist Mono";font-weight:400;font-size:8.5px;letter-spacing:1.5px;color:var(--mute);text-transform:uppercase;margin-left:6px}
+.step ul{list-style:none;font-size:9.6px;line-height:1.38;display:flex;flex-direction:column;gap:3.5px}
+.step li{padding-left:11px;position:relative}
+.step li:before{content:"";position:absolute;left:0;top:5px;width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.step li b{font-weight:700}
+kbd{font-family:"Geist Mono";font-size:8.6px;background:#eef1ee;border:1px solid var(--line);border-radius:3px;padding:0 4px;white-space:nowrap}
+.rule{font-family:"Geist Mono";font-size:8.6px;color:var(--pine);border-left:3px solid var(--amber);padding:3px 0 3px 8px;margin-top:2px;line-height:1.35}
+.export{grid-column:1/3;display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:10px;align-items:stretch}
+.export .step{height:100%}
+.spec{border:1.5px solid var(--ink);border-radius:8px;padding:9px 11px;background:var(--card);display:flex;flex-direction:column;gap:4px;position:relative;overflow:hidden}
+.spec .tag{font-family:"Big Shoulders Display";font-weight:700;font-size:20px;line-height:1;letter-spacing:.5px}
+.spec .tag em{font-style:normal;color:var(--pine)}
+.spec .frame{position:absolute;right:10px;top:9px;border:1.5px solid var(--ink);border-radius:2px;background:linear-gradient(135deg,#e9efea,#cfe0d5)}
+.spec .frame.h{width:38px;height:22px}
+.spec .frame.v{width:22px;height:38px}
+.spec table{font-family:"Geist Mono";font-size:8.6px;border-collapse:collapse;margin-top:4px}
+.spec td{padding:2px 0;vertical-align:top}
+.spec td:first-child{color:var(--mute);width:62px;letter-spacing:.3px}
+.spec td:last-child{font-weight:700}
+.spec .same{font-family:"Geist Mono";font-size:8px;color:var(--mute);margin-top:auto;padding-top:5px;border-top:1px dashed var(--line);line-height:1.4}
+.tips{margin-top:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tip{background:var(--ink);color:var(--paper);border-radius:7px;padding:7px 9px;font-size:8.6px;line-height:1.35}
+.tip b{display:block;font-family:"Big Shoulders Display";font-weight:700;font-size:12px;letter-spacing:.8px;color:var(--amber2);margin-bottom:2px;text-transform:uppercase}
+.foot{margin-top:8px;display:flex;justify-content:space-between;font-family:"Geist Mono";font-size:7.6px;color:var(--mute);letter-spacing:.5px}
+.dots{position:absolute;right:.48in;top:.42in;width:120px;height:52px;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:8px 8px;opacity:.9;pointer-events:none}
+</style></head><body>
+<div class="page">
+<div class="dots"></div>
+<div class="hdr">
+  <div>
+    <div class="kicker">Disc Diver · Job Aid · 01</div>
+    <h1>INSTA360 → FCP<br><span>Reframe &amp; Export</span> both ways</h1>
+  </div>
+  <div class="right">ONE CLIP · TWO EXPORTS<br>16:9 HORIZONTAL + 9:16 VERTICAL<br>THEN CUT IN FINAL CUT PRO</div>
+</div>
+<div class="flow">
+  <div class="node">.insv files</div><div class="arrow"></div>
+  <div class="node hi">Insta360 Studio</div><div class="arrow"></div>
+  <div class="node">Reframe</div><div class="arrow"></div>
+  <div class="fork"><div class="node">Export 16:9</div><div class="node">Export 9:16</div></div><div class="arrow"></div>
+  <div class="node hi">Final Cut Pro</div>
+</div>
+<div class="grid">
+  <div class="step"><div class="num">1</div>
+    <h2>Import <small>Local Media</small></h2>
+    <ul>
+      <li>Keep <b>.insv pairs and all chunks together</b> in one folder — Studio stitches them. Same date+time prefix = one recording.</li>
+      <li><b>.lrv</b> files are camera proxies. Fine for previewing, never the export source.</li>
+      <li>"Some footage cannot be found" = a clip moved since last open. Put it back or re-import.</li>
+    </ul>
+  </div>
+  <div class="step"><div class="num">2</div>
+    <h2>Scrub &amp; find the shot</h2>
+    <ul>
+      <li>Drag the <b>white dot on the yellow bar</b> under the preview — it spans the whole clip, so small drags jump far.</li>
+      <li>Timeline too tight? Hit the <b>−</b> magnifier (bottom right) so the full clip fits, then drag the playhead.</li>
+      <li>No fast-forward playback exists — dragging is the move.</li>
+    </ul>
+  </div>
+  <div class="step"><div class="num">3</div>
+    <h2>Reframe <small>Video panel</small></h2>
+    <ul>
+      <li><b>Zoom out:</b> drag the FOV number (top-left value) up, or tap a View Angle preset — <kbd>ULTRA</kbd> / <kbd>MEGA</kbd> for wide.</li>
+      <li><b>Level it:</b> drag the preview to fix tilt (pitch) and direction (yaw). A big negative pitch = staring at the water.</li>
+      <li><b>Moving subject:</b> set a keyframe, move the playhead, re-aim, set again. Or hit <kbd>Deep Track</kbd> and let it follow.</li>
+    </ul>
+    <div class="rule">FRAMING RULE · face in, shoreline &amp; pond out.</div>
+  </div>
+  <div class="step"><div class="num">4</div>
+    <h2>Pick the aspect <small>before export</small></h2>
+    <ul>
+      <li>Tap the <kbd>16:9</kbd> icon under the preview and choose <b>16:9</b> or <b>9:16</b>.</li>
+      <li><b>Reframe each one separately.</b> A vertical crop needs a different aim and FOV than the horizontal — don't reuse the same keyframes.</li>
+      <li>Export horizontal first, switch to 9:16, re-aim, export again. Two files, one clip.</li>
+    </ul>
+  </div>
+  <div class="export">
+    <div class="step"><div class="num">5</div>
+      <h2>Export <small>× 2</small></h2>
+      <ul>
+        <li><b>Export as: Video</b> (not 360 Video — that's the unreframed sphere).</li>
+        <li>Name them so FCP tells them apart: <kbd>…_H.mp4</kbd> and <kbd>…_V.mp4</kbd>.</li>
+        <li>Path → the external edit drive, in the day's folder.</li>
+        <li>Check the Resolution box — it's the proof of which aspect you're in.</li>
+        <li>Expect ~5–6 GB per 12 min at 4K. Normal.</li>
+      </ul>
+    </div>
+    <div class="spec">
+      <div class="frame h"></div>
+      <div class="tag"><em>16:9</em> HORIZONTAL</div>
+      <table>
+        <tr><td>Preset</td><td>4K</td></tr>
+        <tr><td>Resolution</td><td>3840 × 2160</td></tr>
+        <tr><td>Frame rate</td><td>Match source (59.94)</td></tr>
+        <tr><td>Codec</td><td>H.265</td></tr>
+        <tr><td>Bitrate</td><td>Recommend (~50–60)</td></tr>
+        <tr><td>Dolby Vision</td><td>off</td></tr>
+      </table>
+      <div class="same">YouTube · Whatnot replay · widescreen cuts</div>
+    </div>
+    <div class="spec">
+      <div class="frame v"></div>
+      <div class="tag"><em>9:16</em> VERTICAL</div>
+      <table>
+        <tr><td>Preset</td><td>4K</td></tr>
+        <tr><td>Resolution</td><td>2160 × 3840</td></tr>
+        <tr><td>Frame rate</td><td>Match source (59.94)</td></tr>
+        <tr><td>Codec</td><td>H.265</td></tr>
+        <tr><td>Bitrate</td><td>Recommend (~50–60)</td></tr>
+        <tr><td>Dolby Vision</td><td>off</td></tr>
+      </table>
+      <div class="same">TikTok · Reels · Shorts — if it reads 3840 × 2160 you're still in 16:9</div>
+    </div>
+  </div>
+  <div class="step" style="grid-column:1/3"><div class="num">6</div>
+    <h2>Final Cut Pro</h2>
+    <ul style="display:grid;grid-template-columns:1fr 1fr;gap:3px 16px">
+      <li><b>One project per aspect.</b> Horizontal: 3840×2160. Vertical: Custom 2160×3840. Frame rate = match the export.</li>
+      <li>Import both files → Spatial Conform <b>Fill</b> so the clip fills the frame with no bars.</li>
+      <li><b>Cut first, polish second.</b> Make all your editorial cuts on the long clip, then tweak per shot — far less keyframing.</li>
+      <li>Need to punch in? 4K gives you room — stay under ~120% scale on a 1080/1920 delivery and it still looks clean.</li>
+    </ul>
+  </div>
+</div>
+<div class="tips">
+  <div class="tip"><b>Zoomed way in?</b>FOV in the 40s means a tiny slice of the sphere. Push it past 100° and re-aim.</div>
+  <div class="tip"><b>Sluggish timeline?</b>Export H.264 instead of H.265 — same look, snappier scrubbing in FCP.</div>
+  <div class="tip"><b>Wrong aspect exported?</b>Don't crop in FCP. Go back to Studio, switch to 9:16, export again.</div>
+  <div class="tip"><b>Chunks missing?</b>Never separate the numbered .insv pieces. Studio needs every chunk to build the master.</div>
+</div>
+<div class="foot"><span>INSTA360 STUDIO → FINAL CUT PRO · REFRAME &amp; DUAL EXPORT</span><span>DISC DIVER · SEP 2026</span></div>
+</div>
+</body></html>

@@ -1,5 +1,5 @@
 {
-  "last_uid": "2501",
+  "last_uid": "2502",
   "digest_queue": [
     {
       "received_at": "2026-06-29 08:07",
@@ -7687,6 +7687,14 @@
     {
       "received_at": "2026-09-14",
       "kind": "realtor_lead_malformed",
+      "matched": false
+    },
+    {
+      "received_at": "2026-09-14 07:07",
+      "from": "newsletter@myclaw.ai",
+      "name": null,
+      "subject": "=?utf-8?q?=F0=9F=A6=9E_AI_Takes_Over_Ad_Buying?=",
+      "body": "",
       "matched": false
     }
   ]

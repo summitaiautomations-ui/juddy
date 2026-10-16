@@ -27,6 +27,10 @@ PHOTOS = DATA / "photos"
 INVENTORY = DATA / "inventory.csv"
 SHEET = DATA / "sheet.csv"
 CLEANER = SCRIPT_DIR / "clean-photo.py"
+# OpenCV/numpy live in a venv (Homebrew python blocks pip installs)
+CLEAN_PY = os.path.expanduser("~/.venvs/discpics/bin/python")
+if not os.path.exists(CLEAN_PY):
+    CLEAN_PY = sys.executable
 
 INV_HEADER = ["id", "date", "photo", "mold", "brand", "plastic", "color",
               "stamped_weight", "scale_weight", "condition", "price", "status", "notes"]
@@ -82,7 +86,7 @@ def clean_or_copy(src, dst):
         dst.write_bytes(src.read_bytes())
         return "copied"
     try:
-        subprocess.run([sys.executable, str(CLEANER), str(src), str(dst)],
+        subprocess.run([CLEAN_PY, str(CLEANER), str(src), str(dst)],
                        check=True, capture_output=True, text=True)
         return "cleaned"
     except Exception:

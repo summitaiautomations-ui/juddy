@@ -77,7 +77,9 @@ def label(d):
     w = f'{w}g' if w and w != 'unknown' else '—'
     cond = d['condition'] if d['condition'] not in ('', 'unknown') else '—'
     ink = 'ink' if 'ink on back' in d['notes'].lower() else ('no ink' if 'no ink' in d['notes'].lower() else '')
-    name = e(f"{d['brand']} {d['mold']}".strip())
+    brand = d['brand']
+    if len(f"{brand} {d['mold']}") > 24: brand = {'Dynamic Discs': 'DD', 'Latitude 64': 'Lat64', 'Westside Discs': 'Westside', 'Discmania': 'DM'}.get(brand, brand)
+    name = e(f"{brand} {d['mold']}".strip())
     fl = ''.join(f'<i>{e(x) or "&nbsp;"}</i>' for x in (s, g, t, f))
     return f'''<div class="lbl">
   <div class="r1"><b class="num">#{e(d['id'])}</b><span class="name{' long' if len(name) > 22 else ''}">{name}</span><b class="price">${e(d['price_usd'])}</b></div>

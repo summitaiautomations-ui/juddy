@@ -6,6 +6,7 @@ Usage:
   python3 scripts/disc-pics/make-labels-6464.py new              # last 12 available
   python3 scripts/disc-pics/make-labels-6464.py 490-500 --auction   # AUCTION bar
   python3 scripts/disc-pics/make-labels-6464.py bin:Innova bin:Discraft   # storage-bin labels
+  python3 scripts/disc-pics/make-labels-6464.py 510-520 --start=3   # start at slot 3 of a partly used sheet, then keep filling
   python3 scripts/disc-pics/make-labels-6464.py 501 --slot=6   # one label per sheet, in slot 6 (bottom right) - reuse partial sheets
 Writes labels-6464.html in repo root. Open in Safari/Chrome, Cmd+P,
 paper US Letter, margins None, scale 100%, no headers/footers.
@@ -14,9 +15,11 @@ import csv, sys, re, html, os
 
 AUCTION = '--auction' in sys.argv
 SLOT = None
+START = 1
 args = []
 for a in sys.argv[1:]:
     if a.startswith('--slot='): SLOT = int(a.split('=')[1])
+    elif a.startswith('--start='): START = int(a.split('=')[1])
     elif not a.startswith('--'): args.append(a)
 BINS = [a[4:] for a in args if a.startswith('bin:')]
 args = [a for a in args if not a.startswith('bin:')]
@@ -74,7 +77,7 @@ def label(d):
   <div class="bot"><div class="cond">Cond {e(cond)}/10{(' · ' + ink) if ink else ''}</div><div class="bar">{bar}</div></div>
 </div>'''
 
-items = [label(d) for d in sel] + [bin_label(b) for b in BINS]
+items = ['<div class="lbl"></div>'] * (START - 1) + [label(d) for d in sel] + [bin_label(b) for b in BINS]
 pages = []
 if SLOT:
     for it in items:

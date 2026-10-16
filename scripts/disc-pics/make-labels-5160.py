@@ -80,7 +80,7 @@ def label(d):
     name = e(f"{d['brand']} {d['mold']}".strip())
     fl = ''.join(f'<i>{e(x) or "&nbsp;"}</i>' for x in (s, g, t, f))
     return f'''<div class="lbl">
-  <div class="r1"><b class="num">#{e(d['id'])}</b><span class="name">{name}</span><b class="price">${e(d['price_usd'])}</b></div>
+  <div class="r1"><b class="num">#{e(d['id'])}</b><span class="name{' long' if len(name) > 22 else ''}">{name}</span><b class="price">${e(d['price_usd'])}</b></div>
   <div class="sub">{e(sub)}</div>
   <div class="r3"><span class="fl">{fl}</span><b class="wt">{e(w)}</b></div>
   <div class="r4"><span>Cond {e(cond)}/10{(' · ' + ink) if ink else ''}</span><span class="dd">{'AUCTION' if AUCTION else 'DISC DIVER'}</span></div>
@@ -117,6 +117,7 @@ body { margin: 0; font-family: -apple-system, "Helvetica Neue", Arial, sans-seri
 .r1 { display: flex; align-items: baseline; gap: 4pt; border-bottom: 0.75pt solid #111; padding-bottom: 1pt; }
 .num { font-size: 13pt; letter-spacing: -.3px; }
 .name { flex: 1; font-size: 9pt; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.name.long { font-size: 7.5pt; }
 .price { font-size: 12pt; }
 .sub { font-size: 6.5pt; margin-top: 1.5pt; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .r3 { display: flex; align-items: center; gap: 4pt; margin-top: 2.5pt; }

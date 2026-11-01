@@ -16,6 +16,8 @@
   html{scroll-behavior:smooth;}
   body{margin:0;background:#081820;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.55;}
   a{color:inherit;}
+  .shipping-top{margin:0;padding:14px 20px;background:#3ad6d6;color:#04231b;text-align:center;font-size:clamp(17px,2.5vw,21px);font-weight:800;line-height:1.4;}
+  .shipping-offer .inner{font-size:clamp(17px,2.5vw,21px);text-align:center;line-height:1.4;}
   /* ---------- HERO ---------- */
   .hero{position:relative;min-height:auto;display:flex;flex-direction:column;justify-content:center;
     align-items:center;text-align:center;padding:26px 20px 22px;overflow:hidden;
@@ -223,6 +225,7 @@
 </style>
 </head>
 <body>
+<p class="shipping-top"><strong>Free standard shipping on orders $45+</strong></p>
 
 
 <section class="hero">
@@ -276,7 +279,7 @@
     <input id="q" type="search" placeholder="Search mold, brand, plastic, color, stamp&hellip;" autocomplete="off" aria-label="Search discs">
   </div>
 </div>
-<div class="bundlebar"><div class="inner">🥏 <b>Free shipping:</b> buy 3, ship free* <span class="sub">&middot; mix &amp; match any discs &middot; *$25 minimum purchase</span></div></div>
+<div class="bundlebar shipping-offer"><div class="inner"><strong>Free standard shipping on orders $45+</strong></div></div>
 <div class="bundlebar" style="margin-top:8px"><div class="inner">💸 Spend <b>$60</b> &mdash; take <b>$5 off</b> &amp; shipping&rsquo;s on me <span class="sub">&middot; any combo of discs</span></div></div>
 <p class="shipnote">👋 Tap <b>I want this disc!</b> on any card to text me (<b>612-203-9883</b>) &mdash; no checkout, no account. &middot; 🌍 <b>International orders</b> welcome &mdash; text me and I&rsquo;ll send a custom shipping quote.</p>
 <main id="grid"></main>
